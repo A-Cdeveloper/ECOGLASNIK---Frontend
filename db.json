@@ -1,0 +1,196 @@
+{
+  "problems": [
+    {
+      "id": "d0551273-3b03-4e2b-b26b-987b27b27f32",
+      "title": "Neki problem",
+      "description": "opsi nekog problema",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.96877137436645",
+        "lng": "22.136914730072025"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-06T16:54:18.128Z",
+      "updatedAt": null,
+      "image": "https://picsum.photos/200/120",
+      "solved": false
+    },
+    {
+      "id": "0fcf439f-778e-473d-93af-bf98ec6f5a65",
+      "title": "Baceno smece na teren ",
+      "description": "Baceno smece Psi raznose",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.97073856258755",
+        "lng": "22.138234376907352"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-06T17:00:44.903Z",
+      "updatedAt": null,
+      "image": "https://picsum.photos/200/120",
+      "solved": false
+    },
+    {
+      "id": "cee464df-a000-4e2f-930a-f0fffe9be503",
+      "title": "Pomor riba",
+      "description": "U selu Konopnica kroz koje protiče reka Vlasina, po snimcima koji su se pojavili na Jutjubu, uginuo je veliki broj krkuša, a iz Ribolovočkog udruženja u Leskovcu tvrde da se ne radi o pomoru, već o sporadičnom uginuću koje je nastalo usled gradnje privatnog bedema na izlazu iz Vlasotinca. Međutim, građani upućeni u celu situaciju smatraju je uginuće nastalo usled punjenja brane u Vlasotincu.",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.982091025378686",
+        "lng": "22.097196578979492"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-06T17:01:53.083Z",
+      "updatedAt": "2024-11-06T17:01:53.083Z",
+      "image": "",
+      "solved": true
+    },
+    {
+      "id": "d60f7ba6-ebc1-4297-bd87-ca95f30f67e7",
+      "title": "Neki problem",
+      "description": "neki opis",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.976166158171765",
+        "lng": "22.13017702102661"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-06T17:12:10.295Z",
+      "updatedAt": null,
+      "image": "https://picsum.photos/200/120",
+      "solved": false
+    },
+    {
+      "id": "7d5c4658-5e94-4c49-bff4-de9e296d3b33",
+      "title": "Otpad",
+      "description": "test",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.96432779640111",
+        "lng": "22.127044200897217"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-07T01:20:08.114Z",
+      "updatedAt": null,
+      "image": "https://picsum.photos/200/120",
+      "solved": false
+    },
+    {
+      "id": "3c50e791-5a9a-4eba-866c-e31a4c9d8972",
+      "title": "MI NISMO ANDJELI",
+      "description": "trees",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.97280512252768",
+        "lng": "22.11771011352539"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-07T01:21:52.261Z",
+      "updatedAt": null,
+      "image": "https://picsum.photos/200/120",
+      "solved": false
+    },
+    {
+      "id": "5dc1c3e0-b2ee-4143-b922-5055eea94238",
+      "title": "Salmon Recipe",
+      "description": "test",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.9744379104304",
+        "lng": "22.096424102783203"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-08T17:06:26.674Z",
+      "updatedAt": "2024-11-08T17:06:26.674Z",
+      "image": "7365_banner.jpg",
+      "solved": false
+    },
+    {
+      "id": "44493bc7-c517-4d03-be68-5ae06e938936",
+      "title": "TEST TASK 2023**",
+      "description": "test 2",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.96880931881228",
+        "lng": "22.104363441467285"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-08T17:07:16.568Z",
+      "updatedAt": "2024-11-08T17:07:16.568Z",
+      "image": "7365_banner.jpg",
+      "solved": false
+    },
+    {
+      "id": "80bc0737-5ac4-4354-be73-c4be44f88a44",
+      "title": "Salmon Recipe 45454 ",
+      "description": "test",
+      "cat_id": 4,
+      "position": {
+        "lat": "42.96164919499267",
+        "lng": "22.106680870056156"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-08T17:12:59.990Z",
+      "updatedAt": "2024-11-08T17:12:59.990Z",
+      "image": "7365_banner.jpg",
+      "solved": false
+    },
+    {
+      "id": "c447c8ca-8839-4873-b03e-bb5d1f6a48a3",
+      "title": "Izlivanje reke",
+      "description": "reka se iliza",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.989524755034346",
+        "lng": "22.116572856903076"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-08T17:15:34.471Z",
+      "updatedAt": "2024-11-08T17:15:34.471Z",
+      "image": "7365_banner.jpg",
+      "solved": false
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "cat_id": 1,
+      "cat_name": "Category 1"
+    },
+    {
+      "id": "2",
+      "cat_id": 2,
+      "cat_name": "Category 2"
+    },
+    {
+      "id": "3",
+      "cat_id": 3,
+      "cat_name": "Category 3"
+    },
+    {
+      "id": "4",
+      "cat_id": 4,
+      "cat_name": "Category 4 ipsum lorem ipsum lorem ipsum lorem ipsum lorem "
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "uid": 1,
+      "name": "Aleksandar Cvetkovic",
+      "email": "aleksandar.cvetkovic@gmail.com"
+    },
+    {
+      "id": "2",
+      "uid": 2,
+      "name": "Biljana Vuckovic",
+      "email": "biljana.vuckovic@gmail.com"
+    },
+    {
+      "id": "3",
+      "uid": 3,
+      "name": "Vladislav Stojanovic",
+      "email": "vladislav.stojanovic@gmail.com"
+    }
+  ]
+}

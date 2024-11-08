@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-text: #fff;
+    --color-success: green;
+    --color-info: rgb(55, 70, 121);
+    --color-error: #ef233c;
+  }
+}
+
+body {
+  color: var(--color-text);
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+}
+
+.resize-x {
+  resize: horizontal;
+  overflow: auto;
+  cursor: ew-resize;
+}
+
+input,
+textarea,
+select {
+  @apply bg-transparent px-2 py-1 border-1 border-secondary focus:border-yellow focus:outline-none text-white w-full;
+}
+
+option {
+  @apply bg-primary px-2 py-1 border-1 border-secondary focus:border-primary focus:outline-none text-white;
+}
+
+button {
+  @apply text-white px-2 py-1;
+  &.primary {
+    @apply bg-green/70 hover:bg-green;
+  }
+  &.secondary {
+    @apply bg-sky-900;
+  }
+  &.success {
+    @apply bg-green;
+  }
+  &.danger {
+    @apply bg-red;
+  }
+  &.disabled {
+    @apply bg-gray-400;
+  }
+  &.small {
+    @apply px-2 py-1;
+  }
+  &.medium {
+    @apply px-3 py-2;
+  }
+  &.large {
+    @apply px-4 py-2;
+  }
+}
+button:disabled {
+  @apply bg-gray-400 cursor-not-allowed hover:bg-gray-400;
+}
