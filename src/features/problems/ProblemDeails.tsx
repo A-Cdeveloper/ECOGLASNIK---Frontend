@@ -4,9 +4,11 @@ import Headline from "../../ui/Headline";
 import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
 import Button from "../../ui/Buttons/Button";
+import useUpdateProblemStatus from "./hooks/useupdateProblemStatus";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
+  const { mutate, status } = useUpdateProblemStatus();
 
   if (isLoading) {
     return <Loader />;
@@ -14,6 +16,8 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
   if (error) {
     return <div>{error.message}</div>;
   }
+
+  const changeStatusLaoding = status === "pending";
 
   return (
     <>
@@ -29,10 +33,19 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       />
       {!problem?.solved && (
         <div className="flex flex-col items-center gap-4">
-          <Button variation="primary" size="medium" onClick={() => {}}>
-            Problem je rešen 📢
+          <Button
+            variation="primary"
+            size="medium"
+            onClick={() => {
+              mutate({
+                ...problem!,
+                solved: true,
+              });
+            }}
+          >
+            {changeStatusLaoding ? "Promena statusa..." : "Problem je rešen 📢"}
           </Button>
-          <Button variation="danger" size="small" onClick={() => {}}>
+          <Button variation="danger" size="small">
             Obrisi
           </Button>
         </div>

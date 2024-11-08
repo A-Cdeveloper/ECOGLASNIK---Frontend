@@ -13,7 +13,7 @@
       "createdAt": "2024-11-06T16:54:18.128Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": false
+      "solved": true
     },
     {
       "id": "0fcf439f-778e-473d-93af-bf98ec6f5a65",
@@ -28,7 +28,7 @@
       "createdAt": "2024-11-06T17:00:44.903Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": false
+      "solved": true
     },
     {
       "id": "cee464df-a000-4e2f-930a-f0fffe9be503",
@@ -58,7 +58,7 @@
       "createdAt": "2024-11-06T17:12:10.295Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": false
+      "solved": true
     },
     {
       "id": "7d5c4658-5e94-4c49-bff4-de9e296d3b33",
@@ -73,7 +73,7 @@
       "createdAt": "2024-11-07T01:20:08.114Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": false
+      "solved": true
     },
     {
       "id": "3c50e791-5a9a-4eba-866c-e31a4c9d8972",
@@ -88,7 +88,7 @@
       "createdAt": "2024-11-07T01:21:52.261Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": false
+      "solved": true
     },
     {
       "id": "5dc1c3e0-b2ee-4143-b922-5055eea94238",
@@ -118,7 +118,7 @@
       "createdAt": "2024-11-08T17:07:16.568Z",
       "updatedAt": "2024-11-08T17:07:16.568Z",
       "image": "7365_banner.jpg",
-      "solved": false
+      "solved": true
     },
     {
       "id": "80bc0737-5ac4-4354-be73-c4be44f88a44",
@@ -147,6 +147,21 @@
       "uid": 1,
       "createdAt": "2024-11-08T17:15:34.471Z",
       "updatedAt": "2024-11-08T17:15:34.471Z",
+      "image": "7365_banner.jpg",
+      "solved": true
+    },
+    {
+      "id": "1198d667-bf40-4e3d-9299-90e27b3b351c",
+      "title": "Neispraznjen kontejner",
+      "description": "pun komtejner na ulici ",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.964978455135",
+        "lng": "22.122913599014286"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-08T23:42:53.623Z",
+      "updatedAt": "2024-11-08T23:42:53.623Z",
       "image": "7365_banner.jpg",
       "solved": false
     }
