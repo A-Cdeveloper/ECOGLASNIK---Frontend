@@ -39,6 +39,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
             onClick={() => {
               mutate({
                 ...problem!,
+                updatedAt: new Date(),
                 solved: true,
               });
             }}

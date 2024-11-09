@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Problem } from "../../types";
 import StatusBadge from "../../ui/StatusBadge";
 import Headline from "../../ui/Headline";
+import { formattedDate } from "../../utils/timeFunctions";
 
 const ProblemItem = ({ problem }: { problem: Problem }) => {
   const {
@@ -26,9 +27,9 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             </Headline>
 
             <span className="text-[12px] block mt-1 text-white/75">
-              Prijavljeno: 01.11.2025. 12:45
+              Prijavljeno: {formattedDate(problem?.createdAt)}
               <br />
-              {solved && <> Rešeno: 01.11.2025. 12:45</>}
+              {solved && `Rešeno: ${formattedDate(problem?.createdAt)}`}
             </span>
           </div>
           <img

@@ -4,7 +4,7 @@ import { getSingleProblemApi } from "../api/problems";
 
 export const useSingleProblem = (id: string) => {
   const { data, error, isLoading } = useQuery<Problem>({
-    queryKey: ["problem", id],
+    queryKey: ["problem", { id }],
     queryFn: () => getSingleProblemApi(id),
   });
 

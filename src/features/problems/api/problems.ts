@@ -19,8 +19,14 @@ export const getAllProblemsApi = async (
     query = `?solved=${solved}&cat_id=${cat_id}`;
   }
 
+  if (solved == "all" || !solved) {
+    query = "?";
+  }
+
   try {
-    const response = await fetch(`${API_URL}/problems/${query}`);
+    const response = await fetch(
+      `${API_URL}/problems/${query}&_sort=solvedAt&_order=ASC`
+    );
     if (!response.ok) {
       throw new Error(
         `Failed to fetch problems: ${response.status} ${response.statusText}`

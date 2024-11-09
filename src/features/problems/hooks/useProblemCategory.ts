@@ -8,7 +8,7 @@ export const useProblemCategory = (categoryId: number) => {
     error,
     isLoading,
   } = useQuery<ProblemCategory>({
-    queryKey: ["category", categoryId],
+    queryKey: ["category", { categoryId }],
     queryFn: () => getSingleCategoryApi(categoryId),
     enabled: !!categoryId,
   });

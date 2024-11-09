@@ -163,7 +163,52 @@
       "createdAt": "2024-11-08T23:42:53.623Z",
       "updatedAt": "2024-11-08T23:42:53.623Z",
       "image": "7365_banner.jpg",
+      "solved": true
+    },
+    {
+      "id": "dba47c05-1f61-458b-9d28-9a1d821dd23b",
+      "title": "Uginuo pas na ulici ",
+      "description": "smrdi pas ",
+      "cat_id": 4,
+      "position": {
+        "lat": "42.97272010598544",
+        "lng": "22.10826873779297"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-09T00:04:50.188Z",
+      "updatedAt": "2024-11-09T00:04:50.188Z",
+      "image": "7365_banner.jpg",
+      "solved": true
+    },
+    {
+      "id": "9bcd1f24-6273-462b-89df-0cd3786ffc28",
+      "title": "gori deponija",
+      "description": "ode vinca u vazdug",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.963031038169355",
+        "lng": "22.116680145263675"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-09T00:20:18.283Z",
+      "updatedAt": "2024-11-09T00:20:18.283Z",
+      "image": "7365_banner.jpg",
       "solved": false
+    },
+    {
+      "id": "6eebe228-bb33-43c9-8136-27cd3376d6ff",
+      "title": "izlila se reka",
+      "description": "test",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.99194840402501",
+        "lng": "22.146720886230472"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-09T00:25:03.300Z",
+      "updatedAt": "2024-11-09T00:32:22.940Z",
+      "image": "7365_banner.jpg",
+      "solved": true
     }
   ],
   "categories": [

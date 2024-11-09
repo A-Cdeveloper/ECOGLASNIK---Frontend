@@ -49,7 +49,7 @@ const NewProblemForm = () => {
       },
       uid: 1,
       createdAt: new Date(), // new Date(),
-      updatedAt: new Date(),
+      updatedAt: null,
       image: file?.name || "",
       solved: false,
     };
