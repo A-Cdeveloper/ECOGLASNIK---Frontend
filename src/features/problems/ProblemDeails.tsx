@@ -5,10 +5,14 @@ import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
 import Button from "../../ui/Buttons/Button";
 import useUpdateProblemStatus from "./hooks/useUpdateProblemStatus";
+import useDeleteProblem from "./hooks/useDeleteProblem";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
-  const { mutate, status } = useUpdateProblemStatus();
+  const { mutate: updateStatusMutation, status: changeStatusLaoding } =
+    useUpdateProblemStatus();
+  const { mutate: deleteProblemMutation, status: deleteProblemLaoding } =
+    useDeleteProblem();
 
   if (isLoading) {
     return <Loader />;
@@ -16,8 +20,6 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
   if (error) {
     return <div>{error.message}</div>;
   }
-
-  const changeStatusLaoding = status === "pending";
 
   return (
     <>
@@ -37,17 +39,25 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
             variation="primary"
             size="medium"
             onClick={() => {
-              mutate({
+              updateStatusMutation({
                 ...problem!,
                 updatedAt: new Date(),
                 status: "done",
               });
             }}
           >
-            {changeStatusLaoding ? "Promena statusa..." : "Problem je rešen 📢"}
+            {changeStatusLaoding === "pending"
+              ? "Promena statusa..."
+              : "Problem je rešen 📢"}
           </Button>
-          <Button variation="danger" size="small">
-            Obrisi
+          <Button
+            variation="danger"
+            size="small"
+            onClick={() => deleteProblemMutation(problem!.id)}
+          >
+            {deleteProblemLaoding === "pending"
+              ? "Brisanje..."
+              : "Obriši problem 🎈"}
           </Button>
         </div>
       )}

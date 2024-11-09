@@ -16,21 +16,6 @@
       "status": "done"
     },
     {
-      "id": "0fcf439f-778e-473d-93af-bf98ec6f5a65",
-      "title": "Baceno smece na teren ",
-      "description": "Baceno smece Psi raznose",
-      "cat_id": 2,
-      "position": {
-        "lat": "42.97073856258755",
-        "lng": "22.138234376907352"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-06T17:00:44.903Z",
-      "updatedAt": null,
-      "image": "https://picsum.photos/200/120",
-      "status": "active"
-    },
-    {
       "id": "cee464df-a000-4e2f-930a-f0fffe9be503",
       "title": "Pomor riba",
       "description": "U selu Konopnica kroz koje protiče reka Vlasina, po snimcima koji su se pojavili na Jutjubu, uginuo je veliki broj krkuša, a iz Ribolovočkog udruženja u Leskovcu tvrde da se ne radi o pomoru, već o sporadičnom uginuću koje je nastalo usled gradnje privatnog bedema na izlazu iz Vlasotinca. Međutim, građani upućeni u celu situaciju smatraju je uginuće nastalo usled punjenja brane u Vlasotincu.",
@@ -56,9 +41,9 @@
       },
       "uid": 1,
       "createdAt": "2024-11-06T17:12:10.295Z",
-      "updatedAt": null,
+      "updatedAt": "2024-11-09T16:12:15.232Z",
       "image": "https://picsum.photos/200/120",
-      "status": "active"
+      "status": "done"
     },
     {
       "id": "7d5c4658-5e94-4c49-bff4-de9e296d3b33",
@@ -71,21 +56,6 @@
       },
       "uid": 1,
       "createdAt": "2024-11-07T01:20:08.114Z",
-      "updatedAt": null,
-      "image": "https://picsum.photos/200/120",
-      "status": "active"
-    },
-    {
-      "id": "3c50e791-5a9a-4eba-866c-e31a4c9d8972",
-      "title": "MI NISMO ANDJELI",
-      "description": "trees",
-      "cat_id": 2,
-      "position": {
-        "lat": "42.97280512252768",
-        "lng": "22.11771011352539"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-07T01:21:52.261Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
       "status": "active"
@@ -119,6 +89,21 @@
       "updatedAt": "2024-11-09T13:45:11.081Z",
       "image": "7365_banner.jpg",
       "status": "done"
+    },
+    {
+      "id": "1bf8c44b-7fea-4969-ab72-7e823100c39e",
+      "title": "Psi lutalice",
+      "description": "napradu jljude",
+      "cat_id": 3,
+      "position": {
+        "lat": "42.96651495089469",
+        "lng": "22.116519212722782"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-09T16:12:47.188Z",
+      "updatedAt": null,
+      "image": "7365_banner.jpg",
+      "status": "active"
     }
   ],
   "categories": [
