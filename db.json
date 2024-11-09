@@ -11,9 +11,9 @@
       },
       "uid": 1,
       "createdAt": "2024-11-06T16:54:18.128Z",
-      "updatedAt": null,
+      "updatedAt": "2024-11-09T13:35:19.016Z",
       "image": "https://picsum.photos/200/120",
-      "solved": true
+      "status": "done"
     },
     {
       "id": "0fcf439f-778e-473d-93af-bf98ec6f5a65",
@@ -28,7 +28,7 @@
       "createdAt": "2024-11-06T17:00:44.903Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": true
+      "status": "active"
     },
     {
       "id": "cee464df-a000-4e2f-930a-f0fffe9be503",
@@ -43,7 +43,7 @@
       "createdAt": "2024-11-06T17:01:53.083Z",
       "updatedAt": "2024-11-06T17:01:53.083Z",
       "image": "",
-      "solved": true
+      "status": "done"
     },
     {
       "id": "d60f7ba6-ebc1-4297-bd87-ca95f30f67e7",
@@ -58,7 +58,7 @@
       "createdAt": "2024-11-06T17:12:10.295Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": true
+      "status": "active"
     },
     {
       "id": "7d5c4658-5e94-4c49-bff4-de9e296d3b33",
@@ -73,7 +73,7 @@
       "createdAt": "2024-11-07T01:20:08.114Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": true
+      "status": "active"
     },
     {
       "id": "3c50e791-5a9a-4eba-866c-e31a4c9d8972",
@@ -88,7 +88,7 @@
       "createdAt": "2024-11-07T01:21:52.261Z",
       "updatedAt": null,
       "image": "https://picsum.photos/200/120",
-      "solved": true
+      "status": "active"
     },
     {
       "id": "5dc1c3e0-b2ee-4143-b922-5055eea94238",
@@ -103,112 +103,22 @@
       "createdAt": "2024-11-08T17:06:26.674Z",
       "updatedAt": "2024-11-08T17:06:26.674Z",
       "image": "7365_banner.jpg",
-      "solved": false
+      "status": "done"
     },
     {
-      "id": "44493bc7-c517-4d03-be68-5ae06e938936",
-      "title": "TEST TASK 2023**",
-      "description": "test 2",
-      "cat_id": 1,
+      "id": "45ffc428-416a-413d-98e9-838a5deac9af",
+      "title": "My second  post with prisma",
+      "description": "neki rpoblem ",
+      "cat_id": 3,
       "position": {
-        "lat": "42.96880931881228",
-        "lng": "22.104363441467285"
+        "lat": "42.974838250367455",
+        "lng": "22.102217674255375"
       },
       "uid": 1,
-      "createdAt": "2024-11-08T17:07:16.568Z",
-      "updatedAt": "2024-11-08T17:07:16.568Z",
+      "createdAt": "2024-11-09T13:44:57.041Z",
+      "updatedAt": "2024-11-09T13:45:11.081Z",
       "image": "7365_banner.jpg",
-      "solved": true
-    },
-    {
-      "id": "80bc0737-5ac4-4354-be73-c4be44f88a44",
-      "title": "Salmon Recipe 45454 ",
-      "description": "test",
-      "cat_id": 4,
-      "position": {
-        "lat": "42.96164919499267",
-        "lng": "22.106680870056156"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-08T17:12:59.990Z",
-      "updatedAt": "2024-11-08T17:12:59.990Z",
-      "image": "7365_banner.jpg",
-      "solved": false
-    },
-    {
-      "id": "c447c8ca-8839-4873-b03e-bb5d1f6a48a3",
-      "title": "Izlivanje reke",
-      "description": "reka se iliza",
-      "cat_id": 1,
-      "position": {
-        "lat": "42.989524755034346",
-        "lng": "22.116572856903076"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-08T17:15:34.471Z",
-      "updatedAt": "2024-11-08T17:15:34.471Z",
-      "image": "7365_banner.jpg",
-      "solved": true
-    },
-    {
-      "id": "1198d667-bf40-4e3d-9299-90e27b3b351c",
-      "title": "Neispraznjen kontejner",
-      "description": "pun komtejner na ulici ",
-      "cat_id": 2,
-      "position": {
-        "lat": "42.964978455135",
-        "lng": "22.122913599014286"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-08T23:42:53.623Z",
-      "updatedAt": "2024-11-08T23:42:53.623Z",
-      "image": "7365_banner.jpg",
-      "solved": true
-    },
-    {
-      "id": "dba47c05-1f61-458b-9d28-9a1d821dd23b",
-      "title": "Uginuo pas na ulici ",
-      "description": "smrdi pas ",
-      "cat_id": 4,
-      "position": {
-        "lat": "42.97272010598544",
-        "lng": "22.10826873779297"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-09T00:04:50.188Z",
-      "updatedAt": "2024-11-09T00:04:50.188Z",
-      "image": "7365_banner.jpg",
-      "solved": true
-    },
-    {
-      "id": "9bcd1f24-6273-462b-89df-0cd3786ffc28",
-      "title": "gori deponija",
-      "description": "ode vinca u vazdug",
-      "cat_id": 1,
-      "position": {
-        "lat": "42.963031038169355",
-        "lng": "22.116680145263675"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-09T00:20:18.283Z",
-      "updatedAt": "2024-11-09T00:20:18.283Z",
-      "image": "7365_banner.jpg",
-      "solved": false
-    },
-    {
-      "id": "6eebe228-bb33-43c9-8136-27cd3376d6ff",
-      "title": "izlila se reka",
-      "description": "test",
-      "cat_id": 1,
-      "position": {
-        "lat": "42.99194840402501",
-        "lng": "22.146720886230472"
-      },
-      "uid": 1,
-      "createdAt": "2024-11-09T00:25:03.300Z",
-      "updatedAt": "2024-11-09T00:32:22.940Z",
-      "image": "7365_banner.jpg",
-      "solved": true
+      "status": "done"
     }
   ],
   "categories": [

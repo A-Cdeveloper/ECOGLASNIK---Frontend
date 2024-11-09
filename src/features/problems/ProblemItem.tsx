@@ -9,7 +9,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
     id,
     title,
     position: { lat, lng },
-    solved,
+    status,
     image,
   } = problem || {};
 
@@ -17,7 +17,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
     <Link to={`problems/${id}/?lat=${lat}&lng=${lng}`}>
       <div className="border-b-2 border-t border-primary/50 p-2 bg-secondary/20 hover:bg-secondary/85 relative">
         <StatusBadge
-          status={problem?.solved}
+          status={problem.status}
           className="ms-2 absolute end-[-3px] top-[3px] block"
         />
         <div className="flex justify-between gap-5">
@@ -29,7 +29,8 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             <span className="text-[12px] block mt-1 text-white/75">
               Prijavljeno: {formattedDate(problem?.createdAt)}
               <br />
-              {solved && `Rešeno: ${formattedDate(problem?.createdAt)}`}
+              {status === "done" &&
+                `Rešeno: ${formattedDate(problem?.createdAt)}`}
             </span>
           </div>
           <img

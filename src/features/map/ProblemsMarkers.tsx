@@ -19,10 +19,10 @@ const ProblemsMarkers = ({
     return (
       <CustumMarker
         problemId={problemId}
-        solved={false}
+        status="active"
         lat={mapLat}
         lng={mapLng}
-        active={true}
+        activeMarker={true}
         hoveredMarker={hoveredMarker}
         setHoveredMarker={setHoveredMarker}
       />
@@ -38,10 +38,12 @@ const ProblemsMarkers = ({
           <CustumMarker
             key={problem.id}
             problemId={problem.id}
-            solved={problem.solved}
+            status={problem.status}
             lat={lat}
             lng={lng}
-            active={!!mapLat && !!mapLng && +mapLat === lat && +mapLng === lng}
+            activeMarker={
+              !!mapLat && !!mapLng && +mapLat === lat && +mapLng === lng
+            }
             hoveredMarker={hoveredMarker}
             setHoveredMarker={setHoveredMarker}
           />

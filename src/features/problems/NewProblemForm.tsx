@@ -6,6 +6,7 @@ import useAddNewProblem from "./hooks/useAddNewProblem";
 import { useCategories } from "./hooks/useCategories";
 import Headline from "../../ui/Headline";
 import AddProblemBanner from "./AddProblemBanner";
+import { Problem } from "../../types";
 
 const NewProblemForm = () => {
   const { mapLat, mapLng } = useUrlParams();
@@ -38,7 +39,7 @@ const NewProblemForm = () => {
       formData.append("image", file);
     }
 
-    const newProblem = {
+    const newProblem: Problem = {
       id: uuidv4(),
       title,
       description,
@@ -51,7 +52,7 @@ const NewProblemForm = () => {
       createdAt: new Date(), // new Date(),
       updatedAt: null,
       image: file?.name || "",
-      solved: false,
+      status: "active",
     };
 
     mutate(newProblem);

@@ -2,30 +2,30 @@ import { API_URL } from "../../../constants";
 import { Problem } from "../../../types";
 
 export const getAllProblemsApi = async (
-  solved: string | null,
+  status: string | null,
   cat_id: number | null
 ): Promise<Problem[]> => {
   let query = "";
 
-  if (solved && solved != "all") {
-    query = `?solved=${solved}`;
+  if (status && status != "all") {
+    query = `?status=${status}`;
+  }
+
+  if (status == "all" || !status) {
+    query = "?";
   }
 
   if (cat_id != null) {
     query = `?cat_id=${cat_id}`;
   }
 
-  if (solved && solved != "all" && cat_id != null) {
-    query = `?solved=${solved}&cat_id=${cat_id}`;
-  }
-
-  if (solved == "all" || !solved) {
-    query = "?";
+  if (status && status != "all" && cat_id != null) {
+    query = `?status=${status}&cat_id=${cat_id}`;
   }
 
   try {
     const response = await fetch(
-      `${API_URL}/problems/${query}&_sort=solvedAt&_order=ASC`
+      `${API_URL}/problems/${query}&_sort=statusAt&_order=ASC`
     );
     if (!response.ok) {
       throw new Error(

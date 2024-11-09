@@ -19,7 +19,7 @@ const ProblemHeader = ({ problem }: { problem: Problem }) => {
       )}
       <div>Status:</div>
       <div>
-        <StatusBadge status={problem?.solved} className="inline-block" />
+        <StatusBadge status={problem.status} className="inline-block" />
       </div>
     </div>
   );

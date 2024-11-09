@@ -15,7 +15,7 @@ export type Problem = {
   position: Position;
   createdAt: Date;
   updatedAt?: Date | null;
-  solved: boolean;
+  status: "active" | "done";
   cat_id: number;
   uid: number;
   image: string;

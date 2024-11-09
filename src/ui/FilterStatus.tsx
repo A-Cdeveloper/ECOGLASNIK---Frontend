@@ -5,15 +5,15 @@ const FilterStatusButton = ({
   value,
 }: {
   children: React.ReactNode;
-  value?: "true" | "false" | "all";
+  value?: "active" | "done" | "all";
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentParams = new URLSearchParams(window.location.search);
 
   const initialClass =
-    !searchParams.get("solved") && value === "all" ? "bg-secondary" : "";
+    !searchParams.get("status") && value === "all" ? "bg-secondary" : "";
   const activeClass =
-    searchParams.get("solved") && searchParams.get("solved") === value
+    searchParams.get("status") && searchParams.get("status") === value
       ? "bg-secondary"
       : "";
 
@@ -21,7 +21,7 @@ const FilterStatusButton = ({
     <span
       className={`px-3 py-1 cursor-pointer inline-block text-sm hover:bg-secondary ${activeClass} ${initialClass}`}
       onClick={() => {
-        currentParams.set("solved", value as string);
+        currentParams.set("status", value as string);
         setSearchParams(currentParams);
       }}
     >
@@ -37,9 +37,9 @@ const FilterStatus = () => {
         <p>Filtiraj po statusu:</p>
         <div>
           <FilterStatusButton value="all">SVE</FilterStatusButton>
-          <FilterStatusButton value="false">AKTIVNO</FilterStatusButton>
+          <FilterStatusButton value="active">AKTIVNO</FilterStatusButton>
 
-          <FilterStatusButton value="true">REŠENO</FilterStatusButton>
+          <FilterStatusButton value="done">REŠENO</FilterStatusButton>
         </div>
       </div>
     </>

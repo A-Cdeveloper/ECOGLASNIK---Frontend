@@ -5,8 +5,8 @@ import CustumMarkerIcon from "./CustumMarkerIcon";
 
 type MarkerType = {
   problemId?: string;
-  solved: boolean;
-  active?: boolean;
+  status: string;
+  activeMarker?: boolean;
   lat: number;
   lng: number;
   hoveredMarker?: string | null;
@@ -15,8 +15,8 @@ type MarkerType = {
 
 const CustumMarker = ({
   problemId,
-  solved,
-  active,
+  status,
+  activeMarker,
   lat,
   lng,
   hoveredMarker,
@@ -28,16 +28,16 @@ const CustumMarker = ({
   return (
     <Marker
       position={[lat, lng]}
-      icon={CustumMarkerIcon(solved, active)}
+      icon={CustumMarkerIcon(status, activeMarker)}
       draggable={true}
       opacity={
-        hoveredMarker === null || hoveredMarker === problemId || active
+        hoveredMarker === null || hoveredMarker === problemId || activeMarker
           ? 1
           : 0.5
       }
       eventHandlers={{
         click: () => {
-          if (active) return;
+          if (activeMarker) return;
           map.setView({ lat, lng }, 15, { animate: true });
           navigate(`problems/${problemId}/?lat=${lat}&lng=${lng}`);
         },

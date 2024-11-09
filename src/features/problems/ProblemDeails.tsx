@@ -4,7 +4,7 @@ import Headline from "../../ui/Headline";
 import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
 import Button from "../../ui/Buttons/Button";
-import useUpdateProblemStatus from "./hooks/useupdateProblemStatus";
+import useUpdateProblemStatus from "./hooks/useUpdateProblemStatus";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
@@ -31,7 +31,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
         width={"100%"}
         className="my-4 border-double border-4 border-secondary/50"
       />
-      {!problem?.solved && (
+      {problem?.status === "active" && (
         <div className="flex flex-col items-center gap-4">
           <Button
             variation="primary"
@@ -40,7 +40,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
               mutate({
                 ...problem!,
                 updatedAt: new Date(),
-                solved: true,
+                status: "done",
               });
             }}
           >
