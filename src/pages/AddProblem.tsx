@@ -1,11 +1,11 @@
-import NewProblemForm from "../features/problems/NewProblemForm";
+import ProblemForm from "../features/problems/ProblemForm";
 import BackButton from "../ui/Buttons/BackButton";
 
 const AddProblem = () => {
   return (
     <>
       <BackButton />
-      <NewProblemForm />
+      <ProblemForm />
     </>
   );
 };
