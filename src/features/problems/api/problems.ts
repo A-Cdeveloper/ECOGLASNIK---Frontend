@@ -83,6 +83,30 @@ export const addNewProblemApi = async (problem: Problem): Promise<Problem> => {
   }
 };
 
+export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
+  try {
+    const response = await fetch(`${API_URL}/problems/${problem.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(problem),
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to update problem: ${response.status} ${response.statusText}`
+      );
+    }
+    return response.json();
+  } catch (error) {
+    // Check if the error is an instance of the Error object to get a better message
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
+    throw new Error(`${errorMessage}`);
+  }
+};
+
 export const updateProbemStatusApi = async (
   problem: Problem
 ): Promise<Problem> => {
