@@ -4,7 +4,7 @@ export type ButtonType = {
   children: React.ReactNode;
   style?: React.CSSProperties;
   size?: "small" | "medium" | "large"; // Use specific strings for type safety
-  variation?: "primary" | "secondary" | "danger" | "success";
+  variation?: "primary" | "secondary" | "danger" | "success" | "warning";
   disabled?: boolean;
   onClick?: () => void;
 };

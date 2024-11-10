@@ -105,17 +105,19 @@ const Form = ({
           defaultValue={problem?.description}
           required
         ></textarea>
-        <input
-          type="file"
-          name="imageFile"
-          id="image"
-          accept="image/*"
-          className="bg-transparent border-0 text-white"
-          onChange={handleFileChange}
-          aria-description="Dodaj sliku problema"
-          defaultValue={problem?.image}
-          required
-        />
+        {!editMode && (
+          <input
+            type="file"
+            name="imageFile"
+            id="image"
+            accept="image/*"
+            className="bg-transparent border-0 text-white"
+            onChange={handleFileChange}
+            aria-description="Dodaj sliku problema"
+            defaultValue={problem?.image || ""}
+            required
+          />
+        )}
         <Button
           aria-label="Pošalji problem"
           variation="danger"

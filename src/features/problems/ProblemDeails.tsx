@@ -6,6 +6,7 @@ import ProblemHeader from "./ProblemHeader";
 import Button from "../../ui/Buttons/Button";
 import useUpdateProblemStatus from "./hooks/useUpdateProblemStatus";
 import useDeleteProblem from "./hooks/useDeleteProblem";
+import { Link } from "react-router-dom";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
@@ -35,21 +36,30 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       />
       {problem?.status === "active" && (
         <div className="flex flex-col items-center gap-4">
-          <Button
-            variation="primary"
-            size="medium"
-            onClick={() => {
-              updateStatusMutation({
-                ...problem!,
-                updatedAt: new Date(),
-                status: "done",
-              });
-            }}
-          >
-            {changeStatusLaoding === "pending"
-              ? "Promena statusa..."
-              : "Problem je rešen 📢"}
-          </Button>
+          <div className="flex items-center gap-4">
+            <Link
+              to={`/problems/edit/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`}
+              role="button"
+            >
+              Izmeni detalje problema
+            </Link>
+            <Button
+              variation="primary"
+              size="medium"
+              onClick={() => {
+                updateStatusMutation({
+                  ...problem!,
+                  updatedAt: new Date(),
+                  status: "done",
+                });
+              }}
+            >
+              {changeStatusLaoding === "pending"
+                ? "Promena statusa..."
+                : "Problem je rešen 📢"}
+            </Button>
+          </div>
+
           <Button
             variation="danger"
             size="small"

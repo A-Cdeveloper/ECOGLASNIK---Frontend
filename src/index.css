@@ -49,6 +49,9 @@ button {
   &.danger {
     @apply bg-red;
   }
+  &.warning {
+    @apply bg-yellow text-black;
+  }
   &.disabled {
     @apply bg-gray-400;
   }

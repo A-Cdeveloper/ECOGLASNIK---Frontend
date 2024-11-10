@@ -26,7 +26,7 @@ const mainRouter = [
         children: [
           { path: ":id", element: <SingleProblem /> },
           { path: "add", element: <AddProblem /> },
-          { path: ":id/:edit", element: <EditProblem /> },
+          { path: "edit/:id", element: <EditProblem /> },
         ],
       },
       { path: "/impressum", element: <ImpressumPage /> },

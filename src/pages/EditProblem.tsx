@@ -8,7 +8,7 @@ const EditProblem = () => {
 
   return (
     <>
-      <BackButton />
+      <BackButton to={-1} />
       <ProblemForm problemId={id} />
     </>
   );
