@@ -22,8 +22,7 @@ const useDeleteProblem = (): UseMutationResult<Problem, Error, string> => {
       queryClient.invalidateQueries({ queryKey: ["problem"] }); // Optional: refresh the problems query
     },
     onError: (err: Error) => {
-      console.error("Error deleting problem:", err.message);
-      toast.error("Došlo je do greške pri uklanjanju problema.");
+      toast.error("Došlo je do greške pri uklanjanju problema." + err.message);
     },
   });
 

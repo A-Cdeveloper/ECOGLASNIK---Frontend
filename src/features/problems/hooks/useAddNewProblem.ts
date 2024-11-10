@@ -21,7 +21,7 @@ const useAddNewProblem = (): UseMutationResult<Problem, Error, Problem> => {
       navigate("/");
     },
     onError: (err: Error) => {
-      console.log(err.message);
+      toast.error("Došlo je do greške pri dodavanju problema." + err.message);
     },
   });
 
