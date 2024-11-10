@@ -5,11 +5,13 @@ import CustumMarker from "./CustumMarker";
 const ProblemsMarkers = ({
   problems,
   problemId,
+  problemStatus,
   mapLat,
   mapLng,
 }: {
   problems: Problems;
   problemId?: string;
+  problemStatus?: string;
   mapLat?: number;
   mapLng?: number;
 }) => {
@@ -19,10 +21,10 @@ const ProblemsMarkers = ({
     return (
       <CustumMarker
         problemId={problemId}
-        status="active"
+        status={problemStatus ? problemStatus : "active"}
+        activeMarker={true}
         lat={mapLat}
         lng={mapLng}
-        activeMarker={true}
         hoveredMarker={hoveredMarker}
         setHoveredMarker={setHoveredMarker}
       />
@@ -41,9 +43,6 @@ const ProblemsMarkers = ({
             status={problem.status}
             lat={lat}
             lng={lng}
-            activeMarker={
-              !!mapLat && !!mapLng && +mapLat === lat && +mapLng === lng
-            }
             hoveredMarker={hoveredMarker}
             setHoveredMarker={setHoveredMarker}
           />

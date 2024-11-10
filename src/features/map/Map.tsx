@@ -1,21 +1,27 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapClick from "./MapClick";
 import ProblemsMarkers from "./ProblemsMarkers";
 import StabilizeMap from "./StabilizeMap";
 
-import { useProblems } from "../problems/hooks/useProblems";
 import { useUrlParams } from "../../hooks/useUrlParams";
+import { useProblems } from "../problems/hooks/useProblems";
 
 import "leaflet/dist/leaflet.css";
-import "../../utils.css";
 import { DEFAULT_POSITION, INITIAL_ZOOM } from "../../constants";
 import Loader from "../../ui/Loader";
+import "../../utils.css";
+import { Problem } from "../../types";
 
-const Map = ({ problemId }: { problemId: string }) => {
+const Map = ({ problemId }: { problemId?: string }) => {
   const { mapLat, mapLng } = useUrlParams();
   const { problems, isLoading } = useProblems();
+
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
+
+  const problem: Problem | undefined = useMemo(() => {
+    return problems?.find((problem) => problem.id === problemId);
+  }, [problems, problemId]);
 
   useEffect(() => {
     if (mapLat && mapLng) {
@@ -48,6 +54,7 @@ const Map = ({ problemId }: { problemId: string }) => {
         <ProblemsMarkers
           problems={problems ?? []}
           problemId={problemId}
+          problemStatus={problem?.status}
           mapLat={mapLat as number}
           mapLng={mapLng as number}
         />

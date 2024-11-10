@@ -25,6 +25,7 @@ const CustumMarker = ({
   const navigate = useNavigate();
 
   const map = useMap();
+
   return (
     <Marker
       position={[lat, lng]}

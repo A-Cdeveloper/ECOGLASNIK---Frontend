@@ -24,7 +24,7 @@ const Form = ({
   const { status: editProblemStatus, mutate: editProblemMutation } =
     useUpdateProblem();
   const { categories } = useCategories();
-  const { problem } = useSingleProblem(problemId!);
+  const { problem } = useSingleProblem(problemId || "");
   const [category, setCategory] = useState("");
 
   const navigate = useNavigate();
