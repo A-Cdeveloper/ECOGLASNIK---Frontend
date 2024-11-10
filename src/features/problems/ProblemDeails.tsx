@@ -3,17 +3,10 @@ import { useSingleProblem } from "./hooks/useSingleProblem";
 import Headline from "../../ui/Headline";
 import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
-import Button from "../../ui/Buttons/Button";
-import useUpdateProblemStatus from "./hooks/useUpdateProblemStatus";
-import useDeleteProblem from "./hooks/useDeleteProblem";
-import { Link } from "react-router-dom";
+import ProblemsDetailsEdit from "./ProblemsDetailsEdit";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
-  const { mutate: updateStatusMutation, status: changeStatusLaoding } =
-    useUpdateProblemStatus();
-  const { mutate: deleteProblemMutation, status: deleteProblemLaoding } =
-    useDeleteProblem();
 
   if (isLoading) {
     return <Loader />;
@@ -35,41 +28,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
         className="my-4 border-double border-4 border-secondary/50"
       />
       {problem?.status === "active" && (
-        <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center gap-4">
-            <Link
-              to={`/problems/edit/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`}
-              role="button"
-            >
-              Izmeni detalje problema
-            </Link>
-            <Button
-              variation="primary"
-              size="medium"
-              onClick={() => {
-                updateStatusMutation({
-                  ...problem!,
-                  updatedAt: new Date(),
-                  status: "done",
-                });
-              }}
-            >
-              {changeStatusLaoding === "pending"
-                ? "Promena statusa..."
-                : "Problem je rešen 📢"}
-            </Button>
-          </div>
-
-          <Button
-            variation="danger"
-            size="small"
-            onClick={() => deleteProblemMutation(problem!.id)}
-          >
-            {deleteProblemLaoding === "pending"
-              ? "Brisanje..."
-              : "Obriši problem 🎈"}
-          </Button>
-        </div>
+        <ProblemsDetailsEdit problem={problem} />
       )}
     </>
   );
