@@ -1,10 +1,8 @@
 import { API_URL } from "../../../constants";
 import { ProblemCategory } from "../../../types";
-import { wait } from "../../../utils/timeFunctions";
 
 export const getCategoriesApi = async (): Promise<ProblemCategory[]> => {
   try {
-    await wait(2000);
     const response = await fetch(`${API_URL}/categories/`);
     if (!response.ok) {
       throw new Error(
@@ -24,7 +22,6 @@ export const getSingleCategoryApi = async (
   categoryId: number
 ): Promise<ProblemCategory> => {
   try {
-    await wait(2000);
     const response = await fetch(`${API_URL}/categories/${categoryId}`);
     if (!response.ok) {
       throw new Error(

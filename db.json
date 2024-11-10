@@ -104,6 +104,21 @@
       "updatedAt": null,
       "image": "7365_banner.jpg",
       "status": "active"
+    },
+    {
+      "id": "9c39f354-d887-4051-b712-dec90918a187",
+      "title": "Dodajem novi problem",
+      "description": "Categorija i opsi novog problema na lokaciji",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.96891137643556",
+        "lng": "22.106380462646488"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-10T00:17:04.333Z",
+      "updatedAt": null,
+      "image": "7365_banner.jpg",
+      "status": "active"
     }
   ],
   "categories": [

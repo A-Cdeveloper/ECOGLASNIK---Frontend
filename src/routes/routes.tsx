@@ -7,6 +7,7 @@ import Homepage from "../pages/Homepage";
 import ImpressumPage from "../pages/ImpressumPage";
 import SingleProblem from "../pages/SingleProblem";
 import Notifications from "../ui/Notifications";
+import EditProblem from "../pages/EditProblem";
 
 //import PageNotFound from "../pages/PageNotFound";
 
@@ -25,6 +26,7 @@ const mainRouter = [
         children: [
           { path: ":id", element: <SingleProblem /> },
           { path: "add", element: <AddProblem /> },
+          { path: ":id/:edit", element: <EditProblem /> },
         ],
       },
       { path: "/impressum", element: <ImpressumPage /> },
