@@ -118,14 +118,16 @@ const Form = ({
             required
           />
         )}
-        <Button
-          aria-label="Pošalji problem"
-          variation="danger"
-          size="large"
-          disabled={isLoadingAddNew}
-        >
-          {isLoadingAddNew ? "Slanje..." : "Pošalji"}
-        </Button>
+        <div className="flex justify-end">
+          <Button
+            aria-label="Pošalji problem"
+            variation="danger"
+            size="medium"
+            disabled={isLoadingAddNew}
+          >
+            {isLoadingAddNew ? "Slanje..." : "Prijavi"}
+          </Button>
+        </div>
       </form>
     </>
   );
