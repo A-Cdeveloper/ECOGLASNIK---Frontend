@@ -85,12 +85,19 @@ export const addNewProblemApi = async (problem: Problem): Promise<Problem> => {
 
 export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
   try {
+    // Create an object with only the fields you need to update
+    const updatedFields = {
+      title: problem.title,
+      description: problem.description,
+      category: problem.cat_id,
+    };
+
     const response = await fetch(`${API_URL}/problems/${problem.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(problem),
+      body: JSON.stringify(updatedFields),
     });
 
     if (!response.ok) {

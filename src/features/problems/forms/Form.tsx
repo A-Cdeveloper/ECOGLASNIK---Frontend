@@ -7,6 +7,8 @@ import useAddNewProblem from "../hooks/useAddNewProblem";
 import { useCategories } from "../hooks/useCategories";
 import { useSingleProblem } from "../hooks/useSingleProblem";
 import { useUrlParams } from "../../../hooks/useUrlParams";
+import useUpdateProblem from "../hooks/useUpdateProblem";
+import { useNavigate } from "react-router-dom";
 
 const Form = ({
   editMode,
@@ -19,11 +21,16 @@ const Form = ({
   const [file, setFile] = useState<File | null>(null);
   const { status: addNewStatus, mutate: addNewProblemMutation } =
     useAddNewProblem();
+  const { status: editProblemStatus, mutate: editProblemMutation } =
+    useUpdateProblem();
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId!);
   const [category, setCategory] = useState("");
 
+  const navigate = useNavigate();
+
   const isLoadingAddNew = addNewStatus === "pending";
+  const isLoadingEdit = editProblemStatus === "pending";
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
@@ -40,7 +47,6 @@ const Form = ({
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
-
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
@@ -49,23 +55,41 @@ const Form = ({
       formData.append("image", file);
     }
 
-    const newProblem: Problem = {
-      id: uuidv4(),
-      title,
-      description,
-      cat_id,
-      position: {
-        lat: mapLat!,
-        lng: mapLng!,
-      },
-      uid: 1,
-      createdAt: new Date(), // new Date(),
-      updatedAt: null,
-      image: file?.name || "",
-      status: "active",
-    };
+    if (editMode) {
+      editProblemMutation(
+        {
+          ...problem!,
+          title,
+          description,
+          cat_id,
+        },
+        {
+          onSuccess: () => {
+            navigate(
+              `/problems/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
+            );
+          },
+        }
+      );
+    } else {
+      const newProblem: Problem = {
+        id: uuidv4(),
+        title,
+        description,
+        cat_id,
+        position: {
+          lat: mapLat!,
+          lng: mapLng!,
+        },
+        uid: 1,
+        createdAt: new Date(), // new Date(),
+        updatedAt: null,
+        image: file?.name || "",
+        status: "active",
+      };
 
-    addNewProblemMutation(newProblem);
+      addNewProblemMutation(newProblem);
+    }
   };
 
   return (
@@ -125,7 +149,8 @@ const Form = ({
             size="medium"
             disabled={isLoadingAddNew}
           >
-            {isLoadingAddNew ? "Slanje..." : "Prijavi"}
+            {!editMode && (isLoadingAddNew ? "Slanje..." : "Prijavi")}
+            {editMode && (isLoadingEdit ? "Izmena..." : "Izmeni")}
           </Button>
         </div>
       </form>

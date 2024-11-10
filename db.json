@@ -92,7 +92,7 @@
     },
     {
       "id": "1bf8c44b-7fea-4969-ab72-7e823100c39e",
-      "title": "Psi lutalice",
+      "title": "Psi lutalice 2024-2",
       "description": "napradu jljude",
       "cat_id": 3,
       "position": {
@@ -101,9 +101,10 @@
       },
       "uid": 1,
       "createdAt": "2024-11-09T16:12:47.188Z",
-      "updatedAt": null,
+      "updatedAt": "2024-11-10T11:43:43.051Z",
       "image": "7365_banner.jpg",
-      "status": "active"
+      "status": "done",
+      "category": 3
     },
     {
       "id": "9c39f354-d887-4051-b712-dec90918a187",
@@ -122,7 +123,7 @@
     },
     {
       "id": "ef93b3c0-9931-4385-b431-7adfb8d6697e",
-      "title": "Gori kontajner",
+      "title": "Gori kontajner slaba vatra",
       "description": "kontejner gori baba se ceslja",
       "cat_id": 4,
       "position": {
@@ -133,7 +134,8 @@
       "createdAt": "2024-11-10T01:55:06.808Z",
       "updatedAt": null,
       "image": "7365_banner.jpg",
-      "status": "active"
+      "status": "active",
+      "category": 4
     }
   ],
   "categories": [
