@@ -1,42 +1,47 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useContext } from "react";
+import { createContext } from "react";
+import useSessionStorage from "../hooks/useSessionStorage";
 import { User } from "../types";
-import useLocalStorage from "../hooks/useLocalStorage";
+
+type SessionPropsType = {
+  user: User | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+};
 
 type AuthContextType = {
   user: User | null;
+  token: string | null;
   isAuthenticated: boolean;
-  setUser: (user: User) => void;
+  setSessionStorageData: (data: SessionPropsType) => SessionPropsType | void;
+  removeSessionStorageData: () => void;
 };
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
-  const [user, setUser] = useLocalStorage<User | null>("user", null);
+  const [data, setData] = useSessionStorage<SessionPropsType>("userSession", {
+    user: null,
+    accessToken: null,
+    refreshToken: null,
+  });
+
+  const removeSessionStorageData = () => {
+    sessionStorage.removeItem("userSession");
+    setData({ user: null, accessToken: null, refreshToken: null });
+  };
 
   const value = {
-    user,
-    setUser,
-    isAuthenticated: !!user,
+    user: data?.user,
+    token: data?.accessToken,
+    isAuthenticated: !!data?.accessToken,
+    setSessionStorageData: setData,
+    removeSessionStorageData,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-export const useCurrentUserToken = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined)
-    throw new Error("Context was used outside provider");
-  return context;
-};
-
-export const useAccessToken = () => {
-  const {
-    user: { accessToken },
-  } = useContext(AuthContext);
-  return accessToken;
 };
