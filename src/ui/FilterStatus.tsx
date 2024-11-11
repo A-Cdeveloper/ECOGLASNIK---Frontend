@@ -19,7 +19,7 @@ const FilterStatusButton = ({
 
   return (
     <span
-      className={`px-2 cursor-pointer inline-block text-sm hover:bg-secondary hover:py-[3px] ${activeClass} ${initialClass}`}
+      className={`px-3 md:px-[7px] lg-px-2 py-[3px] cursor-pointer inline-block text-sm hover:bg-secondary hover:py-[3px] ${activeClass} ${initialClass}`}
       onClick={() => {
         currentParams.set("status", value as string);
         setSearchParams(currentParams);
