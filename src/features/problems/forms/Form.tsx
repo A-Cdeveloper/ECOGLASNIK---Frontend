@@ -29,8 +29,6 @@ const Form = ({
   const [category, setCategory] = useState("");
   const [touchForm, setTouchForm] = useState(false);
 
-  console.log(touchForm);
-
   const navigate = useNavigate();
 
   const isLoadingAddNew = addNewStatus === "pending";
