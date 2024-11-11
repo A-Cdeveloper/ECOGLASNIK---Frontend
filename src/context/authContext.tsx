@@ -45,7 +45,7 @@ export const AuthContextProvider = ({
   const value = {
     user: data.user,
     //isAuthenticated: !!data?.user,
-    isAuthenticated: false,
+    isAuthenticated: true,
     setSessionStorageData: setData,
     removeSessionStorageData,
   };

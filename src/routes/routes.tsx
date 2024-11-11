@@ -9,28 +9,48 @@ import SingleProblem from "../pages/SingleProblem";
 import Notifications from "../ui/Notifications";
 import EditProblem from "../pages/EditProblem";
 import useAuth from "../context/useAuth";
+import ProtectedRoute from "../ui/ProtectedRoute";
+import LoginPage from "../pages/LoginPage";
 
 //import PageNotFound from "../pages/PageNotFound";
 
 const mainRouter = [
   // { path: "/login", element: <LoginPage /> },
   {
-    element: (
-      // <ProtectedRoute>
-      <Layout />
-      // </ProtectedRoute>
-    ),
+    element: <Layout />,
     children: [
       { path: "/", index: true, element: <Homepage /> },
       {
         path: "problems",
         children: [
-          { path: ":id", element: <SingleProblem /> },
-          { path: "add", element: <AddProblem /> },
-          { path: "edit/:id", element: <EditProblem /> },
+          {
+            path: ":id",
+            element: (
+              <ProtectedRoute>
+                <SingleProblem />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "add",
+            element: (
+              <ProtectedRoute>
+                <AddProblem />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "edit/:id",
+            element: (
+              <ProtectedRoute>
+                <EditProblem />
+              </ProtectedRoute>
+            ),
+          },
         ],
       },
       { path: "/impressum", element: <ImpressumPage /> },
+      { path: "/login", element: <LoginPage /> },
     ],
     // errorElement: <PageNotFound />,
   },
