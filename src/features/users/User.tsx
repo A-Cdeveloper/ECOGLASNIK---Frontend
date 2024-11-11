@@ -5,7 +5,9 @@ const User = ({ userId }: { userId: number }) => {
   return (
     <>
       <div>Korisnik:</div>
-      <div>{isLoading ? "Loading..." : user?.name}</div>
+      <div>
+        {isLoading ? "Loading..." : user?.firstname + " " + user?.lastname}
+      </div>
     </>
   );
 };

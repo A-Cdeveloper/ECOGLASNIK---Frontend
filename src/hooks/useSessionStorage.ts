@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useSessionStorage = <T,>(key: string, initialValue: T) => {
+const useSessionStorage = <T>(key: string, initialValue: T) => {
   const storedValue = sessionStorage.getItem(key);
 
   const [data, setData] = useState<T>(() => {

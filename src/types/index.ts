@@ -24,10 +24,15 @@ export type Problem = {
 export type Problems = Problem[];
 
 export type User = {
-  id: number;
   uid: number;
-  name: string;
+  firstname: string;
+  lastname: string;
+  phone: string;
   email: string;
+  password: string;
+  accessToken: string | null;
+  refreshToken: string | null;
+  createdAt: Date;
 };
 
 export type Users = User[];

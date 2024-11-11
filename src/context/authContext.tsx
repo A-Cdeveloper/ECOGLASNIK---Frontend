@@ -3,15 +3,24 @@ import { createContext } from "react";
 import useSessionStorage from "../hooks/useSessionStorage";
 import { User } from "../types";
 
+const initialUser = {
+  uid: 1,
+  firstname: "Aleksandar",
+  lastname: "Cvetkovic",
+  phone: "123456789",
+  email: "aleksandar.cvetkovic@gmailcom",
+  password: "123456789",
+  accessToken: "123456789",
+  refreshToken: "123456789",
+  createdAt: new Date(),
+};
+
 type SessionPropsType = {
   user: User | null;
-  accessToken: string | null;
-  refreshToken: string | null;
 };
 
 type AuthContextType = {
   user: User | null;
-  token: string | null;
   isAuthenticated: boolean;
   setSessionStorageData: (data: SessionPropsType) => SessionPropsType | void;
   removeSessionStorageData: () => void;
@@ -25,20 +34,18 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [data, setData] = useSessionStorage<SessionPropsType>("userSession", {
-    user: null,
-    accessToken: null,
-    refreshToken: null,
+    user: { ...initialUser } as User,
   });
 
   const removeSessionStorageData = () => {
     sessionStorage.removeItem("userSession");
-    setData({ user: null, accessToken: null, refreshToken: null });
+    setData({ user: null });
   };
 
   const value = {
-    user: data?.user,
-    token: data?.accessToken,
-    isAuthenticated: !!data?.accessToken,
+    user: data.user,
+    //isAuthenticated: !!data?.user,
+    isAuthenticated: false,
     setSessionStorageData: setData,
     removeSessionStorageData,
   };

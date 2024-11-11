@@ -8,6 +8,7 @@ import ImpressumPage from "../pages/ImpressumPage";
 import SingleProblem from "../pages/SingleProblem";
 import Notifications from "../ui/Notifications";
 import EditProblem from "../pages/EditProblem";
+import useAuth from "../context/useAuth";
 
 //import PageNotFound from "../pages/PageNotFound";
 
@@ -38,6 +39,9 @@ const mainRouter = [
 const router = createBrowserRouter(mainRouter);
 
 const AppRouter = () => {
+  const { isAuthenticated } = useAuth();
+  console.log(isAuthenticated);
+
   return (
     <>
       <RouterProvider router={router} />
