@@ -3,14 +3,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "../ui/Layout";
 //import ProtectedRoute from "../ui/ProtectedRoute";
 import AddProblem from "../pages/AddProblem";
+import EditProblem from "../pages/EditProblem";
 import Homepage from "../pages/Homepage";
 import ImpressumPage from "../pages/ImpressumPage";
+import LoginPage from "../pages/LoginPage";
 import SingleProblem from "../pages/SingleProblem";
 import Notifications from "../ui/Notifications";
-import EditProblem from "../pages/EditProblem";
-import useAuth from "../context/useAuth";
 import ProtectedRoute from "../ui/ProtectedRoute";
-import LoginPage from "../pages/LoginPage";
 
 //import PageNotFound from "../pages/PageNotFound";
 
@@ -59,9 +58,6 @@ const mainRouter = [
 const router = createBrowserRouter(mainRouter);
 
 const AppRouter = () => {
-  const { isAuthenticated } = useAuth();
-  console.log(isAuthenticated);
-
   return (
     <>
       <RouterProvider router={router} />
