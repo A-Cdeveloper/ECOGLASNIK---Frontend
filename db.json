@@ -163,22 +163,16 @@
   ],
   "users": [
     {
-      "id": "1",
       "uid": 1,
       "name": "Aleksandar Cvetkovic",
-      "email": "aleksandar.cvetkovic@gmail.com"
-    },
-    {
-      "id": "2",
-      "uid": 2,
-      "name": "Biljana Vuckovic",
-      "email": "biljana.vuckovic@gmail.com"
-    },
-    {
-      "id": "3",
-      "uid": 3,
-      "name": "Vladislav Stojanovic",
-      "email": "vladislav.stojanovic@gmail.com"
+      "firstname": "Aleksandar",
+      "lastname": "Cvetkovic",
+      "phone": "+381637675989",
+      "email": "aleksandarcvetkovic81@gmail.com",
+      "password": "norbert3591",
+      "accesToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWVsZCI6ImJpbGphbmFAZ21haWwuY29tIiwiaWF0IjoxNzE1NDYzODUyLCJleHAiOjE3MTU0Njc0NTJ9.4EZN9QWSBGFKM73lHjKkPkB5SLgQXWRsGq1mB0_TMbo",
+      "refreshToken": "",
+      "createdAt": "2024-11-11T01:55:06.808Z"
     }
   ]
 }
