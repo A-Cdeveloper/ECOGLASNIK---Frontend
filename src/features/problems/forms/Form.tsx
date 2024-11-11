@@ -27,14 +27,22 @@ const Form = ({
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
   const [category, setCategory] = useState("");
+  const [touchForm, setTouchForm] = useState(false);
+
+  console.log(touchForm);
 
   const navigate = useNavigate();
 
   const isLoadingAddNew = addNewStatus === "pending";
   const isLoadingEdit = editProblemStatus === "pending";
 
+  const handleInputChange = () => {
+    setTouchForm(true);
+  };
+
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
+    setTouchForm(true);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,7 +107,7 @@ const Form = ({
         {editMode ? "izmeni detalje problema" : "Prijavi problem"}
       </Headline>
 
-      <PromptModal formStatus={true} />
+      <PromptModal formStatus={touchForm} />
 
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <input
@@ -108,6 +116,7 @@ const Form = ({
           name="title"
           aria-description="Unesi naslov problema"
           defaultValue={problem?.title}
+          onChange={handleInputChange}
           required
         />
         <select
@@ -130,6 +139,7 @@ const Form = ({
           placeholder="Opis problema"
           className="h-[150px]"
           aria-description="Unesi opis problema"
+          onChange={handleInputChange}
           defaultValue={problem?.description}
           required
         ></textarea>
