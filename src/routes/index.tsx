@@ -1,10 +1,13 @@
+import AuthContext from "./auth";
 import QueryRoute from "./query";
 import AppRouter from "./routes";
 
 const MainRouter = () => {
   return (
     <QueryRoute>
-      <AppRouter />
+      <AuthContext>
+        <AppRouter />
+      </AuthContext>
     </QueryRoute>
   );
 };
