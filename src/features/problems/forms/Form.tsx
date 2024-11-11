@@ -9,6 +9,7 @@ import { useSingleProblem } from "../hooks/useSingleProblem";
 import { useUrlParams } from "../../../hooks/useUrlParams";
 import useUpdateProblem from "../hooks/useUpdateProblem";
 import { useNavigate } from "react-router-dom";
+import PromptModal from "../../../ui/PromptModal";
 
 const Form = ({
   editMode,
@@ -97,6 +98,9 @@ const Form = ({
       <Headline>
         {editMode ? "izmeni detalje problema" : "Prijavi problem"}
       </Headline>
+
+      <PromptModal formStatus={true} />
+
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <input
           type="text"

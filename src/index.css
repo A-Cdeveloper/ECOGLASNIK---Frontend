@@ -66,7 +66,7 @@ button {
     @apply bg-gray-400;
   }
   &.small {
-    @apply px-2 py-2;
+    @apply px-2 py-[9px];
   }
   &.medium {
     @apply px-2 py-2;
