@@ -15,10 +15,10 @@ const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
               <p>Promene neće biti sačuvane!!!</p>
               <div className="mt-4 space-x-4">
                 <Button variation="success" size="small" onClick={onCancel}>
-                  Cancel
+                  Nastavi
                 </Button>
                 <Button variation="danger" size="small" onClick={onConfirm}>
-                  Confirm
+                  Potvrdi
                 </Button>
               </div>
             </div>
