@@ -36,7 +36,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
           <img
             src={image}
             alt=""
-            width={100}
+            width={120}
             height={60}
             className="self-start"
           />

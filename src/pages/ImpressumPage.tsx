@@ -15,13 +15,17 @@ const ImpressumPage = () => {
         <br />
         <strong>16210 Vlasotince, Srbija</strong>
       </p>
-      <Headline level={2}>Kontakt:</Headline>
+      <Headline level={2} className="my-2">
+        Kontakt:
+      </Headline>
       <p>
         Telefon: +381 637675989 <br />
         Email: cleanme@e-seo.info <br />
         Web: www.e-seo.info
       </p>
-      <Headline level={2}>Opis sajta</Headline>
+      <Headline level={2} className="my-2">
+        Opis sajta
+      </Headline>
       <p>
         CLEANME je online platforma koja omogućava građanima da prijave probleme
         u komunalnoj infrastrukturi putem interaktivne mape. Korisnici mogu lako
@@ -31,7 +35,9 @@ const ImpressumPage = () => {
         brzo rešavanje prijavljenih problema.
       </p>
 
-      <Headline level={2}>Odricanje od odgovornosti</Headline>
+      <Headline level={2} className="my-2">
+        Odricanje od odgovornosti
+      </Headline>
       <p>
         CLEANME omogućava korisnicima prijavu problema u javnom interesu, ali ne
         snosi odgovornost za tačnost prijavljenih informacija. Sve prijave su
@@ -40,14 +46,18 @@ const ImpressumPage = () => {
         službi.
       </p>
 
-      <Headline level={2}>Autorska prava</Headline>
+      <Headline level={2} className="my-2">
+        Autorska prava
+      </Headline>
       <p>
         Sadržaj, dizajn i koncept sajta zaštićeni su autorskim pravima i
         vlasništvo su E-SEO TEAM-a Svako kopiranje, preuzimanje ili
         reprodukovanje sadržaja bez dozvole je zabranjeno.{" "}
       </p>
 
-      <Headline level={2}>Zaštita podataka</Headline>
+      <Headline level={2} className="my-2">
+        Zaštita podataka
+      </Headline>
       <p>
         CLEANME obrađuje podatke u skladu sa Zakonom o zaštiti podataka o
         ličnosti. Lični podaci koji se prikupljaju kroz prijave koriste se
@@ -55,7 +65,9 @@ const ImpressumPage = () => {
         licima, osim u slučajevima predviđenim zakonom.
       </p>
 
-      <Headline level={2}>Ažuriranje i održavanje sajta</Headline>
+      <Headline level={2} className="my-2">
+        Ažuriranje i održavanje sajta
+      </Headline>
       <p>
         E-SEO TEAM redovno ažurira sadržaj sajta i zadržava pravo izmene
         informacija na ovoj stranici u bilo kom trenutku bez prethodnog

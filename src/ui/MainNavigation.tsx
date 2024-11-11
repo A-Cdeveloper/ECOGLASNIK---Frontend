@@ -11,9 +11,19 @@ const MainNavigation = () => {
               isActive ? "text-winter" : "text-secondary hover:text-winter"
             }
           >
-            Dodaj Problem
+            Uloguj se
           </NavLink>
         </li>
+        {/* <li>
+          <NavLink
+            to="/problems/add"
+            className={({ isActive }) =>
+              isActive ? "text-winter" : "text-secondary hover:text-winter"
+            }
+          >
+            Dodaj Problem
+          </NavLink>
+        </li> */}
         <li>
           <NavLink
             to="/impressum"
