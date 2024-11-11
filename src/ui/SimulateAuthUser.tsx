@@ -5,7 +5,6 @@ const SimulateAuthUser = () => {
   const { setSessionStorageData, removeSessionStorageData, isAuthenticated } =
     useAuth();
 
-  console.log(isAuthenticated);
   return (
     <div
       className={`flex flex-wrap gap-3 ${
