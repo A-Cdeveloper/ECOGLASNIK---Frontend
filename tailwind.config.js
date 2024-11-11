@@ -46,7 +46,7 @@ export default {
     screens: {
       sm: "375px",
       md: "600px",
-      lg: "980px",
+      lg: "768px",
       xl: "1024px",
       "2xl": "1280px",
     },
@@ -77,5 +77,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

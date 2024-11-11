@@ -13,10 +13,16 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  @apply scrollbar scrollbar-thumb-secondary/30 scrollbar-track-primary;
+}
+
 body {
   color: var(--color-text);
   font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
+  @apply bg-primary;
 }
 
 .resize-x {
@@ -29,6 +35,10 @@ input,
 textarea,
 select {
   @apply bg-transparent px-2 py-1 border-1 border-secondary focus:border-yellow focus:outline-none text-white w-full;
+}
+
+select {
+  @apply border-secondary/30;
 }
 
 option {

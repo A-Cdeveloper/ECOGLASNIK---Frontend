@@ -14,8 +14,8 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
   } = problem || {};
 
   return (
-    <Link to={`problems/${id}/?lat=${lat}&lng=${lng}`}>
-      <div className="border-b-2 border-t border-primary/50 p-2 bg-secondary/20 hover:bg-secondary/85 relative">
+    <div className="p-2 my-[3px] bg-secondary/20 hover:bg-secondary/85 relative basis-full md:basis-1/2 lg:basis-full self-start">
+      <Link to={`problems/${id}/?lat=${lat}&lng=${lng}`}>
         <StatusBadge
           status={problem.status}
           className="ms-2 absolute end-[-3px] top-[3px] block"
@@ -41,8 +41,8 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             className="self-start"
           />
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

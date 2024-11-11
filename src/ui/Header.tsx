@@ -4,7 +4,7 @@ import UserNavigation from "./UserNavigation";
 
 const Header = () => {
   return (
-    <header className="w-full h-auto py-0 px-2 border-b-3 border-secondary/50 flex  items-center bg-secondary/30 gap-6">
+    <header className="w-full h-auto py-0 px-2 border-b-3 border-secondary/50 flex flex-wrap items-center justify-between bg-secondary/30 gap-x-0 md-gap-x-6">
       <Logo />
       <MainNavigation />
       <UserNavigation />

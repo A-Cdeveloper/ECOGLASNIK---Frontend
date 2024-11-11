@@ -14,12 +14,12 @@ const FilterStatusButton = ({
     !searchParams.get("status") && value === "all" ? "bg-secondary" : "";
   const activeClass =
     searchParams.get("status") && searchParams.get("status") === value
-      ? "bg-secondary"
+      ? "bg-secondary py-[3px]"
       : "";
 
   return (
     <span
-      className={`px-3 py-1 cursor-pointer inline-block text-sm hover:bg-secondary ${activeClass} ${initialClass}`}
+      className={`px-2 cursor-pointer inline-block text-sm hover:bg-secondary hover:py-[3px] ${activeClass} ${initialClass}`}
       onClick={() => {
         currentParams.set("status", value as string);
         setSearchParams(currentParams);
@@ -33,8 +33,7 @@ const FilterStatusButton = ({
 const FilterStatus = () => {
   return (
     <>
-      <div className="flex justify-between items-center border-b-1 border-t-1 border-secondary/20 my-2">
-        <p>Filtiraj po statusu:</p>
+      <div className="flex justify-between items-center w-1/2">
         <div>
           <FilterStatusButton value="all">SVE</FilterStatusButton>
           <FilterStatusButton value="active">AKTIVNO</FilterStatusButton>

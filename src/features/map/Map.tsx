@@ -39,7 +39,8 @@ const Map = ({ problemId }: { problemId?: string }) => {
         center={[mapPosition.lat, mapPosition.lng]}
         zoom={13} // specify initial zoom level
         minZoom={INITIAL_ZOOM}
-        style={{ height: "100vh", width: "100%" }}
+        // style={{ height: "100vh", width: "100%" }}
+        className="h-full w-full"
         dragging={true} // disable dragging
         zoomControl={true} // disable zoom control UI
         scrollWheelZoom={true} // disable scroll zoom

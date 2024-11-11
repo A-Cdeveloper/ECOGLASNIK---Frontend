@@ -26,7 +26,7 @@ const ListProblems = () => {
       <div className="my-2 text-[13px] text-end">
         {numberofProblems === 1 ? "1 problem" : `${numberofProblems} problema`}
       </div>
-      <div className="w-full flex flex-col h-3/4 overflow-auto overflow-x-hidden pe-3">
+      <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
         {problems?.map((problem) => (
           <ProblemItem key={problem.id} problem={problem} />
         ))}

@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const MainNavigation = () => {
   return (
-    <nav>
-      <ul className="flex uppercase gap-5 font-bold">
+    <nav className="flex-1 order-2 lg:order-1 w-full pt-3 pb-2">
+      <ul className="flex justify-center uppercase gap-5 font-bold">
         <li>
           <NavLink
             to="/problems/add"

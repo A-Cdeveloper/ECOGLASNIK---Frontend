@@ -7,8 +7,10 @@ const Homepage = () => {
   return (
     <>
       <AddProblemBanner />
-      <FilterStatus />
-      <FilterCategory />
+      <div className="flex flex-wrap border-t border-b border-secondary/20 py-2 mt-2">
+        <FilterStatus />
+        <FilterCategory />
+      </div>
       <ListProblems />
     </>
   );

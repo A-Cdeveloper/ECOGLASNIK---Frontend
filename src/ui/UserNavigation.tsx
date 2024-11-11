@@ -1,8 +1,8 @@
-import { HiArrowRightOnRectangle, HiOutlineUser } from "react-icons/hi2";
+import { HiArrowRightOnRectangle } from "react-icons/hi2";
 
 const UserNavigation = () => {
   return (
-    <div className="userarea flex justify-between items-center gap-4 ms-auto">
+    <div className="userarea flex justify-center lg:justify-end gap-2 items-center ms-auto  basis-full md:basis-1/2 lg:basis-auto order-1 lg:order-2">
       <img
         src="https://randomuser.me/api/portraits/men/23.jpg"
         alt="user"
@@ -14,8 +14,8 @@ const UserNavigation = () => {
           aleksandar.cvetkovic@gmail.com
         </span>
       </p>
-      <HiOutlineUser className="text-xl" />
-      <HiArrowRightOnRectangle className="text-xl" />
+
+      <HiArrowRightOnRectangle className="text-[24px]" />
     </div>
   );
 };
