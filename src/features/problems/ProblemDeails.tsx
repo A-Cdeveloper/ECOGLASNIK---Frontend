@@ -4,9 +4,11 @@ import Headline from "../../ui/Headline";
 import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
 import ProblemsDetailsEdit from "./ProblemsDetailsEdit";
+import useAuth from "../../context/useAuth";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
+  const { user } = useAuth();
 
   if (isLoading) {
     return <Loader />;
@@ -27,7 +29,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
         width={"100%"}
         className="my-4 border-double border-4 border-secondary/50"
       />
-      {problem?.status === "active" && (
+      {problem?.status === "active" && user?.uid === problem.uid && (
         <ProblemsDetailsEdit problem={problem} />
       )}
     </>
