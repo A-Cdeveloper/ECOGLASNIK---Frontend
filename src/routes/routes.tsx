@@ -10,13 +10,14 @@ import LoginPage from "../pages/LoginPage";
 import SingleProblem from "../pages/SingleProblem";
 import Notifications from "../ui/Notifications";
 import ProtectedRoute from "../ui/ProtectedRoute";
+import PageNotFound from "../pages/PageNotFound";
 
 //import PageNotFound from "../pages/PageNotFound";
 
 const mainRouter = [
-  // { path: "/login", element: <LoginPage /> },
   {
     element: <Layout />,
+    errorElement: <PageNotFound />,
     children: [
       { path: "/", index: true, element: <Homepage /> },
       {
@@ -51,7 +52,6 @@ const mainRouter = [
       { path: "/impressum", element: <ImpressumPage /> },
       { path: "/login", element: <LoginPage /> },
     ],
-    // errorElement: <PageNotFound />,
   },
 ];
 
