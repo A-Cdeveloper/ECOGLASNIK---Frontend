@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Problem } from "../../../types";
+import { Problem, User } from "../../../types";
 import Button from "../../../ui/Buttons/Button";
 import Headline from "../../../ui/Headline";
 import useAddNewProblem from "../hooks/useAddNewProblem";
@@ -14,9 +14,11 @@ import PromptModal from "../../../ui/PromptModal";
 const Form = ({
   editMode,
   problemId,
+  user,
 }: {
   editMode?: boolean;
   problemId?: string;
+  user: User | null;
 }) => {
   const { mapLat, mapLng } = useUrlParams();
   const [file, setFile] = useState<File | null>(null);
@@ -88,7 +90,7 @@ const Form = ({
           lat: mapLat!,
           lng: mapLng!,
         },
-        uid: 1,
+        uid: user!.uid,
         createdAt: new Date(), // new Date(),
         updatedAt: null,
         image: file?.name || "",
@@ -105,7 +107,9 @@ const Form = ({
         {editMode ? "izmeni detalje problema" : "Prijavi problem"}
       </Headline>
 
-      <PromptModal formStatus={touchForm} />
+      <PromptModal
+        formStatus={touchForm && !isLoadingAddNew && !isLoadingEdit}
+      />
 
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <input
