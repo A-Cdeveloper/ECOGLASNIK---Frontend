@@ -11,6 +11,7 @@ import SingleProblem from "../pages/SingleProblem";
 import Notifications from "../ui/Notifications";
 import ProtectedRoute from "../ui/ProtectedRoute";
 import PageNotFound from "../pages/PageNotFound";
+import UserProblems from "../pages/UserProblems";
 
 //import PageNotFound from "../pages/PageNotFound";
 
@@ -44,6 +45,14 @@ const mainRouter = [
             element: (
               <ProtectedRoute>
                 <EditProblem />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "user/:id",
+            element: (
+              <ProtectedRoute>
+                <UserProblems />
               </ProtectedRoute>
             ),
           },

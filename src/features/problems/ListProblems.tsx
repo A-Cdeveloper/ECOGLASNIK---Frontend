@@ -1,20 +1,27 @@
 import { useMemo } from "react";
 import Loader from "../../ui/Loader";
+import NoResourceFound from "../../ui/NoResourceFound";
 import ProblemItem from "./ProblemItem";
 import { useProblems } from "./hooks/useProblems";
-import NoResourceFound from "../../ui/NoResourceFound";
 
-const ListProblems = () => {
+const ListProblems = ({ userId }: { userId?: number }) => {
   const { isLoading, problems, error } = useProblems();
 
+  const userProblems = useMemo(() => {
+    if (userId) {
+      return problems?.filter((problem) => problem.uid === userId);
+    }
+    return problems;
+  }, [problems, userId]);
+
   const numberofProblems =
-    useMemo(() => problems?.length, [problems]) ?? problems?.length;
+    useMemo(() => userProblems?.length, [userProblems]) ?? problems?.length;
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (problems?.length === 0) {
+  if (userProblems?.length === 0) {
     return <NoResourceFound resources="problem" />;
   }
   if (error) {
@@ -27,7 +34,7 @@ const ListProblems = () => {
         {numberofProblems === 1 ? "1 problem" : `${numberofProblems} problema`}
       </div>
       <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
-        {problems?.map((problem) => (
+        {userProblems?.map((problem) => (
           <ProblemItem key={problem.id} problem={problem} />
         ))}
       </div>
