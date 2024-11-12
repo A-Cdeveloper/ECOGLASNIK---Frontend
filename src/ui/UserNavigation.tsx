@@ -1,5 +1,6 @@
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
 import { User } from "../types";
+import avatar from "../assets/user-circle-svgrepo-com.svg";
 
 const UserNavigation = ({
   user,
@@ -11,9 +12,9 @@ const UserNavigation = ({
   return (
     <div className="userarea flex justify-center md:justify-end gap-2 items-center basis-full md:basis-1/2 lg:basis-auto order-1 lg:order-2">
       <img
-        src="https://randomuser.me/api/portraits/men/23.jpg"
-        alt="user"
-        className="w-9 h-9 rounded-full"
+        src={avatar}
+        alt={user!.firstname + user!.lastname}
+        className="w-8 h-8 rounded-full"
       />
       <p>
         {user?.firstname} {user?.lastname}
