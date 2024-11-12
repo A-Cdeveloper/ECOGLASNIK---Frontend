@@ -152,6 +152,22 @@
       "updatedAt": null,
       "image": "404.webp",
       "status": "active"
+    },
+    {
+      "id": "e91526d3-d84f-4385-9752-243cfe1f4d0d",
+      "title": "Baceno smece opet",
+      "description": "baceno smece Opasnost po okolinu",
+      "cat_id": 3,
+      "position": {
+        "lat": "42.973268273021375",
+        "lng": "22.11032867431641"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-12T00:37:07.856Z",
+      "updatedAt": null,
+      "image": "404.webp",
+      "status": "active",
+      "category": 3
     }
   ],
   "categories": [
