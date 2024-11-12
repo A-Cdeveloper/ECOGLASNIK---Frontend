@@ -46,21 +46,21 @@ option {
 }
 
 button {
-  @apply text-white px-2 py-1 border-2 font-bold uppercase tracking-[.05rem] text-[12px];
+  @apply text-white px-2 py-1 border-1 font-bold uppercase tracking-[.05rem] text-[12px];
   &.primary {
-    @apply border-green hover:bg-green;
+    @apply bg-green/70 hover:bg-green;
   }
   &.secondary {
-    @apply border-sky-900 hover:bg-sky-900;
+    @apply bg-sky-900/70 hover:bg-sky-900;
   }
   &.success {
-    @apply border-green hover:bg-green;
+    @apply bg-green/70 hover:bg-green;
   }
   &.danger {
-    @apply border-red hover:bg-red;
+    @apply bg-red/70 hover:bg-red;
   }
   &.warning {
-    @apply border-yellow hover:bg-yellow hover:text-black;
+    @apply bg-yellow/70 hover:bg-yellow hover:text-black;
   }
   &.disabled {
     @apply bg-gray-400;
