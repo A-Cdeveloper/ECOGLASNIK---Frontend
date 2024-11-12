@@ -36,6 +36,14 @@ const Form = ({
   const isLoadingAddNew = addNewStatus === "pending";
   const isLoadingEdit = editProblemStatus === "pending";
 
+  if (editMode && user?.uid !== problem?.uid) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <Headline level={1}>Nemate pravo pristupa ovoj stranici</Headline>
+      </div>
+    );
+  }
+
   const handleInputChange = () => {
     setTouchForm(true);
   };
