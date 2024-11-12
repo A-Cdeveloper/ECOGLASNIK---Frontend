@@ -9,13 +9,13 @@ const SimulateAuthUser = () => {
     <div
       className={`flex flex-wrap gap-3 ${
         isAuthenticated ? "bg-green" : "bg-red"
-      } fixed end-0 top-[50vh] z-[99999999999999999999999999999999] p-5`}
+      } fixed end-0 bottom-[5vh] z-[99999999999999999999999999999999] p-5 w-[250px]`}
     >
       <Headline level={1} className="w-full">
         {isAuthenticated ? "Loged in" : "Logged out"}
       </Headline>
       <button
-        className="btn btn-primary"
+        className="btn btn-primary w-full"
         onClick={() =>
           setSessionStorageData({
             user: {
@@ -35,7 +35,7 @@ const SimulateAuthUser = () => {
         Login User Aleksandar
       </button>
       <button
-        className="btn btn-primary"
+        className="btn btn-primary w-full"
         onClick={() =>
           setSessionStorageData({
             user: {
@@ -54,7 +54,10 @@ const SimulateAuthUser = () => {
       >
         Login User Biljana
       </button>
-      <button className="btn btn-primary" onClick={removeSessionStorageData}>
+      <button
+        className="btn btn-primary w-full"
+        onClick={removeSessionStorageData}
+      >
         Logoff User
       </button>
     </div>
