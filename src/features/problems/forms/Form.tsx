@@ -142,7 +142,6 @@ const Form = ({
         </select>
         <textarea
           name="description"
-          id="description"
           placeholder="Opis problema"
           className="h-[150px]"
           aria-description="Unesi opis problema"
