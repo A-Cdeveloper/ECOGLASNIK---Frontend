@@ -4,7 +4,7 @@ type TextAreaType = {
   value?: string;
   defaultValue?: string;
   ariaDescription?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   required?: boolean;
   className?: string;
 };
@@ -20,7 +20,7 @@ const TextArea = ({
   ...rest
 }: TextAreaType) => {
   return (
-    <input
+    <textarea
       placeholder={placeholder}
       name={name}
       value={value}

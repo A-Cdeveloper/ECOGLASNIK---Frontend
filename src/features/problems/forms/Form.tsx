@@ -11,6 +11,8 @@ import useUpdateProblem from "../hooks/useUpdateProblem";
 import { useNavigate } from "react-router-dom";
 import PromptModal from "../../../ui/PromptModal";
 import RestrictAccess from "../../../ui/RestrictAccess";
+import Input from "../../../ui/Form/Input";
+import TextArea from "../../../ui/Form/TextArea";
 
 const Form = ({
   editMode,
@@ -117,8 +119,7 @@ const Form = ({
       />
 
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
-        <input
-          type="text"
+        <Input
           placeholder="Naslov problema"
           name="title"
           aria-description="Unesi naslov problema"
@@ -140,27 +141,29 @@ const Form = ({
             </option>
           ))}
         </select>
-        <textarea
-          name="description"
+        <TextArea
           placeholder="Opis problema"
-          className="h-[150px]"
+          name="description"
           aria-description="Unesi opis problema"
-          onChange={handleInputChange}
           defaultValue={problem?.description}
+          onChange={handleInputChange}
           required
-        ></textarea>
+          className="h-[200px]"
+        />
         {!editMode && (
-          <input
-            type="file"
-            name="imageFile"
-            id="image"
-            accept="image/*"
-            className="bg-transparent border-0 text-white"
-            onChange={handleFileChange}
-            aria-description="Dodaj sliku problema"
-            defaultValue={problem?.image || ""}
-            required
-          />
+          <>
+            <Input
+              type="file"
+              placeholder="Naslov problema"
+              name="imageFile"
+              accept="image/*"
+              aria-description="Dodaj sliku problema"
+              defaultValue={problem?.image || ""}
+              onChange={handleFileChange}
+              className="bg-transparent border-0 text-white"
+              required
+            />
+          </>
         )}
         <div className="flex justify-end">
           <Button

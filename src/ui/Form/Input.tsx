@@ -8,6 +8,7 @@ type InputType = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   className?: string;
+  accept?: string;
 };
 
 const Input = ({
@@ -31,6 +32,7 @@ const Input = ({
       required={required}
       onChange={onChange}
       className={`input ${className}`}
+      accept={rest.accept}
       {...rest}
     />
   );
