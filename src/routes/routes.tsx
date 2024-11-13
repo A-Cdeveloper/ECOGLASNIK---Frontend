@@ -27,9 +27,9 @@ const mainRouter = [
           {
             path: ":id",
             element: (
-              <ProtectedRoute>
-                <SingleProblem />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <SingleProblem />
+              // </ProtectedRoute>
             ),
           },
           {
