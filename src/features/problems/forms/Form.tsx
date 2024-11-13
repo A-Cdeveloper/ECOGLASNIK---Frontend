@@ -10,6 +10,7 @@ import { useUrlParams } from "../../../hooks/useUrlParams";
 import useUpdateProblem from "../hooks/useUpdateProblem";
 import { useNavigate } from "react-router-dom";
 import PromptModal from "../../../ui/PromptModal";
+import RestrictAccess from "../../../ui/RestrictAccess";
 
 const Form = ({
   editMode,
@@ -37,11 +38,7 @@ const Form = ({
   const isLoadingEdit = editProblemStatus === "pending";
 
   if (editMode && user?.uid !== problem?.uid) {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <Headline level={1}>Nemate pravo pristupa ovoj stranici</Headline>
-      </div>
-    );
+    return <RestrictAccess />;
   }
 
   const handleInputChange = () => {

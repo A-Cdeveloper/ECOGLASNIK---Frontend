@@ -168,6 +168,36 @@
       "image": "404.webp",
       "status": "active",
       "category": 3
+    },
+    {
+      "id": "a159bf26-465b-4a9d-ad71-400e33644d6d",
+      "title": "Problem test Aleksandar",
+      "description": "opis problema Aleksandar",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.981445453078884",
+        "lng": "22.10774302482605"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-13T00:25:28.369Z",
+      "updatedAt": null,
+      "image": "404.png",
+      "status": "active"
+    },
+    {
+      "id": "f5f9c810-f77e-4b55-b4f5-b6fd79c7a96a",
+      "title": "Problem test Biljana",
+      "description": "opis problema B",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.97693541582871",
+        "lng": "22.127151489257816"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-13T00:26:08.501Z",
+      "updatedAt": null,
+      "image": "7365_banner.jpg",
+      "status": "active"
     }
   ],
   "categories": [
