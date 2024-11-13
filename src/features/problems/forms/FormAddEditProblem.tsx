@@ -15,7 +15,7 @@ import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";
 import Select from "../../../ui/Form/Select";
 
-const Form = ({
+const FormAddEditProblem = ({
   editMode,
   problemId,
   user,
@@ -25,14 +25,15 @@ const Form = ({
   user: User | null;
 }) => {
   const { mapLat, mapLng } = useUrlParams();
-  const [file, setFile] = useState<File | null>(null);
   const { status: addNewStatus, mutate: addNewProblemMutation } =
     useAddNewProblem();
   const { status: editProblemStatus, mutate: editProblemMutation } =
     useUpdateProblem();
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
+
   const [category, setCategory] = useState(problem?.cat_id || 0);
+  const [file, setFile] = useState<File | null>(null);
   const [touchForm, setTouchForm] = useState(false);
 
   const navigate = useNavigate();
@@ -176,4 +177,4 @@ const Form = ({
   );
 };
 
-export default Form;
+export default FormAddEditProblem;

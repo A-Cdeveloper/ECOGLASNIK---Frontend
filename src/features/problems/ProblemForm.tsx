@@ -1,5 +1,5 @@
 import useAuth from "../../context/useAuth";
-import Form from "./forms/Form";
+import FormAddEditProblem from "./forms/FormAddEditProblem";
 
 const ProblemForm = ({ problemId }: { problemId?: string }) => {
   const editMode = problemId ? true : false;
@@ -7,7 +7,11 @@ const ProblemForm = ({ problemId }: { problemId?: string }) => {
 
   return (
     <>
-      <Form editMode={editMode} problemId={problemId} user={user} />
+      <FormAddEditProblem
+        editMode={editMode}
+        problemId={problemId}
+        user={user}
+      />
     </>
   );
 };
