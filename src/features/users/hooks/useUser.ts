@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { User } from "../../../types";
-import { wait } from "../../../utils/timeFunctions";
 import { API_URL } from "../../../constants";
+import { User } from "../../../types";
 
 export const useUser = (userId: number) => {
   const {
@@ -12,7 +11,6 @@ export const useUser = (userId: number) => {
     queryKey: ["users", userId],
     queryFn: async () => {
       try {
-        await wait(2000);
         const response = await fetch(`${API_URL}/users/${userId}`);
         if (!response.ok) {
           throw new Error(
