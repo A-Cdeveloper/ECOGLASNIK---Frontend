@@ -2,6 +2,17 @@
   filter: grayscale(50%);
 }
 
+.leaflet-tooltip {
+  background-color: #2b2d42 !important; /* Tailwind's bg-gray-800 */
+  opacity: 0.85 !important;
+  color: #ffffff !important; /* Tailwind's text-white */
+  border-radius: 0.375rem; /* Tailwind's rounded-md */
+  padding: 0.5rem 1rem; /* Tailwind's p-2 */
+  min-width: 150px !important;
+  white-space: normal; /* Ensures long text wraps */
+  word-wrap: break-word; /* Breaks long words */
+}
+
 .toaststyle {
   background: #2b2d42 !important;
   opacity: 0.85 !important;

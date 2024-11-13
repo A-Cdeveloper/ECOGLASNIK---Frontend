@@ -1,4 +1,4 @@
-import { Marker, useMap } from "react-leaflet";
+import { Marker, Tooltip, useMap } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 
 import CustumMarkerIcon from "./CustumMarkerIcon";
@@ -6,6 +6,7 @@ import CustumMarkerIcon from "./CustumMarkerIcon";
 type MarkerType = {
   problemId?: string;
   status: string;
+  title?: string;
   activeMarker?: boolean;
   lat: number;
   lng: number;
@@ -16,6 +17,7 @@ type MarkerType = {
 const CustumMarker = ({
   problemId,
   status,
+  title,
   activeMarker,
   lat,
   lng,
@@ -45,7 +47,18 @@ const CustumMarker = ({
         mouseover: () => setHoveredMarker(problemId as string),
         mouseout: () => setHoveredMarker(null),
       }}
-    />
+    >
+      {title && (
+        <Tooltip
+          direction="top"
+          offset={[0, -30]}
+          opacity={1}
+          permanent={false}
+        >
+          {title}
+        </Tooltip>
+      )}
+    </Marker>
   );
 };
 

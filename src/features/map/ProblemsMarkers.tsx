@@ -41,6 +41,7 @@ const ProblemsMarkers = ({
             key={problem.id}
             problemId={problem.id}
             status={problem.status}
+            title={problem.title}
             lat={lat}
             lng={lng}
             hoveredMarker={hoveredMarker}
