@@ -13,6 +13,7 @@ import PromptModal from "../../../ui/PromptModal";
 import RestrictAccess from "../../../ui/RestrictAccess";
 import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";
+import Select from "../../../ui/Form/Select";
 
 const Form = ({
   editMode,
@@ -31,7 +32,7 @@ const Form = ({
     useUpdateProblem();
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(problem?.cat_id || 0);
   const [touchForm, setTouchForm] = useState(false);
 
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Form = ({
   };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(e.target.value);
+    setCategory(+e.target.value);
     setTouchForm(true);
   };
 
@@ -127,20 +128,14 @@ const Form = ({
           onChange={handleInputChange}
           required
         />
-        <select
+        <Select
           name="cat_id"
           aria-description="Izaberi kategoriju problema"
-          value={category || problem?.cat_id}
+          value={category}
           onChange={handleCategoryChange}
+          options={categories!}
           required
-        >
-          <option>Izaberi kategoriju problema</option>
-          {categories?.map((category) => (
-            <option key={category.cat_id} value={category.cat_id}>
-              {category.cat_name}
-            </option>
-          ))}
-        </select>
+        />
         <TextArea
           placeholder="Opis problema"
           name="description"

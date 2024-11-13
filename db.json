@@ -140,9 +140,9 @@
     },
     {
       "id": "75ca0663-51d2-498c-9836-926214adcfdb",
-      "title": "Nek problem by Aleksandar",
+      "title": "Nek problem by Aleksandar 2024",
       "description": "neki opis problem aby aleksandar",
-      "cat_id": 1,
+      "cat_id": 4,
       "position": {
         "lat": "42.97908483872636",
         "lng": "22.113933563232425"
@@ -151,7 +151,8 @@
       "createdAt": "2024-11-12T00:27:51.457Z",
       "updatedAt": null,
       "image": "404.webp",
-      "status": "active"
+      "status": "active",
+      "category": 4
     },
     {
       "id": "e91526d3-d84f-4385-9752-243cfe1f4d0d",
