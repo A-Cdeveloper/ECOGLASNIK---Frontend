@@ -20,7 +20,7 @@ const ProblemImageArea = ({
     if (selectedFile) {
       setFile(selectedFile);
     }
-
+    //TODO
     console.log("upload image to server");
   };
 
