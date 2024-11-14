@@ -31,7 +31,7 @@ const Input = ({
       defaultValue={defaultValue}
       required={required}
       onChange={onChange}
-      className={`input ${className}`}
+      className={className ? className : ""}
       accept={rest.accept}
       {...rest}
     />

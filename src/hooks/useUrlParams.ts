@@ -6,11 +6,13 @@ export const useUrlParams = () => {
   const mapLng = searchParams.get("lng") as number | null;
   const status = searchParams.get("status") as string | null;
   const cat_id = searchParams.get("cat_id") as number | null;
+  const mode = searchParams.get("mode") as string | null;
 
   return {
     mapLat,
     mapLng,
     status,
     cat_id,
+    mode,
   };
 };
