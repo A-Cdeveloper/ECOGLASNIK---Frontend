@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Problem } from "../../../types";
+import CloseButton from "../../../ui/Buttons/CloseButton";
 
 const ProblemImageArea = ({
   problem,
@@ -28,12 +29,7 @@ const ProblemImageArea = ({
     <>
       {currentImage && (
         <div className="relative">
-          <span
-            className="block bg-red text-white px-2 py-1 absolute top-0 right-0 cursor-pointer"
-            onClick={() => setCurrentImage(null)}
-          >
-            CLEAR
-          </span>
+          <CloseButton onClick={() => setCurrentImage(null)} />
           <img src={`/public/${currentImage}`} alt={problem?.title} />
         </div>
       )}
