@@ -25,7 +25,7 @@ export const getAllProblemsApi = async (
 
   try {
     const response = await fetch(
-      `${API_URL}/problems/${query}&_sort=statusAt&_order=ASC`
+      `${API_URL}/problems/${query}&_sort=status&_order=desc`
     );
     if (!response.ok) {
       throw new Error(
