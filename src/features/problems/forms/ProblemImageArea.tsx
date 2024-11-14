@@ -5,10 +5,12 @@ import CloseButton from "../../../ui/Buttons/CloseButton";
 const ProblemImageArea = ({
   problem,
   setFile,
+  setTouchForm,
   showError,
 }: {
   problem: Problem;
   setFile: (file: File) => void;
+  setTouchForm: (value: boolean) => void;
   showError: boolean;
 }) => {
   const [currentImage, setCurrentImage] = useState<string | null>(
@@ -20,6 +22,7 @@ const ProblemImageArea = ({
 
     if (selectedFile) {
       setFile(selectedFile);
+      setTouchForm(true);
     }
     //TODO
     console.log("upload image to server");
@@ -29,8 +32,17 @@ const ProblemImageArea = ({
     <>
       {currentImage && (
         <div className="relative">
-          <CloseButton onClick={() => setCurrentImage(null)} />
-          <img src={`/public/${currentImage}`} alt={problem?.title} />
+          <CloseButton
+            onClick={() => {
+              setCurrentImage(null);
+              setTouchForm(true);
+            }}
+          />
+          <img
+            src={`/public/${currentImage}`}
+            alt={problem?.title}
+            className="my-4 border-double border-4 border-secondary/50"
+          />
         </div>
       )}
       {!currentImage && (

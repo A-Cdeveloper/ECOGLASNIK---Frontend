@@ -150,7 +150,7 @@
       "uid": 1,
       "createdAt": "2024-11-12T00:27:51.457Z",
       "updatedAt": "",
-      "image": "404.webp",
+      "image": "404.png",
       "status": "active",
       "category": 4
     },
@@ -166,7 +166,7 @@
       "uid": 2,
       "createdAt": "2024-11-12T00:37:07.856Z",
       "updatedAt": "",
-      "image": "404.webp",
+      "image": "404.png",
       "status": "active",
       "category": 3
     },
@@ -182,7 +182,7 @@
       "uid": 1,
       "createdAt": "2024-11-13T00:25:28.369Z",
       "updatedAt": "",
-      "image": "404.webp",
+      "image": "404.png",
       "status": "active"
     },
     {
@@ -213,6 +213,21 @@
       "createdAt": "2024-11-13T23:53:29.160Z",
       "updatedAt": "2024-11-14T01:48:48.832Z",
       "image": "7365_banner.jpg",
+      "status": "done"
+    },
+    {
+      "id": "a0cd9bc7-b153-412a-ba5a-aa13e5acaec8",
+      "title": "Neki problem Torta",
+      "description": "test",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.97657302920053",
+        "lng": "22.117366790771488"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-14T11:21:37.863Z",
+      "updatedAt": "2024-11-14T11:22:03.926Z",
+      "image": "gewinnspiel-teaser.png",
       "status": "done"
     }
   ],

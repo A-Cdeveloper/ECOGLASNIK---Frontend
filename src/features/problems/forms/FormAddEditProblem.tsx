@@ -151,13 +151,14 @@ const FormAddEditProblem = ({
         <ProblemImageArea
           problem={problem!}
           setFile={setFile}
+          setTouchForm={setTouchForm}
           showError={showError}
         />
 
         <div className="flex justify-end">
           <Button
             aria-label="Pošalji problem"
-            variation="danger"
+            variation="success"
             size="medium"
             disabled={isLoadingAddNew}
           >
