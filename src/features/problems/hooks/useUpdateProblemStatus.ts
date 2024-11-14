@@ -18,7 +18,7 @@ const useUpdateProblemStatus = (): UseMutationResult<
     mutationFn: updateProbemStatusApi,
     onSuccess: () => {
       toast.success("Status Problema uspešno promenjen!");
-      queryClient.invalidateQueries({ queryKey: ["problem"] }); // Optional: to refresh the problems query
+      queryClient.invalidateQueries({ queryKey: ["problems"] }); // Optional: to refresh the problems query
     },
     onError: (err: Error) => {
       toast.error(

@@ -34,6 +34,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
               updatedAt: new Date(),
               status: "done",
             });
+            navigate("/");
           }}
         >
           {changeStatusLaoding === "pending"
