@@ -52,7 +52,9 @@ const ProblemImageArea = ({
           </label>
 
           {showError && (
-            <p className="text-red mt-1">Fotografija je obavezna!</p>
+            <p className="text-rose-400 mt-1 text-end">
+              Fotografija je obavezna!
+            </p>
           )}
         </>
       )}
