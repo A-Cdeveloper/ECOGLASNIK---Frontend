@@ -34,7 +34,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             </span>
           </div>
           <img
-            src={image}
+            src={`/public/${image}`}
             alt=""
             width={120}
             height={60}
