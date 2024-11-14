@@ -17,7 +17,6 @@ const ProblemImageArea = ({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
 
-    console.log(selectedFile);
     if (selectedFile) {
       setFile(selectedFile);
     }
@@ -44,7 +43,6 @@ const ProblemImageArea = ({
             type="file"
             accept="image/*"
             id="image"
-            name="image"
             aria-description="Problem slika"
             onChange={handleFileChange}
             className="hidden"

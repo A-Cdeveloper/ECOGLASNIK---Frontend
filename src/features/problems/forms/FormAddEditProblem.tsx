@@ -71,41 +71,42 @@ const FormAddEditProblem = ({
       return;
     }
 
-    // if (editMode) {
-    //   editProblemMutation(
-    //     {
-    //       ...problem!,
-    //       title,
-    //       description,
-    //       cat_id,
-    //     },
-    //     {
-    //       onSuccess: () => {
-    //         navigate(
-    //           `/problems/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
-    //         );
-    //       },
-    //     }
-    //   );
-    // } else {
-    //   const newProblem: Problem = {
-    //     id: uuidv4(),
-    //     title,
-    //     description,
-    //     cat_id,
-    //     position: {
-    //       lat: mapLat!,
-    //       lng: mapLng!,
-    //     },
-    //     uid: user!.uid,
-    //     createdAt: new Date(), // new Date(),
-    //     updatedAt: null,
-    //     image: file?.name || "",
-    //     status: "active",
-    //   };
+    if (editMode) {
+      editProblemMutation(
+        {
+          ...problem!,
+          title,
+          description,
+          cat_id,
+          image: file?.name || "",
+        },
+        {
+          onSuccess: () => {
+            navigate(
+              `/problems/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
+            );
+          },
+        }
+      );
+    } else {
+      const newProblem: Problem = {
+        id: uuidv4(),
+        title,
+        description,
+        cat_id,
+        position: {
+          lat: mapLat!,
+          lng: mapLng!,
+        },
+        uid: user!.uid,
+        createdAt: new Date(), // new Date(),
+        updatedAt: null,
+        image: file?.name || "",
+        status: "active",
+      };
 
-    //   addNewProblemMutation(newProblem);
-    // }
+      addNewProblemMutation(newProblem);
+    }
 
     console.log(formData);
   };
