@@ -199,6 +199,21 @@
       "updatedAt": null,
       "image": "7365_banner.jpg",
       "status": "active"
+    },
+    {
+      "id": "5bb4e9f1-6a3f-493b-99d7-ef890ca7efb2",
+      "title": "Sisava reka se izlila",
+      "description": "opsim izlivanja reke",
+      "cat_id": 3,
+      "position": {
+        "lat": "42.98934294489337",
+        "lng": "22.115907669067386"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-13T23:53:29.160Z",
+      "updatedAt": null,
+      "image": "7365_banner.jpg",
+      "status": "active"
     }
   ],
   "categories": [

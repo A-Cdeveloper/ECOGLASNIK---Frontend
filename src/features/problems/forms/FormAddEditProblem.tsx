@@ -14,6 +14,7 @@ import RestrictAccess from "../../../ui/RestrictAccess";
 import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";
 import Select from "../../../ui/Form/Select";
+import ProblemImageArea from "./ProblemImageArea";
 
 const FormAddEditProblem = ({
   editMode,
@@ -35,6 +36,7 @@ const FormAddEditProblem = ({
   const [category, setCategory] = useState(problem?.cat_id || 0);
   const [file, setFile] = useState<File | null>(null);
   const [touchForm, setTouchForm] = useState(false);
+  const [showError, setShowError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -54,13 +56,6 @@ const FormAddEditProblem = ({
     setTouchForm(true);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      setFile(selectedFile);
-    }
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -71,43 +66,48 @@ const FormAddEditProblem = ({
 
     if (file) {
       formData.append("image", file);
-    }
-
-    if (editMode) {
-      editProblemMutation(
-        {
-          ...problem!,
-          title,
-          description,
-          cat_id,
-        },
-        {
-          onSuccess: () => {
-            navigate(
-              `/problems/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
-            );
-          },
-        }
-      );
     } else {
-      const newProblem: Problem = {
-        id: uuidv4(),
-        title,
-        description,
-        cat_id,
-        position: {
-          lat: mapLat!,
-          lng: mapLng!,
-        },
-        uid: user!.uid,
-        createdAt: new Date(), // new Date(),
-        updatedAt: null,
-        image: file?.name || "",
-        status: "active",
-      };
-
-      addNewProblemMutation(newProblem);
+      setShowError(true);
+      return;
     }
+
+    // if (editMode) {
+    //   editProblemMutation(
+    //     {
+    //       ...problem!,
+    //       title,
+    //       description,
+    //       cat_id,
+    //     },
+    //     {
+    //       onSuccess: () => {
+    //         navigate(
+    //           `/problems/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
+    //         );
+    //       },
+    //     }
+    //   );
+    // } else {
+    //   const newProblem: Problem = {
+    //     id: uuidv4(),
+    //     title,
+    //     description,
+    //     cat_id,
+    //     position: {
+    //       lat: mapLat!,
+    //       lng: mapLng!,
+    //     },
+    //     uid: user!.uid,
+    //     createdAt: new Date(), // new Date(),
+    //     updatedAt: null,
+    //     image: file?.name || "",
+    //     status: "active",
+    //   };
+
+    //   addNewProblemMutation(newProblem);
+    // }
+
+    console.log(formData);
   };
 
   return (
@@ -146,21 +146,13 @@ const FormAddEditProblem = ({
           required
           className="h-[200px]"
         />
-        {!editMode && (
-          <>
-            <Input
-              type="file"
-              placeholder="Naslov problema"
-              name="imageFile"
-              accept="image/*"
-              aria-description="Dodaj sliku problema"
-              defaultValue={problem?.image || ""}
-              onChange={handleFileChange}
-              className="bg-transparent border-0 text-white"
-              required
-            />
-          </>
-        )}
+
+        <ProblemImageArea
+          problem={problem!}
+          setFile={setFile}
+          showError={showError}
+        />
+
         <div className="flex justify-end">
           <Button
             aria-label="Pošalji problem"
