@@ -4,13 +4,13 @@ import useSessionStorage from "../hooks/useSessionStorage";
 import { User } from "../types";
 
 type SessionPropsType = {
-  user: User | null;
+  user: Omit<User, "password" | "createdAt"> | null;
 };
 
 type AuthContextType = {
-  user: User | null;
+  user: SessionPropsType["user"];
   isAuthenticated: boolean;
-  setSessionStorageData: (data: SessionPropsType) => SessionPropsType | void;
+  setSessionStorageData: (data: Omit<User, "password" | "createdAt">) => void;
   removeSessionStorageData: () => void;
 };
 
@@ -30,11 +30,16 @@ export const AuthContextProvider = ({
     setData({ user: null });
   };
 
+  const setSessionStorageData = (
+    userData: Omit<User, "password" | "createdAt">
+  ) => {
+    setData({ user: userData });
+  };
+
   const value = {
     user: data.user,
-    isAuthenticated: !!data?.user,
-    //isAuthenticated: true,
-    setSessionStorageData: setData,
+    isAuthenticated: data.user !== null,
+    setSessionStorageData,
     removeSessionStorageData,
   };
 
