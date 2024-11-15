@@ -124,7 +124,7 @@
     },
     {
       "id": "ef93b3c0-9931-4385-b431-7adfb8d6697e",
-      "title": "Gori kontajner slaba vatra 2024",
+      "title": "Gori kontajner u centru grada",
       "description": "kontejner gori baba se ceslja",
       "cat_id": 4,
       "position": {
@@ -229,28 +229,168 @@
       "updatedAt": "2024-11-14T11:22:03.926Z",
       "image": "gewinnspiel-teaser.png",
       "status": "done"
+    },
+    {
+      "id": "1d32f470-8e2f-4d29-8a74-e70da6d1c270",
+      "title": "Gori kontajner jaka vatra",
+      "description": "gori kontejner ",
+      "cat_id": 4,
+      "position": {
+        "lat": "42.97872409885662",
+        "lng": "22.125000357627872"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-15T01:14:08.447Z",
+      "updatedAt": "2024-11-15T01:18:59.244Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "ba721860-99ee-4fff-b1fa-9e603971a768",
+      "title": "Slomljena klackalica",
+      "description": "lom i krs",
+      "cat_id": 6,
+      "position": {
+        "lat": "42.97280512252768",
+        "lng": "22.121486663818363"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-15T01:24:01.909Z",
+      "updatedAt": null,
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "84f5933c-3a60-49e1-b046-6b4ab402bf94",
+      "title": "retriver dog",
+      "description": "test",
+      "cat_id": 7,
+      "position": {
+        "lat": "42.96979063097081",
+        "lng": "22.11084365844727"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-15T01:25:42.241Z",
+      "updatedAt": null,
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
+    },
+    {
+      "id": "d2b78ea8-e4bf-470b-a25d-b5954cda4fdd",
+      "title": "opasni",
+      "description": "te",
+      "cat_id": 8,
+      "position": {
+        "lat": "42.973151831358514",
+        "lng": "22.112689018249515"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-15T01:33:32.700Z",
+      "updatedAt": null,
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "4fcff5cd-6cdb-4462-8d0a-47a8c15dab92",
+      "title": "TEST TITLE",
+      "description": "TEST OPSI",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.98322125092725",
+        "lng": "22.117495536804203"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-15T19:29:17.579Z",
+      "updatedAt": null,
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
+    },
+    {
+      "id": "9e83727a-9443-40e4-8ba5-914bd86b591e",
+      "title": "TEST TITLE 2024",
+      "description": "123",
+      "cat_id": 4,
+      "position": {
+        "lat": "42.98501073221892",
+        "lng": "22.130198478698734"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-15T19:29:38.734Z",
+      "updatedAt": null,
+      "image": "BZ-medien.png",
+      "status": "active"
+    },
+    {
+      "id": "c1a6318b-9727-4e83-b361-20cd2ffdee43",
+      "title": "Aleksandar",
+      "description": "pas ujeda 89",
+      "cat_id": 8,
+      "position": {
+        "lat": "42.98221660702126",
+        "lng": "22.12693691253662"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-15T19:31:35.263Z",
+      "updatedAt": "2024-11-15T19:32:32.021Z",
+      "image": "",
+      "status": "done"
     }
   ],
   "categories": [
     {
       "id": "1",
       "cat_id": 1,
-      "cat_name": "Category 1"
+      "cat_name": "Nepropisno bačeno smeće"
     },
     {
       "id": "2",
       "cat_id": 2,
-      "cat_name": "Category 2"
+      "cat_name": "Potencijalno stvaranje deponije"
     },
     {
       "id": "3",
       "cat_id": 3,
-      "cat_name": "Category 3"
+      "cat_name": "Spaljivanje smeća"
     },
     {
       "id": "4",
       "cat_id": 4,
-      "cat_name": "Category 4 ipsum lorem ipsum lorem ipsum lorem ipsum lorem "
+      "cat_name": "Zapaljen kontejner"
+    },
+    {
+      "id": "5",
+      "cat_id": 5,
+      "cat_name": "Prepun kontejner koji nije ispražnjen"
+    },
+    {
+      "id": "6",
+      "cat_id": 6,
+      "cat_name": "Uništavanje javne imovine"
+    },
+    {
+      "id": "7",
+      "cat_id": 7,
+      "cat_name": "Lociran izgubljen vlasnički pas"
+    },
+    {
+      "id": "8",
+      "cat_id": 8,
+      "cat_name": "Lociran čopor pasa"
+    },
+    {
+      "id": "9",
+      "cat_id": 9,
+      "cat_name": "Locirani izbačeni štenci/mačići"
+    },
+    {
+      "id": "10",
+      "cat_id": 10,
+      "cat_name": "Udarna rupa/rupe na kolovozu"
+    },
+    {
+      "id": "11",
+      "cat_id": 11,
+      "cat_name": "Opasnost za pešake na kolovozu"
     }
   ],
   "users": [

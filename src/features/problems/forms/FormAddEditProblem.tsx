@@ -34,7 +34,7 @@ const FormAddEditProblem = ({
   const { problem } = useSingleProblem(problemId || "");
 
   const [category, setCategory] = useState(problem?.cat_id || 0);
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(problem?.image ? null : null);
   const [touchForm, setTouchForm] = useState(false);
   const [showError, setShowError] = useState(false);
 
@@ -63,10 +63,13 @@ const FormAddEditProblem = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
+    const imageProblem = formData.get("imageProblem") as File | null;
 
     if (file) {
       formData.append("image", file);
-    } else {
+    }
+
+    if (imageProblem?.size === 0) {
       setShowError(true);
       return;
     }
@@ -107,8 +110,6 @@ const FormAddEditProblem = ({
 
       addNewProblemMutation(newProblem);
     }
-
-    console.log(formData);
   };
 
   return (

@@ -90,7 +90,7 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
       title: problem.title,
       description: problem.description,
       cat_id: problem.cat_id,
-      image: problem.image,
+      image: problem.image || "",
     };
 
     const response = await fetch(`${API_URL}/problems/${problem.id}`, {

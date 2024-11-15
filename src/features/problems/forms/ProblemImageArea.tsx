@@ -51,6 +51,7 @@ const ProblemImageArea = ({
             type="file"
             accept="image/*"
             id="image"
+            name="imageProblem"
             aria-description="Problem slika"
             onChange={handleFileChange}
             className="hidden"
