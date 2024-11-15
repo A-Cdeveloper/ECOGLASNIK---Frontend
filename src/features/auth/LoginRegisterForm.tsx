@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Input from "../../ui/Form/Input";
-import Button from "../../ui/Buttons/Button";
-import Headline from "../../ui/Headline";
-import ButtonIcon from "../../ui/Buttons/ButtonIcon";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
-import { set } from "date-fns";
-
-// import useLogin from "./useLogin";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../../ui/Buttons/Button";
+import ButtonIcon from "../../ui/Buttons/ButtonIcon";
+import Input from "../../ui/Form/Input";
+import Headline from "../../ui/Headline";
+import useLogin from "./hooks/useLogin";
+import useRegister from "./hooks/useRegister";
 
 function LoginRegisterForm({ mode }: { mode: string }) {
+  const { status: loginUserStatus, mutate: loginUser } = useLogin();
+  const { status: registerUserStatus, mutate: registerUser } = useRegister();
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -18,32 +20,50 @@ function LoginRegisterForm({ mode }: { mode: string }) {
   const [firstname, setFirstname] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
-  const [confirmpassword, setConfirmpassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
   //
   const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordAgain, setShowPasswordAgain] = useState(false);
 
   const isLoginMode = mode === "login";
+  const isPasswordValid = !isLoginMode ? password === passwordAgain : true;
 
-  //const { isLoginLoading, login } = useLogin();
-
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email || !password) return;
 
-    console.log(email, password);
-
-    // login(
-    //   { username, password },
-    //   {
-    //     onSettled: () => {
-    //       setUsername("");
-    //       setPassword("");
-    //     },
-    //     onSuccess: () => {
-    //       navigate("/", { replace: true });
-    //     },
-    //   }
-    // );
+    if (isLoginMode) {
+      if (!email || !password) return;
+      loginUser(
+        { email, password },
+        {
+          onSettled: () => {
+            setEmail("");
+            setPassword("");
+          },
+          onSuccess: () => {
+            navigate("/", { replace: true });
+          },
+        }
+      );
+    } else {
+      if (!firstname || !lastName || !email || !password) return;
+      registerUser(
+        { firstname, lastname: lastName, phone, email, password },
+        {
+          onSettled: () => {
+            setFirstname("");
+            setLastName("");
+            setPhone("");
+            setEmail("");
+            setPassword("");
+            setPasswordAgain("");
+          },
+          onSuccess: () => {
+            navigate("/", { replace: true });
+          },
+        }
+      );
+    }
   }
 
   return (
@@ -57,14 +77,14 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             <Input
               type="firstname"
               value={firstname}
-              placeholder="Ime"
+              placeholder="Ime*"
               onChange={(e) => setFirstname(e.target.value)}
               required
             />
             <Input
               type="lastname"
               value={lastName}
-              placeholder="Prezime"
+              placeholder="Prezime*"
               onChange={(e) => setLastName(e.target.value)}
               required
             />
@@ -73,7 +93,6 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               value={phone}
               placeholder="Telefon"
               onChange={(e) => setPhone(e.target.value)}
-              required
             />
           </>
         )}
@@ -81,7 +100,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         <Input
           type="email"
           value={email}
-          placeholder="Email"
+          placeholder="Email*"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
@@ -90,7 +109,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           <Input
             type={showPassword ? "text" : "password"}
             value={password}
-            placeholder="Lozinka"
+            placeholder="Lozinka*"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
@@ -103,27 +122,34 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           />
         </div>
         {!isLoginMode && (
-          <div className="relative">
-            <Input
-              type={showPassword ? "text" : "password"}
-              value={confirmpassword}
-              placeholder="Potvrdi lozinku"
-              onChange={(e) => setConfirmpassword(e.target.value)}
-            />
-            <ButtonIcon
-              icon={showPassword ? <HiEyeSlash /> : <HiEye />}
-              onClick={(e) => {
-                e.preventDefault();
-                setShowPassword(!showPassword);
-              }}
-            />
-          </div>
+          <>
+            <div className="relative">
+              <Input
+                type={showPasswordAgain ? "text" : "password"}
+                value={passwordAgain}
+                placeholder="Potvrdi lozinku*"
+                onChange={(e) => setPasswordAgain(e.target.value)}
+              />
+              <ButtonIcon
+                icon={showPasswordAgain ? <HiEyeSlash /> : <HiEye />}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowPasswordAgain(!showPasswordAgain);
+                }}
+              />
+              {!isPasswordValid && passwordAgain !== "" ? (
+                <p className="text-rose-400 my-[3px]">Password don't match.</p>
+              ) : (
+                ""
+              )}
+            </div>
+          </>
         )}
 
         <Button
           size="large"
           style={{ width: "100%" }}
-          // variation={!isLoginLoading ? "primary" : "disabled"}
+          disabled={!isPasswordValid}
         >
           {/* {!isLoginLoading ? (
               "Login"
@@ -132,8 +158,22 @@ function LoginRegisterForm({ mode }: { mode: string }) {
                 Working... <SpinnerMini />
               </>
             )} */}
-          {isLoginMode ? "Prijavi se" : "Kreiraj nalog"}
+
+          {isLoginMode
+            ? loginUserStatus === "pending"
+              ? "Prijava..."
+              : "Prijavi se"
+            : registerUserStatus === "pending"
+            ? "Registracija..."
+            : "Registuj nalog"}
         </Button>
+        {isLoginMode && (
+          <>
+            <p className="text-secondary text-center">
+              <Link to="login/forgot-password">Forgot password?</Link>
+            </p>
+          </>
+        )}
         <p className="text-secondary text-center">
           {isLoginMode
             ? "Nemate nalog? Regstrujte se "
