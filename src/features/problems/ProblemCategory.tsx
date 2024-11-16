@@ -6,10 +6,10 @@ const ProblemCategory = ({ problemId }: { problemId: number }) => {
     useProblemCategory(problemId);
   return (
     <>
-      <div>Kategorija:</div>{" "}
+      <div>Kategorija:</div>
       <Link
         to={`/?cat_id=${category?.cat_id}`}
-        className="relative after:content-['\2197'] after:ms-1 after:text-[16px] after:font-bold hover:text-yellow"
+        className="relative after:content-['\2197'] after:ms-1 after:text-[14px] after:font-bold hover:text-yellow"
       >
         {isLoadingCategory ? "Loading..." : category?.cat_name}
       </Link>
