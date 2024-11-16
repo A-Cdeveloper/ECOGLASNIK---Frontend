@@ -5,6 +5,7 @@ const FilterCategory = () => {
   const [, setSearchParams] = useSearchParams();
   const { categories } = useCategories();
   const currentParams = new URLSearchParams(window.location.search);
+
   return (
     <>
       <select
@@ -12,6 +13,7 @@ const FilterCategory = () => {
         name="cat_id"
         aria-description="Filter kategoriju problema"
         required
+        defaultValue={currentParams.get("cat_id") || ""}
         onChange={(e) => {
           const selectedCatId = e.target.value;
 
