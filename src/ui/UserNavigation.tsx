@@ -10,13 +10,13 @@ const UserNavigation = ({
   logout: () => void;
 }) => {
   return (
-    <div className="userarea flex justify-center md:justify-end gap-2 items-center basis-full md:basis-1/2 lg:basis-auto order-1 lg:order-2">
+    <div className="userarea flex flex-1 xl:flex-none justify-end md:justify-end gap-2 items-center pe-2 md:pe-3 ">
       <img
         src={avatar}
         alt={user!.firstname + user!.lastname}
-        className="w-8 h-8 rounded-full"
+        className="w-5 h-5 md:w-6 md:h-6 rounded-full"
       />
-      <p>
+      <p className="hidden md:block leading-4">
         {user?.firstname} {user?.lastname}
         <span className="block text-[11px]">{user?.email}</span>
       </p>

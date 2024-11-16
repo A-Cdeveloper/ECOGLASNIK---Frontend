@@ -3,7 +3,7 @@ import { Toaster } from "react-hot-toast";
 const Notifications = () => {
   return (
     <Toaster
-      position="top-center"
+      position="bottom-center"
       gutter={3}
       containerStyle={{
         right: 0,

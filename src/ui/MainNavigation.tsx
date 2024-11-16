@@ -1,4 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import MenuItems from "./MenuItems";
+import burgerBtn from "../assets/burger-menu.svg";
 
 const MainNavigation = ({
   isAuthenticated,
@@ -7,70 +9,36 @@ const MainNavigation = ({
   isAuthenticated: boolean;
   userId?: number;
 }) => {
-  return (
-    <nav className="flex-1 order-2 lg:order-1 w-full pt-3 pb-2">
-      <ul className="flex justify-center lg:justify-end uppercase gap-5 font-bold pe-4">
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "text-winter" : "text-secondary hover:text-winter"
-            }
-          >
-            Svi problemi
-          </NavLink>
-        </li>
+  const [isOpen, setIsOpen] = useState(false);
 
-        {isAuthenticated && (
-          <li>
-            <NavLink
-              to="/problems/add"
-              className={({ isActive }) =>
-                isActive ? "text-winter" : "text-secondary hover:text-winter"
-              }
-            >
-              Dodaj Problem
-            </NavLink>
-          </li>
-        )}
-        {isAuthenticated && (
-          <li>
-            <NavLink
-              to={`/problems/user/${userId}`}
-              className={({ isActive }) =>
-                isActive ? "text-winter" : "text-secondary hover:text-winter"
-              }
-            >
-              Vaše prijave
-            </NavLink>
-          </li>
-        )}
-        <li>
-          <NavLink
-            to="/impressum"
-            className={({ isActive }) =>
-              isActive
-                ? "ms-0 text-winter"
-                : "ms-0  text-secondary hover:text-winter"
-            }
-          >
-            Impressum
-          </NavLink>
-        </li>
-        {!isAuthenticated && (
-          <li>
-            <NavLink
-              to="/login/?mode=login"
-              className={({ isActive }) =>
-                isActive ? "text-winter" : "text-secondary hover:text-winter"
-              }
-            >
-              Uloguj se
-            </NavLink>
-          </li>
-        )}
-      </ul>
-    </nav>
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <div
+        className="xl:hidden bg-transparent w-[35px] h-[25px] text-white order-2 cursor-pointer -mt-2"
+        onClick={toggleMenu}
+      >
+        <img src={burgerBtn} alt="" />
+      </div>
+      {/* // Desktop menu */}
+      <nav className="hidden xl:block">
+        <ul className="flex justify-center lg:justify-end uppercase gap-4 font-bold">
+          <MenuItems isAuthenticated={isAuthenticated} userId={userId} />
+        </ul>
+      </nav>
+      {/* 
+      // Mobile menu */}
+      {isOpen && (
+        <nav className="block xl:hidden order-3 w-[300px] md:w-full ms-auto md:ms-0">
+          <ul className="flex flex-wrap uppercase gap-x-4 font-bold py-2 justify-end">
+            <MenuItems isAuthenticated={isAuthenticated} userId={userId} />
+          </ul>
+        </nav>
+      )}
+    </>
   );
 };
 

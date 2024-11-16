@@ -123,26 +123,10 @@
       "category": 2
     },
     {
-      "id": "ef93b3c0-9931-4385-b431-7adfb8d6697e",
-      "title": "Gori kontajner u centru grada",
-      "description": "kontejner gori baba se ceslja",
-      "cat_id": 4,
-      "position": {
-        "lat": "42.96952175252889",
-        "lng": "22.127666473388675"
-      },
-      "uid": 2,
-      "createdAt": "2024-11-10T01:55:06.808Z",
-      "updatedAt": "",
-      "image": "gewinnspiel-teaser.png",
-      "status": "active",
-      "category": 4
-    },
-    {
       "id": "75ca0663-51d2-498c-9836-926214adcfdb",
       "title": "Nek problem by Aleksandar 2024 Nek problem by Aleksandar 2024Nek problem by Aleksandar 2024",
       "description": "neki opis problem aby aleksandar",
-      "cat_id": 4,
+      "cat_id": 6,
       "position": {
         "lat": "42.97908483872636",
         "lng": "22.113933563232425"
@@ -150,7 +134,7 @@
       "uid": 1,
       "createdAt": "2024-11-12T00:27:51.457Z",
       "updatedAt": "",
-      "image": "404.png",
+      "image": "",
       "status": "active",
       "category": 4
     },
@@ -334,6 +318,21 @@
       "updatedAt": "2024-11-15T19:32:32.021Z",
       "image": "",
       "status": "done"
+    },
+    {
+      "id": "fa6f492c-ec87-4d56-9ae2-b9c9430cb90a",
+      "title": "Gori kontajner u centru grada",
+      "description": "test",
+      "cat_id": 3,
+      "position": {
+        "lat": "42.9750658942346",
+        "lng": "22.12783813476563"
+      },
+      "uid": 2,
+      "createdAt": "2024-11-16T02:14:10.508Z",
+      "updatedAt": null,
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
     }
   ],
   "categories": [

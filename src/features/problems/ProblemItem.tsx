@@ -14,7 +14,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
   } = problem || {};
 
   return (
-    <div className="p-2 my-[3px] bg-secondary/20 hover:bg-secondary/85 relative basis-full md:basis-1/2 lg:basis-full self-start">
+    <div className="p-2 my-[3px] bg-secondary/20 hover:bg-secondary/85 relative basis-full md:basis-1/2 lg:basis-full self-stretch">
       <Link to={`/problems/${id}/?lat=${lat}&lng=${lng}`}>
         <StatusBadge
           status={problem.status}
