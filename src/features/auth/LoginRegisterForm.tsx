@@ -151,14 +151,6 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           style={{ width: "100%" }}
           disabled={!isPasswordValid}
         >
-          {/* {!isLoginLoading ? (
-              "Login"
-            ) : (
-              <>
-                Working... <SpinnerMini />
-              </>
-            )} */}
-
           {isLoginMode
             ? loginUserStatus === "pending"
               ? "Prijava..."
@@ -170,7 +162,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         {isLoginMode && (
           <>
             <p className="text-secondary text-center">
-              <Link to="login/forgot-password">Forgot password?</Link>
+              <Link to="forgot-password">Zaboravljena lozinka?</Link>
             </p>
           </>
         )}

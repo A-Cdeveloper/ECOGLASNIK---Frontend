@@ -12,6 +12,8 @@ import Notifications from "../ui/Notifications";
 import ProtectedRoute from "../ui/ProtectedRoute";
 import PageNotFound from "../pages/PageNotFound";
 import UserProblems from "../pages/UserProblems";
+import ForgotPassword from "../pages/ForgotPassword";
+import VerifyAccount from "../pages/VerifyAccount";
 
 //import PageNotFound from "../pages/PageNotFound";
 
@@ -26,11 +28,7 @@ const mainRouter = [
         children: [
           {
             path: ":id",
-            element: (
-              // <ProtectedRoute>
-              <SingleProblem />
-              // </ProtectedRoute>
-            ),
+            element: <SingleProblem />,
           },
           {
             path: "add",
@@ -59,7 +57,14 @@ const mainRouter = [
         ],
       },
       { path: "/impressum", element: <ImpressumPage /> },
-      { path: "/login", element: <LoginPage /> },
+      {
+        path: "/login",
+        children: [
+          { index: true, element: <LoginPage /> },
+          { path: "forgot-password", element: <ForgotPassword /> },
+          { path: "verify-account", element: <VerifyAccount /> },
+        ],
+      },
     ],
   },
 ];
