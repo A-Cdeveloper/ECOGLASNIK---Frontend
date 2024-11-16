@@ -41,7 +41,7 @@ const Map = ({ problemId }: { problemId?: string }) => {
         minZoom={INITIAL_ZOOM}
         // style={{ height: "100vh", width: "100%" }}
         className="h-full w-full"
-        dragging={true} // disable dragging
+        dragging={false} // disable dragging
         zoomControl={true} // disable zoom control UI
         scrollWheelZoom={true} // disable scroll zoom
         doubleClickZoom={true} // disable double-click zoom
