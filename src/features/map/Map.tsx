@@ -7,10 +7,11 @@ import StabilizeMap from "./StabilizeMap";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import { useProblems } from "../problems/hooks/useProblems";
 
-import "leaflet/dist/leaflet.css";
 import { DEFAULT_POSITION, INITIAL_ZOOM } from "../../constants";
 import { Problem } from "../../types";
 import Loader from "../../ui/Loader";
+
+import "leaflet/dist/leaflet.css";
 import "../../utils.css";
 
 const Map = ({

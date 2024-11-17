@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Problems } from "../../types";
-import CustumMarker from "./CustumMarker";
+
+const CustumMarker = lazy(() => import("./CustumMarker"));
 
 const ProblemsMarkers = ({
   problems,
@@ -17,17 +18,21 @@ const ProblemsMarkers = ({
 }) => {
   const [hoveredMarker, setHoveredMarker] = useState<string | null>(null);
 
+  const fallback = <div>Loading marker...</div>;
+
   if (mapLat && mapLng) {
     return (
-      <CustumMarker
-        problemId={problemId}
-        status={problemStatus ? problemStatus : "active"}
-        activeMarker={true}
-        lat={mapLat}
-        lng={mapLng}
-        hoveredMarker={hoveredMarker}
-        setHoveredMarker={setHoveredMarker}
-      />
+      <Suspense fallback={fallback}>
+        <CustumMarker
+          problemId={problemId}
+          status={problemStatus ? problemStatus : "active"}
+          activeMarker={true}
+          lat={mapLat}
+          lng={mapLng}
+          hoveredMarker={hoveredMarker}
+          setHoveredMarker={setHoveredMarker}
+        />
+      </Suspense>
     );
   }
 
@@ -37,16 +42,17 @@ const ProblemsMarkers = ({
         const { lat, lng } = problem.position;
 
         return (
-          <CustumMarker
-            key={problem.id}
-            problemId={problem.id}
-            status={problem.status}
-            title={problem.title}
-            lat={lat}
-            lng={lng}
-            hoveredMarker={hoveredMarker}
-            setHoveredMarker={setHoveredMarker}
-          />
+          <Suspense key={problem.id} fallback={fallback}>
+            <CustumMarker
+              problemId={problem.id}
+              status={problem.status}
+              title={problem.title}
+              lat={lat}
+              lng={lng}
+              hoveredMarker={hoveredMarker}
+              setHoveredMarker={setHoveredMarker}
+            />
+          </Suspense>
         );
       })}
     </>
