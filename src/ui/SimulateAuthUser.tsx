@@ -9,7 +9,7 @@ const SimulateAuthUser = () => {
     <div
       className={`flex flex-wrap gap-3 ${
         isAuthenticated ? "bg-green" : "bg-red"
-      } fixed end-0 bottom-[5vh] z-[99999999999999999999999999999999] p-5 w-[250px]`}
+      } fixed end-0 bottom-[5vh] z-[99999999999999999999999999999999] px-5 py-3 w-[250px]`}
     >
       <Headline level={1} className="w-full">
         {isAuthenticated ? "Loged in" : "Logged out"}
