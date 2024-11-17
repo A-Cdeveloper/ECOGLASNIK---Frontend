@@ -32,7 +32,7 @@ const CustumMarker = ({
     <Marker
       position={[lat, lng]}
       icon={CustumMarkerIcon(status, activeMarker)}
-      draggable={true}
+      draggable={false}
       opacity={
         hoveredMarker === null || hoveredMarker === problemId || activeMarker
           ? 1

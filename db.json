@@ -156,7 +156,7 @@
     },
     {
       "id": "a159bf26-465b-4a9d-ad71-400e33644d6d",
-      "title": "Problem test Aleksandar",
+      "title": "Problem test Aleksandar 2025",
       "description": "opis problema Aleksandar",
       "cat_id": 1,
       "position": {
@@ -166,7 +166,7 @@
       "uid": 1,
       "createdAt": "2024-11-13T00:25:28.369Z",
       "updatedAt": "",
-      "image": "404.png",
+      "image": "",
       "status": "active"
     },
     {
@@ -300,9 +300,9 @@
       },
       "uid": 1,
       "createdAt": "2024-11-15T19:29:38.734Z",
-      "updatedAt": null,
+      "updatedAt": "2024-11-17T11:53:20.092Z",
       "image": "BZ-medien.png",
-      "status": "active"
+      "status": "done"
     },
     {
       "id": "c1a6318b-9727-4e83-b361-20cd2ffdee43",
@@ -330,6 +330,156 @@
       },
       "uid": 2,
       "createdAt": "2024-11-16T02:14:10.508Z",
+      "updatedAt": null,
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
+    },
+    {
+      "id": "95056905-7d02-4f30-aec3-2c3ec7651e2c",
+      "title": "Gori kontajner u ulici Stevana Jakovljevica",
+      "description": "test ",
+      "cat_id": 4,
+      "position": {
+        "lat": "42.97207931545189",
+        "lng": "22.13251054286957"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:38:49.237Z",
+      "updatedAt": "2024-11-17T11:51:08.825Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "d8461b84-23da-4290-b9fd-4a8c93150457",
+      "title": "Smece u reci Sisavici",
+      "description": "test",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.97857267279426",
+        "lng": "22.10333347320557"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:42:53.673Z",
+      "updatedAt": "",
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
+    },
+    {
+      "id": "cb3dd8dd-4ac5-43f3-8222-54e6200fb254",
+      "title": "Neki problem",
+      "description": "test",
+      "cat_id": 5,
+      "position": {
+        "lat": "42.97857267279426",
+        "lng": "22.10333347320557"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:43:40.325Z",
+      "updatedAt": "2024-11-17T11:52:58.226Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "3126cd84-c037-421a-8bae-af21a478c8a2",
+      "title": "TEST TITLE",
+      "description": "deponija smrdi",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.97358227169696",
+        "lng": "22.104921340942386"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:44:03.697Z",
+      "updatedAt": "2024-11-17T01:58:09.542Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "d27a84e9-44fe-49da-818e-c3ee8b8823c3",
+      "title": "Psi lutalice 2026",
+      "description": "test",
+      "cat_id": 9,
+      "position": {
+        "lat": "42.97989330511019",
+        "lng": "22.090716361999515"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:45:44.331Z",
+      "updatedAt": "2024-11-17T11:55:35.384Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "98027033-e198-46c8-a623-bb4a536be8f3",
+      "title": "Gori kontajner u centru grada",
+      "description": "78",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.970285205644316",
+        "lng": "22.12573528289795"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:47:20.474Z",
+      "updatedAt": "2024-11-17T01:59:08.839Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "6e026ddd-b274-41ee-9677-c7b23cf2692c",
+      "title": "TEST TITLE 2024",
+      "description": "78",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.985652342638794",
+        "lng": "22.112034559249878"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:51:30.673Z",
+      "updatedAt": "",
+      "image": "",
+      "status": "active"
+    },
+    {
+      "id": "418f428c-fe7c-4b6f-9432-8a318ea95fa9",
+      "title": "psi",
+      "description": "test",
+      "cat_id": 9,
+      "position": {
+        "lat": "42.98820629174605",
+        "lng": "22.112302780151367"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:52:19.475Z",
+      "updatedAt": "2024-11-17T11:29:52.293Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "dd2cc56d-b6ed-4b41-ac5f-e9ceac88e0fc",
+      "title": "smece",
+      "description": "test",
+      "cat_id": 3,
+      "position": {
+        "lat": "42.97549762890098",
+        "lng": "22.135047912597656"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T01:52:37.965Z",
+      "updatedAt": "",
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
+    },
+    {
+      "id": "0721bf64-632f-4019-ace3-50ff8c609586",
+      "title": "ulica pada",
+      "description": "ulica pada",
+      "cat_id": 10,
+      "position": {
+        "lat": "42.975466230083526",
+        "lng": "22.13620662689209"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T11:57:31.170Z",
       "updatedAt": null,
       "image": "gewinnspiel-teaser.png",
       "status": "active"
@@ -412,6 +562,18 @@
       "lastname": "Vuckovic",
       "phone": "+381621929234",
       "email": "biljanavuckovic@gmail.com",
+      "password": "norbert3591",
+      "accesToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWVsZCI6ImJpbGphbmFAZ21haWwuY29tIiwiaWF0IjoxNzE1NDYzODUyLCJleHAiOjE3MTU0Njc0NTJ9.4EZN9QWSBGFKM73lHjKkPkB5SLgQXWRsGq1mB0_TMbo",
+      "refreshToken": "",
+      "createdAt": "2024-11-10T01:55:06.808Z"
+    },
+    {
+      "id": "3",
+      "uid": 3,
+      "firstname": "Petar",
+      "lastname": "Petrovic",
+      "phone": "+381621929234",
+      "email": "petarpetrovic@gmail.com",
       "password": "norbert3591",
       "accesToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaWVsZCI6ImJpbGphbmFAZ21haWwuY29tIiwiaWF0IjoxNzE1NDYzODUyLCJleHAiOjE3MTU0Njc0NTJ9.4EZN9QWSBGFKM73lHjKkPkB5SLgQXWRsGq1mB0_TMbo",
       "refreshToken": "",

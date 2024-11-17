@@ -56,6 +56,26 @@ const SimulateAuthUser = () => {
       </button>
       <button
         className="btn btn-primary w-full"
+        onClick={() =>
+          setSessionStorageData({
+            user: {
+              uid: 3,
+              firstname: "Petar",
+              lastname: "Petrovic",
+              phone: "123456789",
+              email: "petar.petrovic@gmailcom",
+              password: "123456789",
+              accessToken: "123456789",
+              refreshToken: "123456789",
+              createdAt: new Date(),
+            },
+          })
+        }
+      >
+        Login User Petar
+      </button>
+      <button
+        className="btn btn-primary w-full"
         onClick={removeSessionStorageData}
       >
         Logoff User

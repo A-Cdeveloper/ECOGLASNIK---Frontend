@@ -108,7 +108,11 @@ const FormAddEditProblem = ({
         status: "active",
       };
 
-      addNewProblemMutation(newProblem);
+      addNewProblemMutation(newProblem, {
+        onSuccess: () => {
+          return navigate(`/problems/user/${user?.uid}}`);
+        },
+      });
     }
   };
 

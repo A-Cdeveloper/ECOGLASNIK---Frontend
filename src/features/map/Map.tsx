@@ -9,15 +9,28 @@ import { useProblems } from "../problems/hooks/useProblems";
 
 import "leaflet/dist/leaflet.css";
 import { DEFAULT_POSITION, INITIAL_ZOOM } from "../../constants";
+import { Problem } from "../../types";
 import Loader from "../../ui/Loader";
 import "../../utils.css";
-import { Problem } from "../../types";
 
-const Map = ({ problemId }: { problemId?: string }) => {
+const Map = ({
+  problemId,
+  userId,
+}: {
+  problemId?: string;
+  userId?: string;
+}) => {
   const { mapLat, mapLng } = useUrlParams();
   const { problems, isLoading } = useProblems();
 
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
+
+  const filteredProblems = useMemo(() => {
+    if (userId) {
+      return problems?.filter((problem) => problem.uid === +userId);
+    }
+    return problems;
+  }, [problems, userId]);
 
   const problem: Problem | undefined = useMemo(() => {
     return problems?.find((problem) => problem.id === problemId);
@@ -41,7 +54,7 @@ const Map = ({ problemId }: { problemId?: string }) => {
         minZoom={INITIAL_ZOOM}
         // style={{ height: "100vh", width: "100%" }}
         className="h-full w-full"
-        dragging={false} // disable dragging
+        dragging={true} // disable dragging
         zoomControl={true} // disable zoom control UI
         scrollWheelZoom={true} // disable scroll zoom
         doubleClickZoom={true} // disable double-click zoom
@@ -53,7 +66,7 @@ const Map = ({ problemId }: { problemId?: string }) => {
         />
 
         <ProblemsMarkers
-          problems={problems ?? []}
+          problems={filteredProblems ?? []}
           problemId={problemId}
           problemStatus={problem?.status}
           mapLat={mapLat as number}
