@@ -8,7 +8,7 @@ const SingleProblem = () => {
 
   return (
     <>
-      <BackButton to={-1} />
+      <BackButton />
       <ProblemDeails problemId={id} />
     </>
   );
