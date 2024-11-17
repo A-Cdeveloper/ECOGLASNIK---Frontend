@@ -149,7 +149,11 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         <Button
           size="large"
           style={{ width: "100%" }}
-          disabled={!isPasswordValid}
+          disabled={
+            !isPasswordValid ||
+            loginUserStatus === "pending" ||
+            registerUserStatus === "pending"
+          }
         >
           {isLoginMode
             ? loginUserStatus === "pending"

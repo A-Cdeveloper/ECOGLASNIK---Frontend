@@ -1,5 +1,6 @@
 import { API_URL } from "../../../constants";
 import { User } from "../../../types";
+import { wait } from "../../../utils/timeFunctions";
 
 export const loginApi = async ({
   email,
@@ -53,6 +54,33 @@ export const registerApi = async ({
     if (!response.ok) {
       throw new Error(
         `Failed to register: ${response.status} ${response.statusText}`
+      );
+    }
+    return response.json();
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
+    throw new Error(`${errorMessage}`);
+  }
+};
+
+export const forgotPasswordApi = async ({
+  email,
+}: {
+  email: string;
+}): Promise<{ message: string }> => {
+  try {
+    await wait(4000);
+    const response = await fetch(`${API_URL}/auth/forgot-password`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    if (!response.ok) {
+      throw new Error(
+        `Failed to forgot password: ${response.status} ${response.statusText}`
       );
     }
     return response.json();

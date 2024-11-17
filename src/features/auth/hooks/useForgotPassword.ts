@@ -1,9 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
-import { forgotPassword as forgotPasswordApi } from "../../services/apiAuth";
+
 import { toast } from "react-hot-toast";
+import { forgotPasswordApi } from "../api/authentication";
 
 const useForgotPassword = () => {
-  const { isLoading, mutate: forgotPassword } = useMutation({
+  const { status, mutate: forgotPassword } = useMutation({
     mutationFn: forgotPasswordApi,
     onSuccess: (data) => {
       toast.success(data.message);
@@ -11,7 +12,7 @@ const useForgotPassword = () => {
     onError: (err) => toast.error(err.message),
   });
 
-  return { isLoading, forgotPassword };
+  return { status, forgotPassword };
 };
 
 export default useForgotPassword;
