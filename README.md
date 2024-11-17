@@ -17,6 +17,9 @@
 - **React**: For building the user interface with reusable components.
 - **TypeScript**: To ensure type safety and enhance the development experience.
 - **TanStack Query (React Query)**: For server-state management and data fetching, providing a seamless experience when submitting and retrieving reports.
+- **React Router**: For client-side routing, enabling seamless navigation within the application.
+- **Leaflet**: For rendering interactive maps and handling map-based user interactions.
+- **Tailwind CSS**: For streamlined and responsive UI design with utility-first CSS classes
 
 ## License
 
