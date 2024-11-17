@@ -62,7 +62,10 @@ const mainRouter = [
         children: [
           { index: true, element: <LoginPage /> },
           { path: "forgot-password", element: <ForgotPassword /> },
-          { path: "verify-account", element: <VerifyAccount /> },
+          {
+            path: "verify-account/:userId/:verificationCode",
+            element: <VerifyAccount />,
+          },
         ],
       },
     ],
