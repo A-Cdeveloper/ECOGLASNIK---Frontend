@@ -26,6 +26,36 @@
       },
       "uid": 2,
       "createdAt": "2024-11-17T12:23:09.023Z",
+      "updatedAt": "2024-11-17T16:21:14.559Z",
+      "image": "gewinnspiel-teaser.png",
+      "status": "done"
+    },
+    {
+      "id": "afc48203-224b-4da2-8756-6cb0a32fc8f3",
+      "title": "Baceno smece opet",
+      "description": "na orasackom putu",
+      "cat_id": 2,
+      "position": {
+        "lat": "42.96258940120431",
+        "lng": "22.116497755050663"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T16:20:25.090Z",
+      "updatedAt": null,
+      "image": "gewinnspiel-teaser.png",
+      "status": "active"
+    },
+    {
+      "id": "99f20486-4058-4b69-b5ad-3d9e1b07fb69",
+      "title": "pala bandera",
+      "description": "78",
+      "cat_id": 6,
+      "position": {
+        "lat": "42.96981418177959",
+        "lng": "22.111701965332035"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-17T16:20:51.748Z",
       "updatedAt": null,
       "image": "gewinnspiel-teaser.png",
       "status": "active"
