@@ -1,7 +1,9 @@
+import { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
-import Map from "../features/map/Map";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+
+const MapComponent = lazy(() => import("../features/map/Map"));
 
 const Layout = () => {
   const params = useParams();
@@ -13,7 +15,11 @@ const Layout = () => {
       <Header />
       <Sidebar />
       <main className="flex-1 h-[350px] lg:h-screen p-3 lg:p-3 mt-[60px] lg:mt-0 order-1 lg:order-2">
-        <Map problemId={id} userId={userId} />
+        {/* <Map problemId={id} userId={userId} /> */}
+
+        <Suspense fallback={<div>Loading map...</div>}>
+          <MapComponent problemId={id} userId={userId} />
+        </Suspense>
       </main>
     </div>
   );

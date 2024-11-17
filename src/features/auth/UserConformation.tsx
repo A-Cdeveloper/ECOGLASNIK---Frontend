@@ -1,11 +1,8 @@
-import { useNavigate } from "react-router-dom";
-
-import useVerifyAccount from "./hooks/useVerifyAccount";
 import Headline from "../../ui/Headline";
 
 const UserConformation = () => {
-  const navigate = useNavigate();
-  const { isLoading, error, user } = useVerifyAccount();
+  // const navigate = useNavigate();
+  // const { isLoading, error, user } = useVerifyAccount();
 
   // console.log(user);
 
@@ -20,10 +17,10 @@ const UserConformation = () => {
   // const conformed = !!data;
   //if (shownUsers.length === 0) return <Empty resource="users" />;
 
-  if (!user) {
-    content = error?.message;
-  }
-  console.log(error?.message);
+  // if (!user) {
+  //   content = error?.message;
+  // }
+  // console.log(error?.message);
 
   return (
     <>

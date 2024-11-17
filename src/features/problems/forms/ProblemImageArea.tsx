@@ -39,7 +39,7 @@ const ProblemImageArea = ({
             }}
           />
           <img
-            src={`/public/${currentImage}`}
+            src={`/${currentImage}`}
             alt={problem?.title}
             className="my-4 border-double border-4 border-secondary/50"
           />
