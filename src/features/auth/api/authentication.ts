@@ -90,3 +90,25 @@ export const forgotPasswordApi = async ({
     throw new Error(`${errorMessage}`);
   }
 };
+
+export const verifyAccountApi = async (
+  userId: string,
+  verificationCode: string
+): Promise<User> => {
+  try {
+    await wait(4000);
+    const response = await fetch(
+      `${API_URL}/auth/verify-account/${userId}/${verificationCode}`
+    );
+    if (!response.ok) {
+      throw new Error(
+        `Failed to veryfy account: ${response.status} ${response.statusText}`
+      );
+    }
+    return response.json();
+  } catch (error) {
+    const errorMessage =
+      error instanceof Error ? error.message : "Unknown error occurred";
+    throw new Error(`${errorMessage}`);
+  }
+};
