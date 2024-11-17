@@ -8,7 +8,7 @@ export const useUser = (userId: number) => {
     data: user,
     error,
   } = useQuery<User>({
-    queryKey: ["users", userId],
+    queryKey: ["user", userId],
     queryFn: async () => {
       try {
         const response = await fetch(`${API_URL}/users/${userId}`);
