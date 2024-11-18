@@ -59,6 +59,21 @@
       "updatedAt": null,
       "image": "gewinnspiel-teaser.png",
       "status": "active"
+    },
+    {
+      "id": "97773046-5c95-48c9-9b47-d85ccd1e7f08",
+      "title": "TEST TITLE 2025",
+      "description": "testning optimal",
+      "cat_id": 1,
+      "position": {
+        "lat": "42.9744379104304",
+        "lng": "22.121658325195316"
+      },
+      "uid": 1,
+      "createdAt": "2024-11-18T00:52:21.050Z",
+      "updatedAt": null,
+      "image": "",
+      "status": "active"
     }
   ],
   "categories": [

@@ -11,6 +11,9 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
   const { mutate: deleteProblemMutation, status: deleteProblemLaoding } =
     useDeleteProblem();
 
+  const isLoadingChangeStatus = changeStatusLaoding === "pending";
+  const isLoadingDeleteProblem = deleteProblemLaoding === "pending";
+
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="flex items-center gap-4">
@@ -36,9 +39,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
             });
           }}
         >
-          {changeStatusLaoding === "pending"
-            ? "Promena statusa..."
-            : "Problem je rešen 📢"}
+          {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen 📢"}
         </Button>
       </div>
 
@@ -47,9 +48,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
         size="small"
         onClick={() => deleteProblemMutation(problem!.id)}
       >
-        {deleteProblemLaoding === "pending"
-          ? "Brisanje..."
-          : "Obriši problem 🎈"}
+        {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem 🎈"}
       </Button>
     </div>
   );

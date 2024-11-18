@@ -1,15 +1,22 @@
 import { useParams } from "react-router-dom";
-import ProblemForm from "../features/problems/ProblemForm";
+import useAuth from "../context/useAuth";
+import FormAddEditProblem from "../features/problems/forms/FormAddEditProblem";
 import BackButton from "../ui/Buttons/BackButton";
 
 const EditProblem = () => {
   const params = useParams();
-  const id = params.id as string;
+  const problemId = params.id as string;
+  const editMode = problemId ? true : false;
+  const { user } = useAuth();
 
   return (
     <>
       <BackButton to={-1} />
-      <ProblemForm problemId={id} />
+      <FormAddEditProblem
+        editMode={editMode}
+        problemId={problemId}
+        user={user}
+      />
     </>
   );
 };

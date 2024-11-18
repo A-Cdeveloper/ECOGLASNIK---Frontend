@@ -4,22 +4,33 @@ import User from "../users/User";
 import StatusBadge from "../../ui/StatusBadge";
 import { formattedDate } from "../../utils/timeFunctions";
 
-const ProblemHeader = ({ problem }: { problem: Problem }) => {
+type ProblemHeaderType = Pick<
+  Problem,
+  "cat_id" | "createdAt" | "updatedAt" | "status" | "uid"
+>;
+
+const ProblemHeader = ({
+  cat_id,
+  createdAt,
+  updatedAt,
+  status,
+  uid,
+}: ProblemHeaderType) => {
   return (
     <div className=" bg-secondary/30 my-4 py-2 px-3 grid grid-cols-[min-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md">
-      <ProblemCategory problemId={problem.cat_id} />
+      <ProblemCategory problemId={cat_id} />
       <div>Prijavljeno:</div>
-      <div>{formattedDate(problem?.createdAt)}</div>
-      <User userId={problem!.uid} />
-      {problem.updatedAt && (
+      <div>{formattedDate(createdAt)}</div>
+      <User userId={uid} />
+      {updatedAt && (
         <>
           <div>Rešeno:</div>
-          <div>{formattedDate(problem?.updatedAt)}</div>
+          <div>{formattedDate(updatedAt)}</div>
         </>
       )}
       <div>Status:</div>
       <div>
-        <StatusBadge status={problem.status} className="inline-block" />
+        <StatusBadge status={status} className="inline-block" />
       </div>
     </div>
   );
