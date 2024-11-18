@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Problem, User } from "../../../types";
 import Button from "../../../ui/Buttons/Button";
@@ -15,6 +15,13 @@ import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";
 import Select from "../../../ui/Form/Select";
 import ProblemImageArea from "./ProblemImageArea";
+
+export type FormStateType = {
+  category: number;
+  file: File | null;
+  touchForm: boolean;
+  showError: boolean;
+};
 
 const FormAddEditProblem = ({
   editMode,
@@ -33,28 +40,36 @@ const FormAddEditProblem = ({
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
 
-  const [category, setCategory] = useState(problem?.cat_id || 0);
-  const [file, setFile] = useState<File | null>(problem?.image ? null : null);
-  const [touchForm, setTouchForm] = useState(false);
-  const [showError, setShowError] = useState(false);
+  const [formState, setFormState] = useState<FormStateType>({
+    category: problem?.cat_id || 0,
+    file: problem?.image ? null : (null as File | null),
+    touchForm: false,
+    showError: false,
+  });
 
   const navigate = useNavigate();
 
   const isLoadingAddNew = addNewStatus === "pending";
   const isLoadingEdit = editProblemStatus === "pending";
 
+  const handleInputChange = useCallback(() => {
+    setFormState((prev) => ({ ...prev, touchForm: true }));
+  }, []);
+
+  const handleCategoryChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      setFormState((prev) => ({
+        ...prev,
+        touchForm: true,
+        category: +e.target.value,
+      }));
+    },
+    []
+  );
+
   if (editMode && user?.uid !== problem?.uid) {
     return <RestrictAccess />;
   }
-
-  const handleInputChange = () => {
-    setTouchForm(true);
-  };
-
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCategory(+e.target.value);
-    setTouchForm(true);
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,12 +80,15 @@ const FormAddEditProblem = ({
     const cat_id = Number(formData.get("cat_id")) as number;
     const imageProblem = formData.get("imageProblem") as File | null;
 
-    if (file) {
-      formData.append("image", file);
+    if (formState.file) {
+      formData.append("image", formState.file);
     }
 
     if (imageProblem?.size === 0) {
-      setShowError(true);
+      setFormState((prev) => ({
+        ...prev,
+        showError: true,
+      }));
       return;
     }
 
@@ -81,7 +99,7 @@ const FormAddEditProblem = ({
           title,
           description,
           cat_id,
-          image: file?.name || "",
+          image: formState?.file?.name || "",
         },
         {
           onSuccess: () => {
@@ -104,7 +122,7 @@ const FormAddEditProblem = ({
         uid: user!.uid,
         createdAt: new Date(), // new Date(),
         updatedAt: null,
-        image: file?.name || "",
+        image: formState.file?.name || "",
         status: "active",
       };
 
@@ -123,7 +141,7 @@ const FormAddEditProblem = ({
       </Headline>
 
       <PromptModal
-        formStatus={touchForm && !isLoadingAddNew && !isLoadingEdit}
+        formStatus={formState.touchForm && !isLoadingAddNew && !isLoadingEdit}
       />
 
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
@@ -138,7 +156,7 @@ const FormAddEditProblem = ({
         <Select
           name="cat_id"
           aria-description="Izaberi kategoriju problema"
-          value={category}
+          value={formState.category}
           onChange={handleCategoryChange}
           options={categories!}
           required
@@ -155,9 +173,8 @@ const FormAddEditProblem = ({
 
         <ProblemImageArea
           problem={problem!}
-          setFile={setFile}
-          setTouchForm={setTouchForm}
-          showError={showError}
+          formState={formState}
+          setFormState={setFormState}
         />
 
         <div className="flex justify-end">

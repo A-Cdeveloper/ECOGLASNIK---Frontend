@@ -1,43 +1,51 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Problem } from "../../../types";
 import CloseButton from "../../../ui/Buttons/CloseButton";
+import { FormStateType } from "./FormAddEditProblem";
 
 const ProblemImageArea = ({
   problem,
-  setFile,
-  setTouchForm,
-  showError,
+  formState,
+  setFormState,
 }: {
   problem: Problem;
-  setFile: (file: File) => void;
-  setTouchForm: (value: boolean) => void;
-  showError: boolean;
+  formState: FormStateType;
+  setFormState: React.Dispatch<React.SetStateAction<FormStateType>>;
 }) => {
   const [currentImage, setCurrentImage] = useState<string | null>(
     problem?.image
   );
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
+  const handleFileChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const selectedFile = e.target.files?.[0];
 
-    if (selectedFile) {
-      setFile(selectedFile);
-      setTouchForm(true);
-    }
-    //TODO
-    console.log("upload image to server");
-  };
+      if (selectedFile) {
+        setFormState((prev) => ({
+          ...prev,
+          file: selectedFile,
+          touchForm: true,
+        }));
+      }
+      //TODO Consider replacing with an actual image upload logic
+      console.log("upload image to server");
+    },
+    [setFormState]
+  );
+
+  const handleRemoveImage = useCallback(() => {
+    setCurrentImage(null);
+    setFormState((prev) => ({
+      ...prev,
+      touchForm: true,
+    }));
+  }, [setFormState]);
 
   return (
     <>
       {currentImage && (
         <div className="relative">
-          <CloseButton
-            onClick={() => {
-              setCurrentImage(null);
-              setTouchForm(true);
-            }}
-          />
+          <CloseButton onClick={handleRemoveImage} />
           <img
             src={`/${currentImage}`}
             alt={problem?.title}
@@ -64,7 +72,7 @@ const ProblemImageArea = ({
             Dodaj fotografiju
           </label>
 
-          {showError && (
+          {formState.showError && (
             <p className="text-rose-400 mt-1 text-end">
               Fotografija je obavezna!
             </p>

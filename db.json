@@ -32,7 +32,7 @@
     },
     {
       "id": "afc48203-224b-4da2-8756-6cb0a32fc8f3",
-      "title": "Baceno smece opet",
+      "title": "Baceno smece opet 2025",
       "description": "na orasackom putu",
       "cat_id": 2,
       "position": {
@@ -42,7 +42,7 @@
       "uid": 3,
       "createdAt": "2024-11-17T16:20:25.090Z",
       "updatedAt": null,
-      "image": "gewinnspiel-teaser.png",
+      "image": "cover-rollover-ecke.png",
       "status": "active"
     },
     {
@@ -71,9 +71,24 @@
       },
       "uid": 1,
       "createdAt": "2024-11-18T00:52:21.050Z",
-      "updatedAt": null,
+      "updatedAt": "2024-11-18T00:55:15.829Z",
       "image": "",
-      "status": "active"
+      "status": "done"
+    },
+    {
+      "id": "d3e13a82-6020-44a0-a224-fa2b9610f32e",
+      "title": "pas peni i ujeda",
+      "description": "pas ujeda",
+      "cat_id": 7,
+      "position": {
+        "lat": "42.9696650239496",
+        "lng": "22.102947235107422"
+      },
+      "uid": 3,
+      "createdAt": "2024-11-18T01:14:23.842Z",
+      "updatedAt": "2024-11-18T01:15:04.102Z",
+      "image": "",
+      "status": "done"
     }
   ],
   "categories": [
