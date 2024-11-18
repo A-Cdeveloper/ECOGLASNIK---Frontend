@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback, ChangeEvent, FormEvent } from "react";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Buttons/Button";
@@ -8,63 +8,86 @@ import Headline from "../../ui/Headline";
 import useLogin from "./hooks/useLogin";
 import useRegister from "./hooks/useRegister";
 
+type FormFields = {
+  email: string;
+  password: string;
+  firstname?: string;
+  lastName?: string;
+  phone?: string;
+  passwordAgain?: string;
+};
+
 function LoginRegisterForm({ mode }: { mode: string }) {
+  const navigate = useNavigate();
   const { status: loginUserStatus, mutate: loginUser } = useLogin();
   const { status: registerUserStatus, mutate: registerUser } = useRegister();
 
-  const navigate = useNavigate();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  //
-  const [firstname, setFirstname] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
-  //
+  const [formFields, setFormFields] = useState<FormFields>({
+    email: "",
+    password: "",
+    firstname: "",
+    lastName: "",
+    phone: "",
+    passwordAgain: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordAgain, setShowPasswordAgain] = useState(false);
 
   const isLoginMode = mode === "login";
-  const isPasswordValid = !isLoginMode ? password === passwordAgain : true;
+  const isPasswordValid =
+    isLoginMode || formFields.password === formFields.passwordAgain;
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormFields((prev) => ({ ...prev, [name]: value }));
+  }, []);
 
-    if (isLoginMode) {
-      if (!email || !password) return;
-      loginUser(
-        { email, password },
-        {
-          onSettled: () => {
-            setEmail("");
-            setPassword("");
+  const handleSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (isLoginMode) {
+        if (!formFields.email || !formFields.password) return;
+        loginUser(
+          { email: formFields.email, password: formFields.password },
+          {
+            onSettled: () =>
+              setFormFields({ ...formFields, email: "", password: "" }),
+            onSuccess: () => navigate("/", { replace: true }),
+          }
+        );
+      } else {
+        if (
+          !formFields.firstname ||
+          !formFields.lastName ||
+          !formFields.email ||
+          !formFields.password
+        )
+          return;
+        registerUser(
+          {
+            firstname: formFields.firstname,
+            lastname: formFields.lastName,
+            phone: formFields.phone,
+            email: formFields.email,
+            password: formFields.password,
           },
-          onSuccess: () => {
-            navigate("/", { replace: true });
-          },
-        }
-      );
-    } else {
-      if (!firstname || !lastName || !email || !password) return;
-      registerUser(
-        { firstname, lastname: lastName, phone, email, password },
-        {
-          onSettled: () => {
-            setFirstname("");
-            setLastName("");
-            setPhone("");
-            setEmail("");
-            setPassword("");
-            setPasswordAgain("");
-          },
-          onSuccess: () => {
-            navigate("/", { replace: true });
-          },
-        }
-      );
-    }
-  }
+          {
+            onSettled: () =>
+              setFormFields({
+                firstname: "",
+                lastName: "",
+                phone: "",
+                email: "",
+                password: "",
+                passwordAgain: "",
+              }),
+            onSuccess: () => navigate("/", { replace: true }),
+          }
+        );
+      }
+    },
+    [formFields, isLoginMode, loginUser, registerUser, navigate]
+  );
 
   return (
     <>
@@ -75,75 +98,75 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         {!isLoginMode && (
           <>
             <Input
-              type="firstname"
-              value={firstname}
+              name="firstname"
+              value={formFields.firstname}
               placeholder="Ime*"
-              onChange={(e) => setFirstname(e.target.value)}
+              onChange={handleInputChange}
               required
             />
             <Input
-              type="lastname"
-              value={lastName}
+              name="lastName"
+              value={formFields.lastName}
               placeholder="Prezime*"
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={handleInputChange}
               required
             />
             <Input
-              type="phone"
-              value={phone}
+              name="phone"
+              value={formFields.phone}
               placeholder="Telefon"
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handleInputChange}
             />
           </>
         )}
 
         <Input
+          name="email"
           type="email"
-          value={email}
+          value={formFields.email}
           placeholder="Email*"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleInputChange}
           required
         />
 
         <div className="relative">
           <Input
+            name="password"
             type={showPassword ? "text" : "password"}
-            value={password}
+            value={formFields.password}
             placeholder="Lozinka*"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInputChange}
             required
           />
           <ButtonIcon
             icon={showPassword ? <HiEyeSlash /> : <HiEye />}
             onClick={(e) => {
               e.preventDefault();
-              setShowPassword(!showPassword);
+              setShowPassword((prev) => !prev);
             }}
           />
         </div>
+
         {!isLoginMode && (
-          <>
-            <div className="relative">
-              <Input
-                type={showPasswordAgain ? "text" : "password"}
-                value={passwordAgain}
-                placeholder="Potvrdi lozinku*"
-                onChange={(e) => setPasswordAgain(e.target.value)}
-              />
-              <ButtonIcon
-                icon={showPasswordAgain ? <HiEyeSlash /> : <HiEye />}
-                onClick={(e) => {
-                  e.preventDefault();
-                  setShowPasswordAgain(!showPasswordAgain);
-                }}
-              />
-              {!isPasswordValid && passwordAgain !== "" ? (
-                <p className="text-rose-400 my-[3px]">Password don't match.</p>
-              ) : (
-                ""
-              )}
-            </div>
-          </>
+          <div className="relative">
+            <Input
+              name="passwordAgain"
+              type={showPasswordAgain ? "text" : "password"}
+              value={formFields.passwordAgain}
+              placeholder="Potvrdi lozinku*"
+              onChange={handleInputChange}
+            />
+            <ButtonIcon
+              icon={showPasswordAgain ? <HiEyeSlash /> : <HiEye />}
+              onClick={(e) => {
+                e.preventDefault();
+                setShowPasswordAgain((prev) => !prev);
+              }}
+            />
+            {!isPasswordValid && formFields.passwordAgain && (
+              <p className="text-rose-400 my-[3px]">Passwords don't match.</p>
+            )}
+          </div>
         )}
 
         <Button
@@ -161,18 +184,18 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               : "Prijavi se"
             : registerUserStatus === "pending"
             ? "Registracija..."
-            : "Registuj nalog"}
+            : "Registruj nalog"}
         </Button>
+
         {isLoginMode && (
-          <>
-            <p className="text-secondary text-center">
-              <Link to="forgot-password">Zaboravljena lozinka?</Link>
-            </p>
-          </>
+          <p className="text-secondary text-center">
+            <Link to="forgot-password">Zaboravljena lozinka?</Link>
+          </p>
         )}
+
         <p className="text-secondary text-center">
           {isLoginMode
-            ? "Nemate nalog? Regstrujte se "
+            ? "Nemate nalog? Registrujte se "
             : "Imate nalog? Ulogujte se "}
           <Link
             to={`/login/?mode=${isLoginMode ? "register" : "login"}`}
