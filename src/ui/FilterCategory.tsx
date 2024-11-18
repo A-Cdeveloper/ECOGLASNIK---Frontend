@@ -1,10 +1,9 @@
-import { useSearchParams } from "react-router-dom";
 import { useCategories } from "../features/problems/hooks/useCategories";
+import { useUrlParams } from "../hooks/useUrlParams";
 
 const FilterCategory = () => {
-  const [, setSearchParams] = useSearchParams();
   const { categories } = useCategories();
-  const currentParams = new URLSearchParams(window.location.search);
+  const { currentParams, setCurrentParams } = useUrlParams();
 
   return (
     <>
@@ -22,7 +21,7 @@ const FilterCategory = () => {
           } else {
             currentParams.delete("cat_id"); // Remove if no value is selected
           }
-          setSearchParams(currentParams);
+          setCurrentParams();
         }}
       >
         <option value="">Sve kategorije</option>

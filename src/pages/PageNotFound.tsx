@@ -2,6 +2,7 @@ import Headline from "../ui/Headline";
 import notfound from "../assets/404.png";
 import Button from "../ui/Buttons/Button";
 import { useNavigate } from "react-router-dom";
+
 const PageNotFound = () => {
   const navigate = useNavigate();
   return (

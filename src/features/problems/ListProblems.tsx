@@ -3,6 +3,7 @@ import Loader from "../../ui/Loader";
 import NoResourceFound from "../../ui/NoResourceFound";
 import ProblemItem from "./ProblemItem";
 import { useProblems } from "./hooks/useProblems";
+import Error from "../../ui/Error";
 
 const ListProblems = ({ userId }: { userId?: number }) => {
   const { isLoading, problems, error } = useProblems();
@@ -25,7 +26,7 @@ const ListProblems = ({ userId }: { userId?: number }) => {
     return <NoResourceFound resources="problem" />;
   }
   if (error) {
-    return <div>{error.message}</div>;
+    return <Error message={error.message} />;
   }
 
   return (

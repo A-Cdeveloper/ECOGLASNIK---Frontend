@@ -11,7 +11,7 @@ export default defineConfig({
 
   plugins: [
     react(),
-    visualizer({ open: true }),
+    visualizer({ open: true, template: "flamegraph" }),
     viteCompression({
       algorithm: "gzip", // or use 'gzip'
       ext: ".gz", // For Brotli, or '.gz' for gzip
@@ -26,6 +26,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           leaflet: ["leaflet"],
+          "react-leaflet": ["react-leaflet"],
         },
       },
     },

@@ -1,5 +1,5 @@
 import BackButton from "../ui/Buttons/BackButton";
-import Headline from "../ui/Headline";
+import TextBlock from "../ui/TextBlock";
 
 const ImpressumPage = () => {
   return (
@@ -15,64 +15,46 @@ const ImpressumPage = () => {
         <br />
         <strong>16210 Vlasotince, Srbija</strong>
       </p>
-      <Headline level={2} className="my-2">
-        Kontakt:
-      </Headline>
-      <p>
+      <TextBlock caption="Kontakt:">
         Telefon: +381 637675989 <br />
         Email: cleanme@e-seo.info <br />
         Web: www.e-seo.info
-      </p>
-      <Headline level={2} className="my-2">
-        Opis sajta
-      </Headline>
-      <p>
+      </TextBlock>
+      <TextBlock caption="Opis sajta:">
         CLEANME je online platforma koja omogućava građanima da prijave probleme
         u komunalnoj infrastrukturi putem interaktivne mape. Korisnici mogu lako
         i brzo prijaviti komunalne probleme poput oštećenih puteva, prepunih
         kontejnera, kvarova na uličnom osvetljenju i slično. Cilj sajta je da
         unapredi komunikaciju između građana i komunalnih službi, olakšavajući
         brzo rešavanje prijavljenih problema.
-      </p>
+      </TextBlock>
 
-      <Headline level={2} className="my-2">
-        Odricanje od odgovornosti
-      </Headline>
-      <p>
+      <TextBlock caption="Odricanje od odgovornosti:">
         CLEANME omogućava korisnicima prijavu problema u javnom interesu, ali ne
         snosi odgovornost za tačnost prijavljenih informacija. Sve prijave su
         podložne proveri od strane nadležnih komunalnih službi. E-SEO TEAM nije
         odgovoran za kašnjenja ili neizvršavanje prijava od strane komunalnih
         službi.
-      </p>
+      </TextBlock>
 
-      <Headline level={2} className="my-2">
-        Autorska prava
-      </Headline>
-      <p>
+      <TextBlock caption="Autorska prava:">
         Sadržaj, dizajn i koncept sajta zaštićeni su autorskim pravima i
         vlasništvo su E-SEO TEAM-a Svako kopiranje, preuzimanje ili
-        reprodukovanje sadržaja bez dozvole je zabranjeno.{" "}
-      </p>
+        reprodukovanje sadržaja bez dozvole je zabranjeno.
+      </TextBlock>
 
-      <Headline level={2} className="my-2">
-        Zaštita podataka
-      </Headline>
-      <p>
+      <TextBlock caption="Zaštita podataka:">
         CLEANME obrađuje podatke u skladu sa Zakonom o zaštiti podataka o
         ličnosti. Lični podaci koji se prikupljaju kroz prijave koriste se
         isključivo za potrebe obrade prijave i neće biti deljeni sa trećim
         licima, osim u slučajevima predviđenim zakonom.
-      </p>
+      </TextBlock>
 
-      <Headline level={2} className="my-2">
-        Ažuriranje i održavanje sajta
-      </Headline>
-      <p>
+      <TextBlock caption="Ažuriranje i održavanje sajta:">
         E-SEO TEAM redovno ažurira sadržaj sajta i zadržava pravo izmene
         informacija na ovoj stranici u bilo kom trenutku bez prethodnog
         obaveštenja.
-      </p>
+      </TextBlock>
     </>
   );
 };

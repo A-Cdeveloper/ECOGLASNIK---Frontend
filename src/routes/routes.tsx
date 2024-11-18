@@ -1,8 +1,5 @@
 import { lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-//import Layout from "../ui/Layout";
-
 import Homepage from "../pages/Homepage";
 import ImpressumPage from "../pages/ImpressumPage";
 import LoginPage from "../pages/LoginPage";
