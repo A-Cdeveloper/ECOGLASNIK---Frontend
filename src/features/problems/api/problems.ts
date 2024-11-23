@@ -71,16 +71,18 @@ export const addNewProblemApi = async (
       body: JSON.stringify(newProblem),
     });
 
+    const data = await response.json();
+    console.log(data);
+
     if (!response.ok) {
-      throw new Error(
-        `Failed to add problem: ${response.status} ${response.statusText}`
-      );
+      const errors: string[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      data?.error.map((err: any) => errors.push(err.message));
+      throw new Error(errors.join("\n"));
     }
-    return response.json();
+    return data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+    const errorMessage = error instanceof Error ? error : "Greška na serveru";
     throw new Error(`${errorMessage}`);
   }
 };
