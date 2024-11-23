@@ -25,15 +25,15 @@ export const getAllProblemsApi = async (
 
   try {
     const response = await fetch(
-      `${API_URL}/problems/${query}&_sort=status&_order=desc`
+      `${API_URL}/problems/${query}&sort=status,createdAt&order=ASC,DESC`
     );
     if (!response.ok) {
       throw new Error(
         `Failed to fetch problems: ${response.status} ${response.statusText}`
       );
     }
-    const problems = await response.json();
-    return problems;
+    const { data } = await response.json();
+    return data;
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
@@ -59,14 +59,16 @@ export const getSingleProblemApi = async (id: string): Promise<Problem> => {
   }
 };
 
-export const addNewProblemApi = async (problem: Problem): Promise<Problem> => {
+export const addNewProblemApi = async (
+  newProblem: Problem
+): Promise<Problem> => {
   try {
     const response = await fetch(`${API_URL}/problems`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(problem),
+      body: JSON.stringify(newProblem),
     });
 
     if (!response.ok) {
