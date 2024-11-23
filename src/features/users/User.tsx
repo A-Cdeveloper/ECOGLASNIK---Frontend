@@ -7,7 +7,7 @@ const User = ({
 }) => {
   return (
     <>
-      <div>Korisnik:</div>
+      <div>Prijavio:</div>
       <div>{user.firstname + " " + user.lastname}</div>
     </>
   );

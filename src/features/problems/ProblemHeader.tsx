@@ -17,14 +17,14 @@ const ProblemHeader = ({
   user,
 }: ProblemHeaderType) => {
   return (
-    <div className=" bg-secondary/30 my-4 py-2 px-3 grid grid-cols-[min-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md">
+    <div className=" bg-secondary/30 my-4 py-2 px-3 grid grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md">
       <ProblemCategory problemId={cat_id} />
-      <div>Prijavljeno:</div>
-      <div>{formattedDate(createdAt)}</div>
       <User user={user} />
+      <div>Datum prijave:</div>
+      <div>{formattedDate(createdAt)}</div>
       {updatedAt && (
         <>
-          <div>Rešeno:</div>
+          <div>Datum rešavanja:</div>
           <div>{formattedDate(updatedAt)}</div>
         </>
       )}
