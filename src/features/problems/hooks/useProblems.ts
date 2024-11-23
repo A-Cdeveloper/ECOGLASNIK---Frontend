@@ -12,6 +12,7 @@ export const useProblems = () => {
   });
   return {
     problems: data,
+    numberOfResults: data?.length,
     error,
     isLoading,
   };

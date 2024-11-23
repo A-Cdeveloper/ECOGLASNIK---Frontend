@@ -6,7 +6,12 @@ import { useProblems } from "./hooks/useProblems";
 import Error from "../../ui/Error";
 
 const ListProblems = ({ userId }: { userId?: number }) => {
-  const { isLoading, problems, error } = useProblems();
+  const {
+    isLoading,
+    problems,
+    error,
+    numberOfResults: numberofProblems,
+  } = useProblems();
 
   const userProblems = useMemo(() => {
     if (userId) {
@@ -14,9 +19,6 @@ const ListProblems = ({ userId }: { userId?: number }) => {
     }
     return problems;
   }, [problems, userId]);
-
-  const numberofProblems =
-    useMemo(() => userProblems?.length, [userProblems]) ?? problems?.length;
 
   if (isLoading) {
     return <Loader />;
