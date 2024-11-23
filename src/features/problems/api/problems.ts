@@ -1,5 +1,5 @@
 import { API_URL } from "../../../constants";
-import { Problem } from "../../../types";
+import { ExtendedProblem, Problem } from "../../../types";
 
 export const getAllProblemsApi = async (
   status: string | null,
@@ -42,7 +42,9 @@ export const getAllProblemsApi = async (
   }
 };
 
-export const getSingleProblemApi = async (id: string): Promise<Problem> => {
+export const getSingleProblemApi = async (
+  id: string
+): Promise<ExtendedProblem> => {
   try {
     const response = await fetch(`${API_URL}/problems/${id}`);
     if (!response.ok) {

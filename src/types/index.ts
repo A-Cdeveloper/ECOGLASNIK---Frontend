@@ -21,6 +21,10 @@ export type Problem = {
   image: string;
 };
 
+export type ExtendedProblem = Problem & {
+  user: Pick<User, "firstname" | "lastname" | "email">;
+};
+
 export type Problems = Problem[];
 
 export type User = {

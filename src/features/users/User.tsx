@@ -1,13 +1,14 @@
-import { useUser } from "./hooks/useUser";
+import { type User } from "../../types";
 
-const User = ({ userId }: { userId: number }) => {
-  const { isLoading, user } = useUser(userId);
+const User = ({
+  user,
+}: {
+  user: Pick<User, "firstname" | "lastname" | "email">;
+}) => {
   return (
     <>
       <div>Korisnik:</div>
-      <div>
-        {isLoading ? "Loading..." : user?.firstname + " " + user?.lastname}
-      </div>
+      <div>{user.firstname + " " + user.lastname}</div>
     </>
   );
 };

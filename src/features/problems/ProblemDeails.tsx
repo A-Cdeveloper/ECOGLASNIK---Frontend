@@ -9,7 +9,7 @@ import ProblemsDetailsEdit from "./ProblemsDetailsEdit";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
-  const { user } = useAuth();
+  const { user: logedUser } = useAuth();
   const { uid, title, description, image, status } = problem || {};
 
   if (isLoading) {
@@ -31,7 +31,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
         width={"100%"}
         className="my-4 border-double border-4 border-secondary/50"
       />
-      {status === "active" && user?.uid === uid && (
+      {status === "active" && logedUser?.uid === uid && (
         <ProblemsDetailsEdit problem={problem!} />
       )}
     </>
