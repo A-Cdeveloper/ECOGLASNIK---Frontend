@@ -15,6 +15,7 @@ import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";
 import Select from "../../../ui/Form/Select";
 import ProblemImageArea from "./ProblemImageArea";
+import { getErrorMessage } from "../../../utils/helpers";
 
 export type FormStateType = {
   category: number;
@@ -33,8 +34,11 @@ const FormAddEditProblem = ({
   user: User | null;
 }) => {
   const { mapLat, mapLng } = useUrlParams();
-  const { status: addNewStatus, mutate: addNewProblemMutation } =
-    useAddNewProblem();
+  const {
+    status: addNewStatus,
+    mutate: addNewProblemMutation,
+    error: addNewProblemError,
+  } = useAddNewProblem();
   const { status: editProblemStatus, mutate: editProblemMutation } =
     useUpdateProblem();
   const { categories } = useCategories();
@@ -144,6 +148,12 @@ const FormAddEditProblem = ({
         formStatus={formState.touchForm && !isLoadingAddNew && !isLoadingEdit}
       />
 
+      {addNewProblemError && (
+        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+          {getErrorMessage(addNewProblemError.message)}
+        </p>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <Input
           placeholder="Naslov problema"
@@ -151,7 +161,6 @@ const FormAddEditProblem = ({
           aria-description="Unesi naslov problema"
           defaultValue={problem?.title}
           onChange={handleInputChange}
-          required
         />
         <Select
           name="cat_id"
@@ -159,7 +168,6 @@ const FormAddEditProblem = ({
           value={formState.category}
           onChange={handleCategoryChange}
           options={categories!}
-          required
         />
         <TextArea
           placeholder="Opis problema"
@@ -167,7 +175,6 @@ const FormAddEditProblem = ({
           aria-description="Unesi opis problema"
           defaultValue={problem?.description}
           onChange={handleInputChange}
-          required
           className="h-[200px]"
         />
 
