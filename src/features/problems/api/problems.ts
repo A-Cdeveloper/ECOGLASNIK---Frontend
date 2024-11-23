@@ -72,8 +72,6 @@ export const addNewProblemApi = async (
     });
 
     const data = await response.json();
-    console.log(data);
-
     if (!response.ok) {
       const errors: string[] = [];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -98,23 +96,24 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
     };
 
     const response = await fetch(`${API_URL}/problems/${problem.id}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedFields),
     });
 
+    const data = await response.json();
+    console.log(data);
     if (!response.ok) {
-      throw new Error(
-        `Failed to update problem: ${response.status} ${response.statusText}`
-      );
+      const errors: string[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      data?.error.map((err: any) => errors.push(err.message));
+      throw new Error(errors.join("\n"));
     }
-    return response.json();
+    return data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+    const errorMessage = error instanceof Error ? error : "Greška na serveru";
     throw new Error(`${errorMessage}`);
   }
 };

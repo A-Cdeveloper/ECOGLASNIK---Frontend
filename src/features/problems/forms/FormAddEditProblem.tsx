@@ -39,8 +39,11 @@ const FormAddEditProblem = ({
     mutate: addNewProblemMutation,
     error: addNewProblemError,
   } = useAddNewProblem();
-  const { status: editProblemStatus, mutate: editProblemMutation } =
-    useUpdateProblem();
+  const {
+    status: editProblemStatus,
+    mutate: editProblemMutation,
+    error: editProblemError,
+  } = useUpdateProblem();
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
 
@@ -151,6 +154,12 @@ const FormAddEditProblem = ({
       {addNewProblemError && (
         <p className="text-rose-400 mt-0 whitespace-pre-wrap">
           {getErrorMessage(addNewProblemError.message)}
+        </p>
+      )}
+
+      {editProblemError && (
+        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+          {getErrorMessage(editProblemError.message)}
         </p>
       )}
 
