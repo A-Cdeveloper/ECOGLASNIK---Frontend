@@ -9,7 +9,8 @@ export const getCategoriesApi = async (): Promise<ProblemCategory[]> => {
         `Failed to fetch categories: ${response.status} ${response.statusText}`
       );
     }
-    return response.json();
+    const { data } = await response.json();
+    return data;
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
