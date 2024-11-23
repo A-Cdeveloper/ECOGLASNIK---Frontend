@@ -16,8 +16,8 @@ const useAddNewProblem = (): UseMutationResult<Problem, Error, Problem> => {
       toast.success("Problem uspešno dodat!");
       queryClient.invalidateQueries({ queryKey: ["problems"] }); // Optional: to refresh the problems query
     },
-    onError: (err: Error) => {
-      toast.error("Došlo je do greške pri dodavanju problema." + err.message);
+    onError: () => {
+      toast.error("Došlo je do greške pri dodavanju problema.");
     },
   });
 
