@@ -14,7 +14,7 @@ type SelectType = {
 const Select = ({
   name,
   value,
-  placeholder = "Select an option",
+  placeholder = "Izaberi kategoriju",
   ariaDescription = "",
   onChange,
   options = [],
