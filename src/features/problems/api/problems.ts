@@ -27,17 +27,16 @@ export const getAllProblemsApi = async (
     const response = await fetch(
       `${API_URL}/problems/${query}&sort=status,createdAt&order=ASC,DESC`
     );
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch problems: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.error);
     }
-    const { data } = await response.json();
-    return data;
+    return data.data;
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+      error instanceof Error ? error.message : "Greška na serveru";
     throw new Error(`${errorMessage}`);
   }
 };
