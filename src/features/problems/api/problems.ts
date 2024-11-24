@@ -107,7 +107,7 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
     });
 
     const data = await response.json();
-    console.log(data);
+
     if (!response.ok) {
       const errors: string[] = [];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
