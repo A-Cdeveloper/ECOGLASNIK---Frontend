@@ -16,10 +16,9 @@ const useDeleteProblem = (): UseMutationResult<Problem, Error, string> => {
   const mutation = useMutation<Problem, Error, string>({
     mutationFn: deleteProblemApi, // This is the function to delete the problem
     onSuccess: (data: Problem) => {
-      // Now `data` is the deleted `Problem` object
-      toast.success(`Problem ${data.title} je uklonjen!`);
+      toast.success(`Problem "${data.title}" je uklonjen!`);
       navigate("/"); // Navigate to home page after deletion
-      queryClient.invalidateQueries({ queryKey: ["problem"] }); // Optional: refresh the problems query
+      queryClient.invalidateQueries({ queryKey: ["problems"] }); // Optional: refresh the problems query
     },
     onError: (err: Error) => {
       toast.error("Došlo je do greške pri uklanjanju problema." + err.message);

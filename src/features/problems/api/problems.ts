@@ -126,16 +126,15 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
     const response = await fetch(`${API_URL}/problems/${id}`, {
       method: "DELETE",
     });
+    const data = await response.json();
     if (!response.ok) {
-      throw new Error(
-        `Failed to delete problem: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.error);
     }
-    return response.json();
+    return data;
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+      error instanceof Error ? error.message : "Greška na serveru";
     throw new Error(`${errorMessage}`);
   }
 };
