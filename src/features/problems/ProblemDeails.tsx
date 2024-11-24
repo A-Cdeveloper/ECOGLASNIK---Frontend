@@ -26,8 +26,8 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       {problem && <ProblemHeader {...problem} />}
       <p>{description}</p>
       <img
-        src={`/${image}`}
-        alt=""
+        src={image}
+        alt={title}
         width={"100%"}
         className="my-4 border-double border-4 border-secondary/50"
       />
