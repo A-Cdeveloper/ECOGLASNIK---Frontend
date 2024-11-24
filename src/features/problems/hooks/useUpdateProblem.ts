@@ -17,7 +17,7 @@ const useUpdateProblem = (): UseMutationResult<Problem, Error, Problem> => {
       queryClient.invalidateQueries({ queryKey: ["problem"] }); // Optional: to refresh the problems query
     },
     onError: () => {
-      toast.error("Došlo je do greške pri promeni problema.");
+      toast.error("Došlo je do greške pri izmeni detalja problema.");
     },
   });
 

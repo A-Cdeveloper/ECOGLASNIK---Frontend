@@ -2,20 +2,30 @@ import { useNavigate } from "react-router-dom";
 import { Problem } from "../../types";
 import Button from "../../ui/Buttons/Button";
 import useDeleteProblem from "./hooks/useDeleteProblem";
-import useUpdateProblemStatus from "./hooks/useUpdateProblemStatus";
+import useUpdateProblem from "./hooks/useUpdateProblem";
+import { getErrorMessage } from "../../utils/helpers";
 
 const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
   const navigate = useNavigate();
-  const { mutate: updateStatusMutation, status: changeStatusLaoding } =
-    useUpdateProblemStatus();
+  const {
+    status: updateProblemStatus,
+    mutate: updateProblemMutation,
+    error: updateProblemError,
+  } = useUpdateProblem();
   const { mutate: deleteProblemMutation, status: deleteProblemLaoding } =
     useDeleteProblem();
 
-  const isLoadingChangeStatus = changeStatusLaoding === "pending";
+  const isLoadingChangeStatus = updateProblemStatus === "pending";
   const isLoadingDeleteProblem = deleteProblemLaoding === "pending";
 
   return (
     <div className="flex flex-col items-center gap-4">
+      {updateProblemError && (
+        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+          {getErrorMessage(updateProblemError.message)}
+        </p>
+      )}
+
       <div className="flex items-center gap-4">
         <Button
           variation="warning"
@@ -32,7 +42,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
           variation="primary"
           size="medium"
           onClick={() => {
-            updateStatusMutation({
+            updateProblemMutation({
               ...problem!,
               updatedAt: new Date(),
               status: "done",
