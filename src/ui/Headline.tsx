@@ -7,7 +7,8 @@ type HeadlineProps = {
 const Headline = ({ level = 1, children, className = "" }: HeadlineProps) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 
-  const generalClasses = "font-normal font-roboto leading-[1.25] mb-1";
+  const generalClasses =
+    "font-normal font-roboto leading-[1.25] mb-1 text-wrap";
   let fontSizeClasses = "";
 
   switch (level) {
