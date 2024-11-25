@@ -137,3 +137,26 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
     throw new Error(`${errorMessage}`);
   }
 };
+
+export const uploadProblemImageApi = async (file: File) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch(`${API_URL}/problems/upload`, {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
+
+    return data;
+  } catch (error) {
+    // Check if the error is an instance of the Error object to get a better message
+    const errorMessage =
+      error instanceof Error ? error.message : "Greška na serveru";
+    throw new Error(`${errorMessage}`);
+  }
+};
