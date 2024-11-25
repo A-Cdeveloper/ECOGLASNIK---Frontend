@@ -1,23 +1,28 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { Problem } from "../../../types";
 import CloseButton from "../../../ui/Buttons/CloseButton";
 import { FormStateType } from "./FormAddEditProblem";
+
+import useUploadImageProblem from "../hooks/useUploadImageProblem";
 
 const ProblemImageArea = ({
   problem,
   formState,
   setFormState,
+  currentImage,
+  setCurrentImage,
 }: {
   problem: Problem;
   formState: FormStateType;
   setFormState: React.Dispatch<React.SetStateAction<FormStateType>>;
+  currentImage: string | null;
+  setCurrentImage: React.Dispatch<React.SetStateAction<string | null>>;
 }) => {
-  const [currentImage, setCurrentImage] = useState<string | null>(
-    problem?.image
-  );
+  const { status: uploadImageStatus, mutateAsync: uploadImageMutation } =
+    useUploadImageProblem();
 
   const handleFileChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
       const selectedFile = e.target.files?.[0];
 
       if (selectedFile) {
@@ -27,30 +32,42 @@ const ProblemImageArea = ({
           touchForm: true,
         }));
       }
-      //TODO Consider replacing with an actual image upload logic
-      console.log("upload image to server");
+
+      //console.log("upload image to server");
+
+      const data = await uploadImageMutation(selectedFile as File);
+      setCurrentImage(data.imageUrl);
     },
-    [setFormState]
+    [setCurrentImage, setFormState, uploadImageMutation]
   );
 
   const handleRemoveImage = useCallback(() => {
     setCurrentImage(null);
+    // TODO delete image from pinata + db
     setFormState((prev) => ({
       ...prev,
       touchForm: true,
     }));
-  }, [setFormState]);
+  }, [setCurrentImage, setFormState]);
+
+  const isLoadingUploadImage = uploadImageStatus === "pending";
+
+  if (isLoadingUploadImage) {
+    return <p>Uploading image...</p>;
+  }
 
   return (
     <>
       {currentImage && (
         <div className="relative">
           <CloseButton onClick={handleRemoveImage} />
-          <img
-            src={`/${currentImage}`}
-            alt={problem?.title}
-            className="my-4 border-double border-4 border-secondary/50"
-          />
+          <div className="w-full h-[250px] overflow-hidden">
+            <img
+              src={currentImage}
+              alt={problem?.title}
+              className="my-4 border-double border-4 border-secondary/50 object-cover position-center"
+            />
+          </div>
         </div>
       )}
       {!currentImage && (

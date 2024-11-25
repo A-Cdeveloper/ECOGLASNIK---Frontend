@@ -44,6 +44,7 @@ const FormAddEditProblem = ({
     mutate: editProblemMutation,
     error: editProblemError,
   } = useUpdateProblem();
+
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
 
@@ -53,6 +54,10 @@ const FormAddEditProblem = ({
     touchForm: false,
     showError: false,
   });
+
+  const [currentImage, setCurrentImage] = useState<string | null>(
+    problem!.image
+  );
 
   const navigate = useNavigate();
 
@@ -85,19 +90,6 @@ const FormAddEditProblem = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
-    const imageProblem = formData.get("imageProblem") as File | null;
-
-    if (formState.file) {
-      formData.append("image", formState.file);
-    }
-
-    if (imageProblem?.size === 0) {
-      setFormState((prev) => ({
-        ...prev,
-        showError: true,
-      }));
-      return;
-    }
 
     if (editMode) {
       editProblemMutation(
@@ -106,7 +98,7 @@ const FormAddEditProblem = ({
           title,
           description,
           cat_id,
-          image: formState?.file?.name || "",
+          image: currentImage,
         },
         {
           onSuccess: () => {
@@ -129,7 +121,7 @@ const FormAddEditProblem = ({
         uid: user!.uid,
         createdAt: new Date(), // new Date(),
         updatedAt: null,
-        image: formState.file?.name || "",
+        image: currentImage,
         status: "active",
       };
 
@@ -191,6 +183,8 @@ const FormAddEditProblem = ({
           problem={problem!}
           formState={formState}
           setFormState={setFormState}
+          currentImage={currentImage}
+          setCurrentImage={setCurrentImage}
         />
 
         <div className="flex justify-end">
@@ -198,7 +192,7 @@ const FormAddEditProblem = ({
             aria-label="Pošalji problem"
             variation="success"
             size="medium"
-            disabled={isLoadingAddNew}
+            disabled={isLoadingAddNew || isLoadingEdit}
           >
             {!editMode && (isLoadingAddNew ? "Slanje..." : "Prijavi")}
             {editMode && (isLoadingEdit ? "Izmena..." : "Izmeni")}
