@@ -36,7 +36,7 @@ export const getAllProblemsApi = async (
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Greška na serveru";
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };
@@ -55,7 +55,7 @@ export const getSingleProblemApi = async (
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };
@@ -81,7 +81,8 @@ export const addNewProblemApi = async (
     }
     return data;
   } catch (error) {
-    const errorMessage = error instanceof Error ? error : "Greška na serveru";
+    const errorMessage =
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };
@@ -115,7 +116,8 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
     }
     return data;
   } catch (error) {
-    const errorMessage = error instanceof Error ? error : "Greška na serveru";
+    const errorMessage =
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };
@@ -156,7 +158,7 @@ export const uploadProblemImageApi = async (file: File) => {
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Greška na serveru";
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };

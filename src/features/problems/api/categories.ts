@@ -14,7 +14,7 @@ export const getCategoriesApi = async (): Promise<ProblemCategory[]> => {
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };
@@ -33,7 +33,7 @@ export const getSingleCategoryApi = async (
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+      error instanceof Error && "Servis trenutno nije dustupan.⚠";
     throw new Error(`${errorMessage}`);
   }
 };
