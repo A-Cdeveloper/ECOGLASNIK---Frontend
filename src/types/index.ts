@@ -18,7 +18,7 @@ export type Problem = {
   status: "active" | "done";
   cat_id: number;
   uid: number;
-  image: string;
+  image: string | null;
 };
 
 export type ExtendedProblem = Problem & {
