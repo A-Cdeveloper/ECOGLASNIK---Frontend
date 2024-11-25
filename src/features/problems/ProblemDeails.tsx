@@ -25,12 +25,15 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       <h2 className="text-xl font-bold leading-[1.1] mt-3"></h2>
       {problem && <ProblemHeader {...problem} />}
       <p>{description}</p>
-      <img
-        src={image}
-        alt={title}
-        width={"100%"}
-        className="my-4 border-double border-4 border-secondary/50"
-      />
+
+      <div className="w-full h-[250px] overflow-hidden my-4">
+        <img
+          src={image || ""}
+          alt={title}
+          className=" border-double border-4 border-secondary/50 object-cover position-center"
+        />
+      </div>
+
       {status === "active" && logedUser?.uid === uid && (
         <ProblemsDetailsEdit problem={problem!} />
       )}
