@@ -33,13 +33,14 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
                 `Rešeno: ${formattedDate(problem?.createdAt)}`}
             </span>
           </div>
-          <img
-            src={image}
-            alt=""
-            width={120}
-            height={60}
-            className="self-start"
-          />
+
+          <div className="w-[120px] h-[100px] overflow-hidden bg-orange-700 self-end">
+            <img
+              src={image || ""}
+              alt={title}
+              className="object-cover position-center w-full h-full"
+            />
+          </div>
         </div>
       </Link>
     </div>
