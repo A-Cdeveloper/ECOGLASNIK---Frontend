@@ -56,9 +56,6 @@ const FormAddEditProblem = ({
   const [currentImageUrl, setCurrentImageUrl] = useState<string>("");
   const [currentImageCid, setCurrentImageCid] = useState<string>("");
 
-  console.log(currentImageUrl);
-  console.log(currentImageCid);
-
   const uploadImageLoading = !!currentImageUrl;
 
   useEffect(() => {
