@@ -95,6 +95,7 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
       description: problem.description,
       cat_id: problem.cat_id,
       image: problem.image || "",
+      pinata_id: problem.pinata_id || "",
       status: problem.status,
     };
 
