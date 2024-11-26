@@ -9,13 +9,15 @@ import MiniSpinner from "../../../ui/MiniSpinner";
 const ProblemImageArea = ({
   problem,
   setFormState,
-  currentImage,
-  setCurrentImage,
+  currentImageUrl,
+  setCurrentImageUrl,
+  setCurrentImageCid,
 }: {
   problem: Problem;
   setFormState: React.Dispatch<React.SetStateAction<FormStateType>>;
-  currentImage: string;
-  setCurrentImage: React.Dispatch<React.SetStateAction<string>>;
+  currentImageUrl: string;
+  setCurrentImageUrl: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentImageCid: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { status: uploadImageStatus, mutateAsync: uploadImageMutation } =
     useUploadImageProblem();
@@ -32,22 +34,23 @@ const ProblemImageArea = ({
         }));
       }
 
-      //console.log("upload image to server");
-
       const data = await uploadImageMutation(selectedFile as File);
-      setCurrentImage(data.imageUrl);
+
+      setCurrentImageUrl(data.imageUrl);
+      setCurrentImageCid(data.cid);
     },
-    [setCurrentImage, setFormState, uploadImageMutation]
+    [setCurrentImageCid, setCurrentImageUrl, setFormState, uploadImageMutation]
   );
 
   const handleRemoveImage = useCallback(() => {
-    setCurrentImage("");
+    setCurrentImageUrl("");
+    setCurrentImageCid("");
     // TODO delete image from pinata + db
     setFormState((prev) => ({
       ...prev,
       touchForm: true,
     }));
-  }, [setCurrentImage, setFormState]);
+  }, [setCurrentImageCid, setCurrentImageUrl, setFormState]);
 
   const isLoadingUploadImage = uploadImageStatus === "pending";
 
@@ -62,19 +65,19 @@ const ProblemImageArea = ({
 
   return (
     <>
-      {currentImage && (
+      {currentImageUrl && (
         <div className="relative">
           <CloseButton onClick={handleRemoveImage} />
           <div className="w-full h-[250px] overflow-hidden">
             <img
-              src={currentImage}
+              src={currentImageUrl}
               alt={problem?.title}
               className="my-4 border-double border-4 border-secondary/50 object-cover position-center"
             />
           </div>
         </div>
       )}
-      {!currentImage && (
+      {!currentImageUrl && (
         <>
           <input
             type="file"
