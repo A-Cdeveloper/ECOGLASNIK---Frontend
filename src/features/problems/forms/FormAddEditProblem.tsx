@@ -201,7 +201,7 @@ const FormAddEditProblem = ({
             aria-label="Pošalji problem"
             variation="success"
             size="medium"
-            disabled={isLoadingAddNew || isLoadingEdit}
+            disabled={isLoadingAddNew || isLoadingEdit || !formState.touchForm}
           >
             {!editMode && (isLoadingAddNew ? "Slanje..." : "Prijavi")}
             {editMode && (isLoadingEdit ? "Izmena..." : "Izmeni")}
