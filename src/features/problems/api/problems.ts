@@ -73,6 +73,7 @@ export const addNewProblemApi = async (
     });
 
     const data = await response.json();
+
     if (!response.ok) {
       const errors: string[] = [];
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,8 +82,7 @@ export const addNewProblemApi = async (
     }
     return data;
   } catch (error) {
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
+    const errorMessage = error instanceof Error && error;
     throw new Error(`${errorMessage}`);
   }
 };
@@ -116,8 +116,7 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
     }
     return data;
   } catch (error) {
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
+    const errorMessage = error instanceof Error && error;
     throw new Error(`${errorMessage}`);
   }
 };
@@ -157,8 +156,7 @@ export const uploadProblemImageApi = async (file: File) => {
     return data;
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
+    const errorMessage = error instanceof Error && error;
     throw new Error(`${errorMessage}`);
   }
 };
