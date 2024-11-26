@@ -37,7 +37,7 @@ const ProblemImageArea = ({
       const data = await uploadImageMutation(selectedFile as File);
 
       setCurrentImageUrl(data.imageUrl);
-      setCurrentImagePinataId(data.cid);
+      setCurrentImagePinataId(data.pinata_id);
     },
     [
       setCurrentImagePinataId,
