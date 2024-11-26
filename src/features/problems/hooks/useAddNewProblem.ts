@@ -14,6 +14,7 @@ const useAddNewProblem = (): UseMutationResult<Problem, Error, Problem> => {
     mutationFn: addNewProblemApi,
     onSuccess: () => {
       toast.success("Problem uspešno dodat!");
+      queryClient.invalidateQueries({ queryKey: ["problem"] });
       queryClient.invalidateQueries({ queryKey: ["problems"] }); // Optional: to refresh the problems query
     },
     onError: () => {

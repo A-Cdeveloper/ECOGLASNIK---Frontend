@@ -34,7 +34,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             </span>
           </div>
 
-          <div className="w-[120px] h-[100px] overflow-hidden bg-orange-700 self-end">
+          <div className="w-[120px] h-[80px] overflow-hidden bg-orange-700 self-end">
             <img
               src={image || ""}
               alt={title}

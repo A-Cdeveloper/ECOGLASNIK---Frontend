@@ -28,8 +28,8 @@ const useUploadImageProblem = (): UseMutationResult<
       queryClient.invalidateQueries({ queryKey: ["problems"] });
       // Optional: to refresh the problems query
     },
-    onError: () => {
-      toast.error("Došlo je do greške pri uploadovanju slike.");
+    onError: (data) => {
+      toast.error(data.message);
     },
   });
 

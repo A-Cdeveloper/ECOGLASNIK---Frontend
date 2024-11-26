@@ -4,19 +4,18 @@ import CloseButton from "../../../ui/Buttons/CloseButton";
 import { FormStateType } from "./FormAddEditProblem";
 
 import useUploadImageProblem from "../hooks/useUploadImageProblem";
+import Loader from "../../../ui/Loader";
 
 const ProblemImageArea = ({
   problem,
-  formState,
   setFormState,
   currentImage,
   setCurrentImage,
 }: {
   problem: Problem;
-  formState: FormStateType;
   setFormState: React.Dispatch<React.SetStateAction<FormStateType>>;
-  currentImage: string | null;
-  setCurrentImage: React.Dispatch<React.SetStateAction<string | null>>;
+  currentImage: string;
+  setCurrentImage: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { status: uploadImageStatus, mutateAsync: uploadImageMutation } =
     useUploadImageProblem();
@@ -42,7 +41,7 @@ const ProblemImageArea = ({
   );
 
   const handleRemoveImage = useCallback(() => {
-    setCurrentImage(null);
+    setCurrentImage("");
     // TODO delete image from pinata + db
     setFormState((prev) => ({
       ...prev,
@@ -53,7 +52,7 @@ const ProblemImageArea = ({
   const isLoadingUploadImage = uploadImageStatus === "pending";
 
   if (isLoadingUploadImage) {
-    return <p>Uploading image...</p>;
+    return <Loader />;
   }
 
   return (
@@ -88,10 +87,6 @@ const ProblemImageArea = ({
           >
             Dodaj fotografiju
           </label>
-
-          {formState.showError && (
-            <p className="text-rose-400 mt-2 mb-0">Fotografija je obavezna!</p>
-          )}
         </>
       )}
     </>

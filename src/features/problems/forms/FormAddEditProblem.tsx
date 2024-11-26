@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Problem, User } from "../../../types";
 import Button from "../../../ui/Buttons/Button";
@@ -21,7 +21,6 @@ export type FormStateType = {
   category: number;
   file: File | null;
   touchForm: boolean;
-  showError: boolean;
 };
 
 const FormAddEditProblem = ({
@@ -52,12 +51,15 @@ const FormAddEditProblem = ({
     category: problem?.cat_id || 0,
     file: problem?.image ? null : (null as File | null),
     touchForm: false,
-    showError: false,
   });
 
-  const [currentImage, setCurrentImage] = useState<string | null>(
-    problem!.image
-  );
+  const [currentImage, setCurrentImage] = useState<string>("");
+
+  const uploadImageLoading = !!currentImage;
+
+  useEffect(() => {
+    setCurrentImage(problem?.image || "");
+  }, [problem?.image]);
 
   const navigate = useNavigate();
 
@@ -90,6 +92,14 @@ const FormAddEditProblem = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
+
+    // if (currentImage === null) {
+    //   setFormState((prev) => ({
+    //     ...prev,
+    //     showError: true,
+    //   }));
+    //   return;
+    // }
 
     if (editMode) {
       editProblemMutation(
@@ -143,18 +153,6 @@ const FormAddEditProblem = ({
         formStatus={formState.touchForm && !isLoadingAddNew && !isLoadingEdit}
       />
 
-      {addNewProblemError && (
-        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
-          {getErrorMessage(addNewProblemError.message)}
-        </p>
-      )}
-
-      {editProblemError && (
-        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
-          {getErrorMessage(editProblemError.message)}
-        </p>
-      )}
-
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <Input
           placeholder="Naslov problema"
@@ -181,11 +179,22 @@ const FormAddEditProblem = ({
 
         <ProblemImageArea
           problem={problem!}
-          formState={formState}
           setFormState={setFormState}
           currentImage={currentImage}
           setCurrentImage={setCurrentImage}
         />
+
+        {addNewProblemError && !uploadImageLoading && (
+          <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+            {getErrorMessage(addNewProblemError.message)}
+          </p>
+        )}
+
+        {editProblemError && !uploadImageLoading && (
+          <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+            {getErrorMessage(editProblemError?.message)}
+          </p>
+        )}
 
         <div className="flex justify-end">
           <Button
