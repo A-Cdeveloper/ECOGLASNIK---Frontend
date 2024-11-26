@@ -138,7 +138,7 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ pinata_id: data.pinata_id }),
+      body: JSON.stringify({ id: data.pinata_id }),
     });
 
     return data;
