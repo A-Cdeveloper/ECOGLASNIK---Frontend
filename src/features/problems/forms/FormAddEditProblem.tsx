@@ -53,13 +53,18 @@ const FormAddEditProblem = ({
     touchForm: false,
   });
 
-  const [currentImage, setCurrentImage] = useState<string>("");
+  const [currentImageUrl, setCurrentImageUrl] = useState<string>("");
+  const [currentImageCid, setCurrentImageCid] = useState<string>("");
 
-  const uploadImageLoading = !!currentImage;
+  console.log(currentImageUrl);
+  console.log(currentImageCid);
+
+  const uploadImageLoading = !!currentImageUrl;
 
   useEffect(() => {
-    setCurrentImage(problem?.image || "");
-  }, [problem?.image]);
+    setCurrentImageUrl(problem?.image || "");
+    setCurrentImageCid(problem?.cid || "");
+  }, [problem?.cid, problem?.image]);
 
   const navigate = useNavigate();
 
@@ -108,7 +113,8 @@ const FormAddEditProblem = ({
           title,
           description,
           cat_id,
-          image: currentImage,
+          image: currentImageUrl,
+          cid: currentImageCid,
         },
         {
           onSuccess: () => {
@@ -131,7 +137,8 @@ const FormAddEditProblem = ({
         uid: user!.uid,
         createdAt: new Date(), // new Date(),
         updatedAt: null,
-        image: currentImage,
+        image: currentImageUrl,
+        cid: currentImageCid,
         status: "active",
       };
 
@@ -140,6 +147,7 @@ const FormAddEditProblem = ({
           return navigate(`/problems/user/${user?.uid}}`);
         },
       });
+      //console.log(newProblem);
     }
   };
 
@@ -180,8 +188,9 @@ const FormAddEditProblem = ({
         <ProblemImageArea
           problem={problem!}
           setFormState={setFormState}
-          currentImage={currentImage}
-          setCurrentImage={setCurrentImage}
+          currentImageUrl={currentImageUrl}
+          setCurrentImageUrl={setCurrentImageUrl}
+          setCurrentImageCid={setCurrentImageCid}
         />
 
         {addNewProblemError && !uploadImageLoading && (
