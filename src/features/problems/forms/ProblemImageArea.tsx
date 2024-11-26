@@ -4,7 +4,7 @@ import CloseButton from "../../../ui/Buttons/CloseButton";
 import { FormStateType } from "./FormAddEditProblem";
 
 import useUploadImageProblem from "../hooks/useUploadImageProblem";
-import Loader from "../../../ui/Loader";
+import MiniSpinner from "../../../ui/MiniSpinner";
 
 const ProblemImageArea = ({
   problem,
@@ -52,7 +52,12 @@ const ProblemImageArea = ({
   const isLoadingUploadImage = uploadImageStatus === "pending";
 
   if (isLoadingUploadImage) {
-    return <Loader />;
+    return (
+      <div className="w-full h-full flex justify-center items-center gap-4 py-3">
+        <MiniSpinner />
+        Slika se uploaduje...
+      </div>
+    );
   }
 
   return (
