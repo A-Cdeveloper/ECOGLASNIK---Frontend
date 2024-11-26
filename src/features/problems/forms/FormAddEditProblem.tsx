@@ -54,14 +54,14 @@ const FormAddEditProblem = ({
   });
 
   const [currentImageUrl, setCurrentImageUrl] = useState<string>("");
-  const [currentImageCid, setCurrentImageCid] = useState<string>("");
+  const [currentImagePinataId, setCurrentImagePinataId] = useState<string>("");
 
   const uploadImageLoading = !!currentImageUrl;
 
   useEffect(() => {
     setCurrentImageUrl(problem?.image || "");
-    setCurrentImageCid(problem?.cid || "");
-  }, [problem?.cid, problem?.image]);
+    setCurrentImagePinataId(problem?.pinata_id || "");
+  }, [problem?.image, problem?.pinata_id]);
 
   const navigate = useNavigate();
 
@@ -111,7 +111,7 @@ const FormAddEditProblem = ({
           description,
           cat_id,
           image: currentImageUrl,
-          cid: currentImageCid,
+          pinata_id: currentImagePinataId,
         },
         {
           onSuccess: () => {
@@ -135,7 +135,7 @@ const FormAddEditProblem = ({
         createdAt: new Date(), // new Date(),
         updatedAt: null,
         image: currentImageUrl,
-        cid: currentImageCid,
+        pinata_id: currentImagePinataId,
         status: "active",
       };
 
@@ -157,6 +157,18 @@ const FormAddEditProblem = ({
       <PromptModal
         formStatus={formState.touchForm && !isLoadingAddNew && !isLoadingEdit}
       />
+
+      {addNewProblemError && !uploadImageLoading && (
+        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+          {getErrorMessage(addNewProblemError.message)}
+        </p>
+      )}
+
+      {editProblemError && (editProblemError || !uploadImageLoading) && (
+        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+          {getErrorMessage(editProblemError?.message)}
+        </p>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <Input
@@ -187,20 +199,8 @@ const FormAddEditProblem = ({
           setFormState={setFormState}
           currentImageUrl={currentImageUrl}
           setCurrentImageUrl={setCurrentImageUrl}
-          setCurrentImageCid={setCurrentImageCid}
+          setCurrentImagePinataId={setCurrentImagePinataId}
         />
-
-        {addNewProblemError && !uploadImageLoading && (
-          <p className="text-rose-400 mt-0 whitespace-pre-wrap">
-            {getErrorMessage(addNewProblemError.message)}
-          </p>
-        )}
-
-        {editProblemError && !uploadImageLoading && (
-          <p className="text-rose-400 mt-0 whitespace-pre-wrap">
-            {getErrorMessage(editProblemError?.message)}
-          </p>
-        )}
 
         <div className="flex justify-end">
           <Button

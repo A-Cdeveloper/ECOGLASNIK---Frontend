@@ -19,7 +19,7 @@ export type Problem = {
   cat_id: number;
   uid: number;
   image: string | null;
-  cid: string | null;
+  pinata_id: string | null;
 };
 
 export type ExtendedProblem = Problem & {

@@ -11,13 +11,13 @@ const ProblemImageArea = ({
   setFormState,
   currentImageUrl,
   setCurrentImageUrl,
-  setCurrentImageCid,
+  setCurrentImagePinataId,
 }: {
   problem: Problem;
   setFormState: React.Dispatch<React.SetStateAction<FormStateType>>;
   currentImageUrl: string;
   setCurrentImageUrl: React.Dispatch<React.SetStateAction<string>>;
-  setCurrentImageCid: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentImagePinataId: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const { status: uploadImageStatus, mutateAsync: uploadImageMutation } =
     useUploadImageProblem();
@@ -37,20 +37,24 @@ const ProblemImageArea = ({
       const data = await uploadImageMutation(selectedFile as File);
 
       setCurrentImageUrl(data.imageUrl);
-      setCurrentImageCid(data.cid);
+      setCurrentImagePinataId(data.cid);
     },
-    [setCurrentImageCid, setCurrentImageUrl, setFormState, uploadImageMutation]
+    [
+      setCurrentImagePinataId,
+      setCurrentImageUrl,
+      setFormState,
+      uploadImageMutation,
+    ]
   );
 
   const handleRemoveImage = useCallback(() => {
     setCurrentImageUrl("");
-    setCurrentImageCid("");
-    // TODO delete image from pinata + db
+    setCurrentImagePinataId("");
     setFormState((prev) => ({
       ...prev,
       touchForm: true,
     }));
-  }, [setCurrentImageCid, setCurrentImageUrl, setFormState]);
+  }, [setCurrentImagePinataId, setCurrentImageUrl, setFormState]);
 
   const isLoadingUploadImage = uploadImageStatus === "pending";
 
