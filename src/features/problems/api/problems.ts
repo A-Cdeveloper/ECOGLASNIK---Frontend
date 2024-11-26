@@ -127,9 +127,19 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
       method: "DELETE",
     });
     const data = await response.json();
+
     if (!response.ok) {
       throw new Error(data.error);
     }
+
+    await fetch(`${API_URL}/problems/upload/remove`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ pinata_id: data.pinata_id }),
+    });
+
     return data;
   } catch (error) {
     // Check if the error is an instance of the Error object to get a better message
