@@ -18,7 +18,7 @@ const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
                   Nastavi
                 </Button>
                 <Button variation="danger" size="small" onClick={onConfirm}>
-                  Potvrdi
+                  Izađi
                 </Button>
               </div>
             </div>
