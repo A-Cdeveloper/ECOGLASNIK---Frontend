@@ -9,7 +9,7 @@ import { uploadProblemImageApi } from "../api/problems";
 
 type uploadImageType = {
   imageUrl: string;
-  cid: string;
+  pinata_id: string;
 };
 
 const useUploadImageProblem = (): UseMutationResult<
