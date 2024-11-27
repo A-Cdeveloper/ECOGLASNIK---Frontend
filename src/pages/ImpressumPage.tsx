@@ -16,9 +16,13 @@ const ImpressumPage = () => {
         <strong>16210 Vlasotince, Srbija</strong>
       </p>
       <TextBlock caption="Kontakt:">
-        Telefon: +381 637675989 <br />
-        Email: cleanme@e-seo.info <br />
-        Web: www.e-seo.info
+        Telefon: <a href="tel:+381637675989">+381 637675989</a> <br />
+        Email: <a href="mailto:cleanme@e-seo.info">cleanme@e-seo.info</a>
+        <br />
+        Web:{" "}
+        <a href="https://www.e-seo.info" target="_blank">
+          www.e-seo.info
+        </a>
       </TextBlock>
       <TextBlock caption="Opis sajta:">
         CLEANME je online platforma koja omogućava građanima da prijave probleme
