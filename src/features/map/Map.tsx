@@ -13,6 +13,7 @@ import Loader from "../../ui/Loader";
 
 import "leaflet/dist/leaflet.css";
 import "../../utils.css";
+import PromptModalOutRange from "../../ui/PromptModalOutRange";
 
 const Map = ({
   problemId,
@@ -25,6 +26,7 @@ const Map = ({
   const { problems, isLoading } = useProblems();
 
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
+  const [isOutOfRange, setIsOutOfRange] = useState(false);
 
   const filteredProblems = useMemo(() => {
     if (userId) {
@@ -49,6 +51,12 @@ const Map = ({
 
   return (
     <>
+      {isOutOfRange && (
+        <PromptModalOutRange
+          status={isOutOfRange}
+          onClose={() => setIsOutOfRange(false)}
+        />
+      )}
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
         zoom={13} // specify initial zoom level
@@ -73,8 +81,7 @@ const Map = ({
           mapLat={mapLat as number}
           mapLng={mapLng as number}
         />
-
-        {!mapLat && !mapLng && <MapClick />}
+        {!mapLat && !mapLng && <MapClick onClickOutRange={setIsOutOfRange} />}
         {!mapLat && !mapLng && <StabilizeMap />}
       </MapContainer>
     </>
