@@ -1,3 +1,6 @@
+import { useCallback, useState } from "react";
+import { TEXTAREA_MAX_CHARACTERS } from "../../constants";
+
 type TextAreaType = {
   placeholder?: string;
   name?: string;
@@ -19,17 +22,37 @@ const TextArea = ({
   className,
   ...rest
 }: TextAreaType) => {
+  const [numberOfChars, setNumberOfChars] = useState(defaultValue?.length || 0);
+
+  const onChangeTextArea = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      onChange?.(e);
+      setNumberOfChars(e.target.value.length);
+      console.log("render");
+    },
+    [onChange]
+  );
+
   return (
-    <textarea
-      placeholder={placeholder}
-      name={name}
-      value={value}
-      defaultValue={defaultValue}
-      required={required}
-      onChange={onChange}
-      className={`input ${className}`}
-      {...rest}
-    />
+    <div className="relative">
+      <textarea
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        defaultValue={defaultValue}
+        required={required}
+        onChange={onChangeTextArea}
+        className={`${className} ${
+          numberOfChars > TEXTAREA_MAX_CHARACTERS
+            ? "border-red focus:border-red"
+            : ""
+        }`}
+        {...rest}
+      />
+      <span className="block text-white/50 absolute bottom-2 right-3 text-[12px]">
+        {numberOfChars} / {TEXTAREA_MAX_CHARACTERS}
+      </span>
+    </div>
   );
 };
 

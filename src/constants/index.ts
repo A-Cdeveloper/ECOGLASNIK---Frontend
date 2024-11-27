@@ -6,3 +6,5 @@ export const DEFAULT_BOUND = {
 };
 
 export const API_URL = import.meta.env.VITE_API_URL;
+
+export const TEXTAREA_MAX_CHARACTERS = 300;
