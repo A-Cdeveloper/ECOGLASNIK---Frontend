@@ -24,7 +24,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       <Headline level={2}>{title}</Headline>
       <h2 className="text-xl font-bold leading-[1.1] mt-3"></h2>
       {problem && <ProblemHeader {...problem} />}
-      <p>{description}</p>
+      <p className="px-3">{description}</p>
 
       <div className="w-full h-auto overflow-hidden my-4 mx-auto">
         <img

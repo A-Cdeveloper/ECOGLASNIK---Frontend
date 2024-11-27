@@ -1,21 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { Problem, User } from "../../../types";
-import Button from "../../../ui/Buttons/Button";
-import Headline from "../../../ui/Headline";
+import { useNavigate } from "react-router-dom";
 import useAddNewProblem from "../hooks/useAddNewProblem";
+import useUpdateProblem from "../hooks/useUpdateProblem";
 import { useCategories } from "../hooks/useCategories";
 import { useSingleProblem } from "../hooks/useSingleProblem";
 import { useUrlParams } from "../../../hooks/useUrlParams";
-import useUpdateProblem from "../hooks/useUpdateProblem";
-import { useNavigate } from "react-router-dom";
+
+import { v4 as uuidv4 } from "uuid";
+import { getErrorMessage } from "../../../utils/helpers";
+import { Problem, User } from "../../../types";
+
 import PromptModal from "../../../ui/PromptModal";
 import RestrictAccess from "../../../ui/RestrictAccess";
 import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";
 import Select from "../../../ui/Form/Select";
 import ProblemImageArea from "./ProblemImageArea";
-import { getErrorMessage } from "../../../utils/helpers";
+
+import Button from "../../../ui/Buttons/Button";
+import Headline from "../../../ui/Headline";
 
 export type FormStateType = {
   category: number;
@@ -94,14 +97,6 @@ const FormAddEditProblem = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
-
-    // if (currentImage === null) {
-    //   setFormState((prev) => ({
-    //     ...prev,
-    //     showError: true,
-    //   }));
-    //   return;
-    // }
 
     if (editMode) {
       editProblemMutation(
