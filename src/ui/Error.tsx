@@ -8,7 +8,7 @@ const Error = ({ message }: { message: string }) => {
       <span className="text-center font-regular text-[20px] block w-full mb-3">
         {message}
       </span>
-      <Button variation="primary" size="large" onClick={() => navigate("/")}>
+      <Button variation="primary" size="large" onClick={() => navigate(0)}>
         Probaj ponovo
       </Button>
     </div>
