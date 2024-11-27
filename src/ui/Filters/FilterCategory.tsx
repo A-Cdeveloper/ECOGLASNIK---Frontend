@@ -1,5 +1,5 @@
-import { useCategories } from "../features/problems/hooks/useCategories";
-import { useUrlParams } from "../hooks/useUrlParams";
+import { useCategories } from "../../features/problems/hooks/useCategories";
+import { useUrlParams } from "../../hooks/useUrlParams";
 
 const FilterCategory = () => {
   const { categories } = useCategories();

@@ -1,6 +1,6 @@
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
-import { User } from "../types";
-import avatar from "../assets/user-circle-svgrepo-com.svg";
+import { User } from "../../types";
+import avatar from "../../assets/user-circle-svgrepo-com.svg";
 
 const UserNavigation = ({
   user,

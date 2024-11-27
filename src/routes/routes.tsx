@@ -3,12 +3,12 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Homepage from "../pages/Homepage";
 import ImpressumPage from "../pages/ImpressumPage";
 import LoginPage from "../pages/LoginPage";
-import Notifications from "../ui/Notifications";
-import ProtectedRoute from "../ui/ProtectedRoute";
+import Notifications from "../ui/PromtsAndNotifications/Notifications";
+import ProtectedRoute from "../ui/Layout/ProtectedRoute";
 import PageNotFound from "../pages/PageNotFound";
 import ForgotPassword from "../pages/ForgotPassword";
 import VerifyAccount from "../pages/VerifyAccount";
-import Layout from "../ui/Layout";
+import Layout from "../ui/Layout/Layout";
 import SingleProblem from "../pages/SingleProblem";
 import UserProblems from "../pages/UserProblems";
 

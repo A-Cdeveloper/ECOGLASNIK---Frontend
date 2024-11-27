@@ -1,7 +1,7 @@
 import { Navigate, useParams } from "react-router-dom";
 import ListProblems from "../features/problems/ListProblems";
-import FilterCategory from "../ui/FilterCategory";
-import FilterStatus from "../ui/FilterStatus";
+import FilterCategory from "../ui/Filters/FilterCategory";
+import FilterStatus from "../ui/Filters/FilterStatus";
 import useAuth from "../context/useAuth";
 
 const UserProblems = () => {

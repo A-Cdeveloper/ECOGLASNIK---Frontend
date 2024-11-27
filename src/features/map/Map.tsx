@@ -13,7 +13,7 @@ import Loader from "../../ui/Loader";
 
 import "leaflet/dist/leaflet.css";
 import "../../utils.css";
-import PromptModalOutRange from "../../ui/PromptModalOutRange";
+import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
 
 const Map = ({
   problemId,

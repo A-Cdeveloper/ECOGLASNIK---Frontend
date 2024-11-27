@@ -1,7 +1,7 @@
 import Logo from "./Logo";
 import MainNavigation from "./MainNavigation";
-import SimulateAuthUser from "./SimulateAuthUser";
-import useAuth from "../context/useAuth";
+import SimulateAuthUser from "../SimulateAuthUser";
+import useAuth from "../../context/useAuth";
 import UserNavigation from "./UserNavigation";
 
 const Header = () => {

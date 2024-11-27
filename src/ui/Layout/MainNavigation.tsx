@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MenuItems from "./MenuItems";
-import burgerBtn from "../assets/burger-menu.svg";
+import burgerBtn from "../../assets/burger-menu.svg";
 
 const MainNavigation = ({
   isAuthenticated,

@@ -1,7 +1,7 @@
 import AddProblemBanner from "../features/problems/AddProblemBanner";
 import ListProblems from "../features/problems/ListProblems";
-import FilterCategory from "../ui/FilterCategory";
-import FilterStatus from "../ui/FilterStatus";
+import FilterCategory from "../ui/Filters/FilterCategory";
+import FilterStatus from "../ui/Filters/FilterStatus";
 
 const Homepage = () => {
   return (

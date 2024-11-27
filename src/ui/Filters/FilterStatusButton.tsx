@@ -1,4 +1,4 @@
-import { useUrlParams } from "../hooks/useUrlParams";
+import { useUrlParams } from "../../hooks/useUrlParams";
 
 const FilterStatusButton = ({
   children,

@@ -78,3 +78,7 @@ button {
 button:disabled {
   @apply bg-gray-400 cursor-not-allowed hover:bg-gray-400;
 }
+
+.promptModal {
+  @apply fixed top-0 left-0 w-full h-full flex justify-center items-center bg-primary/80 z-[9999999999999999];
+}

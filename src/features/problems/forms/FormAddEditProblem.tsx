@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { getErrorMessage } from "../../../utils/helpers";
 import { Problem, User } from "../../../types";
 
-import PromptModal from "../../../ui/PromptModal";
+import PromptModal from "../../../ui/PromtsAndNotifications/PromptModal";
 import RestrictAccess from "../../../ui/RestrictAccess";
 import Input from "../../../ui/Form/Input";
 import TextArea from "../../../ui/Form/TextArea";

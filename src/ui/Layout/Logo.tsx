@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/clean-me.fw.png";
+import logo from "../../assets/clean-me.fw.png";
+import { APP_NAME } from "../../constants";
 
 const Logo = () => {
   return (
@@ -7,7 +8,7 @@ const Logo = () => {
       <Link to="/">
         <img
           src={logo}
-          alt=""
+          alt={APP_NAME}
           className="max-w-[200px] md:max-w-[250px] mx-0"
         />
       </Link>
