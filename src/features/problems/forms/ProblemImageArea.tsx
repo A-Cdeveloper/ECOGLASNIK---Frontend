@@ -72,7 +72,7 @@ const ProblemImageArea = ({
       {currentImageUrl && (
         <div className="relative">
           <CloseButton onClick={handleRemoveImage} />
-          <div className="w-full h-[250px] overflow-hidden">
+          <div className="w-full h-auto overflow-hidden my-4 mx-auto">
             <img
               src={currentImageUrl}
               alt={problem?.title}

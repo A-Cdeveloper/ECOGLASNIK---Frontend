@@ -26,7 +26,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       {problem && <ProblemHeader {...problem} />}
       <p>{description}</p>
 
-      <div className="w-full h-[250px] overflow-hidden my-4">
+      <div className="w-full h-auto overflow-hidden my-4 mx-auto">
         <img
           src={image || ""}
           alt={title}
