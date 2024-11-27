@@ -1,8 +1,7 @@
 import { createPortal } from "react-dom";
 
-import Headline from "../Headline";
-import Button from "../Buttons/Button";
 import ReactRouterPrompt from "react-router-prompt";
+import Button from "../Buttons/Button";
 import PromptLayout from "./PromptLayout";
 
 const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
@@ -12,16 +11,16 @@ const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
       {({ isActive, onConfirm, onCancel }) =>
         isActive && (
           <PromptLayout>
-            <Headline level={2}>Da li zaista želite da odustanete?</Headline>
-            <p>Promene neće biti sačuvane!!!</p>
-            <div className="mt-4 space-x-4">
+            <PromptLayout.Header title="Da li zaista želite da odustanete?" />
+            <PromptLayout.IntroText intro="Promene neće biti sačuvane!!!" />
+            <PromptLayout.Buttons>
               <Button variation="success" size="small" onClick={onCancel}>
                 Nastavi
               </Button>
               <Button variation="danger" size="small" onClick={onConfirm}>
                 Izađi
               </Button>
-            </div>
+            </PromptLayout.Buttons>
           </PromptLayout>
         )
       }
