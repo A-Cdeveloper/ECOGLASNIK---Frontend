@@ -1,7 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useAddNewProblem from "../hooks/useAddNewProblem";
-import useUpdateProblem from "../hooks/useUpdateProblem";
 import { useCategories } from "../hooks/useCategories";
 import { useSingleProblem } from "../hooks/useSingleProblem";
 import { useUrlParams } from "../../../hooks/useUrlParams";
@@ -19,6 +17,7 @@ import ProblemImageArea from "./ProblemImageArea";
 
 import Button from "../../../ui/Buttons/Button";
 import Headline from "../../../ui/Headline";
+import useAddEditProblem from "../hooks/useAddEditProblem";
 
 export type FormStateType = {
   category: number;
@@ -40,12 +39,12 @@ const FormAddEditProblem = ({
     status: addNewStatus,
     mutate: addNewProblemMutation,
     error: addNewProblemError,
-  } = useAddNewProblem();
+  } = useAddEditProblem("add");
   const {
     status: editProblemStatus,
     mutate: editProblemMutation,
     error: editProblemError,
-  } = useUpdateProblem();
+  } = useAddEditProblem("edit");
 
   const { categories } = useCategories();
   const { problem } = useSingleProblem(problemId || "");
