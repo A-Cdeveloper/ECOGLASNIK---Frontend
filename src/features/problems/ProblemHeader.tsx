@@ -22,10 +22,10 @@ const ProblemHeader = ({
       <User user={user} />
       <div>Datum prijave:</div>
       <div>{formattedDate(createdAt)}</div>
-      {updatedAt && (
+      {status === "done" && (
         <>
           <div>Datum rešavanja:</div>
-          <div>{formattedDate(updatedAt)}</div>
+          <div>{formattedDate(updatedAt as Date)}</div>
         </>
       )}
       <div>Status:</div>
