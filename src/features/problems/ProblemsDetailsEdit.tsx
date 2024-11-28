@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Problem } from "../../types";
 import Button from "../../ui/Buttons/Button";
 import useDeleteProblem from "./hooks/useDeleteProblem";
-import useUpdateProblem from "./hooks/useUpdateProblem";
+import useAddEditProblem from "./hooks/useAddEditProblem";
 import { getErrorMessage } from "../../utils/helpers";
 
 const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
@@ -11,7 +11,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
     status: updateProblemStatus,
     mutate: updateProblemMutation,
     error: updateProblemError,
-  } = useUpdateProblem();
+  } = useAddEditProblem("edit");
   const { mutate: deleteProblemMutation, status: deleteProblemLaoding } =
     useDeleteProblem();
 
