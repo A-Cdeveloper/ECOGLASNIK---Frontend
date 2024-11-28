@@ -49,7 +49,7 @@ export const getSingleProblemApi = async (
     if (!response.ok) {
       throw new Error(data.error);
     }
-    return response.json();
+    return data;
   } catch (error) {
     return await throwError(error);
   }
