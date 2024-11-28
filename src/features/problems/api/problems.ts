@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { API_URL } from "../../../constants";
 import { ExtendedProblem, Problem } from "../../../types";
+import { throwError } from "../../../utils/helpers";
 
 export const getAllProblemsApi = async (
   status: string | null,
@@ -34,10 +36,7 @@ export const getAllProblemsApi = async (
     }
     return data.data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
@@ -46,17 +45,13 @@ export const getSingleProblemApi = async (
 ): Promise<ExtendedProblem> => {
   try {
     const response = await fetch(`${API_URL}/problems/${id}`);
+    const data = await response.json();
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch problem: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.error);
     }
     return response.json();
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
@@ -76,20 +71,17 @@ export const addNewProblemApi = async (
 
     if (!response.ok) {
       const errors: string[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data?.error.map((err: any) => errors.push(err.message));
       throw new Error(errors.join("\n"));
     }
     return data;
   } catch (error) {
-    const errorMessage = error instanceof Error && error;
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
 export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
   try {
-    // Create an object with only the fields you need to update
     const updatedFields = {
       title: problem.title,
       description: problem.description,
@@ -111,14 +103,12 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
 
     if (!response.ok) {
       const errors: string[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       data?.error.map((err: any) => errors.push(err.message));
       throw new Error(errors.join("\n"));
     }
     return data;
   } catch (error) {
-    const errorMessage = error instanceof Error && error;
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
@@ -143,10 +133,7 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
 
     return data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error ? error.message : "Greška na serveru";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
@@ -160,14 +147,13 @@ export const uploadProblemImageApi = async (file: File) => {
       body: formData,
     });
     const data = await response.json();
+
     if (!response.ok) {
       throw new Error(data.error);
     }
 
     return data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage = error instanceof Error && error;
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };

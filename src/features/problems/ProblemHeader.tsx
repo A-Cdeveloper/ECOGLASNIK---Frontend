@@ -2,7 +2,7 @@ import ProblemCategory from "./ProblemCategory";
 import { ExtendedProblem } from "../../types";
 import User from "../users/User";
 import StatusBadge from "../../ui/StatusBadge";
-import { formattedDate } from "../../utils/timeFunctions";
+import { formattedDate } from "../../utils/helpers";
 
 type ProblemHeaderType = Pick<
   ExtendedProblem,

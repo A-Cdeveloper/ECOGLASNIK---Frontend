@@ -1,21 +1,17 @@
 import { API_URL } from "../../../constants";
 import { ProblemCategory } from "../../../types";
+import { throwError } from "../../../utils/helpers";
 
 export const getCategoriesApi = async (): Promise<ProblemCategory[]> => {
   try {
     const response = await fetch(`${API_URL}/categories/`);
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch categories: ${response.status} ${response.statusText}`
-      );
-    }
     const { data } = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error);
+    }
     return data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
@@ -24,16 +20,12 @@ export const getSingleCategoryApi = async (
 ): Promise<ProblemCategory> => {
   try {
     const response = await fetch(`${API_URL}/categories/${categoryId}`);
+    const { data } = await response.json();
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch categorys: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.error);
     }
-    return response.json();
+    return data;
   } catch (error) {
-    // Check if the error is an instance of the Error object to get a better message
-    const errorMessage =
-      error instanceof Error && "Servis trenutno nije dustupan.⚠";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };

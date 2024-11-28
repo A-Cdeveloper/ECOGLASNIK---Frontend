@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Problem } from "../../types";
 import StatusBadge from "../../ui/StatusBadge";
 import Headline from "../../ui/Headline";
-import { formattedDate } from "../../utils/timeFunctions";
+import { formattedDate } from "../../utils/helpers";
 
 const ProblemItem = ({ problem }: { problem: Problem }) => {
   const {

@@ -1,6 +1,6 @@
 import { API_URL } from "../../../constants";
 import { User } from "../../../types";
-import { wait } from "../../../utils/timeFunctions";
+import { wait } from "../../../utils/helpers";
 
 export const loginApi = async ({
   email,
