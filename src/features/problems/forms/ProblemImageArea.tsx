@@ -5,6 +5,7 @@ import { FormStateType } from "./FormAddEditProblem";
 
 import useUploadImageProblem from "../hooks/useUploadImageProblem";
 import MiniSpinner from "../../../ui/MiniSpinner";
+import ProblemImage from "../ProblemImage";
 
 const ProblemImageArea = ({
   problem,
@@ -72,13 +73,12 @@ const ProblemImageArea = ({
       {currentImageUrl && (
         <div className="relative">
           <CloseButton onClick={handleRemoveImage} />
-          <div className="w-full h-auto overflow-hidden my-4 mx-auto">
-            <img
-              src={currentImageUrl}
-              alt={problem?.title}
-              className="my-4 border-double border-4 border-secondary/50 object-cover position-center"
-            />
-          </div>
+
+          <ProblemImage
+            image={currentImageUrl}
+            alt={problem?.title}
+            className="w-full h-auto overflow-hidden my-4 mx-auto"
+          />
         </div>
       )}
       {!currentImageUrl && (

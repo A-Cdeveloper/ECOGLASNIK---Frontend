@@ -3,6 +3,7 @@ import { Problem } from "../../types";
 import StatusBadge from "../../ui/StatusBadge";
 import Headline from "../../ui/Headline";
 import { formattedDate } from "../../utils/helpers";
+import ProblemImage from "./ProblemImage";
 
 const ProblemItem = ({ problem }: { problem: Problem }) => {
   const {
@@ -34,13 +35,11 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             </span>
           </div>
 
-          <div className="w-[120px] h-[80px] overflow-hidden bg-orange-700 self-end">
-            <img
-              src={image || ""}
-              alt={title}
-              className="object-cover position-center w-full h-full"
-            />
-          </div>
+          <ProblemImage
+            image={image || ""}
+            alt={title || ""}
+            className="w-[120px] h-[80px] overflow-hidden bg-primary self-end"
+          />
         </div>
       </Link>
     </div>

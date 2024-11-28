@@ -6,6 +6,7 @@ import Headline from "../../ui/Headline";
 import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
 import ProblemsDetailsEdit from "./ProblemsDetailsEdit";
+import ProblemImage from "./ProblemImage";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
@@ -22,17 +23,15 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
   return (
     <>
       <Headline level={2}>{title}</Headline>
-      <h2 className="text-xl font-bold leading-[1.1] mt-3"></h2>
+
       {problem && <ProblemHeader {...problem} />}
       <p className="px-3">{description}</p>
 
-      <div className="w-full h-auto overflow-hidden my-4 mx-auto">
-        <img
-          src={image || ""}
-          alt={title}
-          className=" border-double border-4 border-secondary/50 object-cover position-center"
-        />
-      </div>
+      <ProblemImage
+        image={image || ""}
+        alt={title || ""}
+        className="w-full h-auto overflow-hidden my-4 mx-auto"
+      />
 
       {status === "active" && logedUser?.uid === uid && (
         <ProblemsDetailsEdit problem={problem!} />
