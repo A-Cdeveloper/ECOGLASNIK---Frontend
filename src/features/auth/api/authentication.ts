@@ -98,7 +98,7 @@ export const verifyAccountApi = async (
   try {
     await wait(4000);
     const response = await fetch(
-      `${API_URL}/auth/verify-account/${userId}/${verificationCode}`
+      `${API_URL}/auth/verify/${userId}/${verificationCode}`
     );
     if (!response.ok) {
       throw new Error(
