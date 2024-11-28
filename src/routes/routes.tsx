@@ -61,7 +61,7 @@ const mainRouter = [
           { index: true, element: <LoginPage /> },
           { path: "forgot-password", element: <ForgotPassword /> },
           {
-            path: "verify-account/:userId/:verificationCode",
+            path: "verify-account/:verificationCode",
             element: <VerifyAccount />,
           },
         ],
