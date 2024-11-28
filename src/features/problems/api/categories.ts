@@ -20,7 +20,7 @@ export const getSingleCategoryApi = async (
 ): Promise<ProblemCategory> => {
   try {
     const response = await fetch(`${API_URL}/categories/${categoryId}`);
-    const { data } = await response.json();
+    const data = await response.json();
     if (!response.ok) {
       throw new Error(data.error);
     }
