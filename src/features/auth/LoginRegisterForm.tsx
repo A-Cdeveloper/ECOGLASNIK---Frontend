@@ -164,7 +164,9 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               }}
             />
             {!isPasswordValid && formFields.passwordAgain && (
-              <p className="text-rose-400 my-[3px]">Passwords don't match.</p>
+              <p className="text-rose-400 my-[3px]">
+                Lozinke se ne podudaraju.
+              </p>
             )}
           </div>
         )}
