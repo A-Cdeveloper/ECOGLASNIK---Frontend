@@ -7,6 +7,7 @@ import Input from "../../ui/Form/Input";
 import Headline from "../../ui/Headline";
 import useLogin from "./hooks/useLogin";
 import useRegister from "./hooks/useRegister";
+import { getErrorMessage } from "../../utils/helpers";
 
 type FormFields = {
   email: string;
@@ -19,8 +20,10 @@ type FormFields = {
 
 function LoginRegisterForm({ mode }: { mode: string }) {
   const navigate = useNavigate();
-  const { status: loginUserStatus, mutate: loginUser } = useLogin();
+  const { status: loginUserStatus, mutate: loginUser, error } = useLogin();
   const { status: registerUserStatus, mutate: registerUser } = useRegister();
+
+  console.log(error?.message);
 
   const [formFields, setFormFields] = useState<FormFields>({
     email: "",
@@ -189,24 +192,32 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             : "Registruj nalog"}
         </Button>
 
-        {isLoginMode && (
-          <p className="text-secondary text-center">
-            <Link to="forgot-password">Zaboravljena lozinka?</Link>
+        {error && (
+          <p className="text-rose-400 my-0 whitespace-pre-wrap">
+            {getErrorMessage(error.message)}
           </p>
         )}
 
-        <p className="text-secondary text-center">
-          {isLoginMode
-            ? "Nemate nalog? Registrujte se "
-            : "Imate nalog? Ulogujte se "}
-          <Link
-            to={`/login/?mode=${isLoginMode ? "register" : "login"}`}
-            className="text-winter"
-          >
-            OVDE
-          </Link>
-          .
-        </p>
+        <div>
+          {isLoginMode && (
+            <p className="text-secondary text-center">
+              <Link to="forgot-password">Zaboravljena lozinka?</Link>
+            </p>
+          )}
+
+          <p className="text-secondary text-center">
+            {isLoginMode
+              ? "Nemate nalog? Registrujte se "
+              : "Imate nalog? Ulogujte se "}
+            <Link
+              to={`/login/?mode=${isLoginMode ? "register" : "login"}`}
+              className="text-winter"
+            >
+              OVDE
+            </Link>
+            .
+          </p>
+        </div>
       </form>
     </>
   );

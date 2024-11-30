@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import { User } from "../../../types";
+import { LoginResponse } from "../../../types";
 import { loginApi } from "../api/authentication";
 //import useAuth from "../../../context/useAuth";
 
@@ -10,23 +10,18 @@ type LoginVariables = {
   password: string;
 };
 
-const useLogin = (): UseMutationResult<User, Error, LoginVariables> => {
+const useLogin = (): UseMutationResult<
+  LoginResponse,
+  Error,
+  LoginVariables
+> => {
   //const { setSessionStorageData } = useAuth();
-  const mutation = useMutation<User, Error, LoginVariables>({
+  const mutation = useMutation<LoginResponse, Error, LoginVariables>({
     mutationFn: loginApi,
-    onSuccess: (data: User) => {
-      toast.success(`Dobrodošli ${data.firstname} ${data.lastname}!`);
-
-      // TODO
-      // setSessionStorageData({
-      //   uid: data.uid,
-      //   email: data.email,
-      //   firstname: data.firstname,
-      //   lastname: data.lastname,
-      //   accessToken: data.accessToken,
-      //   refreshToken: data.refreshToken,
-      //   phone: data.phone,
-      // });
+    onSuccess: (data: LoginResponse) => {
+      toast.success(
+        `${data.message}\n Dobrodosli${data.data.firstname} ${data.data.lastname}!`
+      );
     },
     onError: () => {
       toast.error("Došlo je do greške prilikom prijave.");

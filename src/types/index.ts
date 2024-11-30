@@ -41,3 +41,8 @@ export type User = {
 };
 
 export type Users = User[];
+
+export type LoginResponse = {
+  message: string;
+  data: User;
+};

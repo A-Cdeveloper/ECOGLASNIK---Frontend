@@ -1,6 +1,6 @@
 import { API_URL } from "../../../constants";
-import { User } from "../../../types";
-import { wait } from "../../../utils/helpers";
+import { LoginResponse, User } from "../../../types";
+import { throwError, wait } from "../../../utils/helpers";
 
 export const loginApi = async ({
   email,
@@ -8,7 +8,7 @@ export const loginApi = async ({
 }: {
   email: string;
   password: string;
-}): Promise<User> => {
+}): Promise<LoginResponse> => {
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
@@ -17,16 +17,15 @@ export const loginApi = async ({
       },
       body: JSON.stringify({ email, password }),
     });
+
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(
-        `Failed to login: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.message);
     }
-    return response.json();
+    return data;
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
