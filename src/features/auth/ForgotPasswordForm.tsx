@@ -39,7 +39,7 @@ const ForgotPasswordForm = () => {
           required
         />
         <Button size="large" style={{ width: "100%" }} disabled={isLoading}>
-          {isLoading ? "Slanje zahteva..." : "Poslati Zahtev za lozinku"}
+          {isLoading ? "Slanje zahteva..." : "Poslalji zahtev za novu lozinku"}
         </Button>
       </form>
     </>

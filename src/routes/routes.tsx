@@ -11,6 +11,7 @@ import VerifyAccount from "../pages/VerifyAccount";
 import Layout from "../ui/Layout/Layout";
 import SingleProblem from "../pages/SingleProblem";
 import UserProblems from "../pages/UserProblems";
+import ResetPassword from "../pages/ResetPassword";
 
 const AddProblem = lazy(() => import("../pages/AddProblem"));
 const EditProblem = lazy(() => import("../pages/EditProblem"));
@@ -60,8 +61,9 @@ const mainRouter = [
         children: [
           { index: true, element: <LoginPage /> },
           { path: "forgot-password", element: <ForgotPassword /> },
+          { path: "reset-password", element: <ResetPassword /> },
           {
-            path: "verify-account/:verificationCode",
+            path: "verify-account/",
             element: <VerifyAccount />,
           },
         ],
