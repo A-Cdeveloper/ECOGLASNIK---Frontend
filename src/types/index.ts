@@ -42,7 +42,7 @@ export type User = {
 
 export type Users = User[];
 
-export type LoginResponse = {
+export type LoginRegisterResponse = {
   message: string;
   data: User;
 };
