@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import { LoginResponse } from "../../../types";
+import { LoginRegisterResponse } from "../../../types";
 import { loginApi } from "../api/authentication";
 //import useAuth from "../../../context/useAuth";
 
@@ -11,16 +11,16 @@ type LoginVariables = {
 };
 
 const useLogin = (): UseMutationResult<
-  LoginResponse,
+  LoginRegisterResponse,
   Error,
   LoginVariables
 > => {
   //const { setSessionStorageData } = useAuth();
-  const mutation = useMutation<LoginResponse, Error, LoginVariables>({
+  const mutation = useMutation<LoginRegisterResponse, Error, LoginVariables>({
     mutationFn: loginApi,
-    onSuccess: (data: LoginResponse) => {
+    onSuccess: (data: LoginRegisterResponse) => {
       toast.success(
-        `${data.message}\n Dobrodosli${data.data.firstname} ${data.data.lastname}!`
+        `${data.message}\n Dobrodosli ${data.data.firstname} ${data.data.lastname}!`
       );
     },
     onError: () => {
