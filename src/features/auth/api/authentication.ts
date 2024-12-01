@@ -1,5 +1,5 @@
 import { API_URL } from "../../../constants";
-import { LoginResponse, User } from "../../../types";
+import { LoginRegisterResponse, User } from "../../../types";
 import { throwError, wait } from "../../../utils/helpers";
 
 export const loginApi = async ({
@@ -8,7 +8,7 @@ export const loginApi = async ({
 }: {
   email: string;
   password: string;
-}): Promise<LoginResponse> => {
+}): Promise<LoginRegisterResponse> => {
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
@@ -41,7 +41,7 @@ export const registerApi = async ({
   phone?: string;
   email: string;
   password: string;
-}): Promise<User> => {
+}): Promise<LoginRegisterResponse> => {
   try {
     const response = await fetch(`${API_URL}/auth/register`, {
       method: "POST",
@@ -50,16 +50,17 @@ export const registerApi = async ({
       },
       body: JSON.stringify({ firstname, lastname, phone, email, password }),
     });
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(
-        `Failed to register: ${response.status} ${response.statusText}`
-      );
+      const errors: string[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      data?.error.map((err: any) => errors.push(err.message));
+      throw new Error(errors.join("\n"));
     }
-    return response.json();
+    return data;
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
