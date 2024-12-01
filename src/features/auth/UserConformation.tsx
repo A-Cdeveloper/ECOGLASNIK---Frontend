@@ -6,7 +6,7 @@ const UserConformation = () => {
 
   // console.log(user);
 
-  let content;
+  const content = "UserConformation";
 
   //TODO Verify account
   //
