@@ -9,7 +9,7 @@ const VerifyAccount = () => {
     return <Navigate to="/" replace />;
   }
   return (
-    <div className="w-full h-[80%] flex flex-col items-center justify-center px-9">
+    <div className="w-full h-[80%] flex flex-col items-start justify-center px-9">
       <UserConformation />
     </div>
   );
