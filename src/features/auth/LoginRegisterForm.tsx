@@ -8,6 +8,7 @@ import Headline from "../../ui/Headline";
 import useLogin from "./hooks/useLogin";
 import useRegister from "./hooks/useRegister";
 import { getErrorMessage } from "../../utils/helpers";
+import { LoginRegisterResponse } from "../../types";
 
 type FormFields = {
   email: string;
@@ -20,10 +21,16 @@ type FormFields = {
 
 function LoginRegisterForm({ mode }: { mode: string }) {
   const navigate = useNavigate();
-  const { status: loginUserStatus, mutate: loginUser, error } = useLogin();
-  const { status: registerUserStatus, mutate: registerUser } = useRegister();
-
-  console.log(error?.message);
+  const {
+    status: loginUserStatus,
+    mutate: loginUser,
+    error: errorLogin,
+  } = useLogin();
+  const {
+    status: registerUserStatus,
+    mutate: registerUser,
+    error: errorRegister,
+  } = useRegister();
 
   const [formFields, setFormFields] = useState<FormFields>({
     email: "",
@@ -49,7 +56,6 @@ function LoginRegisterForm({ mode }: { mode: string }) {
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (isLoginMode) {
-        if (!formFields.email || !formFields.password) return;
         loginUser(
           { email: formFields.email, password: formFields.password },
           {
@@ -59,32 +65,30 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           }
         );
       } else {
-        if (
-          !formFields.firstname ||
-          !formFields.lastName ||
-          !formFields.email ||
-          !formFields.password
-        )
-          return;
         registerUser(
           {
-            firstname: formFields.firstname,
-            lastname: formFields.lastName,
+            firstname: formFields.firstname as string,
+            lastname: formFields.lastName as string,
             phone: formFields.phone,
             email: formFields.email,
             password: formFields.password,
           },
           {
-            onSettled: () =>
+            onSuccess: (data: LoginRegisterResponse) => {
+              navigate("/login/registration-info", {
+                state: {
+                  message: data.message,
+                },
+              });
               setFormFields({
-                firstname: "",
-                lastName: "",
-                phone: "",
+                ...formFields,
                 email: "",
                 password: "",
-                passwordAgain: "",
-              }),
-            onSuccess: () => navigate("/", { replace: true }),
+                phone: "",
+                firstname: "",
+                lastName: "",
+              });
+            },
           }
         );
       }
@@ -105,14 +109,12 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               value={formFields.firstname}
               placeholder="Ime*"
               onChange={handleInputChange}
-              required
             />
             <Input
               name="lastName"
               value={formFields.lastName}
               placeholder="Prezime*"
               onChange={handleInputChange}
-              required
             />
             <Input
               name="phone"
@@ -129,7 +131,6 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           value={formFields.email}
           placeholder="Email*"
           onChange={handleInputChange}
-          required
         />
 
         <div className="relative">
@@ -139,7 +140,6 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             value={formFields.password}
             placeholder="Lozinka*"
             onChange={handleInputChange}
-            required
           />
           <ButtonIcon
             icon={showPassword ? <HiEyeSlash /> : <HiEye />}
@@ -167,7 +167,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               }}
             />
             {!isPasswordValid && formFields.passwordAgain && (
-              <p className="text-rose-400 my-[3px]">
+              <p className="text-rose-400 my-[3px] text-[12px]">
                 Lozinke se ne podudaraju.
               </p>
             )}
@@ -192,9 +192,15 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             : "Registruj nalog"}
         </Button>
 
-        {error && (
-          <p className="text-rose-400 my-0 whitespace-pre-wrap">
-            {getErrorMessage(error.message)}
+        {errorLogin && isLoginMode && (
+          <p className="text-rose-400 my-0 whitespace-pre-wrap text-center text-[12px]">
+            {getErrorMessage(errorLogin.message)}
+          </p>
+        )}
+
+        {errorRegister && !isLoginMode && (
+          <p className="text-rose-400 my-0 whitespace-pre-wrap text-center text-[12px]">
+            {getErrorMessage(errorRegister.message)}
           </p>
         )}
 
