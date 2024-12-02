@@ -3,14 +3,10 @@ import { createContext } from "react";
 import useSessionStorage from "../hooks/useSessionStorage";
 import { User } from "../types";
 
-type SessionPropsType = {
-  user: User | null;
-};
-
 type AuthContextType = {
   user: User | null;
   isAuthenticated: boolean;
-  setSessionStorageData: (data: SessionPropsType) => SessionPropsType | void;
+  setSessionStorageData: (data: User | null) => User | void;
   removeSessionStorageData: () => void;
 };
 
@@ -21,19 +17,18 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [data, setData] = useSessionStorage<SessionPropsType>("userSession", {
-    user: null,
-  });
+  const [data, setData] = useSessionStorage<User | null>("user", null);
+
+  console.log(data);
 
   const removeSessionStorageData = () => {
-    sessionStorage.removeItem("userSession");
-    setData({ user: null });
+    sessionStorage.removeItem("user");
+    setData(null);
   };
 
   const value = {
-    user: data.user,
-    isAuthenticated: !!data?.user,
-    //isAuthenticated: true,
+    user: data,
+    isAuthenticated: !!data,
     setSessionStorageData: setData,
     removeSessionStorageData,
   };
