@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
+import AuthNotification from "../../ui/AuthNotification";
 import Button from "../../ui/Buttons/Button";
 import ButtonIcon from "../../ui/Buttons/ButtonIcon";
 import Input from "../../ui/Form/Input";
 import Headline from "../../ui/Headline";
-import { getErrorMessage } from "../../utils/helpers";
 import useLogin from "./hooks/useLogin";
 import useRegister from "./hooks/useRegister";
 
@@ -91,11 +91,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
   );
 
   if (dataRegister) {
-    return (
-      <p className="text-emerald-200 my-2 whitespace-pre-wrap text-center text-[14px]">
-        {dataRegister.message}
-      </p>
-    );
+    return <AuthNotification state="success" message={dataRegister.message} />;
   }
 
   return (
@@ -195,15 +191,11 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         </Button>
 
         {errorLogin && isLoginMode && (
-          <p className="text-rose-400 my-0 whitespace-pre-wrap text-center text-[13px]">
-            {getErrorMessage(errorLogin.message)}
-          </p>
+          <AuthNotification state="error" message={errorLogin.message} />
         )}
 
         {errorRegister && !isLoginMode && (
-          <p className="text-rose-400 my-0 whitespace-pre-wrap text-center text-[13px]">
-            {getErrorMessage(errorRegister.message)}
-          </p>
+          <AuthNotification state="error" message={errorRegister.message} />
         )}
 
         <div>

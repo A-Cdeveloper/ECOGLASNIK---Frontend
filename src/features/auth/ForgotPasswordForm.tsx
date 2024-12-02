@@ -1,7 +1,7 @@
 import { useRef } from "react";
+import AuthNotification from "../../ui/AuthNotification";
 import Button from "../../ui/Buttons/Button";
 import Input from "../../ui/Form/Input";
-import { getErrorMessage } from "../../utils/helpers";
 import useForgotPassword from "./hooks/useForgotPassword";
 
 const ForgotPasswordForm = () => {
@@ -28,11 +28,7 @@ const ForgotPasswordForm = () => {
   };
 
   if (data) {
-    return (
-      <p className="text-emerald-200 my-2 whitespace-pre-wrap text-center text-[14px]">
-        {data.message}
-      </p>
-    );
+    return <AuthNotification state="success" message={data.message} />;
   }
 
   return (
@@ -47,9 +43,7 @@ const ForgotPasswordForm = () => {
         </Button>
       </form>
       {forgotPasswordError && (
-        <p className="text-rose-200 my-2 whitespace-pre-wrap text-center text-[12px]">
-          {getErrorMessage(forgotPasswordError.message)}
-        </p>
+        <AuthNotification state="error" message={forgotPasswordError.message} />
       )}
     </>
   );

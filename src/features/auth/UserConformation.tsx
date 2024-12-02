@@ -1,5 +1,5 @@
-import Error from "../../ui/Error";
-import Headline from "../../ui/Headline";
+import AuthNotification from "../../ui/AuthNotification";
+
 import useVerifyAccount from "./hooks/useVerifyAccount";
 
 const UserConformation = () => {
@@ -7,14 +7,12 @@ const UserConformation = () => {
   let content;
   // //
 
-  if (error) content = <Error message={error.message} />;
-  if (data) content = data.message;
+  if (error)
+    content = <AuthNotification state="error" message={error.message} />;
+  if (data)
+    content = <AuthNotification state="success" message={data.message} />;
 
-  return (
-    <>
-      <Headline>{content}</Headline>
-    </>
-  );
+  return <>{content}</>;
 };
 
 export default UserConformation;

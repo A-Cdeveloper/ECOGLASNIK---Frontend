@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
 import { useUrlParams } from "../../hooks/useUrlParams";
+import AuthNotification from "../../ui/AuthNotification";
 import Button from "../../ui/Buttons/Button";
 import ButtonIcon from "../../ui/Buttons/ButtonIcon";
 import Input from "../../ui/Form/Input";
-import { getErrorMessage } from "../../utils/helpers";
 import useResetPassword from "./hooks/useResetPassword";
 
 const ResetPasswordForm = () => {
@@ -45,11 +45,7 @@ const ResetPasswordForm = () => {
   };
 
   if (data) {
-    return (
-      <p className="text-emerald-200 my-2 whitespace-pre-wrap text-center text-[14px]">
-        {data.message}
-      </p>
-    );
+    return <AuthNotification state="success" message={data.message} />;
   }
 
   return (
@@ -63,7 +59,6 @@ const ResetPasswordForm = () => {
             value={formFields.password}
             placeholder="Nova lozinka*"
             onChange={handleInputChange}
-            required
           />
           <ButtonIcon
             icon={showPassword ? <HiEyeSlash /> : <HiEye />}
@@ -99,11 +94,7 @@ const ResetPasswordForm = () => {
         >
           {isLoading ? "Slanje zahteva..." : "Sačuvaj novu lozinku"}
         </Button>
-        {error && (
-          <p className="text-rose-400 my-0 whitespace-pre-wrap text-center text-[13px]">
-            {getErrorMessage(error.message)}
-          </p>
-        )}
+        {error && <AuthNotification state="error" message={error.message} />}
       </form>
     </>
   );
