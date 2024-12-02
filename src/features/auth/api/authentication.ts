@@ -1,6 +1,6 @@
 import { API_URL } from "../../../constants";
-import { LoginRegisterResponse, User } from "../../../types";
-import { throwError, wait } from "../../../utils/helpers";
+import { LoginRegisterResponse } from "../../../types";
+import { throwError } from "../../../utils/helpers";
 
 export const loginApi = async ({
   email,
@@ -53,10 +53,7 @@ export const registerApi = async ({
     const data = await response.json();
 
     if (!response.ok) {
-      const errors: string[] = [];
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      data?.error.map((err: any) => errors.push(err.message));
-      throw new Error(errors.join("\n"));
+      throw new Error(data.message);
     }
     return data;
   } catch (error) {
@@ -68,47 +65,69 @@ export const forgotPasswordApi = async ({
   email,
 }: {
   email: string;
-}): Promise<{ message: string }> => {
+}): Promise<LoginRegisterResponse> => {
   try {
-    await wait(4000);
     const response = await fetch(`${API_URL}/auth/forgot-password`, {
-      method: "PATCH",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email }),
     });
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(
-        `Failed to forgot password: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.message);
     }
-    return response.json();
+    return data;
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
   }
 };
 
 export const verifyAccountApi = async (
-  userId: string,
   verificationCode: string
-): Promise<User> => {
+): Promise<{ message: string }> => {
   try {
-    await wait(4000);
     const response = await fetch(
-      `${API_URL}/auth/verify/${userId}/${verificationCode}`
+      `${API_URL}/auth/verify?token=${verificationCode}`
     );
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error(
-        `Failed to veryfy account: ${response.status} ${response.statusText}`
-      );
+      throw new Error(data.message);
     }
-    return response.json();
+    return data;
   } catch (error) {
-    const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
-    throw new Error(`${errorMessage}`);
+    return await throwError(error);
+  }
+};
+
+export const resetPasswordApi = async ({
+  password,
+  verificationCode,
+}: {
+  password: string;
+  verificationCode?: string | null;
+}): Promise<{ message: string }> => {
+  try {
+    const response = await fetch(
+      `${API_URL}/auth/reset-password?token=${verificationCode}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password }),
+      }
+    );
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    return data;
+  } catch (error) {
+    return await throwError(error);
   }
 };
