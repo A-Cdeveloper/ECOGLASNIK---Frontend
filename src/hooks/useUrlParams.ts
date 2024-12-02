@@ -6,6 +6,7 @@ export const useUrlParams = () => {
   const mapLng = searchParams.get("lng") as number | null;
   const status = searchParams.get("status") as string | null;
   const cat_id = searchParams.get("cat_id") as number | null;
+  const token = searchParams.get("token") as string | null;
   const mode = searchParams.get("mode") as string | null;
   const currentParams = new URLSearchParams(window.location.search);
 
@@ -18,6 +19,7 @@ export const useUrlParams = () => {
     mapLng,
     status,
     cat_id,
+    token,
     mode,
     currentParams,
     setCurrentParams,
