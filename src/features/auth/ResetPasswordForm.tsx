@@ -1,17 +1,22 @@
-import { useCallback, useRef, useState } from "react";
-import Button from "../../ui/Buttons/Button";
-import Input from "../../ui/Form/Input";
-import useForgotPassword from "./hooks/useForgotPassword";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useState } from "react";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
+import { useUrlParams } from "../../hooks/useUrlParams";
+import Button from "../../ui/Buttons/Button";
 import ButtonIcon from "../../ui/Buttons/ButtonIcon";
+import Input from "../../ui/Form/Input";
+import { getErrorMessage } from "../../utils/helpers";
+import useResetPassword from "./hooks/useResetPassword";
 
 const ResetPasswordForm = () => {
-  const { status, forgotPassword } = useForgotPassword();
-  const emailRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
+  const {
+    status: resetPasswordStatus,
+    mutate: resetPassword,
+    data,
+    error,
+  } = useResetPassword();
+  const { token: verificationCode } = useUrlParams();
 
-  const isLoading = status === "pending";
+  const isLoading = resetPasswordStatus === "pending";
 
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordAgain, setShowPasswordAgain] = useState(false);
@@ -33,17 +38,19 @@ const ResetPasswordForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    forgotPassword(
-      { email: emailRef.current!.value },
-      {
-        // TODO oN SUCCESS
-        onSettled: () => {
-          emailRef.current!.value = "";
-          navigate("/login/?mode=login");
-        },
-      }
-    );
+    resetPassword({
+      password: formFields.password,
+      verificationCode: verificationCode || "",
+    });
   };
+
+  if (data) {
+    return (
+      <p className="text-emerald-200 my-2 whitespace-pre-wrap text-center text-[14px]">
+        {data.message}
+      </p>
+    );
+  }
 
   return (
     <>
@@ -85,9 +92,18 @@ const ResetPasswordForm = () => {
             <p className="text-rose-400 my-[3px]">Lozinke se ne podudaraju</p>
           )}
         </div>
-        <Button size="large" style={{ width: "100%" }} disabled={isLoading}>
-          {isLoading ? "Slanje zahteva..." : "Sačuvaj lozinku"}
+        <Button
+          size="large"
+          style={{ width: "100%" }}
+          disabled={!isPasswordValid || resetPasswordStatus === "pending"}
+        >
+          {isLoading ? "Slanje zahteva..." : "Sačuvaj novu lozinku"}
         </Button>
+        {error && (
+          <p className="text-rose-400 my-0 whitespace-pre-wrap text-center text-[13px]">
+            {getErrorMessage(error.message)}
+          </p>
+        )}
       </form>
     </>
   );

@@ -12,7 +12,7 @@ const ForgotPassword = () => {
   }
   return (
     <>
-      <BackButton to={-1} />
+      <BackButton to={"/login?mode=login"} />
       <div className="w-full h-[80%] flex flex-col items-center justify-center px-9">
         <ResetPasswordForm />
       </div>

@@ -1,21 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import { User } from "../../../types";
 import { verifyAccountApi } from "../api/authentication";
+import { useUrlParams } from "../../../hooks/useUrlParams";
 
 const useVerifyAccount = () => {
-  const { userId, verificationCode } = useParams();
+  const { token: verificationCode } = useUrlParams();
 
-  const {
-    isLoading,
-    data: user,
-    error,
-  } = useQuery<User>({
-    queryFn: () => verifyAccountApi(userId!, verificationCode!),
-    queryKey: ["user", userId],
+  const { isLoading, data, error } = useQuery({
+    queryFn: () => verifyAccountApi(verificationCode!),
+    queryKey: ["verify", verificationCode],
   });
 
-  return { isLoading, user, error };
+  return { isLoading, data, error };
 };
 
 export default useVerifyAccount;

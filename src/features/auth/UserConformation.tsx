@@ -1,39 +1,18 @@
+import Error from "../../ui/Error";
 import Headline from "../../ui/Headline";
+import useVerifyAccount from "./hooks/useVerifyAccount";
 
 const UserConformation = () => {
-  // const navigate = useNavigate();
-  // const { isLoading, error, user } = useVerifyAccount();
+  const { data, error } = useVerifyAccount();
+  let content;
+  // //
 
-  // console.log(user);
-
-  const content = "UserConformation";
-
-  //TODO Verify account
-  //
-  // if (isLoading) return <Spinner />;
-  // if (error) content = <Error message={error.message} />;
-  // if (data) content = data.message;
-
-  // const conformed = !!data;
-  //if (shownUsers.length === 0) return <Empty resource="users" />;
-
-  // if (!user) {
-  //   content = error?.message;
-  // }
-  // console.log(error?.message);
+  if (error) content = <Error message={error.message} />;
+  if (data) content = data.message;
 
   return (
     <>
       <Headline>{content}</Headline>
-      {/*{conformed && (
-        <Button
-          variation="primary"
-          size="large"
-          onClick={() => navigate("/login")}
-        >
-          Go to login page
-        </Button>
-      )} */}
     </>
   );
 };

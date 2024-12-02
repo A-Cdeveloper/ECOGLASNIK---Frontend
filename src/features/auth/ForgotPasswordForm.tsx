@@ -1,29 +1,39 @@
 import { useRef } from "react";
 import Button from "../../ui/Buttons/Button";
 import Input from "../../ui/Form/Input";
+import { getErrorMessage } from "../../utils/helpers";
 import useForgotPassword from "./hooks/useForgotPassword";
-import { useNavigate } from "react-router-dom";
 
 const ForgotPasswordForm = () => {
-  const { status, forgotPassword } = useForgotPassword();
+  const {
+    status: forgotPasswordStatus,
+    mutate: forgotPassword,
+    error: forgotPasswordError,
+    data,
+  } = useForgotPassword();
   const emailRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
 
-  const isLoading = status === "pending";
+  const isLoading = forgotPasswordStatus === "pending";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     forgotPassword(
       { email: emailRef.current!.value },
       {
-        // TODO oN SUCCESS
         onSettled: () => {
           emailRef.current!.value = "";
-          navigate("/login/?mode=login");
         },
       }
     );
   };
+
+  if (data) {
+    return (
+      <p className="text-emerald-200 my-2 whitespace-pre-wrap text-center text-[14px]">
+        {data.message}
+      </p>
+    );
+  }
 
   return (
     <>
@@ -31,17 +41,16 @@ const ForgotPasswordForm = () => {
         Unestite email adresu Vašeg naloga:
       </p>
       <form onSubmit={handleSubmit} className="space-y-4 w-[90%]">
-        <Input
-          type="email"
-          placeholder="Email"
-          name="email"
-          ref={emailRef}
-          required
-        />
+        <Input type="email" placeholder="Email" name="email" ref={emailRef} />
         <Button size="large" style={{ width: "100%" }} disabled={isLoading}>
           {isLoading ? "Slanje zahteva..." : "Poslalji zahtev za novu lozinku"}
         </Button>
       </form>
+      {forgotPasswordError && (
+        <p className="text-rose-200 my-2 whitespace-pre-wrap text-center text-[12px]">
+          {getErrorMessage(forgotPasswordError.message)}
+        </p>
+      )}
     </>
   );
 };
