@@ -12,7 +12,6 @@ import Layout from "../ui/Layout/Layout";
 import SingleProblem from "../pages/SingleProblem";
 import UserProblems from "../pages/UserProblems";
 import ResetPassword from "../pages/ResetPassword";
-import UserRegistrationInfo from "../pages/UserRegistrationInfo";
 
 const AddProblem = lazy(() => import("../pages/AddProblem"));
 const EditProblem = lazy(() => import("../pages/EditProblem"));
@@ -66,10 +65,6 @@ const mainRouter = [
           {
             path: "verify-account/",
             element: <VerifyAccount />,
-          },
-          {
-            path: "registration-info/",
-            element: <UserRegistrationInfo />,
           },
         ],
       },
