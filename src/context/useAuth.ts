@@ -8,11 +8,4 @@ const useAuth = () => {
   return context;
 };
 
-// export const useAccessToken = () => {
-//   const {
-//     user: { accessToken },
-//   } = useContext(AuthContext);
-//   return accessToken;
-// };
-
 export default useAuth;
