@@ -1,14 +1,10 @@
 import { HiArrowRightOnRectangle } from "react-icons/hi2";
 import { User } from "../../types";
 import avatar from "../../assets/user-circle-svgrepo-com.svg";
+import useLogout from "../../features/auth/hooks/useLogout";
 
-const UserNavigation = ({
-  user,
-  logout,
-}: {
-  user: User | null;
-  logout: () => void;
-}) => {
+const UserNavigation = ({ user }: { user: User | null }) => {
+  const { mutate: logoutUser } = useLogout();
   return (
     <div className="userarea flex flex-1 xl:flex-none justify-end md:justify-end gap-2 items-center pe-2 md:pe-3 ">
       <img
@@ -23,7 +19,7 @@ const UserNavigation = ({
 
       <HiArrowRightOnRectangle
         className="text-[24px]"
-        onClick={logout}
+        onClick={() => logoutUser()}
         cursor={"pointer"}
       />
     </div>
