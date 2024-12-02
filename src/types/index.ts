@@ -34,10 +34,7 @@ export type User = {
   lastname: string;
   phone: string;
   email: string;
-  password: string;
-  accessToken: string | null;
-  refreshToken: string | null;
-  createdAt: Date;
+  role: string;
 };
 
 export type Users = User[];
