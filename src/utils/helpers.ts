@@ -14,6 +14,6 @@ export const getErrorMessage = (errorMsg: string) => {
 
 export const throwError = async (error: any) => {
   const errorMessage =
-    error instanceof Error ? "Privremena greška na serveru ⚠" : error.message;
+    error instanceof Error ? error.message : "Privremena greška na serveru ⚠";
   throw new Error(errorMessage);
 };
