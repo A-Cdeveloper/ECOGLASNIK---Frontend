@@ -20,7 +20,6 @@ export const loginApi = async ({
     });
 
     const data = await response.json();
-    console.log(data);
 
     if (!response.ok) {
       throw new Error(data.message);
@@ -123,6 +122,28 @@ export const resetPasswordApi = async ({
         body: JSON.stringify({ password }),
       }
     );
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    return data;
+  } catch (error) {
+    return await throwError(error);
+  }
+};
+
+export const logoutApi = async (): Promise<LoginRegisterResponse> => {
+  try {
+    const response = await fetch(`${API_URL}/auth/logout`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: null,
+      credentials: "include",
+    });
+
     const data = await response.json();
 
     if (!response.ok) {
