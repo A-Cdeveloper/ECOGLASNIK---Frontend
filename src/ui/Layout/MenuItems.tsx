@@ -9,7 +9,6 @@ const MenuItems = ({
 }) => {
   return (
     <>
-      {/* {isAuthenticated && ( */}
       <li>
         <NavLink
           to="/problems/add"
@@ -22,7 +21,7 @@ const MenuItems = ({
           Dodaj Problem
         </NavLink>
       </li>
-      {/* )} */}
+
       <li>
         <NavLink
           to="/"
