@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
 
 const useSessionStorage = <T>(key: string, initialValue: T) => {
-  const storedValue = sessionStorage.getItem(key);
-
   const [data, setData] = useState<T>(() => {
-    if (storedValue !== null) return JSON.parse(storedValue);
-    if (initialValue) return initialValue;
+    try {
+      const storedValue = sessionStorage.getItem(key);
+      return storedValue !== null ? JSON.parse(storedValue) : initialValue;
+    } catch (error) {
+      console.error(`Error parsing session storage key "${key}":`, error);
+      return initialValue; // Fallback to initial value
+    }
   });
 
   useEffect(() => {
-    sessionStorage.setItem(key, JSON.stringify(data));
+    try {
+      sessionStorage.setItem(key, JSON.stringify(data));
+    } catch (error) {
+      console.error(`Error setting session storage key "${key}":`, error);
+    }
   }, [key, data]);
 
   return [data, setData] as [typeof data, typeof setData];
