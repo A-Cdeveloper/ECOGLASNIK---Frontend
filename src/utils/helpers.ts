@@ -1,10 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { format } from "date-fns/format";
+import { format, differenceInSeconds } from "date-fns";
 
 export const wait = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 export const formattedDate = (date: Date) => format(date, "dd.MM.yyyy HH:mm");
+
+export const differenceInSecs = (date1: Date, date2: Date) => {
+  return differenceInSeconds(date1, date2);
+};
 
 export const getErrorMessage = (errorMsg: string) => {
   if (!errorMsg) return;
