@@ -6,7 +6,8 @@ import { User } from "../types";
 type AuthContextType = {
   user: User | null;
   isAuthenticated: boolean;
-  setSessionStorageData: (data: User | null) => User | void;
+  setUser: (data: User | null) => User | void;
+  setTokenExpiry: (data: Date | null) => Date | void;
   removeSessionStorageData: () => void;
 };
 
@@ -17,20 +18,26 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [data, setData] = useSessionStorage<User | null>("user", null);
-
-  console.log(data);
+  const [user, setUser] = useSessionStorage<User | null>("user", null);
+  const [tokenExpiry, setTokenExpiry] = useSessionStorage<Date | null>(
+    "tokenExpiry",
+    null
+  );
 
   const removeSessionStorageData = () => {
     sessionStorage.removeItem("user");
-    setData(null);
+    sessionStorage.removeItem("tokenExpiry");
+    setUser(null);
+    setTokenExpiry(null);
   };
 
   const value = {
-    user: data,
-    isAuthenticated: !!data,
-    setSessionStorageData: setData,
+    user,
+    tokenExpiry,
+    isAuthenticated: !!user,
+    setUser,
     removeSessionStorageData,
+    setTokenExpiry,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
