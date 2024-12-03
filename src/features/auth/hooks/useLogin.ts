@@ -15,11 +15,12 @@ const useLogin = (): UseMutationResult<
   Error,
   LoginVariables
 > => {
-  const { setSessionStorageData } = useAuth();
+  const { setUser, setTokenExpiry } = useAuth();
   const mutation = useMutation<LoginRegisterResponse, Error, LoginVariables>({
     mutationFn: loginApi,
     onSuccess: (data: LoginRegisterResponse) => {
-      setSessionStorageData(data.data);
+      setUser(data.data);
+      setTokenExpiry(data.tokenExpiry);
       toast.success(
         `${data.message}\n Dobrodosli ${data.data.firstname} ${data.data.lastname}!`
       );
