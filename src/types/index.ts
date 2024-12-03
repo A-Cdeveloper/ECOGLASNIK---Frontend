@@ -42,4 +42,5 @@ export type Users = User[];
 export type LoginRegisterResponse = {
   message: string;
   data: User;
+  tokenExpiry: Date;
 };
