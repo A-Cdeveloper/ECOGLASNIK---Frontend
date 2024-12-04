@@ -35,6 +35,8 @@ export type User = {
   phone: string;
   email: string;
   role: string;
+  createdAt: Date;
+  updatedAt?: Date | null;
 };
 
 export type Users = User[];
