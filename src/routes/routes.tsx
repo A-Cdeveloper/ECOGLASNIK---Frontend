@@ -12,6 +12,7 @@ import Layout from "../ui/Layout/Layout";
 import SingleProblem from "../pages/SingleProblem";
 import UserProblems from "../pages/UserProblems";
 import ResetPassword from "../pages/ResetPassword";
+import { UserProfile } from "../pages/UserProfile";
 
 const AddProblem = lazy(() => import("../pages/AddProblem"));
 const EditProblem = lazy(() => import("../pages/EditProblem"));
@@ -56,6 +57,14 @@ const mainRouter = [
         ],
       },
       { path: "/impressum", element: <ImpressumPage /> },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "/login",
         children: [
