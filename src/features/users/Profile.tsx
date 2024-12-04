@@ -45,7 +45,7 @@ const Profile = () => {
         <div>Posednja aktivnost:</div>
         <div>{user?.updatedAt && formattedDate(user?.updatedAt)}</div>
       </div>
-      {user && user?.role !== "admin" && (
+      {user && user?.role !== "superadmin" && (
         <div className="flex justify-end">
           <Button
             variation="danger"

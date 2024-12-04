@@ -2,6 +2,7 @@
 import { createContext } from "react";
 import useSessionStorage from "../hooks/useSessionStorage";
 import { User } from "../types";
+import { differenceInSecs } from "../utils/helpers";
 
 type AuthContextType = {
   user: User | null;
@@ -24,12 +25,21 @@ export const AuthContextProvider = ({
     null
   );
 
+  // const expirationDate = new Date(tokenExpiry as Date);
+  // console.log(new Date());
+  // console.log(expirationDate);
+  // console.log(differenceInSecs(expirationDate, new Date()));
+
   const removeSessionStorageData = () => {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("tokenExpiry");
     setUser(null);
     setTokenExpiry(null);
   };
+
+  // if (differenceInSecs(expirationDate, new Date()) < 0) {
+  //   removeSessionStorageData();
+  // }
 
   const value = {
     user,
