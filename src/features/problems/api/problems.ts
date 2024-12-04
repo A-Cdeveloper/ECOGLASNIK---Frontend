@@ -116,6 +116,7 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
   try {
     const response = await fetch(`${API_URL}/problems/${id}`, {
       method: "DELETE",
+      credentials: "include",
     });
     const data = await response.json();
 
@@ -123,13 +124,13 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
       throw new Error(data.error);
     }
 
-    await fetch(`${API_URL}/problems/upload/remove`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id: data.pinata_id }),
-    });
+    // await fetch(`${API_URL}/problems/upload/remove`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ id: data.pinata_id }),
+    // });
 
     return data;
   } catch (error) {
