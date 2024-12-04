@@ -1,30 +1,24 @@
-import { useMemo } from "react";
+import Error from "../../ui/Error";
 import Loader from "../../ui/Loader";
 import NoResourceFound from "../../ui/NoResourceFound";
 import ProblemItem from "./ProblemItem";
 import { useProblems } from "./hooks/useProblems";
-import Error from "../../ui/Error";
+import useUserProblems from "./hooks/useUserProblems";
 
 const ListProblems = ({ userId }: { userId?: number }) => {
-  const {
-    isLoading,
-    problems,
-    error,
-    numberOfResults: numberofProblems,
-  } = useProblems();
+  const { isLoading, problems, error } = useProblems();
 
-  const userProblems = useMemo(() => {
-    if (userId) {
-      return problems?.filter((problem) => problem.uid === userId);
-    }
-    return problems;
-  }, [problems, userId]);
+  const { userProblems, numberOfProblems: numberofUserProblems } =
+    useUserProblems({
+      userId,
+      problems,
+    });
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (userProblems?.length === 0) {
+  if (numberofUserProblems === 0) {
     return <NoResourceFound resources="problem" />;
   }
   if (error) {
@@ -34,7 +28,9 @@ const ListProblems = ({ userId }: { userId?: number }) => {
   return (
     <>
       <div className="my-2 text-[13px] text-end">
-        {numberofProblems === 1 ? "1 problem" : `${numberofProblems} problema`}
+        {numberofUserProblems === 1
+          ? "1 problem"
+          : `${numberofUserProblems} problema`}
       </div>
       <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
         {userProblems?.map((problem) => (
