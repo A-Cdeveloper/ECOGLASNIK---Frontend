@@ -1,18 +1,26 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
+import { useUrlParams } from "../../../hooks/useUrlParams";
 import { Problem } from "../../../types";
 
-type ProblemsNumber = {
-  userId?: number;
-  problems: Problem[] | undefined;
-};
+const useUserProblems = ({ userId }: { userId?: number }) => {
+  const queryClient = useQueryClient();
+  const { status, cat_id } = useUrlParams();
 
-const useUserProblems = ({ userId, problems }: ProblemsNumber) => {
+  const cachedProblems: Problem[] | undefined = queryClient.getQueryData([
+    "problems",
+    status,
+    cat_id,
+  ]);
+  console.log("run hook");
+
   const userProblems = useMemo(() => {
+    console.log("calculating");
     if (userId) {
-      return problems?.filter((problem) => problem.uid === userId);
+      return cachedProblems?.filter((problem) => problem.uid === userId);
     }
-    return problems;
-  }, [problems, userId]);
+    return cachedProblems;
+  }, [cachedProblems, userId]);
 
   return { userProblems, numberOfProblems: userProblems?.length };
 };
