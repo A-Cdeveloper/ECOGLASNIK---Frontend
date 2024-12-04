@@ -6,19 +6,17 @@ import { useProblems } from "./hooks/useProblems";
 import useUserProblems from "./hooks/useUserProblems";
 
 const ListProblems = ({ userId }: { userId?: number }) => {
-  const { isLoading, problems, error } = useProblems();
+  const { isLoading, error } = useProblems();
 
-  const { userProblems, numberOfProblems: numberofUserProblems } =
-    useUserProblems({
-      userId,
-      problems,
-    });
+  const { userProblems, numberOfProblems } = useUserProblems({
+    userId,
+  });
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (numberofUserProblems === 0) {
+  if (numberOfProblems === 0) {
     return <NoResourceFound resources="problem" />;
   }
   if (error) {
@@ -28,9 +26,7 @@ const ListProblems = ({ userId }: { userId?: number }) => {
   return (
     <>
       <div className="my-2 text-[13px] text-end">
-        {numberofUserProblems === 1
-          ? "1 problem"
-          : `${numberofUserProblems} problema`}
+        {numberOfProblems === 1 ? "1 problem" : `${numberOfProblems} problema`}
       </div>
       <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
         {userProblems?.map((problem) => (
