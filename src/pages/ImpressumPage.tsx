@@ -16,12 +16,14 @@ const ImpressumPage = () => {
         <strong>16210 Vlasotince, Srbija</strong>
       </p>
       <TextBlock caption="Kontakt:">
-        Telefon: <a href="tel:+381637675989">+381 637675989</a> <br />
-        Email: <a href="mailto:cleanme@e-seo.info">cleanme@e-seo.info</a>
+        Email:{" "}
+        <a href="mailto:admin@cleanme.e-vlasotince.info">
+          admin@cleanme.e-vlasotince.info
+        </a>
         <br />
         Web:{" "}
-        <a href="https://www.e-seo.info" target="_blank">
-          www.e-seo.info
+        <a href="https://www.cleanme.e-vlasotince.info" target="_blank">
+          cleanme.e-vlasotince.info
         </a>
       </TextBlock>
       <TextBlock caption="Opis sajta:">

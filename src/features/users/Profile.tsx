@@ -24,7 +24,7 @@ const Profile = () => {
       {isShowWarrning && (
         <PromptDeleteUser
           status={isShowWarrning}
-          numberOfProblems={numberOfProblems}
+          numberOfProblems={numberOfProblems || 0}
           onCancel={() => setIsShowWarrning(false)}
           onConfirm={() => deleteUserMutation(Number(user?.uid))}
         />

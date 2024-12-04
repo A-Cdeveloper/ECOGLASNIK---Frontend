@@ -12,10 +12,8 @@ const useUserProblems = ({ userId }: { userId?: number }) => {
     status,
     cat_id,
   ]);
-  console.log("run hook");
 
   const userProblems = useMemo(() => {
-    console.log("calculating");
     if (userId) {
       return cachedProblems?.filter((problem) => problem.uid === userId);
     }
