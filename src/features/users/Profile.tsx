@@ -1,29 +1,29 @@
-import { useMemo } from "react";
+import { useState } from "react";
 import useAuth from "../../context/useAuth";
 import Button from "../../ui/Buttons/Button";
 import { formattedDate } from "../../utils/helpers";
-import { useProblems } from "../problems/hooks/useProblems";
 import useDeleteUser from "./hooks/useDeleteUser";
+import PromptDeleteUser from "../../ui/PromtsAndNotifications/PromptDeleteUser";
 
 const Profile = () => {
   const { user } = useAuth();
-  const { problems } = useProblems();
+
   const { mutate: deleteUserMutation, status: deleteUserStatus } =
     useDeleteUser();
 
+  const [isShowWarrning, setIsShowWarrning] = useState(false);
   const isLoadingDeleteUser = deleteUserStatus === "pending";
-
-  const userProblemsNumber = useMemo(() => {
-    if (user) {
-      return problems?.filter((problem) => problem.uid === user.uid).length;
-    }
-    return;
-  }, [problems, user]);
-
-  console.log(userProblemsNumber);
 
   return (
     <>
+      {isShowWarrning && (
+        <PromptDeleteUser
+          status={isShowWarrning}
+          onCancel={() => setIsShowWarrning(false)}
+          onConfirm={() => deleteUserMutation(Number(user?.uid))}
+        />
+      )}
+
       <div className=" bg-secondary/30 my-4 py-2 px-3 grid grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md">
         <div>Ime i prezime:</div>
         <div className="font-bold">
@@ -50,7 +50,7 @@ const Profile = () => {
           <Button
             variation="danger"
             size="small"
-            onClick={() => deleteUserMutation(Number(user?.uid))}
+            onClick={() => setIsShowWarrning(true)}
           >
             {isLoadingDeleteUser ? "Brisanje..." : "Obriši nalog 🎈"}
           </Button>
