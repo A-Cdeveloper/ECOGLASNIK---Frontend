@@ -65,6 +65,7 @@ export const addNewProblemApi = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newProblem),
+      credentials: "include",
     });
 
     const data = await response.json();
@@ -97,6 +98,7 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(updatedFields),
+      credentials: "include",
     });
 
     const data = await response.json();
