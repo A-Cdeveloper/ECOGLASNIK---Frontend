@@ -45,15 +45,17 @@ const Profile = () => {
         <div>Posednja aktivnost:</div>
         <div>{user?.updatedAt && formattedDate(user?.updatedAt)}</div>
       </div>
-      <div className="flex justify-end">
-        <Button
-          variation="danger"
-          size="small"
-          onClick={() => deleteUserMutation(Number(user?.uid))}
-        >
-          {isLoadingDeleteUser ? "Brisanje..." : "Obriši nalog 🎈"}
-        </Button>
-      </div>
+      {user && user?.role !== "admin" && (
+        <div className="flex justify-end">
+          <Button
+            variation="danger"
+            size="small"
+            onClick={() => deleteUserMutation(Number(user?.uid))}
+          >
+            {isLoadingDeleteUser ? "Brisanje..." : "Obriši nalog 🎈"}
+          </Button>
+        </div>
+      )}
     </>
   );
 };
