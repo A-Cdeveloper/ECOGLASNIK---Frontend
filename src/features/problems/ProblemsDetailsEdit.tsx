@@ -4,6 +4,8 @@ import Button from "../../ui/Buttons/Button";
 import useDeleteProblem from "./hooks/useDeleteProblem";
 import useAddEditProblem from "./hooks/useAddEditProblem";
 import { getErrorMessage } from "../../utils/helpers";
+import { useState } from "react";
+import PromptDeleteProblem from "../../ui/PromtsAndNotifications/PromptDeleteProblem";
 
 const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
   const navigate = useNavigate();
@@ -15,52 +17,64 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
   const { mutate: deleteProblemMutation, status: deleteProblemLaoding } =
     useDeleteProblem();
 
+  const [isShowWarrning, setIsShowWarrning] = useState(false);
+
   const isLoadingChangeStatus = updateProblemStatus === "pending";
   const isLoadingDeleteProblem = deleteProblemLaoding === "pending";
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      {updateProblemError && (
-        <p className="text-rose-400 mt-0 whitespace-pre-wrap">
-          {getErrorMessage(updateProblemError.message)}
-        </p>
+    <>
+      {isShowWarrning && (
+        <PromptDeleteProblem
+          status={isShowWarrning}
+          onCancel={() => setIsShowWarrning(false)}
+          onConfirm={() => deleteProblemMutation(problem!.id)}
+        />
       )}
 
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col items-center gap-4">
+        {updateProblemError && (
+          <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+            {getErrorMessage(updateProblemError.message)}
+          </p>
+        )}
+
+        <div className="flex items-center gap-4">
+          <Button
+            variation="warning"
+            size="small"
+            onClick={() => {
+              navigate(
+                `/problems/edit/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
+              );
+            }}
+          >
+            Izmeni detalje problema
+          </Button>
+          <Button
+            variation="info"
+            size="small"
+            onClick={() => {
+              updateProblemMutation({
+                ...problem!,
+                updatedAt: new Date(),
+                status: "done",
+              });
+            }}
+          >
+            {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen"}
+          </Button>
+        </div>
+
         <Button
-          variation="warning"
+          variation="danger"
           size="small"
-          onClick={() => {
-            navigate(
-              `/problems/edit/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
-            );
-          }}
+          onClick={() => setIsShowWarrning(true)}
         >
-          Izmeni detalje problema
-        </Button>
-        <Button
-          variation="info"
-          size="small"
-          onClick={() => {
-            updateProblemMutation({
-              ...problem!,
-              updatedAt: new Date(),
-              status: "done",
-            });
-          }}
-        >
-          {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen"}
+          {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem"}
         </Button>
       </div>
-
-      <Button
-        variation="danger"
-        size="small"
-        onClick={() => deleteProblemMutation(problem!.id)}
-      >
-        {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem"}
-      </Button>
-    </div>
+    </>
   );
 };
 
