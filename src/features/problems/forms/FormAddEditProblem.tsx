@@ -152,7 +152,7 @@ const FormAddEditProblem = ({
         formStatus={formState.touchForm && !isLoadingAddNew && !isLoadingEdit}
       />
 
-      {addNewProblemError && !uploadImageLoading && (
+      {addNewProblemError && (addNewProblemError || !uploadImageLoading) && (
         <p className="text-rose-400 mt-0 whitespace-pre-wrap">
           {getErrorMessage(addNewProblemError.message)}
         </p>
