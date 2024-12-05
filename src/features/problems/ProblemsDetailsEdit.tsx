@@ -29,7 +29,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
       <div className="flex items-center gap-4">
         <Button
           variation="warning"
-          size="medium"
+          size="small"
           onClick={() => {
             navigate(
               `/problems/edit/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
@@ -39,8 +39,8 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
           Izmeni detalje problema
         </Button>
         <Button
-          variation="primary"
-          size="medium"
+          variation="info"
+          size="small"
           onClick={() => {
             updateProblemMutation({
               ...problem!,
@@ -49,7 +49,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
             });
           }}
         >
-          {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen 📢"}
+          {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen"}
         </Button>
       </div>
 
@@ -58,7 +58,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
         size="small"
         onClick={() => deleteProblemMutation(problem!.id)}
       >
-        {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem 🎈"}
+        {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem"}
       </Button>
     </div>
   );

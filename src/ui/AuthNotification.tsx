@@ -10,7 +10,7 @@ const AuthNotification = ({
   return (
     <p
       className={`${
-        state === "success" ? "text-emerald-400" : "text-rose-400"
+        state === "success" ? "text-success-100" : "text-danger-100"
       } my-2 whitespace-pre-wrap text-center text-[14px]`}
     >
       {getErrorMessage(message)}

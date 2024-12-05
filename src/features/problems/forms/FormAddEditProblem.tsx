@@ -199,12 +199,12 @@ const FormAddEditProblem = ({
         <div className="flex justify-end">
           <Button
             aria-label="Pošalji problem"
-            variation="success"
-            size="medium"
+            variation="info"
+            size="small"
             disabled={isLoadingAddNew || isLoadingEdit || !formState.touchForm}
           >
-            {!editMode && (isLoadingAddNew ? "Slanje..." : "Prijavi")}
-            {editMode && (isLoadingEdit ? "Izmena..." : "Izmeni")}
+            {!editMode && (isLoadingAddNew ? "Slanje..." : "Prijavi problem")}
+            {editMode && (isLoadingEdit ? "Izmena..." : "Izmeni problem")}
           </Button>
         </div>
       </form>

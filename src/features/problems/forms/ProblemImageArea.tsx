@@ -61,7 +61,7 @@ const ProblemImageArea = ({
 
   if (isLoadingUploadImage) {
     return (
-      <div className="w-full h-full flex justify-center items-center gap-4 py-3">
+      <div className="w-full h-full flex justify-center items-center gap-4 py-3 ">
         <MiniSpinner />
         Slika se uploaduje...
       </div>
@@ -77,7 +77,7 @@ const ProblemImageArea = ({
           <ProblemImage
             image={currentImageUrl}
             alt={problem?.title}
-            className="w-full h-auto overflow-hidden my-4 mx-auto"
+            className="w-full h-auto overflow-hidden my-4 mx-auto border-double border-4 border-secondary-100"
           />
         </div>
       )}

@@ -15,7 +15,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
   } = problem || {};
 
   return (
-    <div className="p-2 my-[3px] bg-secondary/20 hover:bg-secondary/85 relative basis-full md:basis-1/2 lg:basis-full self-stretch">
+    <div className="px-2 py-[10px] my-[3px] bg-secondary-500/20 hover:bg-secondary-500/75 relative basis-full md:basis-1/2 lg:basis-full self-stretch">
       <Link to={`/problems/${id}/?lat=${lat}&lng=${lng}`}>
         <StatusBadge
           status={problem.status}
@@ -38,7 +38,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
           <ProblemImage
             image={image || ""}
             alt={title || ""}
-            className="w-[120px] h-[80px] overflow-hidden bg-primary self-end"
+            className="w-[100px] h-[70px] overflow-hidden self-center border-double border-4 border-secondary-100"
           />
         </div>
       </Link>

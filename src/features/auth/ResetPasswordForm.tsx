@@ -91,6 +91,7 @@ const ResetPasswordForm = () => {
           size="large"
           style={{ width: "100%" }}
           disabled={!isPasswordValid || resetPasswordStatus === "pending"}
+          variation="info"
         >
           {isLoading ? "Slanje zahteva..." : "Sačuvaj novu lozinku"}
         </Button>

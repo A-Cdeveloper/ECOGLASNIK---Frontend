@@ -14,8 +14,8 @@ const MenuItems = ({
           to="/problems/add"
           className={({ isActive }) =>
             isActive
-              ? "text-white bg-yellow/80 py-1 px-2"
-              : "text-primary bg-yellow/80 py-1 px-2 hover:text-white"
+              ? "text-white bg-yellow-500 py-1 px-2"
+              : "text-winter-100/80 bg-yellow-500/80 py-1 px-2 hover:text-white hover:bg-yellow-500"
           }
         >
           Dodaj Problem
@@ -26,7 +26,9 @@ const MenuItems = ({
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-winter" : "text-secondary hover:text-winter"
+            isActive
+              ? "ms-0 text-white"
+              : "ms-0  text-secondary-100 hover:text-white"
           }
         >
           Svi problemi
@@ -38,7 +40,9 @@ const MenuItems = ({
           <NavLink
             to={`/problems/user/${userId}`}
             className={({ isActive }) =>
-              isActive ? "text-winter" : "text-secondary hover:text-winter"
+              isActive
+                ? "ms-0 text-white"
+                : "ms-0  text-secondary-100 hover:text-white"
             }
           >
             Vaše prijave
@@ -50,8 +54,8 @@ const MenuItems = ({
           to="/impressum"
           className={({ isActive }) =>
             isActive
-              ? "ms-0 text-winter"
-              : "ms-0  text-secondary hover:text-winter"
+              ? "ms-0 text-white"
+              : "ms-0  text-secondary-100 hover:text-white"
           }
         >
           Impressum
@@ -62,7 +66,9 @@ const MenuItems = ({
           <NavLink
             to="/login/?mode=login"
             className={({ isActive }) =>
-              isActive ? "text-winter" : "text-secondary hover:text-winter"
+              isActive
+                ? "ms-0 text-white"
+                : "ms-0  text-secondary-100 hover:text-white"
             }
           >
             Uloguj se

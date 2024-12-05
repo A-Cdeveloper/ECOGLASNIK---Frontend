@@ -17,7 +17,9 @@ const UserNavigation = ({ user }: { user: User | null }) => {
 
         <p className="hidden md:block leading-4">
           {user?.firstname} {user?.lastname}
-          <span className="block text-[11px]">{user?.email}</span>
+          <span className="block text-[11px] text-secondary-100">
+            {user?.email}
+          </span>
         </p>
       </Link>
 

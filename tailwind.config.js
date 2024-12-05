@@ -67,15 +67,49 @@ export default {
 
     extend: {
       colors: {
-        primary: "#2b2d42",
-        secondary: "#8d99ae",
-        red: "#ef233c",
-        darkred: "#d90429",
-        winter: "#edf2f4",
-        yellow: "#E8BD00",
-        green: "#12A336FF",
+        primary: {
+          100: "#434657", // Lighter (10% of the original)
+          500: "#2b2d42", // Base color
+          900: "#1a1b28", // Darker (90% of the original)
+        },
+        secondary: {
+          100: "#a3a9b7",
+          500: "#8d99ae",
+          900: "#6a7384",
+        },
+        danger: {
+          100: "#f78a94",
+          500: "#ef233c",
+          900: "#a11829",
+        },
+        winter: {
+          100: "#f5f7f9",
+          500: "#edf2f4",
+          900: "#c2c8cb",
+        },
+        warrning: {
+          100: "#f6dfa5",
+          500: "#E8BD00",
+          900: "#a78400",
+        },
+        success: {
+          100: "#5cd484",
+          500: "#12A336",
+          900: "#0a7025",
+        },
+        turquoise: {
+          100: "#79abb0",
+          500: "#398289",
+          900: "#285e62",
+        },
+        skyblue: {
+          100: "#A0D9EF",
+          500: "#20A7DB",
+          900: "#1C96C5",
+        },
       },
     },
   },
+
   plugins: [require("tailwind-scrollbar")],
 };

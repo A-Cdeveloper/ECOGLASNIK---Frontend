@@ -30,7 +30,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       <ProblemImage
         image={image || ""}
         alt={title || ""}
-        className="w-full h-auto overflow-hidden my-4 mx-auto"
+        className="w-full h-auto overflow-hidden my-4 mx-auto border-double border-4 border-secondary-100"
       />
 
       {status === "active" && logedUser?.uid === uid && (

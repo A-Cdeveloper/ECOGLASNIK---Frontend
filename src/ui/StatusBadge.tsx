@@ -8,7 +8,7 @@ const StatusBadge = ({
   return (
     <span
       className={`${
-        status === "done" ? "bg-green/80" : "bg-red/80"
+        status === "done" ? "bg-success-500" : "bg-red-500"
       } ${className} px-1 py-[3px] font-bold tracking-wider text-[11px]`}
     >
       {status === "done" ? "REŠENO" : "AKTIVNO"}

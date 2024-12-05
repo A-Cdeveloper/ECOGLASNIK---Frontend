@@ -38,8 +38,13 @@ const ForgotPasswordForm = () => {
       </p>
       <form onSubmit={handleSubmit} className="space-y-4 w-[90%]">
         <Input type="email" placeholder="Email" name="email" ref={emailRef} />
-        <Button size="large" style={{ width: "100%" }} disabled={isLoading}>
-          {isLoading ? "Slanje zahteva..." : "Poslalji zahtev za novu lozinku"}
+        <Button
+          size="large"
+          style={{ width: "100%" }}
+          disabled={isLoading}
+          variation="info"
+        >
+          {isLoading ? "Slanje zahteva..." : "Pošalji zahtev za novu lozinku"}
         </Button>
       </form>
       {forgotPasswordError && (

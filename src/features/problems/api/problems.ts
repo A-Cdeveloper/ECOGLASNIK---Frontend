@@ -71,9 +71,7 @@ export const addNewProblemApi = async (
     const data = await response.json();
 
     if (!response.ok) {
-      const errors: string[] = [];
-      data?.error.map((err: any) => errors.push(err.message));
-      throw new Error(errors.join("\n"));
+      throw new Error(data.message);
     }
     return data;
   } catch (error) {
@@ -104,9 +102,7 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
     const data = await response.json();
 
     if (!response.ok) {
-      const errors: string[] = [];
-      data?.error.map((err: any) => errors.push(err.message));
-      throw new Error(errors.join("\n"));
+      throw new Error(data.message);
     }
     return data;
   } catch (error) {
@@ -123,7 +119,7 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error);
+      throw new Error(data.message);
     }
 
     // await fetch(`${API_URL}/problems/upload/remove`, {
@@ -152,7 +148,7 @@ export const uploadProblemImageApi = async (file: File) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error);
+      throw new Error(data.message);
     }
 
     return data;

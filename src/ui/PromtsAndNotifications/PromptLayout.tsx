@@ -8,8 +8,8 @@ const PromptContext = createContext<PromptContextType>(null);
 const PromptLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <PromptContext.Provider value={null}>
-      <div className="promptModal">
-        <div className="bg-primary px-5 pt-3 pb-5 rounded-md flex flex-col justify-start items-center border-white/50 border-[1px]">
+      <div className="promptModalBackDrop">
+        <div className="bg-primary-500 px-5 pt-3 pb-5 rounded-md flex flex-col justify-start items-center border-secondary-100 border-[1px]">
           {children}
         </div>
       </div>

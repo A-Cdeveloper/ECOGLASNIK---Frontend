@@ -174,6 +174,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
 
         <Button
           size="large"
+          variation="info"
           style={{ width: "100%" }}
           disabled={
             !isPasswordValid ||

@@ -17,7 +17,7 @@ const ProblemHeader = ({
   user,
 }: ProblemHeaderType) => {
   return (
-    <div className=" bg-secondary/30 my-4 py-2 px-3 grid grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md">
+    <div className=" bg-secondary-500/30 my-4 py-2 px-3 grid grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md">
       <ProblemCategory problemId={cat_id} />
       <ProblemUser user={user} />
       <div>Datum prijave:</div>

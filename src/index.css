@@ -4,25 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --color-text: #fff;
-    --color-success: green;
-    --color-info: rgb(55, 70, 121);
-    --color-error: #ef233c;
-  }
-}
-
 html {
   scroll-behavior: smooth;
-  @apply scrollbar scrollbar-thumb-secondary/30 scrollbar-track-primary;
+  @apply scrollbar scrollbar-thumb-secondary-500/30 scrollbar-track-primary-500;
 }
 
 body {
-  color: var(--color-text);
+  color: #fff;
   font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
-  @apply bg-primary;
+  @apply bg-primary-500;
 }
 
 .resize-x {
@@ -34,33 +25,32 @@ body {
 input,
 textarea,
 select {
-  @apply bg-transparent px-2 py-1 border-1 border-secondary/50 focus:border-yellow focus:outline-none text-white w-full;
-}
-
-select {
-  @apply border-secondary/50;
+  @apply bg-transparent px-2 py-1 border-1 border-secondary-100/40 focus:border-yellow-500 focus:outline-none text-winter-100/80 w-full;
 }
 
 option {
-  @apply bg-primary px-2 py-1 border-1 border-secondary focus:border-primary focus:outline-none text-white;
+  @apply bg-primary-500 px-2 py-1 border-1 border-secondary-500 focus:border-primary-500 focus:outline-none text-winter-100/80;
 }
 
 button {
-  @apply text-white px-2 py-1 border-1 font-bold uppercase tracking-[.05rem] text-[12px];
+  @apply text-white px-2 py-1 border-1 font-bold uppercase tracking-[.05rem] text-[13px];
   &.primary {
-    @apply bg-green/70 hover:bg-green;
+    @apply bg-primary-500 hover:bg-primary-900;
   }
   &.secondary {
-    @apply bg-sky-900/70 hover:bg-sky-900;
+    @apply bg-secondary-500 hover:bg-secondary-900;
   }
   &.success {
-    @apply bg-green/70 hover:bg-green;
+    @apply bg-green-900 hover:bg-green-900;
   }
   &.danger {
-    @apply bg-red/70 hover:bg-red;
+    @apply bg-red-500 hover:bg-red-900;
   }
   &.warning {
-    @apply bg-yellow/70 hover:bg-yellow hover:text-black;
+    @apply bg-warrning-500/80 text-black hover:bg-warrning-900/80 hover:text-black;
+  }
+  &.info {
+    @apply bg-turquoise-500 hover:bg-turquoise-900;
   }
   &.disabled {
     @apply bg-gray-400;
@@ -69,16 +59,16 @@ button {
     @apply px-2 py-[9px];
   }
   &.medium {
-    @apply px-2 py-2;
+    @apply px-[3px] py-2;
   }
   &.large {
-    @apply px-4 py-2;
+    @apply px-2 py-2;
   }
 }
 button:disabled {
   @apply bg-gray-400 cursor-not-allowed hover:bg-gray-400;
 }
 
-.promptModal {
-  @apply fixed top-0 left-0 w-full h-full flex justify-center items-center bg-primary/80 z-[9999999999999999];
+.promptModalBackDrop {
+  @apply fixed top-0 left-0 w-full h-full flex justify-center items-center bg-primary-500/90 z-[9999999999999999];
 }

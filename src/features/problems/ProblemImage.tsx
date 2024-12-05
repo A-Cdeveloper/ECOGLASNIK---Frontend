@@ -12,7 +12,7 @@ const ProblemImage = ({
       <img
         src={image || ""}
         alt={alt}
-        className=" border-double border-4 border-secondary/50 object-cover position-center"
+        className="w-full h-full object-cover position-center"
       />
     </div>
   );

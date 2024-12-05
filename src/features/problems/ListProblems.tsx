@@ -25,7 +25,7 @@ const ListProblems = ({ userId }: { userId?: number }) => {
 
   return (
     <>
-      <div className="my-2 text-[13px] text-end">
+      <div className="my-2 text-[13px] text-end text-winter-100/80">
         {numberOfProblems === 1 ? "1 problem" : `${numberOfProblems} problema`}
       </div>
       <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
