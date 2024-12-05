@@ -14,9 +14,9 @@
 }
 
 .toaststyle {
-  background: #2b2d42 !important;
-  opacity: 0.85 !important;
-  color: #fff !important;
+  background: #edf2f4 !important;
+  opacity: 1 !important;
+  color: #000 !important;
 }
 
 /* HTML: <div class="loader"></div> */
