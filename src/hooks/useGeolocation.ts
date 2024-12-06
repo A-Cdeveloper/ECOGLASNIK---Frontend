@@ -33,5 +33,5 @@ export function useGeolocation() {
     );
   }, []);
 
-  return { isLoading, position, error };
+  return { isLoading, position, error, setPosition };
 }
