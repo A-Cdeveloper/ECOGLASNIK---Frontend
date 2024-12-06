@@ -84,7 +84,7 @@ const Map = ({
           mapLat={mapLat as number}
           mapLng={mapLng as number}
         />
-        {!mapLat && !mapLng && location.pathname === "/problems/add" && (
+        {location.pathname === "/problems/add" && (
           <MapClick onClickOutRange={setIsOutOfRange} />
         )}
         {!mapLat && !mapLng && <StabilizeMap />}
