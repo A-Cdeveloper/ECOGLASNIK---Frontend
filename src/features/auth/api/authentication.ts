@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { API_URL } from "../../../constants";
 import { LoginRegisterResponse } from "../../../types";
 import { throwError } from "../../../utils/helpers";
@@ -152,5 +153,28 @@ export const logoutApi = async (): Promise<LoginRegisterResponse> => {
     return data;
   } catch (error) {
     return await throwError(error);
+  }
+};
+
+export const autoLogout = (tokenExpiry: Date | null, onLogout: () => void) => {
+  if (!tokenExpiry) return;
+
+  const expirationDate = new Date(tokenExpiry);
+  const secondsUntilExpiry = Math.floor(
+    (expirationDate.getTime() - Date.now()) / 1000
+  );
+
+  if (secondsUntilExpiry <= 0) {
+    // Token is already expired; log out immediately
+    onLogout();
+    logoutApi();
+    toast.success(`Vaša sessija je istekla! Prijavite se ponovo!`);
+  } else {
+    // Set a timeout to log out when the token expires
+    return setTimeout(() => {
+      onLogout();
+      logoutApi();
+      toast.success(`Vaša sessija je istekla! Prijavite se ponovo!`);
+    }, secondsUntilExpiry * 1000);
   }
 };

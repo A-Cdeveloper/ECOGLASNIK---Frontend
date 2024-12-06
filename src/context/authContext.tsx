@@ -1,8 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext } from "react";
+import { createContext, useCallback } from "react";
+import useAutoLogout from "../features/auth/hooks/useAutoLogout";
 import useSessionStorage from "../hooks/useSessionStorage";
 import { User } from "../types";
-import { differenceInSecs } from "../utils/helpers";
 
 type AuthContextType = {
   user: User | null;
@@ -25,22 +25,16 @@ export const AuthContextProvider = ({
     null
   );
 
-  // const expirationDate = new Date(tokenExpiry as Date);
-  // console.log(new Date());
-  // console.log(expirationDate);
-  // console.log(differenceInSecs(expirationDate, new Date()));
-
-  const removeSessionStorageData = () => {
+  const removeSessionStorageData = useCallback(() => {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("tokenExpiry");
     setUser(null);
     setTokenExpiry(null);
-  };
+  }, [setUser, setTokenExpiry]);
 
-  // if (differenceInSecs(expirationDate, new Date()) < 0) {
-  //   removeSessionStorageData();
-  // }
+  useAutoLogout(tokenExpiry, removeSessionStorageData);
 
+  // Use the custom hook for auto-logout
   const value = {
     user,
     tokenExpiry,
