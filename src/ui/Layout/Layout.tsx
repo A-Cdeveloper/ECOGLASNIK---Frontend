@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import Weather from "../../features/weather/Weather";
 
 const MapComponent = lazy(() => import("../../features/map/Map"));
 
@@ -19,7 +20,7 @@ const Layout = () => {
             userId={params.id ? params.id : ""}
           />
         </Suspense>
-        <div>PARTNERI</div>
+        <Weather />
       </main>
     </div>
   );
