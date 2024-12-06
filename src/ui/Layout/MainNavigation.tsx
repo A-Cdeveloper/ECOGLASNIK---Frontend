@@ -36,8 +36,8 @@ const MainNavigation = ({
       {/* 
       // Mobile menu */}
       {isOpen && (
-        <nav className="block xl:hidden order-3 w-[300px] md:w-full ms-auto md:ms-0">
-          <ul className="flex flex-wrap uppercase gap-x-4 font-bold py-2 justify-end">
+        <nav className="flex justify-end xl:hidden order-3 w-[375px] md:w-full ms-auto md:ms-0 text-right">
+          <ul className="uppercase  font-bold py-2 space-y-1 pe-1">
             <MenuItems
               isAuthenticated={isAuthenticated}
               userId={userId}
