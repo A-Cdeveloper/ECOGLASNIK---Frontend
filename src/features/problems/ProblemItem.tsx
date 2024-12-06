@@ -38,7 +38,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
           <ProblemImage
             image={image || ""}
             alt={title || ""}
-            className="w-[100px] h-[70px] overflow-hidden self-center border-double border-4 border-secondary-100"
+            className="w-[90px] h-[60px] overflow-hidden self-center border-double border-4 border-secondary-100"
           />
         </div>
       </Link>
