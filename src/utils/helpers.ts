@@ -1,8 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { format, differenceInSeconds } from "date-fns";
+import { DEFAULT_BOUND } from "../constants";
+import L from "leaflet";
+// Define the bounds
+const bounds = L.latLngBounds(
+  L.latLng(DEFAULT_BOUND.southWest),
+  L.latLng(DEFAULT_BOUND.northEast)
+);
 
 export const wait = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
+
+export const outOfMapRange = (latlang: { lat: number; lng: number }) => {
+  return !bounds.contains(latlang);
+};
 
 export const formattedDate = (date: Date) => format(date, "dd.MM.yyyy HH:mm");
 
