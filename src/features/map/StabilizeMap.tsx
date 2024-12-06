@@ -8,11 +8,7 @@ const StabilizeMap = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Reset the zoom level to the initial value when the route changes
-    console.log("stabilize");
-
     map.setView(DEFAULT_POSITION, INITIAL_ZOOM, { animate: true });
-    //map.getCenter();
   }, [location.pathname, map]);
 
   return null;
