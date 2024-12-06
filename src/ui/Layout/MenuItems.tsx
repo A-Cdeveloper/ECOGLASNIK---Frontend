@@ -3,15 +3,18 @@ import { NavLink } from "react-router-dom";
 const MenuItems = ({
   isAuthenticated,
   userId,
+  setIsOpen,
 }: {
   isAuthenticated: boolean;
   userId?: number;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
     <>
       <li>
         <NavLink
           to="/problems/add"
+          onClick={() => setIsOpen(false)}
           className={({ isActive }) =>
             isActive
               ? "text-white bg-yellow-500 py-1 px-2"
@@ -25,6 +28,7 @@ const MenuItems = ({
       <li>
         <NavLink
           to="/"
+          onClick={() => setIsOpen(false)}
           className={({ isActive }) =>
             isActive
               ? "ms-0 text-white"
@@ -39,6 +43,7 @@ const MenuItems = ({
         <li>
           <NavLink
             to={`/problems/user/${userId}`}
+            onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
               isActive
                 ? "ms-0 text-white"
@@ -52,6 +57,7 @@ const MenuItems = ({
       <li>
         <NavLink
           to="/impressum"
+          onClick={() => setIsOpen(false)}
           className={({ isActive }) =>
             isActive
               ? "ms-0 text-white"
@@ -65,6 +71,7 @@ const MenuItems = ({
         <li>
           <NavLink
             to="/login/?mode=login"
+            onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
               isActive
                 ? "ms-0 text-white"

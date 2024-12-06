@@ -26,7 +26,11 @@ const MainNavigation = ({
       {/* // Desktop menu */}
       <nav className="hidden xl:block">
         <ul className="flex justify-center lg:justify-end uppercase gap-4 font-bold">
-          <MenuItems isAuthenticated={isAuthenticated} userId={userId} />
+          <MenuItems
+            isAuthenticated={isAuthenticated}
+            userId={userId}
+            setIsOpen={setIsOpen}
+          />
         </ul>
       </nav>
       {/* 
@@ -34,7 +38,11 @@ const MainNavigation = ({
       {isOpen && (
         <nav className="block xl:hidden order-3 w-[300px] md:w-full ms-auto md:ms-0">
           <ul className="flex flex-wrap uppercase gap-x-4 font-bold py-2 justify-end">
-            <MenuItems isAuthenticated={isAuthenticated} userId={userId} />
+            <MenuItems
+              isAuthenticated={isAuthenticated}
+              userId={userId}
+              setIsOpen={setIsOpen}
+            />
           </ul>
         </nav>
       )}
