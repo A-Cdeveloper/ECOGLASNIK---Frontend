@@ -9,7 +9,7 @@ const Logo = () => {
         <img
           src={logo}
           alt={APP_NAME}
-          className="max-w-[200px] md:max-w-[250px] mx-0"
+          className="max-w-[200px] md:max-w-[265px] mx-0"
         />
       </Link>
     </div>
