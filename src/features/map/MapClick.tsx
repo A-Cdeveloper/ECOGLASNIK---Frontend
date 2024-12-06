@@ -1,29 +1,21 @@
-import L from "leaflet";
 import { useMapEvent } from "react-leaflet";
-import { useNavigate } from "react-router-dom";
-import { DEFAULT_BOUND } from "../../constants";
+import { useLocation, useNavigate } from "react-router-dom";
+import { outOfMapRange } from "../../utils/helpers";
 const MapClick = ({
   onClickOutRange,
 }: {
   onClickOutRange: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const navigate = useNavigate();
-
-  // Define the bounds
-  const bounds = L.latLngBounds(
-    L.latLng(DEFAULT_BOUND.southWest),
-    L.latLng(DEFAULT_BOUND.northEast)
-  );
+  const location = useLocation();
 
   useMapEvent("click", (e) => {
     const { lat, lng } = e.latlng;
 
-    if (!lat || !lng) return;
+    if (!lat || !lng || location.pathname !== "/problems/add") return;
 
-    // Check if the click is within bounds
-    if (!bounds.contains(e.latlng)) {
+    if (outOfMapRange({ lat, lng })) {
       onClickOutRange(true);
-      console.log("out of range");
       return;
     }
 
