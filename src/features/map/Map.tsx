@@ -12,9 +12,9 @@ import { Problem } from "../../types";
 import Loader from "../../ui/Loader";
 
 import "leaflet/dist/leaflet.css";
-import "../../utils.css";
 import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
-import { useLocation } from "react-router-dom";
+import "../../utils.css";
+import MapMyPosition from "./MapMyPosition";
 
 const Map = ({
   problemId,
@@ -28,8 +28,6 @@ const Map = ({
 
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
   const [isOutOfRange, setIsOutOfRange] = useState(false);
-
-  const location = useLocation();
 
   const filteredProblems = useMemo(() => {
     if (userId) {
@@ -60,6 +58,8 @@ const Map = ({
           onClose={() => setIsOutOfRange(false)}
         />
       )}
+      <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
+
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
         zoom={13} // specify initial zoom level
@@ -84,9 +84,9 @@ const Map = ({
           mapLat={mapLat as number}
           mapLng={mapLng as number}
         />
-        {location.pathname === "/problems/add" && (
-          <MapClick onClickOutRange={setIsOutOfRange} />
-        )}
+
+        <MapClick onClickOutRange={setIsOutOfRange} />
+
         {!mapLat && !mapLng && <StabilizeMap />}
       </MapContainer>
     </>
