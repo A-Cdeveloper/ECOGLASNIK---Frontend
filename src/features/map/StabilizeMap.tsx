@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import { useLocation } from "react-router-dom";
-import { INITIAL_ZOOM } from "../../constants";
+import { INITIAL_ZOOM, DEFAULT_POSITION } from "../../constants";
 
 const StabilizeMap = () => {
   const map = useMap();
@@ -9,7 +9,10 @@ const StabilizeMap = () => {
 
   useEffect(() => {
     // Reset the zoom level to the initial value when the route changes
-    map.setZoom(INITIAL_ZOOM, { animate: true });
+    console.log("stabilize");
+
+    map.setView(DEFAULT_POSITION, INITIAL_ZOOM, { animate: true });
+    //map.getCenter();
   }, [location.pathname, map]);
 
   return null;
