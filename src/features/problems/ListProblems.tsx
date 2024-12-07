@@ -5,6 +5,7 @@ import NoResourceFound from "../../ui/NoResourceFound";
 import ProblemItem from "./ProblemItem";
 import { useProblems } from "./hooks/useProblems";
 import useUserProblems from "./hooks/useUserProblems";
+import { Virtuoso } from "react-virtuoso";
 
 const ListProblems = ({ userId }: { userId?: number }) => {
   const { isLoading, error } = useProblems();
@@ -37,11 +38,18 @@ const ListProblems = ({ userId }: { userId?: number }) => {
           </div>
         )}
       </div>
-      <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
+      {/* <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
         {userProblems?.map((problem) => (
           <ProblemItem key={problem.id} problem={problem} />
         ))}
-      </div>
+      </div> */}
+      <Virtuoso
+        style={{ height: "500px", overflow: "auto" }} // Set list container height
+        data={userProblems} // Pass the array of problems
+        itemContent={(_, problem) => (
+          <ProblemItem key={problem.id} problem={problem} />
+        )}
+      />
     </>
   );
 };
