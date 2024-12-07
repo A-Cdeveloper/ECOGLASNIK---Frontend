@@ -15,7 +15,11 @@ export const outOfMapRange = (latlang: { lat: number; lng: number }) => {
   return !bounds.contains(latlang);
 };
 
-export const formattedDate = (date: Date) => format(date, "dd.MM.yyyy HH:mm");
+export const formattedDate = (date: Date, mode = "long") => {
+  if (!date) return;
+  if (mode === "short") return format(date, "dd.MM.yyyy.");
+  return format(date, "dd.MM.yyyy. HH:mm");
+};
 
 export const differenceInSecs = (date1: Date, date2: Date) => {
   return differenceInSeconds(date1, date2);
