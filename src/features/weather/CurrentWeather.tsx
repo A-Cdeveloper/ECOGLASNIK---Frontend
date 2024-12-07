@@ -3,7 +3,7 @@ import WIcon from "./WIcon";
 
 const CurrentWeather = ({ todayWeather }: { todayWeather: WeatherCurrent }) => {
   return (
-    <div className="w-full px-3 2xl:w-[150px]  grid grid-cols-2  sm:grid-cols-3 md:grid-cols-3 items-center xl:grid-cols-3 2xl:grid-cols-1 gap-x-2 border-y-1 2xl:border-y-0 2xl:border-r-1 border-secondary-500/50">
+    <div className="w-full px-3 2xl:w-[150px]  grid grid-cols-2  sm:grid-cols-3 md:grid-cols-3 items-center xl:grid-cols-3 2xl:grid-cols-1 gap-x-2 border-y-1 2xl:border-y-0 2xl:border-r-1 border-secondary-500/50 py-1">
       <p className="font-bold text-[16px]">Vlasotince</p>
       <div className="flex items-center">
         <WIcon

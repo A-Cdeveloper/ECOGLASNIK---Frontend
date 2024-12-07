@@ -10,7 +10,7 @@ const WDay = ({
   singleDay: { date: string; day: ForecastDayType };
 }) => {
   return (
-    <div className="flex gap-1 items-center pl-1 sm:pl-2 xl:pl-4">
+    <div className="flex gap-1 items-center pl-1 sm:pl-1 xl:pl-2">
       <WIcon
         icon={forecastFirst.condition.icon}
         text={forecastFirst.condition.text}
