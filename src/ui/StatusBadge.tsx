@@ -9,7 +9,7 @@ const StatusBadge = ({
     <span
       className={`${
         status === "done" ? "bg-success-500" : "bg-red-500"
-      } ${className} px-1 py-[3px] font-bold tracking-wider text-[11px]`}
+      } ${className} w-[65px] py-[3px] font-bold text-[11px] text-center`}
     >
       {status === "done" ? "REŠENO" : "AKTIVNO"}
     </span>
