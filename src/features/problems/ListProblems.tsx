@@ -1,3 +1,4 @@
+import useMeasureListRenderSpeed from "../../hooks/useMeassureListRenderSpeed";
 import Error from "../../ui/Error";
 import Loader from "../../ui/Loader";
 import NoResourceFound from "../../ui/NoResourceFound";
@@ -11,6 +12,8 @@ const ListProblems = ({ userId }: { userId?: number }) => {
   const { userProblems, numberOfProblems } = useUserProblems({
     userId,
   });
+
+  const renderTime = useMeasureListRenderSpeed(userProblems!);
 
   if (isLoading) {
     return <Loader />;
@@ -27,6 +30,12 @@ const ListProblems = ({ userId }: { userId?: number }) => {
     <>
       <div className="my-2 text-[13px] text-end text-winter-100/80">
         {numberOfProblems === 1 ? "1 problem" : `${numberOfProblems} problema`}
+
+        {renderTime !== null && (
+          <div className="mt-4 text-center text-winter-100">
+            Render Time: {renderTime.toFixed(2)} ms
+          </div>
+        )}
       </div>
       <div className="w-full flex flex-wrap overflow-auto overflow-x-hidden">
         {userProblems?.map((problem) => (
