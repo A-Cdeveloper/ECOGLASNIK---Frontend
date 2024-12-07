@@ -8,6 +8,7 @@ const Notifications = () => {
       containerStyle={{
         right: 10,
         top: 10,
+        zIndex: 999999,
       }}
       toastOptions={{
         className: "toaststyle",
