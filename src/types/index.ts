@@ -46,3 +46,55 @@ export type LoginRegisterResponse = {
   data: User;
   tokenExpiry: Date;
 };
+
+////
+
+type ConditionType = {
+  text: string;
+  icon: string;
+};
+
+export type ForecastDayType = {
+  maxtemp_c: number;
+  mintemp_c: number;
+  condition: ConditionType;
+};
+
+export type WeatherLocation = {
+  location: {
+    name: string;
+    region: string;
+    country: string;
+    lat: number;
+    lon: number;
+    tz_id: string;
+    localtime_epoch: number;
+    localtime: string;
+  };
+};
+
+export type WeatherCurrent = {
+  current: {
+    last_updated_epoch: number;
+    last_updated: string;
+    temp_c: number;
+    wind_kph: number;
+    humidity: number;
+    condition: ConditionType;
+  };
+};
+
+export type WeatherForecast = {
+  forecast: {
+    forecastday: Array<{
+      date: string;
+      day: ForecastDayType;
+    }>;
+  };
+};
+
+export type WeatherApiResponse = {
+  location?: WeatherLocation;
+  current: WeatherCurrent;
+  forecast: WeatherForecast;
+};
