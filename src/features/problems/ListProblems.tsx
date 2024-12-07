@@ -44,11 +44,9 @@ const ListProblems = ({ userId }: { userId?: number }) => {
         ))}
       </div> */}
       <Virtuoso
-        style={{ height: "500px", overflow: "auto" }} // Set list container height
+        className="!w-full !h-[65.1vh] !overflow-x-hidden"
         data={userProblems} // Pass the array of problems
-        itemContent={(_, problem) => (
-          <ProblemItem key={problem.id} problem={problem} />
-        )}
+        itemContent={(_, problem) => <ProblemItem problem={problem} />}
       />
     </>
   );
