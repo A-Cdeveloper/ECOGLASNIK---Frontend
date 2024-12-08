@@ -27,7 +27,7 @@ export const getAllProblemsApi = async (
 
   try {
     const response = await fetch(
-      `${API_URL}/problems/${query}&sort=status,createdAt&order=ASC,DESC`
+      `${API_URL}/problems${query}&sort=status,createdAt&order=ASC,DESC`
     );
     const data = await response.json();
 

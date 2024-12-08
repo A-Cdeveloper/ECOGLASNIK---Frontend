@@ -4,7 +4,7 @@ import { throwError } from "../../../utils/helpers";
 
 export const getCategoriesApi = async (): Promise<ProblemCategory[]> => {
   try {
-    const response = await fetch(`${API_URL}/categories/`);
+    const response = await fetch(`${API_URL}/categories`);
     const { data } = await response.json();
     if (!response.ok) {
       throw new Error(data.error);
