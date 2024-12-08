@@ -72,3 +72,7 @@ button:disabled {
 .promptModalBackDrop {
   @apply fixed top-0 left-0 w-full h-full flex justify-center items-center bg-primary-500/90 z-[9999999999999999];
 }
+
+.custum-scrollbar {
+  @apply scrollbar-thin scrollbar-thumb-secondary-900/70 scrollbar-track-primary-500;
+}

@@ -117,3 +117,18 @@
     transform: translate(0, 0);
   }
 }
+
+/*virtuoso
+/* Custom Scrollbar */
+.virtuoso-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.virtuoso-scrollbar::-webkit-scrollbar-thumb {
+  background: #2b2d42;
+  border-radius: 5px;
+}
+
+.virtuoso-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #8d99ae;
+}
