@@ -1,4 +1,5 @@
-import { defineConfig } from "vite";
+/// <reference types="vitest" />
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
@@ -18,6 +19,11 @@ export default defineConfig({
       threshold: 10240, // Only compress files larger than 10 KB
     }),
   ],
+  test: {
+    globals: true, // Enables global usage of `describe`, `it`, `expect`, etc.
+    environment: "jsdom", // Simulates a browser environment
+    setupFiles: "./tests/setup.ts", // Path to setup file (if needed)
+  },
 
   build: {
     minify: "esbuild",
