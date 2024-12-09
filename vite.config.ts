@@ -23,6 +23,10 @@ export default defineConfig({
     globals: true, // Enables global usage of `describe`, `it`, `expect`, etc.
     environment: "jsdom", // Simulates a browser environment
     setupFiles: "./tests/setup.ts", // Path to setup file (if needed)
+    coverage: {
+      extension: ["ts", "tsx"],
+      include: ["src/**/*.{ts,tsx}", "src/App.{ts,tsx}", "src/main.{ts,tsx}"],
+    },
   },
 
   build: {
