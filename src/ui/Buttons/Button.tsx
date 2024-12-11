@@ -13,6 +13,7 @@ export type ButtonType = {
     | "info";
   disabled?: boolean;
   onClick?: () => void;
+  "data-testid"?: string;
 };
 
 const Button = ({
@@ -22,6 +23,7 @@ const Button = ({
   variation = "primary",
   disabled,
   onClick,
+  "data-testid": testId,
 }: ButtonType) => {
   return (
     <button
@@ -29,6 +31,7 @@ const Button = ({
       className={`${variation} ${size}`}
       onClick={onClick}
       disabled={!!disabled}
+      data-testid={testId}
     >
       {children}
     </button>

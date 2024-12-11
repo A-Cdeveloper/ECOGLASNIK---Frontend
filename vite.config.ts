@@ -25,7 +25,13 @@ export default defineConfig({
     setupFiles: "./tests/setup.ts", // Path to setup file (if needed)
     coverage: {
       extension: ["ts", "tsx"],
-      include: ["src/**/*.{ts,tsx}", "src/App.{ts,tsx}", "src/main.{ts,tsx}"],
+      include: ["src/**/*.{ts,tsx}", "src/App.{ts,tsx}"],
+      exclude: [
+        "src/main.tsx",
+        "src/vite-env.d.ts",
+        "src/types/index.ts",
+        "src/ui/SimulateAuthUser.tsx",
+      ],
     },
   },
 

@@ -129,6 +129,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           value={formFields.email}
           placeholder="Email*"
           onChange={handleInputChange}
+          data-testid="email"
         />
 
         <div className="relative">
@@ -138,9 +139,11 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             value={formFields.password}
             placeholder="Lozinka*"
             onChange={handleInputChange}
+            data-testid="password"
           />
           <ButtonIcon
             icon={showPassword ? <HiEyeSlash /> : <HiEye />}
+            aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={(e) => {
               e.preventDefault();
               setShowPassword((prev) => !prev);
@@ -176,6 +179,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           size="large"
           variation="info"
           style={{ width: "100%" }}
+          data-testid="submit-button"
           disabled={
             !isPasswordValid ||
             loginUserStatus === "pending" ||
