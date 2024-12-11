@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-import * as tailwindscrollbar from "tailwind-scrollbar";
+import tailwindscrollbar from "tailwind-scrollbar";
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
