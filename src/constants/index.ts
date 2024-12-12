@@ -1,5 +1,8 @@
 //export const API_URL = import.meta.env.VITE_API_URL;
-export const API_URL = "https://clean-me-backend.vercel.app/api";
+export const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://clean-me-backend.vercel.app/api"
+    : "http://localhost:3000/api";
 
 //
 export const APP_NAME = "Clean Me";
