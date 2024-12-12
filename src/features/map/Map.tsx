@@ -87,7 +87,7 @@ const Map = ({
 
         <MapClick onClickOutRange={setIsOutOfRange} />
 
-        {!mapLat && !mapLng && <StabilizeMap />}
+        {<StabilizeMap userPosition={mapPosition} />}
       </MapContainer>
     </>
   );
