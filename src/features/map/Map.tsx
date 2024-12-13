@@ -62,7 +62,6 @@ const Map = ({
           onClose={() => setIsOutOfRange(false)}
         />
       )}
-      <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
 
       {location.pathname !== "/problems/add" && (
         <Button
@@ -87,12 +86,12 @@ const Map = ({
         scrollWheelZoom={true} // disable scroll zoom
         doubleClickZoom={true} // disable double-click zoom
       >
+        <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
           className="grayscale-tile"
         />
-
         <ProblemsMarkers
           problems={filteredProblems ?? []}
           problemId={problemId}
@@ -100,10 +99,8 @@ const Map = ({
           mapLat={mapLat as number}
           mapLng={mapLng as number}
         />
-
         <MapClick onClickOutRange={setIsOutOfRange} />
-
-        {<StabilizeMap userPosition={mapPosition} />}
+        {!mapLat && !mapLng && <StabilizeMap />}
       </MapContainer>
     </>
   );
