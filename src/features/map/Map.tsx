@@ -16,7 +16,7 @@ import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutR
 import "../../utils.css";
 import MapMyPosition from "./MapMyPosition";
 import Button from "../../ui/Buttons/Button";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Map = ({
   problemId,
@@ -32,7 +32,7 @@ const Map = ({
 
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
   const [isOutOfRange, setIsOutOfRange] = useState(false);
-
+  const location = useLocation();
   const filteredProblems = useMemo(() => {
     if (userId) {
       return problems?.filter((problem) => problem.uid === +userId);
@@ -64,15 +64,17 @@ const Map = ({
       )}
       <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
 
-      <Button
-        variation="warning"
-        size="extrasmall"
-        onClick={() => {
-          navigate("/problems/add");
-        }}
-      >
-        Dodaj problem
-      </Button>
+      {location.pathname !== "/problems/add" && (
+        <Button
+          variation="warning"
+          size="extrasmall"
+          onClick={() => {
+            navigate("/problems/add");
+          }}
+        >
+          Dodaj problem
+        </Button>
+      )}
 
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
