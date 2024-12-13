@@ -15,6 +15,8 @@ import "leaflet/dist/leaflet.css";
 import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
 import "../../utils.css";
 import MapMyPosition from "./MapMyPosition";
+import Button from "../../ui/Buttons/Button";
+import { useNavigate } from "react-router-dom";
 
 const Map = ({
   problemId,
@@ -25,6 +27,8 @@ const Map = ({
 }) => {
   const { mapLat, mapLng } = useUrlParams();
   const { problems, isLoading } = useProblems();
+
+  const navigate = useNavigate();
 
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
   const [isOutOfRange, setIsOutOfRange] = useState(false);
@@ -59,6 +63,16 @@ const Map = ({
         />
       )}
       <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
+
+      <Button
+        variation="warning"
+        size="extrasmall"
+        onClick={() => {
+          navigate("/problems/add");
+        }}
+      >
+        Dodaj problem
+      </Button>
 
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
