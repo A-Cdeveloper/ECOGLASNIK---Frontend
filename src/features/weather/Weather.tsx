@@ -9,7 +9,7 @@ import WToogleButton from "./WToogleButton";
 
 const Weather = () => {
   const { data, isLoading, error } = useWeather();
-  const [toogleWeather, setToggleWeather] = useState(false);
+  const [toogleWeather, setToggleWeather] = useState(true);
 
   if (isLoading) return <MiniSpinner />;
   if (error) return <Error message="Došlo je do greške" />;
