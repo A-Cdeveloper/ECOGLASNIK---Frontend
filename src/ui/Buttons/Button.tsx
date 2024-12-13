@@ -3,7 +3,7 @@ import React from "react";
 export type ButtonType = {
   children: React.ReactNode;
   style?: React.CSSProperties;
-  size?: "small" | "medium" | "large"; // Use specific strings for type safety
+  size?: "small" | "medium" | "large" | "extrasmall"; // Use specific strings for type safety
   variation?:
     | "primary"
     | "secondary"

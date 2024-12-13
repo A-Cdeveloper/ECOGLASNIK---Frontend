@@ -15,6 +15,8 @@ import "leaflet/dist/leaflet.css";
 import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
 import "../../utils.css";
 import MapMyPosition from "./MapMyPosition";
+import Button from "../../ui/Buttons/Button";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Map = ({
   problemId,
@@ -26,9 +28,11 @@ const Map = ({
   const { mapLat, mapLng } = useUrlParams();
   const { problems, isLoading } = useProblems();
 
+  const navigate = useNavigate();
+
   const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
   const [isOutOfRange, setIsOutOfRange] = useState(false);
-
+  const location = useLocation();
   const filteredProblems = useMemo(() => {
     if (userId) {
       return problems?.filter((problem) => problem.uid === +userId);
@@ -60,6 +64,18 @@ const Map = ({
       )}
       <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
 
+      {location.pathname !== "/problems/add" && (
+        <Button
+          variation="warning"
+          size="extrasmall"
+          onClick={() => {
+            navigate("/problems/add");
+          }}
+        >
+          Dodaj problem
+        </Button>
+      )}
+
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
         zoom={13} // specify initial zoom level
@@ -87,7 +103,7 @@ const Map = ({
 
         <MapClick onClickOutRange={setIsOutOfRange} />
 
-        {!mapLat && !mapLng && <StabilizeMap />}
+        {<StabilizeMap userPosition={mapPosition} />}
       </MapContainer>
     </>
   );

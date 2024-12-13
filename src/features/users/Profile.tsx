@@ -30,7 +30,7 @@ const Profile = () => {
         />
       )}
 
-      <div className=" bg-secondary-500/30 my-4 py-2 px-3 grid grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md overflow-hidden break-all">
+      <div className=" bg-secondary-500/30 my-4 py-2 px-3 grid grid-cols-1 md:grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md overflow-hidden break-all">
         <div>Ime i prezime:</div>
         <div className="font-bold">
           {user?.firstname + " " + user?.lastname}

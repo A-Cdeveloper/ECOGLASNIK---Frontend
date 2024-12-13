@@ -72,7 +72,7 @@ const mainRouter = [
           { path: "forgot-password", element: <ForgotPassword /> },
           { path: "reset-password", element: <ResetPassword /> },
           {
-            path: "verify-account/",
+            path: "verify-account",
             element: <VerifyAccount />,
           },
         ],
