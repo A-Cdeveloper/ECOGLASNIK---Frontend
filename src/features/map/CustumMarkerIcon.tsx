@@ -6,8 +6,8 @@ import unsolvedIcon from "../../assets/location-unsolved.svg";
 const CustumMarkerIcon = (status: string, activeMarker: boolean = false) => {
   const customIcon = new L.Icon({
     iconUrl: status === "done" ? solvedIcon : unsolvedIcon,
-    iconSize: activeMarker ? [60, 60] : [50, 50],
-    iconAnchor: activeMarker ? [30, 60] : [25, 50],
+    iconSize: activeMarker ? [30, 30] : [30, 30],
+    iconAnchor: activeMarker ? [30, 20] : [20, 20],
   });
 
   return customIcon;
