@@ -17,13 +17,13 @@ const Weather = () => {
   const { current, forecast } = data as Omit<WeatherApiResponse, "location">;
 
   return (
-    <div className="w-full h-auto absolute left-0 bottom-0 lg:bottom-[-20px] py-2 px-4 z-[99999] bg-primary-500">
+    <div className="w-full h-auto fixed left-0 bottom-[0px] lg:bottom-[0px] pb-2 px-0 z-[99999] bg-primary-500">
       <WToogleButton onToogleWeater={() => setToggleWeather(!toogleWeather)}>
         Vremenska prognoza {toogleWeather ? "▼" : "▲"}
       </WToogleButton>
 
       {toogleWeather && (
-        <div className="flex flex-wrap gap-x-3 gap-y-1 items-center">
+        <div className="flex flex-wrap gap-x-3 gap-y-1 items-center pt-[9px] 2xl:pt-[12px]">
           <CurrentWeather todayWeather={current} />
           <ForecastWeather forecastWeather={forecast} />
         </div>

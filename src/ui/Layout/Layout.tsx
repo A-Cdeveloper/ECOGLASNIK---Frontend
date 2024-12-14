@@ -10,19 +10,22 @@ const Layout = () => {
   const params = useParams();
 
   return (
-    <div className="container bg-primary max-w-full h-auto lg:h-screen flex flex-wrap items-start overflow-hidden">
-      <Header />
-      <Sidebar />
-      <main className="flex-1 h-[450px] lg:h-[90vh] p-3 lg:p-3 mt-[65px]  order-1 lg:order-2 overflow-hidden relative">
-        <Suspense fallback={<div>Loading map...</div>}>
-          <MapComponent
-            problemId={params.id ? params.id : ""}
-            userId={params.id ? params.id : ""}
-          />
-        </Suspense>
-        <Weather />
-      </main>
-    </div>
+    <>
+      <div className="container bg-primary max-w-full h-auto lg:h-screen flex flex-wrap items-start overflow-hidden">
+        <Header />
+        <Sidebar />
+
+        <main className="flex-1 h-[450px] lg:h-[90vh] p-3 lg:p-3 mt-[65px]  order-1 lg:order-2 overflow-hidden relative">
+          <Suspense fallback={<div>Loading map...</div>}>
+            <MapComponent
+              problemId={params.id ? params.id : ""}
+              userId={params.id ? params.id : ""}
+            />
+          </Suspense>
+        </main>
+      </div>
+      <Weather />
+    </>
   );
 };
 

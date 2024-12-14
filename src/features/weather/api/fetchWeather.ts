@@ -16,7 +16,7 @@ export const fetchWeather = async (
   const currWeather: WeatherCurrent = await currentResponse.json();
 
   const forecastResponse = await fetch(
-    `${WEATHER_BASE_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${latitude},${longitude}&days=8`
+    `${WEATHER_BASE_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${latitude},${longitude}&days=10`
   );
 
   const forecastWheater: WeatherForecast = await forecastResponse.json();
