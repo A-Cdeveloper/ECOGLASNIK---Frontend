@@ -17,14 +17,17 @@ const MapClick = ({
   useMapEvent("click", (e) => {
     const { lat, lng } = e.latlng;
 
-    if (!lat || !lng || location.pathname !== "/problems/add") return;
+    if (!lat || !lng || location.pathname !== "/problems/add") {
+      console.log("Invalid coordinates, ignoring click.");
+      return;
+    }
     if (outOfMapRange({ lat, lng })) {
       setZoomLevel(INITIAL_ZOOM);
       map.setView(DEFAULT_POSITION, INITIAL_ZOOM, { animate: true });
       onClickOutRange(true);
       return;
     }
-    const zoom = 15;
+    const zoom = 16;
     map.setView({ lat, lng }, zoom, { animate: true });
     setZoomLevel(zoom);
 

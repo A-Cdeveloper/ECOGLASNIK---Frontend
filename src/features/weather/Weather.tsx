@@ -17,7 +17,7 @@ const Weather = () => {
   const { current, forecast } = data as Omit<WeatherApiResponse, "location">;
 
   return (
-    <div className="w-full h-auto absolute left-0 bottom-0 lg:bottom-[65px] py-2 px-4 z-[99999] bg-primary-500">
+    <div className="w-full h-auto absolute left-0 bottom-0 lg:bottom-[-20px] py-2 px-4 z-[99999] bg-primary-500">
       <WToogleButton onToogleWeater={() => setToggleWeather(!toogleWeather)}>
         Vremenska prognoza {toogleWeather ? "▼" : "▲"}
       </WToogleButton>
