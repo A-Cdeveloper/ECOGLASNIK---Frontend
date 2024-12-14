@@ -27,7 +27,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
           const zoom = 15;
           updateMapView({ lat, lng }, zoom);
           setZoomLevel(zoom);
-          navigate(`problems/${id}/?lat=${lat}&lng=${lng}`);
+          navigate(`/problems/${id}/?lat=${lat}&lng=${lng}`);
         }}
       >
         <StatusBadge
