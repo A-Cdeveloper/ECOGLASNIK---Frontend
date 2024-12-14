@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Problem } from "../../types";
 import StatusBadge from "../../ui/StatusBadge";
 import Headline from "../../ui/Headline";
 import { formattedDate } from "../../utils/helpers";
 import ProblemImage from "./ProblemImage";
+import { useCtxMap } from "../../context/mapContext";
 
 const ProblemItem = ({ problem }: { problem: Problem }) => {
   const {
@@ -14,9 +15,21 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
     image,
   } = problem || {};
 
+  const { setZoomLevel, updateMapView } = useCtxMap();
+
+  const navigate = useNavigate();
+
   return (
     <div className="px-2 py-[10px] my-[3px] bg-secondary-500/20 hover:bg-secondary-500/75 relative w-[98%]">
-      <Link to={`/problems/${id}/?lat=${lat}&lng=${lng}`}>
+      <span
+        className="cursor-pointer"
+        onClick={() => {
+          const zoom = 15;
+          updateMapView({ lat, lng }, zoom);
+          setZoomLevel(zoom);
+          navigate(`problems/${id}/?lat=${lat}&lng=${lng}`);
+        }}
+      >
         <StatusBadge
           status={problem.status}
           className="ms-2 absolute end-[-3px] top-[3px] block"
@@ -41,7 +54,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             className="w-[90px] h-[60px] overflow-hidden self-center border-double border-4 border-secondary-100"
           />
         </div>
-      </Link>
+      </span>
     </div>
   );
 };
