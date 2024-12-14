@@ -7,7 +7,7 @@ const CustumMarkerIcon = (status: string, activeMarker: boolean = false) => {
   const customIcon = new L.Icon({
     iconUrl: status === "done" ? solvedIcon : unsolvedIcon,
     iconSize: activeMarker ? [30, 30] : [30, 30],
-    iconAnchor: activeMarker ? [30, 20] : [20, 20],
+    iconAnchor: activeMarker ? [30, 15] : [30, 15],
   });
 
   return customIcon;

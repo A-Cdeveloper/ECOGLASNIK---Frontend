@@ -43,6 +43,9 @@ export const getAllProblemsApi = async (
 export const getSingleProblemApi = async (
   id: string
 ): Promise<ExtendedProblem> => {
+  if (!id) {
+    return {} as ExtendedProblem;
+  }
   try {
     const response = await fetch(`${API_URL}/problems/${id}`);
     const data = await response.json();
