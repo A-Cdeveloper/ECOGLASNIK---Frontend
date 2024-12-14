@@ -2,6 +2,7 @@ import { Marker, Tooltip, useMap } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 
 import CustumMarkerIcon from "./CustumMarkerIcon";
+import { useCtxMap } from "../../context/mapContext";
 
 type MarkerType = {
   problemId?: string;
@@ -25,7 +26,7 @@ const CustumMarker = ({
   setHoveredMarker = () => {},
 }: MarkerType) => {
   const navigate = useNavigate();
-
+  const { setZoomLevel } = useCtxMap();
   const map = useMap();
 
   return (
@@ -41,7 +42,9 @@ const CustumMarker = ({
       eventHandlers={{
         click: () => {
           if (activeMarker) return;
-          map.setView({ lat, lng }, 15, { animate: true });
+          const zoom = 15;
+          map.setView({ lat, lng }, zoom, { animate: true });
+          setZoomLevel(zoom);
           navigate(`problems/${problemId}/?lat=${lat}&lng=${lng}`);
         },
         mouseover: () => setHoveredMarker(problemId as string),

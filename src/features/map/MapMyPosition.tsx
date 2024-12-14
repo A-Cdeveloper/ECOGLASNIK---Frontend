@@ -3,6 +3,7 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 import Button from "../../ui/Buttons/Button";
 import { outOfMapRange } from "../../utils/helpers";
 import { useMap } from "react-leaflet";
+import { useCtxMap } from "../../context/mapContext";
 
 const MapMyPosition = ({
   setIsOutOfRange,
@@ -13,6 +14,7 @@ const MapMyPosition = ({
   const location = useLocation();
   const navigate = useNavigate();
   const map = useMap();
+  const { setZoomLevel, setMapPosition } = useCtxMap();
 
   if (location.pathname !== "/problems/add") {
     return null;
@@ -29,7 +31,10 @@ const MapMyPosition = ({
       }}
       onClick={() => {
         setPosition(position);
-        map.setView(position, 17, { animate: true });
+        const zoom = 17;
+        map.setView(position, zoom, { animate: true });
+        setZoomLevel(zoom);
+        setMapPosition(position);
         if (outOfMapRange(position)) return setIsOutOfRange(true);
         navigate(`?lat=${position.lat}&lng=${position.lng}`);
       }}

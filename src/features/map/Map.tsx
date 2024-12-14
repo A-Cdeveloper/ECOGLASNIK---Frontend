@@ -7,16 +7,17 @@ import StabilizeMap from "./StabilizeMap";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import { useProblems } from "../problems/hooks/useProblems";
 
-import { DEFAULT_POSITION, INITIAL_ZOOM } from "../../constants";
+import { INITIAL_ZOOM } from "../../constants";
 import { Problem } from "../../types";
 import Loader from "../../ui/Loader";
 
 import "leaflet/dist/leaflet.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useCtxMap } from "../../context/mapContext";
+import Button from "../../ui/Buttons/Button";
 import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
 import "../../utils.css";
 import MapMyPosition from "./MapMyPosition";
-import Button from "../../ui/Buttons/Button";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const Map = ({
   problemId,
@@ -30,7 +31,14 @@ const Map = ({
 
   const navigate = useNavigate();
 
-  const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
+  const {
+    mapPosition,
+    setMapPosition,
+    zoomLevel,
+    setZoomLevel,
+    setMapInstance,
+  } = useCtxMap();
+
   const [isOutOfRange, setIsOutOfRange] = useState(false);
   const location = useLocation();
   const filteredProblems = useMemo(() => {
@@ -47,8 +55,9 @@ const Map = ({
   useEffect(() => {
     if (mapLat && mapLng) {
       setMapPosition({ lat: mapLat, lng: mapLng });
+      setZoomLevel(15);
     }
-  }, [mapLat, mapLng]);
+  }, [mapLat, mapLng, setMapPosition, setZoomLevel]);
 
   if (isLoading) {
     return <Loader />;
@@ -77,14 +86,19 @@ const Map = ({
 
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
-        zoom={13} // specify initial zoom level
+        zoom={zoomLevel} // specify initial zoom level
         minZoom={INITIAL_ZOOM}
-        // style={{ height: "100vh", width: "100%" }}
         className="h-full w-full"
         dragging={true} // disable dragging
         zoomControl={true} // disable zoom control UI
         scrollWheelZoom={true} // disable scroll zoom
         doubleClickZoom={true} // disable double-click zoom
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        whenReady={(event) => {
+          const map = event.target;
+          setMapInstance(map);
+        }}
       >
         <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
         <TileLayer
