@@ -27,7 +27,20 @@ export function useGeolocation() {
         setIsLoading(false);
       },
       (error) => {
-        setError(error.message);
+        // Handle specific geolocation errors
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            setError("User denied the request for geolocation.");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            setError("Location information is unavailable.");
+            break;
+          case error.TIMEOUT:
+            setError("The request to get user location timed out.");
+            break;
+          default:
+            setError("An unknown error occurred.");
+        }
         setIsLoading(false);
       }
     );
