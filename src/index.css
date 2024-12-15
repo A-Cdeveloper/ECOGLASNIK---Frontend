@@ -14,8 +14,6 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
   @apply bg-primary-500;
-  @apply scrollbar scrollbar-thumb-secondary-500/30 scrollbar-track-primary-500;
-  position: relative;
 }
 
 .resize-x {
