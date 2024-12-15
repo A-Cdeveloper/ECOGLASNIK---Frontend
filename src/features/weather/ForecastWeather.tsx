@@ -8,7 +8,7 @@ const ForecastWeather = ({
 }) => {
   return (
     <div className="flex-1 ">
-      <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-9 2xl:grid-cols-9 3xl:grid-cols-9 gap-1 opacity-70 h-[65px] overflow-y-auto overflow-x-hidden">
+      <ul className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-7 3xl:grid-cols-7 gap-1 opacity-70 h-[65px] overflow-y-auto overflow-x-hidden">
         {forecastWeather.forecast.forecastday.map(
           (
             singleDay: { date: string; day: ForecastDayType },
