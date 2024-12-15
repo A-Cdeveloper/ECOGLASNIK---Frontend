@@ -13,7 +13,7 @@ const ForgotPassword = () => {
   return (
     <>
       <BackButton to={-1} />
-      <div className="w-full h-[80%] flex flex-col items-center justify-center px-9">
+      <div className="w-full h-[80%] flex flex-col items-center justify-center px-2 sm:px-5 md:px-9">
         <ForgotPasswordForm />
       </div>
     </>
