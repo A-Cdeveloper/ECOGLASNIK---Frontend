@@ -142,6 +142,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             data-testid="password"
           />
           <ButtonIcon
+            type="button"
             icon={showPassword ? <HiEyeSlash /> : <HiEye />}
             aria-label={showPassword ? "Hide password" : "Show password"}
             onClick={(e) => {
@@ -161,6 +162,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               onChange={handleInputChange}
             />
             <ButtonIcon
+              type="button"
               icon={showPasswordAgain ? <HiEyeSlash /> : <HiEye />}
               onClick={(e) => {
                 e.preventDefault();
