@@ -31,7 +31,10 @@ const MapMyPosition = ({
       }}
       onClick={() => {
         setPosition(position);
-        if (outOfMapRange(position)) return setIsOutOfRange(true);
+        if (outOfMapRange(position)) {
+          setIsOutOfRange(true);
+          return;
+        }
 
         const zoom = 17;
         map.setView(position, zoom, { animate: true });
