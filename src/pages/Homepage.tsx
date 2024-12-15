@@ -5,7 +5,7 @@ import FilterStatus from "../ui/Filters/FilterStatus";
 const Homepage = () => {
   return (
     <>
-      <div className="flex flex-wrap border-t border-b border-secondary-500/40 py-2 mt-2">
+      <div className="flex flex-wrap border-t border-b border-secondary-500/40 py-2 mt-2 space-y-2 md:space-y-0">
         <FilterStatus />
         <FilterCategory />
       </div>

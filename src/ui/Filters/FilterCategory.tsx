@@ -8,7 +8,7 @@ const FilterCategory = () => {
   return (
     <>
       <select
-        className="w-1/2 self-center"
+        className="w-full sm:w-1/2 self-center"
         name="cat_id"
         aria-description="Filter kategoriju problema"
         required

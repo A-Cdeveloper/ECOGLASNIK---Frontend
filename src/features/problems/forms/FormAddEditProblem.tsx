@@ -185,7 +185,7 @@ const FormAddEditProblem = ({
           aria-description="Unesi opis problema"
           defaultValue={problem?.description}
           onChange={handleInputChange}
-          className="h-[200px]"
+          className="h-[80px] lg:h-[200px]"
         />
 
         <ProblemImageArea
@@ -196,7 +196,18 @@ const FormAddEditProblem = ({
           setCurrentImagePinataId={setCurrentImagePinataId}
         />
 
-        <div className="flex justify-end">
+        <div className="flex justify-between">
+          <Button
+            aria-label="Odustani"
+            variation="danger"
+            size="small"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+            }}
+          >
+            Odustani
+          </Button>
           <Button
             aria-label="Pošalji problem"
             variation="info"

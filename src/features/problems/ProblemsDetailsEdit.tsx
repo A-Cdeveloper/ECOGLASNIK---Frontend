@@ -39,7 +39,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
           </p>
         )}
 
-        <div className="flex items-center gap-4">
+        <div className="w-full flex flex-col space-y-2 sm:flex-row sm:justify-center sm:gap-4 sm:space-y-0">
           <Button
             variation="warning"
             size="small"
@@ -49,7 +49,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
               );
             }}
           >
-            Izmeni detalje problema
+            Izmeni
           </Button>
           <Button
             variation="info"
@@ -64,15 +64,14 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
           >
             {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen"}
           </Button>
+          <Button
+            variation="danger"
+            size="small"
+            onClick={() => setIsShowWarrning(true)}
+          >
+            {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem"}
+          </Button>{" "}
         </div>
-
-        <Button
-          variation="danger"
-          size="small"
-          onClick={() => setIsShowWarrning(true)}
-        >
-          {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem"}
-        </Button>
       </div>
     </>
   );

@@ -12,7 +12,7 @@ export type ButtonType = {
     | "warning"
     | "info";
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   "data-testid"?: string;
 };
 

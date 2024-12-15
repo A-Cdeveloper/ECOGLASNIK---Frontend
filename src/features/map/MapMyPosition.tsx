@@ -36,7 +36,7 @@ const MapMyPosition = ({
           return;
         }
 
-        const zoom = 17;
+        const zoom = 16;
         map.setView(position, zoom, { animate: true });
         setZoomLevel(zoom);
         setMapPosition(position);

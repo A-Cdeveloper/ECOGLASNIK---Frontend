@@ -9,13 +9,15 @@ const FilterStatusButton = ({
 }) => {
   const { status, currentParams, setCurrentParams } = useUrlParams();
   const initialClass =
-    !status && value === "all" ? "bg-secondary-500 text-winter-100/80" : "";
+    !status && value === "all"
+      ? "text-winter-100/80 border-1 border-warrning-500"
+      : "";
   const activeClass =
-    status && status === value ? "bg-secondary-500 py-[3px] text-white" : "";
+    status && status === value ? "border-1 border-warrning-500 text-white" : "";
 
   return (
     <span
-      className={`px-[5px]  md:px-[10px] lg:px-[7.5px] xl:px-[9px] py-[3px] cursor-pointer inline-block text-sm hover:bg-secondary-500 rounded-md hover:py-[3px] text-winter-100/80 hover:text-white ${activeClass} ${initialClass}`}
+      className={`px-[12px] sm:px-[6px] md:px-[14px] lg:px-[7.5px] xl:px-[9px] pt-[3px] pb-[2px] cursor-pointer inline-block text-sm border-1 border-transparent hover:border-1 hover:border-warrning-500 rounded-md hover:pt-[3px] text-winter-100/80  hover:pb-[2px] ${initialClass} ${activeClass}`}
       onClick={() => {
         currentParams.set("status", value as string);
         setCurrentParams();

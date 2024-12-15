@@ -25,7 +25,7 @@ const MainNavigation = ({
       </div>
       {/* // Desktop menu */}
       <nav className="hidden xl:block">
-        <ul className="flex justify-center lg:justify-end uppercase gap-4 font-bold">
+        <ul className="flex justify-center lg:justify-end uppercase gap-3 font-bold">
           <MenuItems
             isAuthenticated={isAuthenticated}
             userId={userId}
