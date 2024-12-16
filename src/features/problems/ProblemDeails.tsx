@@ -27,11 +27,13 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
       {problem && <ProblemHeader {...problem} />}
       <p className="px-3">{description}</p>
 
-      <ProblemImage
-        image={image || ""}
-        alt={title || ""}
-        className="w-full h-auto overflow-hidden my-4 mx-auto border-double border-4 border-secondary-100"
-      />
+      {problem && problem.image && (
+        <ProblemImage
+          image={image || ""}
+          alt={title || ""}
+          className="w-full h-auto overflow-hidden my-4 mx-auto border-double border-4 border-secondary-100"
+        />
+      )}
 
       {status === "active" && logedUser?.uid === uid && (
         <ProblemsDetailsEdit problem={problem!} />
