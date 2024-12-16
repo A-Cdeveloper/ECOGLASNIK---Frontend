@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapClick from "./MapClick";
 import ProblemsMarkers from "./ProblemsMarkers";
@@ -31,16 +31,11 @@ const Map = ({
 
   const navigate = useNavigate();
 
-  const {
-    mapPosition,
-    setMapPosition,
-    zoomLevel,
-    setZoomLevel,
-    setMapInstance,
-  } = useCtxMap();
+  const { mapPosition, zoomLevel, setMapInstance } = useCtxMap();
 
   const [isOutOfRange, setIsOutOfRange] = useState(false);
   const location = useLocation();
+
   const filteredProblems = useMemo(() => {
     if (userId) {
       return problems?.filter((problem) => problem.uid === +userId);
@@ -52,12 +47,12 @@ const Map = ({
     return problems?.find((problem) => problem.id === problemId);
   }, [problems, problemId]);
 
-  useEffect(() => {
-    if (mapLat && mapLng) {
-      setMapPosition({ lat: mapLat, lng: mapLng });
-      setZoomLevel(15);
-    }
-  }, [mapLat, mapLng, setMapPosition, setZoomLevel]);
+  // useEffect(() => {
+  //   if (mapLat && mapLng) {
+  //     setMapPosition({ lat: mapLat, lng: mapLng });
+  //     setZoomLevel(15);
+  //   }
+  // }, [mapLat, mapLng, setMapPosition, setZoomLevel]);
 
   if (isLoading) {
     return <Loader />;
@@ -99,7 +94,7 @@ const Map = ({
           setMapInstance(map);
         }}
       >
-        <MapMyPosition setIsOutOfRange={setIsOutOfRange} />
+        <MapMyPosition onClickOutRange={setIsOutOfRange} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
