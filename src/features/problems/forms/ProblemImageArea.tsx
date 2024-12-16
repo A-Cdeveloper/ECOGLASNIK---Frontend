@@ -83,6 +83,12 @@ const ProblemImageArea = ({
       )}
       {!currentImageUrl && (
         <>
+          <p className="text-[12px] text-secondary-100 leading-[15px]">
+            Fotografija nije obavezna.
+            <br />
+            Ipak, dodavanje fotografije uz opis problema će umnogome ubrzati rad
+            nadležnih službi u procesu rešavanja prijavljenog problema.
+          </p>
           <input
             type="file"
             accept="image/*"
