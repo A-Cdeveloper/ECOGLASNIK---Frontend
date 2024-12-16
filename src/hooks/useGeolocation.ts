@@ -11,7 +11,6 @@ export function useGeolocation() {
   const [isLoading, setIsLoading] = useState(false);
 
   const requestLocation = useCallback(() => {
-    console.log("Requesting location..."); // Debugging log
     if (!navigator.geolocation) {
       setError("Your browser does not support geolocation.");
       return;
