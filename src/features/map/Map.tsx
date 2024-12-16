@@ -71,8 +71,8 @@ const Map = ({
           onClose={() => setIsOutOfRange(false)}
         />
       )}
-
       {location.pathname !== "/problems/add" && (
+        // Add problem button only if the user is on mobile version
         <Button
           variation="warning"
           size="extrasmall"
@@ -83,7 +83,6 @@ const Map = ({
           Dodaj problem
         </Button>
       )}
-
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
         zoom={zoomLevel} // specify initial zoom level
