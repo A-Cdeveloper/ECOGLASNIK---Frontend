@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 type Position = {
   lat: number;
@@ -6,18 +6,20 @@ type Position = {
 };
 
 export function useGeolocation() {
+  const [position, setPosition] = useState<Position | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [position, setPosition] = useState<Position>({ lat: 0, lng: 0 });
-  const [error, setError] = useState("");
 
-  useEffect(() => {
-    // Check for geolocation support
+  const requestLocation = useCallback(() => {
+    console.log("Requesting location..."); // Debugging log
     if (!navigator.geolocation) {
-      setError("Your browser does not support geolocation");
+      setError("Your browser does not support geolocation.");
       return;
     }
 
     setIsLoading(true);
+    setError(null); // Clear any previous errors
+
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setPosition({
@@ -26,25 +28,31 @@ export function useGeolocation() {
         });
         setIsLoading(false);
       },
-      (error) => {
-        // Handle specific geolocation errors
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            setError("User denied the request for geolocation.");
+      (err) => {
+        switch (err.code) {
+          case err.PERMISSION_DENIED:
+            setError(
+              "Omogućite lokaciju u podešavanjima i ponovo učitajte stranicu da biste bili u mogućnosti da odaberete Vašu trenutnu lokaciju."
+            );
             break;
-          case error.POSITION_UNAVAILABLE:
-            setError("Location information is unavailable.");
+          case err.POSITION_UNAVAILABLE:
+            setError("Lokacija nije dostupna. Molimo pokusajte ponovo.");
             break;
-          case error.TIMEOUT:
-            setError("The request to get user location timed out.");
+          case err.TIMEOUT:
+            setError("Zahtev za lokaciju je istekao. Molimo pokusajte ponovo.");
             break;
           default:
-            setError("An unknown error occurred.");
+            setError("Neka greška je pojavila. Molimo pokusajte ponovo.");
         }
         setIsLoading(false);
       }
     );
   }, []);
 
-  return { isLoading, position, error, setPosition };
+  // Automatically request location on mount
+  useEffect(() => {
+    requestLocation();
+  }, [requestLocation]);
+
+  return { position, error, isLoading, requestLocation };
 }
