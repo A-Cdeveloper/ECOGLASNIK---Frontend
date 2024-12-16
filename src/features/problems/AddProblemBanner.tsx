@@ -1,10 +1,16 @@
+import { useGeolocation } from "../../hooks/useGeolocation";
+import AuthNotification from "../../ui/AuthNotification";
+
 const AddProblemBanner = () => {
+  const { error } = useGeolocation();
+
   return (
-    <div className="flex flex-col items-center  h-screen space-y-5">
+    <div className="flex flex-col items-center  h-auto space-y-5">
       <div className=" bg-yellow-500/80 px-2 py-2 text-center text-[15px]/[1.25]">
         Kliknite na mapu kako biste odabrali lokaciju problema koji
         prijavljujete ili odaberite Vašu trenutnu lokaciju.
       </div>
+      {error && <AuthNotification state="error" message={error} />}
     </div>
   );
 };
