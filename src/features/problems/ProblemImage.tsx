@@ -1,3 +1,5 @@
+import noimage from "../../assets/no-image.png";
+
 const ProblemImage = ({
   image,
   alt,
@@ -10,7 +12,7 @@ const ProblemImage = ({
   return (
     <div className={className}>
       <img
-        src={image || ""}
+        src={image || noimage}
         alt={alt}
         className="w-full h-full object-cover position-center"
       />
