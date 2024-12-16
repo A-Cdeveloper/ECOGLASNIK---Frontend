@@ -28,7 +28,6 @@ const TextArea = ({
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       onChange?.(e);
       setNumberOfChars(e.target.value.length);
-      console.log("render");
     },
     [onChange]
   );
