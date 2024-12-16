@@ -14,6 +14,7 @@ export type ButtonType = {
   disabled?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   "data-testid"?: string;
+  type?: "button" | "submit" | "reset" | undefined;
 };
 
 const Button = ({
@@ -24,6 +25,7 @@ const Button = ({
   disabled,
   onClick,
   "data-testid": testId,
+  type,
 }: ButtonType) => {
   return (
     <button
@@ -32,6 +34,7 @@ const Button = ({
       onClick={onClick}
       disabled={!!disabled}
       data-testid={testId}
+      type={type}
     >
       {children}
     </button>
