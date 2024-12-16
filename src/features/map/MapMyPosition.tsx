@@ -6,19 +6,21 @@ import { useMap } from "react-leaflet";
 import { useCtxMap } from "../../context/mapContext";
 
 const MapMyPosition = ({
-  setIsOutOfRange,
+  onClickOutRange,
 }: {
-  setIsOutOfRange: React.Dispatch<React.SetStateAction<boolean>>;
+  onClickOutRange: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const { position, setPosition } = useGeolocation();
+  const { position: geoLocation, error } = useGeolocation();
+
   const location = useLocation();
   const navigate = useNavigate();
   const map = useMap();
   const { setZoomLevel, setMapPosition } = useCtxMap();
 
-  if (location.pathname !== "/problems/add") {
+  if (location.pathname !== "/problems/add" || error) {
     return null;
   }
+
   return (
     <Button
       variation="info"
@@ -30,17 +32,16 @@ const MapMyPosition = ({
         zIndex: 1000000000,
       }}
       onClick={() => {
-        setPosition(position);
-        if (outOfMapRange(position)) {
-          setIsOutOfRange(true);
+        setMapPosition(geoLocation as { lat: number; lng: number });
+        // setGeoLocation(geoLocation);
+        if (outOfMapRange(geoLocation as { lat: number; lng: number })) {
+          onClickOutRange(true);
           return;
         }
-
         const zoom = 16;
-        map.setView(position, zoom, { animate: true });
+        map.setView(geoLocation!, zoom, { animate: true });
         setZoomLevel(zoom);
-        setMapPosition(position);
-        navigate(`?lat=${position.lat}&lng=${position.lng}`);
+        navigate(`?lat=${geoLocation?.lat}&lng=${geoLocation?.lng}`);
       }}
     >
       Moja lokacija
