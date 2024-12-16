@@ -28,11 +28,17 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
         <PromptDeleteProblem
           status={isShowWarrning}
           onCancel={() => setIsShowWarrning(false)}
-          onConfirm={() => deleteProblemMutation(problem!.id)}
+          onConfirm={() =>
+            deleteProblemMutation(problem!.id, {
+              onSuccess: () => {
+                navigate(`/problems/user/${problem?.uid}`);
+              },
+            })
+          }
         />
       )}
 
-      <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col items-center gap-4 mt-4 border-t-1 border-secondary-500/30 pt-3">
         {updateProblemError && (
           <p className="text-rose-400 mt-0 whitespace-pre-wrap">
             {getErrorMessage(updateProblemError.message)}
