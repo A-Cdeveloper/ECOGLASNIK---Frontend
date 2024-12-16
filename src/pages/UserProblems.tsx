@@ -15,7 +15,7 @@ const UserProblems = () => {
 
   return (
     <>
-      <div className="flex flex-wrap border-t border-b border-secondary-500/40 py-2 mt-2 space-y-2 md:space-y-0">
+      <div className="flex flex-wrap border-t border-b border-secondary-500/40 py-2 mt-2 space-y-2 sm:space-y-0">
         <FilterStatus />
         <FilterCategory />
       </div>
