@@ -60,7 +60,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           { email: formFields.email, password: formFields.password },
           {
             onSettled: () => {},
-            onSuccess: () => navigate("/", { replace: true }),
+            onSuccess: () => navigate("/problems/add", { replace: true }),
           }
         );
       } else {
