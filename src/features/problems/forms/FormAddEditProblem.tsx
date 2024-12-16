@@ -109,9 +109,7 @@ const FormAddEditProblem = ({
         },
         {
           onSuccess: () => {
-            navigate(
-              `/problems/${problem?.id}/?lat=${problem?.position.lat}&lng=${problem?.position.lng}`
-            );
+            navigate(`/problems/user/${user?.uid}`);
           },
         }
       );
@@ -135,7 +133,7 @@ const FormAddEditProblem = ({
 
       addNewProblemMutation(newProblem, {
         onSuccess: () => {
-          return navigate(`/problems/user/${user?.uid}}`);
+          return navigate(`/problems/user/${user?.uid}`);
         },
       });
       //console.log(newProblem);
@@ -196,7 +194,7 @@ const FormAddEditProblem = ({
           setCurrentImagePinataId={setCurrentImagePinataId}
         />
 
-        <div className="flex justify-between">
+        <div className="flex justify-between border-t border-secondary-500/30 pt-3">
           <Button
             aria-label="Odustani"
             variation="danger"
