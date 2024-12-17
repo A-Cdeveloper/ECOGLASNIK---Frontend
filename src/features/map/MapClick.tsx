@@ -1,8 +1,7 @@
 import { useMap, useMapEvent } from "react-leaflet";
 import { useLocation, useNavigate } from "react-router-dom";
-import { outOfMapRange } from "../../utils/helpers";
 import { useCtxMap } from "../../context/mapContext";
-import { DEFAULT_POSITION, INITIAL_ZOOM } from "../../constants";
+import { outOfMapRange } from "../../utils/helpers";
 
 const MapClick = ({
   onClickOutRange,
@@ -12,7 +11,7 @@ const MapClick = ({
   const navigate = useNavigate();
   const location = useLocation();
   const map = useMap();
-  const { setZoomLevel } = useCtxMap();
+  const { setZoomLevel, mapPosition, zoomLevel, defaultBounds } = useCtxMap();
 
   useMapEvent("click", (e) => {
     const { lat, lng } = e.latlng;
@@ -21,13 +20,12 @@ const MapClick = ({
       console.log("Invalid coordinates, ignoring click.");
       return;
     }
-    if (outOfMapRange({ lat, lng })) {
-      setZoomLevel(INITIAL_ZOOM);
-      map.setView(DEFAULT_POSITION, INITIAL_ZOOM, { animate: true });
+    if (outOfMapRange({ lat, lng }, defaultBounds)) {
+      map.setView(mapPosition, zoomLevel, { animate: true });
       onClickOutRange(true);
       return;
     }
-    const zoom = 16;
+    const zoom = 15;
     map.setView({ lat, lng }, zoom, { animate: true });
     setZoomLevel(zoom);
 

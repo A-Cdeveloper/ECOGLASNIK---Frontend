@@ -3,6 +3,19 @@ export type Position = {
   lng: number;
 };
 
+export type SettingsType = {
+  id: number;
+  appName: string;
+  appArea: string;
+  initialZoom: number;
+  defaultPosition: Position;
+  centerPosition: Position;
+  defaultBound: {
+    northEast: Position;
+    southWest: Position;
+  };
+};
+
 export type ProblemCategory = {
   cat_id: number;
   cat_name: string;

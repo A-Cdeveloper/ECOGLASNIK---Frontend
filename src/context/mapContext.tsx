@@ -1,10 +1,12 @@
 import type { Map } from "leaflet";
-import { createContext, useContext, useState } from "react";
-import { DEFAULT_POSITION, INITIAL_ZOOM } from "../constants";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useSettings } from "../features/settings/hooks/useSettings";
+import { Position } from "../types";
 
 type MapState = {
   mapPosition: { lat: number; lng: number };
   zoomLevel: number;
+  defaultBounds: { northEast: Position; southWest: Position };
   mapInstance: Map | null;
   setMapInstance: (map: Map) => void;
   setMapPosition: (position: { lat: number; lng: number }) => void;
@@ -19,9 +21,26 @@ export const MapContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [mapPosition, setMapPosition] = useState(DEFAULT_POSITION);
-  const [zoomLevel, setZoomLevel] = useState(INITIAL_ZOOM); // default zoom level
+  const { settings, isLoading } = useSettings();
+
+  const [mapPosition, setMapPosition] = useState<Position>({
+    lat: 0,
+    lng: 0,
+  });
+  const [defaultBounds, setDefaultBounds] = useState({
+    northEast: { lat: 0, lng: 0 },
+    southWest: { lat: 0, lng: 0 },
+  });
+  const [zoomLevel, setZoomLevel] = useState<number>(1); // Default zoom level
   const [mapInstance, setMapInstance] = useState<Map | null>(null);
+
+  useEffect(() => {
+    if (!isLoading && settings) {
+      setMapPosition(settings.defaultPosition);
+      setZoomLevel(settings.initialZoom);
+      setDefaultBounds(settings.defaultBound);
+    }
+  }, [isLoading, settings]);
 
   const updateMapView = (
     position: { lat: number; lng: number },
@@ -34,11 +53,16 @@ export const MapContextProvider = ({
     setZoomLevel(zoom);
   };
 
+  if (isLoading) {
+    return null; // Optionally, return a loading spinner or placeholder here
+  }
+
   return (
     <MapContext.Provider
       value={{
         mapPosition,
         zoomLevel,
+        defaultBounds,
         mapInstance,
         setMapInstance,
         setMapPosition,

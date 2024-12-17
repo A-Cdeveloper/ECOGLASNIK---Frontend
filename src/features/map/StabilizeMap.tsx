@@ -1,17 +1,22 @@
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
-import { DEFAULT_POSITION, INITIAL_ZOOM } from "../../constants";
 import { useCtxMap } from "../../context/mapContext";
+import { useSettings } from "../settings/hooks/useSettings";
 
 const StabilizeMap = () => {
   const map = useMap();
   const { setZoomLevel, setMapPosition } = useCtxMap();
 
+  const { settings, isLoading } = useSettings();
+
   useEffect(() => {
-    map.setView(DEFAULT_POSITION, INITIAL_ZOOM, { animate: true });
-    setZoomLevel(INITIAL_ZOOM);
-    setMapPosition(DEFAULT_POSITION);
-  }, [map, setMapPosition, setZoomLevel]);
+    if (!settings || isLoading) return;
+    map.setView(settings?.defaultPosition, settings?.initialZoom, {
+      animate: true,
+    });
+    setZoomLevel(settings?.initialZoom);
+    setMapPosition(settings?.defaultPosition);
+  }, [isLoading, map, setMapPosition, setZoomLevel, settings]);
 
   return null;
 };

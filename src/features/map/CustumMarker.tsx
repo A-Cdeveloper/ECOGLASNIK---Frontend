@@ -54,7 +54,7 @@ const CustumMarker = ({
       {title && (
         <Tooltip
           direction="top"
-          offset={[0, -30]}
+          offset={[0, -10]}
           opacity={1}
           permanent={false}
         >

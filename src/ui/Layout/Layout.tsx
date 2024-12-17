@@ -1,8 +1,8 @@
 import { lazy, Suspense } from "react";
 import { useParams } from "react-router-dom";
+import Weather from "../../features/weather/Weather";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import Weather from "../../features/weather/Weather";
 
 const MapComponent = lazy(() => import("../../features/map/Map"));
 

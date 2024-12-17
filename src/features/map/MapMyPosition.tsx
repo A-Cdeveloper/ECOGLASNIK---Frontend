@@ -15,7 +15,7 @@ const MapMyPosition = ({
   const location = useLocation();
   const navigate = useNavigate();
   const map = useMap();
-  const { setZoomLevel, setMapPosition } = useCtxMap();
+  const { setZoomLevel, setMapPosition, defaultBounds } = useCtxMap();
 
   if (location.pathname !== "/problems/add" || error) {
     return null;
@@ -34,11 +34,16 @@ const MapMyPosition = ({
       onClick={() => {
         setMapPosition(geoLocation as { lat: number; lng: number });
         // setGeoLocation(geoLocation);
-        if (outOfMapRange(geoLocation as { lat: number; lng: number })) {
+        if (
+          outOfMapRange(
+            geoLocation as { lat: number; lng: number },
+            defaultBounds
+          )
+        ) {
           onClickOutRange(true);
           return;
         }
-        const zoom = 16;
+        const zoom = 15;
         map.setView(geoLocation!, zoom, { animate: true });
         setZoomLevel(zoom);
         navigate(`?lat=${geoLocation?.lat}&lng=${geoLocation?.lng}`);

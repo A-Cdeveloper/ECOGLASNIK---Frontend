@@ -7,7 +7,6 @@ import StabilizeMap from "./StabilizeMap";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import { useProblems } from "../problems/hooks/useProblems";
 
-import { INITIAL_ZOOM } from "../../constants";
 import { Problem } from "../../types";
 import Loader from "../../ui/Loader";
 
@@ -47,13 +46,6 @@ const Map = ({
     return problems?.find((problem) => problem.id === problemId);
   }, [problems, problemId]);
 
-  // useEffect(() => {
-  //   if (mapLat && mapLng) {
-  //     setMapPosition({ lat: mapLat, lng: mapLng });
-  //     setZoomLevel(15);
-  //   }
-  // }, [mapLat, mapLng, setMapPosition, setZoomLevel]);
-
   if (isLoading) {
     return <Loader />;
   }
@@ -81,7 +73,7 @@ const Map = ({
       <MapContainer
         center={[mapPosition.lat, mapPosition.lng]}
         zoom={zoomLevel} // specify initial zoom level
-        minZoom={INITIAL_ZOOM}
+        minZoom={zoomLevel}
         className="h-[400px] lg:h-full w-full"
         dragging={true} // disable dragging
         zoomControl={true} // disable zoom control UI

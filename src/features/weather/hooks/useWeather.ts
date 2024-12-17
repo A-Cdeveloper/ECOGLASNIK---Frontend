@@ -1,14 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { DEFAULT_CENTER } from "../../../constants";
-import { fetchWeather } from "../api/fetchWeather";
 import { WeatherApiResponse } from "../../../types";
+import { useSettings } from "../../settings/hooks/useSettings";
+import { fetchWeather } from "../api/fetchWeather";
 
 export const useWeather = () => {
-  const { lat, lng } = DEFAULT_CENTER;
+  const { settings } = useSettings();
 
   const { data, isLoading, error } = useQuery<WeatherApiResponse>({
-    queryKey: ["weather", lat, lng],
-    queryFn: () => fetchWeather(lat, lng),
+    queryKey: [
+      "weather",
+      settings?.defaultPosition.lat,
+      settings?.defaultPosition.lng,
+    ],
+    queryFn: () =>
+      fetchWeather(
+        settings!.defaultPosition.lat,
+        settings!.defaultPosition.lng
+      ),
   });
 
   return {

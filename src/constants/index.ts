@@ -11,9 +11,8 @@ export const APP_NAME = "Clean Me";
 export const TEXTAREA_MAX_CHARACTERS = 300;
 
 // Map
-export const INITIAL_ZOOM = 13;
-export const DEFAULT_POSITION = { lat: 42.961498, lng: 22.124319 };
-export const DEFAULT_CENTER = { lat: 42.965202, lng: 22.128136 };
+// export const INITIAL_ZOOM = 13;
+// export const DEFAULT_POSITION = { lat: 42.961498, lng: 22.124319 };
 export const DEFAULT_BOUND = {
   northEast: { lat: 43.028808, lng: 22.369252 },
   southWest: { lat: 42.887599, lng: 22.039992 },
