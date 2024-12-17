@@ -4,15 +4,17 @@ export type Position = {
 };
 
 export type SettingsType = {
-  id: number;
-  appName: string;
-  appArea: string;
-  initialZoom: number;
-  defaultPosition: Position;
-  centerPosition: Position;
-  defaultBound: {
-    northEast: Position;
-    southWest: Position;
+  data: {
+    id: number;
+    appName: string;
+    appArea: string;
+    initialZoom: number;
+    defaultPosition: Position;
+    centerPosition: Position;
+    defaultBound: {
+      northEast: Position;
+      southWest: Position;
+    };
   };
 };
 
