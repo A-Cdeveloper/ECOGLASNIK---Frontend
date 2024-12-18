@@ -13,11 +13,16 @@ const MapClick = ({
   const map = useMap();
   const { setZoomLevel, mapPosition, zoomLevel, defaultBounds } = useCtxMap();
 
+  useMapEvent("zoomend", () => {
+    const currentZoom = map.getZoom();
+    setZoomLevel(currentZoom);
+  });
+
   useMapEvent("click", (e) => {
     const { lat, lng } = e.latlng;
 
     if (!lat || !lng || location.pathname !== "/problems/add") {
-      console.log("Invalid coordinates, ignoring click.");
+      // console.log("Invalid coordinates, ignoring click.");
       return;
     }
     if (outOfMapRange({ lat, lng }, defaultBounds)) {
@@ -25,10 +30,8 @@ const MapClick = ({
       onClickOutRange(true);
       return;
     }
-    const zoom = 15;
-    map.setView({ lat, lng }, zoom, { animate: true });
-    setZoomLevel(zoom);
 
+    map.setView({ lat, lng }, zoomLevel, { animate: true });
     navigate(`problems/add?lat=${lat}&lng=${lng}`);
   });
 

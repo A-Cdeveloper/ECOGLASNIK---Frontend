@@ -26,7 +26,7 @@ const CustumMarker = ({
   setHoveredMarker = () => {},
 }: MarkerType) => {
   const navigate = useNavigate();
-  const { setZoomLevel } = useCtxMap();
+  const { setZoomLevel, zoomLevel } = useCtxMap();
   const map = useMap();
 
   return (
@@ -42,13 +42,15 @@ const CustumMarker = ({
       eventHandlers={{
         click: () => {
           if (activeMarker) return;
-          const zoom = 15;
-          map.setView({ lat, lng }, zoom, { animate: true });
-          setZoomLevel(zoom);
+          map.setView({ lat, lng }, zoomLevel, { animate: true });
           navigate(`problems/${problemId}/?lat=${lat}&lng=${lng}`);
         },
         mouseover: () => setHoveredMarker(problemId as string),
         mouseout: () => setHoveredMarker(null),
+        zoomend: () => {
+          const currentZoom = map.getZoom();
+          setZoomLevel(currentZoom);
+        },
       }}
     >
       {title && (
