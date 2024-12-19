@@ -9,6 +9,7 @@ type SelectType = {
   required?: boolean;
   className?: string;
   options: ProblemCategory[];
+  disabled?: boolean;
 };
 
 const Select = ({
@@ -20,6 +21,7 @@ const Select = ({
   options = [],
   required = false,
   className = "",
+  disabled,
   ...rest
 }: SelectType) => {
   return (
@@ -30,6 +32,7 @@ const Select = ({
       onChange={onChange}
       required={required}
       className={`${className}`}
+      disabled={disabled}
       {...rest}
     >
       <option value="" disabled>
