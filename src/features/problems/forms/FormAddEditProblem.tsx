@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCategories } from "../hooks/useCategories";
 import { useSingleProblem } from "../hooks/useSingleProblem";
@@ -18,6 +18,7 @@ import ProblemImageArea from "./ProblemImageArea";
 import Button from "../../../ui/Buttons/Button";
 import Headline from "../../../ui/Headline";
 import useAddEditProblem from "../hooks/useAddEditProblem";
+import Organisations from "../Organisations";
 
 export type FormStateType = {
   category: number;
@@ -50,7 +51,7 @@ const FormAddEditProblem = ({
   const { problem } = useSingleProblem(problemId || "");
 
   const [formState, setFormState] = useState<FormStateType>({
-    category: problem?.cat_id || 0,
+    category: problem?.cat_id || 1,
     file: problem?.image ? null : (null as File | null),
     touchForm: false,
   });
@@ -84,6 +85,15 @@ const FormAddEditProblem = ({
     },
     []
   );
+
+  const catOrganisations = useMemo(() => {
+    return (
+      (categories &&
+        categories?.find((cat) => cat.cat_id === formState.category)
+          ?.organisations) ||
+      []
+    );
+  }, [categories, formState.category]);
 
   if (editMode && user?.uid !== problem?.uid) {
     return <RestrictAccess />;
@@ -176,7 +186,10 @@ const FormAddEditProblem = ({
           value={formState.category}
           onChange={handleCategoryChange}
           options={categories!}
+          disabled={editMode}
         />
+
+        {categories && <Organisations organisations={catOrganisations || []} />}
         <TextArea
           placeholder="Opis problema"
           name="description"
@@ -185,7 +198,6 @@ const FormAddEditProblem = ({
           onChange={handleInputChange}
           className="h-[80px] lg:h-[200px]"
         />
-
         <ProblemImageArea
           problem={problem!}
           setFormState={setFormState}
@@ -193,7 +205,6 @@ const FormAddEditProblem = ({
           setCurrentImageUrl={setCurrentImageUrl}
           setCurrentImagePinataId={setCurrentImagePinataId}
         />
-
         <div className="flex justify-between border-t border-secondary-500/30 pt-3">
           <Button
             aria-label="Odustani"

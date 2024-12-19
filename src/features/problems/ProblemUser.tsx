@@ -7,7 +7,7 @@ const ProblemUser = ({
 }) => {
   return (
     <>
-      <div>Prijavio:</div>
+      <div className="tablecaption">Prijavio:</div>
       <div>{user.firstname + " " + user.lastname}</div>
     </>
   );
