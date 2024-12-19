@@ -27,6 +27,9 @@ textarea,
 select {
   @apply bg-transparent px-2 py-1 border-1 border-secondary-100/40 focus:border-yellow-500 focus:outline-none text-winter-100/80 w-full;
 }
+select:disabled {
+  @apply bg-secondary-500/50 cursor-not-allowed border-0;
+}
 
 option {
   @apply bg-primary-500 px-2 py-1 border-1 border-secondary-500 focus:border-primary-500 focus:outline-none text-winter-100/80;
@@ -78,4 +81,8 @@ button:disabled {
 
 .custum-scrollbar {
   @apply scrollbar-thin scrollbar-thumb-secondary-900/70 scrollbar-track-primary-500;
+}
+
+.tablecaption {
+  @apply col-span-2 sm:col-span-1 text-[13px] text-secondary-100;
 }
