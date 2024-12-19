@@ -18,9 +18,18 @@ export type SettingsType = {
   };
 };
 
+export type Organisation = {
+  oid: number;
+  organisation_name: string;
+  organisation_address: string;
+  organisation_email: string;
+  organisation_phone: string;
+};
+
 export type ProblemCategory = {
   cat_id: number;
   cat_name: string;
+  organisations: Organisation[];
 };
 
 export type Problem = {
