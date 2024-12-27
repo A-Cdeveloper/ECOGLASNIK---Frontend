@@ -1,15 +1,11 @@
-import { API_URL } from "../../../constants";
 import { SettingsType } from "../../../types";
+import apiClient from "../../../utils/axios";
 import { throwError } from "../../../utils/helpers";
 
 export const getSettingsApi = async (): Promise<SettingsType> => {
   try {
-    const response = await fetch(`${API_URL}/settings`);
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error);
-    }
-    return data;
+    const response = await apiClient.get("/settings");
+    return response.data.data;
   } catch (error) {
     return await throwError(error);
   }
