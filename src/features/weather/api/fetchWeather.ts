@@ -1,38 +1,42 @@
-import { WEATHER_API_KEY, WEATHER_BASE_URL } from "../../../constants";
 import {
   WeatherApiResponse,
   WeatherCurrent,
   WeatherForecast,
 } from "../../../types";
+import { weatherClient } from "../../../utils/axios";
+import { throwError } from "../../../utils/helpers";
 //import { wait } from "../../../utils/helpers";
 
 export const fetchWeather = async (
   latitude: number,
   longitude: number
 ): Promise<WeatherApiResponse> => {
-  const currentResponse = await fetch(
-    `${WEATHER_BASE_URL}/current.json?key=${WEATHER_API_KEY}&q=${latitude},${longitude}`
-  );
-  const currWeather: WeatherCurrent = await currentResponse.json();
-
-  const forecastResponse = await fetch(
-    `${WEATHER_BASE_URL}/forecast.json?key=${WEATHER_API_KEY}&q=${latitude},${longitude}&days=8`
-  );
-
-  const forecastWheater: WeatherForecast = await forecastResponse.json();
-
-  const currentDate = new Date().toISOString().split("T")[0];
-
-  const filteredForecast = {
-    ...forecastWheater,
-    forecast: {
-      forecastday: forecastWheater.forecast.forecastday.filter((day) => {
-        return day.date !== currentDate;
+  try {
+    const [currentResponse, forecastResponse] = await Promise.all([
+      weatherClient.get<WeatherCurrent>(`/current.json`, {
+        params: { q: `${latitude},${longitude}` },
       }),
-    },
-  };
+      weatherClient.get<WeatherForecast>(`/forecast.json`, {
+        params: { q: `${latitude},${longitude}`, days: 8 },
+      }),
+    ]);
 
-  //await wait(4000);
+    const currentWeather = currentResponse.data;
+    const forecastWeather = forecastResponse.data;
 
-  return { current: currWeather, forecast: filteredForecast };
+    // Filter out the current date from the forecast
+    const currentDate = new Date().toISOString().split("T")[0];
+    const filteredForecast = {
+      ...forecastWeather,
+      forecast: {
+        forecastday: forecastWeather.forecast.forecastday.filter(
+          (day) => day.date !== currentDate
+        ),
+      },
+    };
+
+    return { current: currentWeather, forecast: filteredForecast };
+  } catch (error) {
+    return await throwError(error);
+  }
 };
