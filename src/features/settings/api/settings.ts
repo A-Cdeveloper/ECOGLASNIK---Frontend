@@ -1,4 +1,3 @@
-import { API_URL } from "../../../constants";
 import { SettingsType } from "../../../types";
 import apiClient from "../../../utils/axios";
 import { throwError } from "../../../utils/helpers";
