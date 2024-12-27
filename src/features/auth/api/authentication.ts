@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { API_URL } from "../../../constants";
 import { LoginRegisterResponse } from "../../../types";
+import apiClient from "../../../utils/axios";
 import { throwError } from "../../../utils/helpers";
 
 export const loginApi = async ({
@@ -11,21 +11,15 @@ export const loginApi = async ({
   password: string;
 }): Promise<LoginRegisterResponse> => {
   try {
-    const response = await fetch(`${API_URL}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-      credentials: "include",
-    });
+    const response = await apiClient.post(
+      "/auth/login",
+      { email, password },
+      {
+        withCredentials: true,
+      }
+    );
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -45,19 +39,15 @@ export const registerApi = async ({
   password: string;
 }): Promise<LoginRegisterResponse> => {
   try {
-    const response = await fetch(`${API_URL}/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ firstname, lastname, phone, email, password }),
+    const response = await apiClient.post("/auth/register", {
+      firstname,
+      lastname,
+      phone,
+      email,
+      password,
     });
-    const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -69,19 +59,8 @@ export const forgotPasswordApi = async ({
   email: string;
 }): Promise<LoginRegisterResponse> => {
   try {
-    const response = await fetch(`${API_URL}/auth/forgot-password`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    const response = await apiClient.post("/auth/forgot-password", { email });
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -91,15 +70,11 @@ export const verifyAccountApi = async (
   verificationCode: string
 ): Promise<{ message: string }> => {
   try {
-    const response = await fetch(
-      `${API_URL}/auth/verify?token=${verificationCode}`
-    );
-    const data = await response.json();
+    const response = await apiClient.get(`/auth/verify`, {
+      params: { token: verificationCode },
+    });
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -113,22 +88,15 @@ export const resetPasswordApi = async ({
   verificationCode?: string | null;
 }): Promise<{ message: string }> => {
   try {
-    const response = await fetch(
-      `${API_URL}/auth/reset-password?token=${verificationCode}`,
+    const response = await apiClient.post(
+      `/auth/reset-password`,
+      { password },
       {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password }),
+        params: { token: verificationCode || "" },
       }
     );
-    const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -136,21 +104,11 @@ export const resetPasswordApi = async ({
 
 export const logoutApi = async (): Promise<LoginRegisterResponse> => {
   try {
-    const response = await fetch(`${API_URL}/auth/logout`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: null,
-      credentials: "include",
+    const response = await apiClient.post("/auth/logout", null, {
+      withCredentials: true,
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -160,21 +118,19 @@ export const autoLogout = (tokenExpiry: Date | null, onLogout: () => void) => {
   if (!tokenExpiry) return;
 
   const expirationDate = new Date(tokenExpiry);
-  const secondsUntilExpiry = Math.floor(
-    (expirationDate.getTime() - Date.now()) / 1000
-  );
+  const millisecondsUntilExpiry = expirationDate.getTime() - Date.now();
 
-  if (secondsUntilExpiry <= 0) {
+  if (millisecondsUntilExpiry <= 0) {
     // Token is already expired; log out immediately
-    onLogout();
-    logoutApi();
-    toast.success(`Vaša sessija je istekla! Prijavite se ponovo!`);
+    handleLogout(onLogout);
   } else {
     // Set a timeout to log out when the token expires
-    return setTimeout(() => {
-      onLogout();
-      logoutApi();
-      toast.success(`Vaša sessija je istekla! Prijavite se ponovo!`);
-    }, secondsUntilExpiry * 1000);
+    return setTimeout(() => handleLogout(onLogout), millisecondsUntilExpiry);
   }
+};
+
+const handleLogout = async (onLogout: () => void) => {
+  onLogout();
+  await logoutApi();
+  toast.success("Vaša sesija je istekla! Prijavite se ponovo!");
 };
