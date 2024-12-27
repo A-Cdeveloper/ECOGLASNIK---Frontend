@@ -11,13 +11,7 @@ export const loginApi = async ({
   password: string;
 }): Promise<LoginRegisterResponse> => {
   try {
-    const response = await apiClient.post(
-      "/auth/login",
-      { email, password },
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await apiClient.post("/auth/login", { email, password });
 
     return response.data;
   } catch (error) {
