@@ -18,6 +18,7 @@
 - **TypeScript**: To ensure type safety and enhance the development experience.
 - **TanStack Query (React Query)**: For server-state management and data fetching, providing a seamless experience when submitting and retrieving reports.
 - **React Router**: For client-side routing, enabling seamless navigation within the application.
+- **Axios**: For making HTTP requests, simplifying API interactions with support for promises and request/response interceptors.
 - **Leaflet**: For rendering interactive maps and handling map-based user interactions.
 - **Tailwind CSS**: For streamlined and responsive UI design with utility-first CSS classes
 
