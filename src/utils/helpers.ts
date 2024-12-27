@@ -2,6 +2,7 @@
 import { differenceInSeconds, format } from "date-fns";
 import L from "leaflet";
 import { Position } from "../types";
+import axios from "axios";
 // Define the bounds
 
 export const wait = (ms: number) =>
@@ -37,6 +38,8 @@ export const getErrorMessage = (errorMsg: string) => {
 
 export const throwError = async (error: any) => {
   const errorMessage =
-    error instanceof Error ? error.message : "Privremena greška na serveru ⚠";
+    axios.isAxiosError(error) && error.response?.data?.error
+      ? error.response.data.error
+      : "Privremena greška na serveru ⚠";
   throw new Error(errorMessage);
 };
