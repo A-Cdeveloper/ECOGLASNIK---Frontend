@@ -53,9 +53,9 @@ export const addNewProblemApi = async (
 ): Promise<Problem> => {
   try {
     const response = await apiClient.post("/problems", newProblem, {
-      withCredentials: true, // Ensures cookies are sent with the request
+      withCredentials: true,
     });
-    return response.data; // Axios automatically parses the JSON response
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -76,11 +76,11 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
       `/problems/${problem.id}`,
       updatedFields,
       {
-        withCredentials: true, // Ensures cookies are sent with the request
+        withCredentials: true,
       }
     );
 
-    return response.data; // Axios automatically parses the JSON response
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -89,16 +89,19 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
 export const deleteProblemApi = async (id: string): Promise<Problem> => {
   try {
     const response = await apiClient.delete(`/problems/${id}`, {
-      withCredentials: true, // Ensures cookies are sent with the request
+      withCredentials: true,
     });
 
-    return response.data; // Axios automatically parses the JSON response
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
 };
 
-export const uploadProblemImageApi = async (file: File) => {
+export const uploadProblemImageApi = async (
+  file: File,
+  onProgress: (progress: number) => void
+) => {
   try {
     const formData = new FormData();
     formData.append("file", file);
@@ -107,9 +110,15 @@ export const uploadProblemImageApi = async (file: File) => {
       headers: {
         "Content-Type": "multipart/form-data", // Required for file uploads
       },
+      onUploadProgress: (progressEvent) => {
+        const percentCompleted = progressEvent.total
+          ? Math.round((progressEvent.loaded * 100) / progressEvent.total)
+          : 0;
+        onProgress(percentCompleted);
+      },
     });
 
-    return response.data; // Axios automatically parses the JSON response
+    return response.data;
   } catch (error) {
     return await throwError(error);
   }
