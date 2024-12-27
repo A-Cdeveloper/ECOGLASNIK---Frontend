@@ -64,12 +64,12 @@ const ProblemImageArea = ({
 
   if (isLoadingUploadImage) {
     return (
-      <div className="w-full h-full flex justify-center items-center gap-4 py-3 ">
+      <div className="w-full h-full flex justify-center flex-wrap items-center gap-4 py-3 ">
         <MiniSpinner />
         {progress !== 100 ? (
           <>
             Slika se uploaduje...
-            <div className="relative h-2 bg-gray-200 rounded-md w-1/3">
+            <div className="relative h-2 bg-gray-200 rounded-md w-3/4 md:w-1/3">
               <div
                 className="absolute top-0 left-0 h-2 bg-warrning-500 rounded-md"
                 style={{ width: `${progress}%` }}
