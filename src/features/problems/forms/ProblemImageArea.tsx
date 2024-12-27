@@ -20,8 +20,11 @@ const ProblemImageArea = ({
   setCurrentImageUrl: React.Dispatch<React.SetStateAction<string>>;
   setCurrentImagePinataId: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { status: uploadImageStatus, mutateAsync: uploadImageMutation } =
-    useUploadImageProblem();
+  const {
+    status: uploadImageStatus,
+    mutateAsync: uploadImageMutation,
+    progress,
+  } = useUploadImageProblem();
 
   const handleFileChange = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +66,20 @@ const ProblemImageArea = ({
     return (
       <div className="w-full h-full flex justify-center items-center gap-4 py-3 ">
         <MiniSpinner />
-        Slika se uploaduje...
+        {progress !== 100 ? (
+          <>
+            Slika se uploaduje...
+            <div className="relative h-2 bg-gray-200 rounded-md w-1/3">
+              <div
+                className="absolute top-0 left-0 h-2 bg-warrning-500 rounded-md"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <span className="text-[12px] ms-1 block">{progress}%</span>
+          </>
+        ) : (
+          <span>Priprema slike...</span>
+        )}
       </div>
     );
   }
