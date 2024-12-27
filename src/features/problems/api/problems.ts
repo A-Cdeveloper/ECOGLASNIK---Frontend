@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { API_URL } from "../../../constants";
 import { ExtendedProblem, Problem } from "../../../types";
+import apiClient from "../../../utils/axios";
 import { throwError } from "../../../utils/helpers";
 
 export const getAllProblemsApi = async (
@@ -9,32 +8,27 @@ export const getAllProblemsApi = async (
 ): Promise<Problem[]> => {
   let query = "";
 
-  if (status && status != "all") {
+  if (status && status !== "all") {
     query = `?status=${status}`;
-  }
-
-  if (status == "all" || !status) {
+  } else if (!status || status === "all") {
     query = "?";
   }
 
-  if (cat_id != null) {
-    query = `?cat_id=${cat_id}`;
+  if (cat_id !== null) {
+    query = query.includes("?")
+      ? `${query}&cat_id=${cat_id}`
+      : `?cat_id=${cat_id}`;
   }
 
-  if (status && status != "all" && cat_id != null) {
+  if (status && status !== "all" && cat_id !== null) {
     query = `?status=${status}&cat_id=${cat_id}`;
   }
 
   try {
-    const response = await fetch(
-      `${API_URL}/problems${query}&sort=status,createdAt&order=ASC,DESC`
+    const response = await apiClient.get(
+      `/problems${query}&sort=status,createdAt&order=ASC,DESC`
     );
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error);
-    }
-    return data.data;
+    return response.data.data;
   } catch (error) {
     return await throwError(error);
   }
@@ -47,12 +41,8 @@ export const getSingleProblemApi = async (
     return {} as ExtendedProblem;
   }
   try {
-    const response = await fetch(`${API_URL}/problems/${id}`);
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.error);
-    }
-    return data;
+    const response = await apiClient.get(`/problems/${id}`);
+    return response.data; // Axios automatically parses JSON
   } catch (error) {
     return await throwError(error);
   }
@@ -62,21 +52,10 @@ export const addNewProblemApi = async (
   newProblem: Problem
 ): Promise<Problem> => {
   try {
-    const response = await fetch(`${API_URL}/problems`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProblem),
-      credentials: "include",
+    const response = await apiClient.post("/problems", newProblem, {
+      withCredentials: true, // Ensures cookies are sent with the request
     });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data; // Axios automatically parses the JSON response
   } catch (error) {
     return await throwError(error);
   }
@@ -93,21 +72,15 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
       status: problem.status,
     };
 
-    const response = await fetch(`${API_URL}/problems/${problem.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedFields),
-      credentials: "include",
-    });
+    const response = await apiClient.put(
+      `/problems/${problem.id}`,
+      updatedFields,
+      {
+        withCredentials: true, // Ensures cookies are sent with the request
+      }
+    );
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    return data;
+    return response.data; // Axios automatically parses the JSON response
   } catch (error) {
     return await throwError(error);
   }
@@ -115,25 +88,11 @@ export const updateProblemApi = async (problem: Problem): Promise<Problem> => {
 
 export const deleteProblemApi = async (id: string): Promise<Problem> => {
   try {
-    const response = await fetch(`${API_URL}/problems/${id}`, {
-      method: "DELETE",
-      credentials: "include",
+    const response = await apiClient.delete(`/problems/${id}`, {
+      withCredentials: true, // Ensures cookies are sent with the request
     });
-    const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-
-    // await fetch(`${API_URL}/problems/upload/remove`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ id: data.pinata_id }),
-    // });
-
-    return data;
+    return response.data; // Axios automatically parses the JSON response
   } catch (error) {
     return await throwError(error);
   }
@@ -144,17 +103,13 @@ export const uploadProblemImageApi = async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch(`${API_URL}/problems/upload`, {
-      method: "POST",
-      body: formData,
+    const response = await apiClient.post("/problems/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // Required for file uploads
+      },
     });
-    const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-
-    return data;
+    return response.data; // Axios automatically parses the JSON response
   } catch (error) {
     return await throwError(error);
   }
