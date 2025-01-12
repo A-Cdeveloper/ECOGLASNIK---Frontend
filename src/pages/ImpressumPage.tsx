@@ -6,7 +6,7 @@ const ImpressumPage = () => {
     <>
       <BackButton />
       <p>
-        <strong>Naziv sajta:</strong> CLEANME <br />
+        <strong>ECOGLASNIK</strong> <br />
         <strong>Vlasnik:</strong> E-SEO TEAM
         <br />
         <strong>PIB: </strong> 107319556
@@ -17,27 +17,27 @@ const ImpressumPage = () => {
       </p>
       <TextBlock caption="Kontakt:">
         Email:{" "}
-        <a href="mailto:admin@cleanme.e-vlasotince.info">
-          admin@cleanme.e-vlasotince.info
+        <a href="mailto:admin@ECOGLASNIK.e-vlasotince.info">
+          ecoglasnik.e-vlasotince.info
         </a>
         <br />
         Web:{" "}
-        <a href="https://www.cleanme.e-vlasotince.info" target="_blank">
-          cleanme.e-vlasotince.info
+        <a href="https://www.ECOGLASNIK.e-vlasotince.info" target="_blank">
+          ecoglasnik.e-vlasotince.info
         </a>
       </TextBlock>
       <TextBlock caption="Opis sajta:">
-        CLEANME je online platforma koja omogućava građanima da prijave probleme
-        u komunalnoj infrastrukturi putem interaktivne mape. Korisnici mogu lako
-        i brzo prijaviti komunalne probleme poput oštećenih puteva, prepunih
-        kontejnera, kvarova na uličnom osvetljenju i slično. Cilj sajta je da
-        unapredi komunikaciju između građana i komunalnih službi, olakšavajući
-        brzo rešavanje prijavljenih problema.
+        ECOGLASNIK je online platforma koja omogućava građanima da prijave
+        probleme u komunalnoj infrastrukturi putem interaktivne mape. Korisnici
+        mogu lako i brzo prijaviti komunalne probleme poput oštećenih puteva,
+        prepunih kontejnera, kvarova na uličnom osvetljenju i slično. Cilj sajta
+        je da unapredi komunikaciju između građana i komunalnih službi,
+        olakšavajući brzo rešavanje prijavljenih problema.
       </TextBlock>
 
       <TextBlock caption="Odricanje od odgovornosti:">
-        CLEANME omogućava korisnicima prijavu problema u javnom interesu, ali ne
-        snosi odgovornost za tačnost prijavljenih informacija. Sve prijave su
+        ECOGLASNIK omogućava korisnicima prijavu problema u javnom interesu, ali
+        ne snosi odgovornost za tačnost prijavljenih informacija. Sve prijave su
         podložne proveri od strane nadležnih komunalnih službi. E-SEO TEAM nije
         odgovoran za kašnjenja ili neizvršavanje prijava od strane komunalnih
         službi.
@@ -50,7 +50,7 @@ const ImpressumPage = () => {
       </TextBlock>
 
       <TextBlock caption="Zaštita podataka:">
-        CLEANME obrađuje podatke u skladu sa Zakonom o zaštiti podataka o
+        ECOGLASNIK obrađuje podatke u skladu sa Zakonom o zaštiti podataka o
         ličnosti. Lični podaci koji se prikupljaju kroz prijave koriste se
         isključivo za potrebe obrade prijave i neće biti deljeni sa trećim
         licima, osim u slučajevima predviđenim zakonom.

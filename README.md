@@ -1,8 +1,8 @@
-# CleanMe
+# ECOGLASNIK
 
 ## Overview
 
-**CleanMe** is a React-based application designed to help users report communal problems by interacting with a map interface. This application makes it simple for individuals to mark locations with specific issues and report them to the relevant authorities, fostering a cleaner and safer community.
+**ECOGLASNIK** is a React-based application designed to help users report communal problems by interacting with a map interface. This application makes it simple for individuals to mark locations with specific issues and report them to the relevant authorities, fostering a cleaner and safer community.
 
 ## Features
 

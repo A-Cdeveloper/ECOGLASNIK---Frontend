@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/clean-me.fw.png";
+import logo from "../../assets/ecoglasnik.png";
 import { APP_NAME } from "../../constants";
 
 const Logo = () => {
