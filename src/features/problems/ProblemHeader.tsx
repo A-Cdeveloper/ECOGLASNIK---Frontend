@@ -1,8 +1,7 @@
-import ProblemCategory from "./ProblemCategory";
 import { ExtendedProblem } from "../../types";
-import ProblemUser from "./ProblemUser";
 import StatusBadge from "../../ui/StatusBadge";
 import { formattedDate } from "../../utils/helpers";
+import ProblemCategory from "./ProblemCategory";
 
 type ProblemHeaderType = Pick<
   ExtendedProblem,
@@ -14,7 +13,6 @@ const ProblemHeader = ({
   createdAt,
   updatedAt,
   status,
-  user,
 }: ProblemHeaderType) => {
   return (
     <>
@@ -23,7 +21,6 @@ const ProblemHeader = ({
       </ProblemHeaderLayout>
 
       <ProblemHeaderLayout className="bg-secondary-500/20">
-        <ProblemUser user={user} />
         <div className="tablecaption">Datum prijave:</div>
         <div>{formattedDate(createdAt)}</div>
         {status === "done" && (

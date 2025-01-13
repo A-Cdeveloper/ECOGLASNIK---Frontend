@@ -99,6 +99,13 @@ function LoginRegisterForm({ mode }: { mode: string }) {
       <Headline level={2} className="w-[90%] mb-3 uppercase font-semibold">
         {isLoginMode ? "Login" : "Kreiraj nalog"}
       </Headline>
+      {!isLoginMode && (
+        <p className=" text-[12px] w-[90%] mb-2 block ">
+          Vaši lični podaci će biti zaštičeni, neće se ni u kom slučaju
+          prikazivati javno na platformi, niti će biti uključeni u Vaše zvanične
+          prijave nadležnim službama.
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="space-y-4 w-[90%]">
         {!isLoginMode && (
           <>
