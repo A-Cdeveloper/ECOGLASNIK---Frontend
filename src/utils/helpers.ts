@@ -43,3 +43,25 @@ export const throwError = async (error: any) => {
       : "Privremena greška na serveru ⚠";
   throw new Error(errorMessage);
 };
+
+export const calculateDistanceFromBounds = (
+  position: { lat: number; lng: number },
+  bounds: {
+    northEast: { lat: number; lng: number };
+    southWest: { lat: number; lng: number };
+  }
+): number => {
+  const degreeToKm = 111;
+
+  const latDifference = bounds.northEast.lat - position.lat;
+  const lngDifference = bounds.northEast.lng - position.lng;
+
+  const latDistanceKm = Math.abs(latDifference * degreeToKm);
+
+  const averageLat = (bounds.northEast.lat + bounds.southWest.lat) / 2;
+  const lngDistanceKm = Math.abs(
+    lngDifference * degreeToKm * Math.cos((averageLat * Math.PI) / 180)
+  );
+
+  return Math.round(Math.max(latDistanceKm, lngDistanceKm));
+};
