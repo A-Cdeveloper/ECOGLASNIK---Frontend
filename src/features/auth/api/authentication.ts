@@ -25,6 +25,19 @@ export const loginApi = async ({
   }
 };
 
+export const getUserFromCookies = async () => {
+  try {
+    const response = await apiClient.get("/auth/get-user-from-cookies", {
+      withCredentials: true,
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching user data from backend:", error);
+    return null;
+  }
+};
+
 export const registerApi = async ({
   firstname,
   lastname,

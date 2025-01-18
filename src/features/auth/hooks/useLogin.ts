@@ -1,9 +1,10 @@
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import { LoginRegisterResponse } from "../../../types";
-import { loginApi } from "../api/authentication";
 import useAuth from "../../../context/useAuth";
+import { LoginRegisterResponse } from "../../../types";
+
+import { getUserFromCookies, loginApi } from "../api/authentication";
 
 type LoginVariables = {
   email: string;
@@ -18,8 +19,9 @@ const useLogin = (): UseMutationResult<
   const { setUser, setTokenExpiry } = useAuth();
   const mutation = useMutation<LoginRegisterResponse, Error, LoginVariables>({
     mutationFn: loginApi,
-    onSuccess: (data: LoginRegisterResponse) => {
-      setUser(data.data);
+    onSuccess: async (data: LoginRegisterResponse) => {
+      const user = await getUserFromCookies();
+      setUser(user);
       setTokenExpiry(data.tokenExpiry);
       toast.success(
         `${data.message}\n Dobrodosli ${data.data.firstname} ${data.data.lastname}!`
