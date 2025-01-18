@@ -5,7 +5,7 @@ export const API_URL =
     : "http://localhost:3000/api";
 
 //
-export const APP_NAME = "Clean Me";
+export const APP_NAME = "ECOGLASNIK";
 
 // Forms
 export const TEXTAREA_MAX_CHARACTERS = 300;
