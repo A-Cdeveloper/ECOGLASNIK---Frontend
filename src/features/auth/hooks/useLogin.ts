@@ -22,12 +22,13 @@ const useLogin = (): UseMutationResult<
     onSuccess: async (data: LoginRegisterResponse) => {
       const user = await getUserFromCookies();
       setUser(user);
-      setTokenExpiry(data.tokenExpiry);
+      setTokenExpiry(user.tokenExpiry);
       toast.success(
-        `${data.message}\n Dobrodosli ${data.data.firstname} ${data.data.lastname}!`
+        `${data.message}\n Dobrodosli ${user.firstname} ${user.lastname}!`
       );
     },
-    onError: () => {
+    onError: (error) => {
+      console.log(error);
       toast.error("Došlo je do greške prilikom prijave.");
     },
   });
