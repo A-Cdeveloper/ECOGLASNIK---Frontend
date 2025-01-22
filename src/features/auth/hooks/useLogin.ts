@@ -22,7 +22,7 @@ const useLogin = (): UseMutationResult<
     onSuccess: async (data: LoginRegisterResponse) => {
       const user = await getUserFromCookies();
       setUser(user);
-      setTokenExpiry(user.tokenExpiry);
+      setTokenExpiry(data.tokenExpiry);
       toast.success(
         `${data.message}\n Dobrodosli ${user.firstname} ${user.lastname}!`
       );
