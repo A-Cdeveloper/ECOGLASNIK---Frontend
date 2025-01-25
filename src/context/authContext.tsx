@@ -25,6 +25,8 @@ export const AuthContextProvider = ({
     null
   );
 
+  const userId = user?.uid;
+
   const removeSessionStorageData = useCallback(() => {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("tokenExpiry");
@@ -32,7 +34,7 @@ export const AuthContextProvider = ({
     setTokenExpiry(null);
   }, [setUser, setTokenExpiry]);
 
-  useAutoLogout(tokenExpiry, removeSessionStorageData);
+  useAutoLogout(tokenExpiry, removeSessionStorageData, userId!);
 
   // Use the custom hook for auto-logout
   const value = {
