@@ -7,10 +7,12 @@ import useAuth from "../../../context/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const useLogout = (): UseMutationResult<LoginRegisterResponse, Error, void> => {
-  const { removeSessionStorageData } = useAuth();
+  const { removeSessionStorageData, user } = useAuth();
   const navigation = useNavigate();
+  const userId = user?.uid;
+
   const mutation = useMutation<LoginRegisterResponse, Error, void>({
-    mutationFn: logoutApi,
+    mutationFn: () => logoutApi(userId!),
     onSuccess: () => {
       removeSessionStorageData();
       toast.success(`Uspešno ste se odjavili!`);

@@ -115,11 +115,17 @@ export const resetPasswordApi = async ({
   }
 };
 
-export const logoutApi = async (): Promise<LoginRegisterResponse> => {
+export const logoutApi = async (
+  uid: number
+): Promise<LoginRegisterResponse> => {
   try {
-    const response = await apiClient.post("/auth/logout", null, {
-      withCredentials: true,
-    });
+    const response = await apiClient.post(
+      "/auth/logout",
+      { uid },
+      {
+        withCredentials: true,
+      }
+    );
 
     return response.data;
   } catch (error) {
@@ -127,7 +133,11 @@ export const logoutApi = async (): Promise<LoginRegisterResponse> => {
   }
 };
 
-export const autoLogout = (tokenExpiry: Date | null, onLogout: () => void) => {
+export const autoLogout = (
+  tokenExpiry: Date | null,
+  onLogout: () => void,
+  uid: number
+) => {
   if (!tokenExpiry) return;
 
   const expirationDate = new Date(tokenExpiry);
@@ -135,15 +145,18 @@ export const autoLogout = (tokenExpiry: Date | null, onLogout: () => void) => {
 
   if (millisecondsUntilExpiry <= 0) {
     // Token is already expired; log out immediately
-    handleLogout(onLogout);
+    handleLogout(onLogout, uid);
   } else {
     // Set a timeout to log out when the token expires
-    return setTimeout(() => handleLogout(onLogout), millisecondsUntilExpiry);
+    return setTimeout(
+      () => handleLogout(onLogout, uid),
+      millisecondsUntilExpiry
+    );
   }
 };
 
-const handleLogout = async (onLogout: () => void) => {
+const handleLogout = async (onLogout: () => void, uid: number) => {
   onLogout();
-  await logoutApi();
+  await logoutApi(uid);
   toast.success("Vaša sesija je istekla! Prijavite se ponovo!");
 };
