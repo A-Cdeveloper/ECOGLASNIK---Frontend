@@ -19,7 +19,7 @@ const useLogout = (): UseMutationResult<LoginRegisterResponse, Error, void> => {
       navigation("/");
     },
     onError: () => {
-      toast.error("Došlo je do greške prilikom prijave.");
+      toast.error("Došlo je do greške prilikom odjave.");
     },
   });
 
