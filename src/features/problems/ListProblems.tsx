@@ -31,7 +31,7 @@ const ListProblems = ({ userId }: { userId?: number }) => {
       </div>
 
       <Virtuoso
-        className="!w-full md:!w-2/3 lg:!w-full !h-[72vh] !overflow-x-hidden !flex !flex-wrap !mx-0 md:!mx-auto lg:!mx-0 custum-scrollbar !me-4"
+        className="!w-full md:!w-2/3 lg:!w-full !h-[72vh] !overflow-x-hidden !flex !flex-wrap !mx-0 md:!mx-auto lg:!mx-0 custum-scrollbar !me-0 md:!me-4"
         data={userProblems} // Pass the array of problems
         itemContent={(_, problem) => <ProblemItem problem={problem} />}
       />
