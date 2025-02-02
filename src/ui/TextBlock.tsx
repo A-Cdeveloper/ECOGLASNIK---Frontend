@@ -4,15 +4,15 @@ const TextBlock = ({
   caption,
   children,
 }: {
-  caption: string;
+  caption?: string;
   children: React.ReactNode;
 }) => {
   return (
     <>
-      <Headline level={2} className="my-2">
+      <Headline level={3} className="my-2">
         {caption}
       </Headline>
-      <p>{children}</p>
+      <p className="opacity-75">{children}</p>
     </>
   );
 };

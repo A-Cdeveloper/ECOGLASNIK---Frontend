@@ -54,19 +54,7 @@ const MenuItems = ({
           </NavLink>
         </li>
       )}
-      <li>
-        <NavLink
-          to="/impressum"
-          onClick={() => setIsOpen(false)}
-          className={({ isActive }) =>
-            isActive
-              ? "ms-0 text-white"
-              : "ms-0  text-secondary-100 hover:text-white"
-          }
-        >
-          Impressum
-        </NavLink>
-      </li>
+
       {!isAuthenticated && (
         <li>
           <NavLink

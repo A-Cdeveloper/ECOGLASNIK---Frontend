@@ -8,6 +8,7 @@ export const useWeather = () => {
   const cachedSettings = queryClient.getQueryData<SettingsType>(["settings"]);
 
   const defaultPosition = cachedSettings?.data.defaultPosition as Position;
+  const area = cachedSettings?.data.appArea as string;
   const { data, isLoading, error } = useQuery<WeatherApiResponse>({
     queryKey: ["weather", defaultPosition?.lat, defaultPosition?.lng],
     queryFn: () => fetchWeather(defaultPosition?.lat, defaultPosition?.lng),
@@ -17,5 +18,6 @@ export const useWeather = () => {
     data,
     isLoading,
     error,
+    area,
   };
 };

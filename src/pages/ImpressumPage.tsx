@@ -5,28 +5,8 @@ const ImpressumPage = () => {
   return (
     <>
       <BackButton />
-      <p>
-        <strong>ECOGLASNIK</strong> <br />
-        <strong>Vlasnik:</strong> E-SEO TEAM
-        <br />
-        <strong>PIB: </strong> 107319556
-        <br />
-        <strong>Matični broj: </strong> 62659459
-        <br />
-        <strong>16210 Vlasotince, Srbija</strong>
-      </p>
-      <TextBlock caption="Kontakt:">
-        Email:{" "}
-        <a href="mailto:admin@ECOGLASNIK.e-vlasotince.info">
-          ecoglasnik.e-vlasotince.info
-        </a>
-        <br />
-        Web:{" "}
-        <a href="https://www.ECOGLASNIK.e-vlasotince.info" target="_blank">
-          ecoglasnik.e-vlasotince.info
-        </a>
-      </TextBlock>
-      <TextBlock caption="Opis sajta:">
+
+      <TextBlock>
         ECOGLASNIK je online platforma koja omogućava građanima da prijave
         probleme u komunalnoj infrastrukturi putem interaktivne mape. Korisnici
         mogu lako i brzo prijaviti komunalne probleme poput oštećenih puteva,

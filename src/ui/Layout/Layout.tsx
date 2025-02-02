@@ -1,11 +1,11 @@
 import { Suspense, lazy, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Weather from "../../features/weather/Weather";
 import { useCtxMap } from "../../context/mapContext";
 
 import { useSettings } from "../../features/settings/hooks/useSettings";
 import Error from "../Error";
 import Loader from "../Loader";
+import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -53,16 +53,17 @@ const Layout = () => {
               userId={params.id ? params.id : ""}
             />
           </Suspense>
-
-          <Weather />
         </main>
       </>
     );
   }
   return (
-    <div className="container bg-primary max-w-full h-full lg:h-screen flex flex-wrap items-start overflow-hidden ">
-      {mainContent}
-    </div>
+    <>
+      <div className="container bg-primary max-w-full h-full lg:h-[90vh] flex flex-wrap items-start overflow-hidden">
+        {mainContent}
+      </div>
+      {!isLoading && !error && <Footer />}
+    </>
   );
 };
 
