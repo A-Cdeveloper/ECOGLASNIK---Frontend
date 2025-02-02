@@ -1,6 +1,6 @@
 import FooterBoxWeather from "../../features/weather/FooterBoxWeather";
 import MetaMenu from "./MetaMenu";
-import Partners from "./Partners/Partners";
+import Partners from "../../features/partners/Partners";
 
 const Footer = () => {
   return (

@@ -1,8 +1,8 @@
-import logo3 from "../../../assets/e-seo.png";
-import logo4 from "../../../assets/infodesk.png";
-import logo5 from "../../../assets/vercel.png";
-import logo6 from "../../../assets/bgsvetionik.png";
-import logo7 from "../../../assets/pinata.png";
+import logo3 from "../../assets/e-seo.png";
+import logo4 from "../../assets/infodesk.png";
+import logo5 from "../../assets/vercel.png";
+import logo6 from "../../assets/bgsvetionik.png";
+import logo7 from "../../assets/pinata.png";
 
 const logos = [logo3, logo4, logo5, logo6, logo7];
 
