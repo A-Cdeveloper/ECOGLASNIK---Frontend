@@ -24,7 +24,7 @@ const Weather = () => {
 
       {toogleWeather && (
         <div className="flex flex-wrap gap-x-3 gap-y-1 items-center">
-          <CurrentWeather todayWeather={current} />
+          <CurrentWeather todayWeather={current} area={""} />
           <ForecastWeather forecastWeather={forecast} />
         </div>
       )}
