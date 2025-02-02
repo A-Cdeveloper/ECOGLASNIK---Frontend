@@ -59,7 +59,7 @@ const Layout = () => {
   }
   return (
     <>
-      <div className="container bg-primary max-w-full h-full lg:h-[90vh] flex flex-wrap items-start overflow-hidden">
+      <div className="container bg-primary max-w-full h-full lg:h-[88vh] flex flex-wrap items-start overflow-hidden">
         {mainContent}
       </div>
       {!isLoading && !error && <Footer />}

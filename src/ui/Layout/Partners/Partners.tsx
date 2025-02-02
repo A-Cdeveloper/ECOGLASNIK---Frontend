@@ -15,7 +15,7 @@ const Partners = () => {
             key={index}
             src={logo}
             alt={`Logo ${index + 1}`}
-            className="mx-3 h-[50px] grayscale opacity-35"
+            className="mx-3 h-[40px] grayscale opacity-35"
           />
         ))}
       </div>
