@@ -8,7 +8,7 @@ type CheckBoxType = {
 };
 
 const Checkbox = ({ id, label, name, checked }: CheckBoxType) => {
-  const [isChecked, setIsChecked] = useState(checked);
+  const [isChecked, setIsChecked] = useState(checked ?? false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(e.target.checked);
@@ -21,7 +21,6 @@ const Checkbox = ({ id, label, name, checked }: CheckBoxType) => {
     >
       <input
         type="checkbox"
-        value={id}
         name={name}
         className={`appearance-none cursor-pointer w-[20px] h-[20px] bg-transparent border-1 border-secondary-500/30 ${
           isChecked
@@ -30,7 +29,6 @@ const Checkbox = ({ id, label, name, checked }: CheckBoxType) => {
         } focus:outline-none focus:border-1 focus:border-transparent`}
         checked={isChecked}
         onChange={handleChange}
-        aria-checked
       />
       <span>{label}</span>
     </label>
