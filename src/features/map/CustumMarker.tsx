@@ -40,13 +40,22 @@ const CustumMarker = ({
           : 0.5
       }
       eventHandlers={{
-        click: () => {
+        click: (e) => {
           if (activeMarker) return;
-          map.setView({ lat, lng }, zoomLevel, { animate: true });
-          navigate(`problems/${problemId}/?lat=${lat}&lng=${lng}`);
+          e.target.closeTooltip();
+          setTimeout(() => {
+            map.setView({ lat, lng }, zoomLevel, { animate: true });
+            navigate(`problems/${problemId}/?lat=${lat}&lng=${lng}`);
+          }, 150);
         },
-        mouseover: () => setHoveredMarker(problemId as string),
-        mouseout: () => setHoveredMarker(null),
+        mouseover: (e) => {
+          setHoveredMarker(problemId as string);
+          e.target.openTooltip(); // Ensure tooltip opens properly
+        },
+        mouseout: (e) => {
+          setHoveredMarker(null);
+          e.target.closeTooltip(); // Ensure tooltip closes properly
+        },
         zoomend: () => {
           const currentZoom = map.getZoom();
           setZoomLevel(currentZoom);
@@ -59,6 +68,7 @@ const CustumMarker = ({
           offset={[0, -10]}
           opacity={1}
           permanent={false}
+          interactive={false}
         >
           {title}
         </Tooltip>
