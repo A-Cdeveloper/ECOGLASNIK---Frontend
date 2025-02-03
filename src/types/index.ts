@@ -44,6 +44,7 @@ export type Problem = {
   uid: number;
   image: string | null;
   pinata_id: string | null;
+  officialEmail: string | null;
 };
 
 export type ExtendedProblem = Problem & {

@@ -19,6 +19,7 @@ import Button from "../../../ui/Buttons/Button";
 import Headline from "../../../ui/Headline";
 import useAddEditProblem from "../hooks/useAddEditProblem";
 import Organisations from "../Organisations";
+import Checkbox from "../../../ui/Form/Checkbox";
 
 export type FormStateType = {
   category: number;
@@ -106,6 +107,7 @@ const FormAddEditProblem = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
+    const officialEmail = formData.get("officialEmail") as string;
 
     if (editMode) {
       editProblemMutation(
@@ -139,14 +141,14 @@ const FormAddEditProblem = ({
         image: currentImageUrl,
         pinata_id: currentImagePinataId,
         status: "active",
+        officialEmail: officialEmail || "0",
       };
-
       addNewProblemMutation(newProblem, {
         onSuccess: () => {
           return navigate(`/problems/user/${user?.uid}`);
         },
       });
-      //console.log(newProblem);
+      // console.log(newProblem);
     }
   };
 
@@ -205,6 +207,13 @@ const FormAddEditProblem = ({
           setCurrentImageUrl={setCurrentImageUrl}
           setCurrentImagePinataId={setCurrentImagePinataId}
         />
+        {!editMode && (
+          <Checkbox
+            id={1}
+            name="officialEmail"
+            label="Pošalji email nadležnim službama"
+          />
+        )}
         <div className="flex justify-between border-t border-secondary-500/30 pt-3">
           <Button
             aria-label="Odustani"

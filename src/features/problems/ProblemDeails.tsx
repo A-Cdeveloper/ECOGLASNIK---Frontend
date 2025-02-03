@@ -11,7 +11,8 @@ import ProblemImage from "./ProblemImage";
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
   const { user: logedUser } = useAuth();
-  const { uid, title, description, image, status } = problem || {};
+  const { uid, title, description, image, status, officialEmail } =
+    problem || {};
 
   if (isLoading) {
     return <Loader />;
@@ -35,9 +36,9 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
         />
       )}
 
-      {status === "active" && logedUser?.uid === uid && (
-        <ProblemsDetailsEdit problem={problem!} />
-      )}
+      {status === "active" &&
+        logedUser?.uid === uid &&
+        officialEmail === "0" && <ProblemsDetailsEdit problem={problem!} />}
     </>
   );
 };

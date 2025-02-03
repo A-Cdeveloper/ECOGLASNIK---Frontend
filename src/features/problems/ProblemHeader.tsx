@@ -5,7 +5,13 @@ import ProblemCategory from "./ProblemCategory";
 
 type ProblemHeaderType = Pick<
   ExtendedProblem,
-  "cat_id" | "createdAt" | "updatedAt" | "status" | "uid" | "user"
+  | "cat_id"
+  | "createdAt"
+  | "updatedAt"
+  | "status"
+  | "uid"
+  | "user"
+  | "officialEmail"
 >;
 
 const ProblemHeader = ({
@@ -13,6 +19,7 @@ const ProblemHeader = ({
   createdAt,
   updatedAt,
   status,
+  officialEmail,
 }: ProblemHeaderType) => {
   return (
     <>
@@ -33,6 +40,12 @@ const ProblemHeader = ({
         <div className="mt-1">
           <StatusBadge status={status} className="inline-block" />
         </div>
+        {officialEmail === "1" && (
+          <div className="mt-1 col-span-2 text-winter-100/60">
+            Prijava je poslata nadležnim službama putem emaila i ne može biti
+            izmenjena!
+          </div>
+        )}
       </ProblemHeaderLayout>
     </>
   );
