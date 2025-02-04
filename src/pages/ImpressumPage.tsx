@@ -7,20 +7,21 @@ const ImpressumPage = () => {
       <BackButton />
 
       <TextBlock>
-        ECOGLASNIK je online platforma koja omogućava građanima da prijave
-        probleme u komunalnoj infrastrukturi putem interaktivne mape. Korisnici
-        mogu lako i brzo prijaviti komunalne probleme poput oštećenih puteva,
-        prepunih kontejnera, kvarova na uličnom osvetljenju i slično. Cilj sajta
-        je da unapredi komunikaciju između građana i komunalnih službi,
-        olakšavajući brzo rešavanje prijavljenih problema.
+        <strong>ECOGLASNIK</strong> je lokalizovana online platforma koja
+        omogućava građanima da prijave probleme u komunalnoj infrastrukturi
+        putem interaktivne mape. Korisnici mogu lako i brzo prijaviti komunalne
+        probleme poput oštećenih puteva, prepunih kontejnera, kvarova na uličnom
+        osvetljenju i slično. Cilj sajta je da unapredi komunikaciju između
+        građana lokalne zajednice i komunalnih službi, olakšavajući brzo
+        rešavanje prijavljenih problema.
       </TextBlock>
 
       <TextBlock caption="Odricanje od odgovornosti:">
-        ECOGLASNIK omogućava korisnicima prijavu problema u javnom interesu, ali
-        ne snosi odgovornost za tačnost prijavljenih informacija. Sve prijave su
-        podložne proveri od strane nadležnih komunalnih službi. E-SEO TEAM nije
-        odgovoran za kašnjenja ili neizvršavanje prijava od strane komunalnih
-        službi.
+        <strong>ECOGLASNIK</strong> omogućava korisnicima prijavu problema u
+        javnom interesu, ali ne snosi odgovornost za tačnost prijavljenih
+        informacija. Sve prijave su podložne proveri od strane nadležnih
+        komunalnih službi. E-SEO TEAM nije odgovoran za kašnjenja ili
+        neizvršavanje prijava od strane komunalnih službi.
       </TextBlock>
 
       <TextBlock caption="Autorska prava:">
