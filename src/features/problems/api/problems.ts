@@ -108,7 +108,7 @@ export const uploadProblemImageApi = async (
 
     const response = await apiClient.post("/problems/upload", formData, {
       headers: {
-        "Content-Type": "multipart/form-data", // Required for file uploads
+        "Content-Type": "multipart/form-data",
       },
       onUploadProgress: (progressEvent) => {
         const percentCompleted = progressEvent.total
@@ -116,6 +116,7 @@ export const uploadProblemImageApi = async (
           : 0;
         onProgress(percentCompleted);
       },
+      withCredentials: true,
     });
 
     return response.data;
