@@ -116,7 +116,6 @@ export const uploadProblemImageApi = async (
           : 0;
         onProgress(percentCompleted);
       },
-      withCredentials: true,
     });
 
     return response.data;
