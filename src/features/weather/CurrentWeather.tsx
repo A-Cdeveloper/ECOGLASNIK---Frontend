@@ -20,7 +20,7 @@ const CurrentWeather = ({
           />
 
           <span className="uppercase font-bold text-[25px]">
-            {todayWeather.current.temp_c}
+            {Math.round(todayWeather.current.temp_c)}
             <sup>°</sup>C
           </span>
         </div>
