@@ -72,6 +72,12 @@ export type LoginRegisterResponse = {
   tokenExpiry: Date;
 };
 
+export type Partner = {
+  pid: number;
+  partnerName: string;
+  partnerLogo: string;
+};
+
 ////
 
 type ConditionType = {
