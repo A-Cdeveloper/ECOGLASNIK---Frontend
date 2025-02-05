@@ -6,6 +6,7 @@ import { FormStateType } from "./FormAddEditProblem";
 import useUploadImageProblem from "../hooks/useUploadImageProblem";
 import MiniSpinner from "../../../ui/MiniSpinner";
 import ProblemImage from "../ProblemImage";
+import { getErrorMessage } from "../../../utils/helpers";
 
 const ProblemImageArea = ({
   problem,
@@ -24,6 +25,7 @@ const ProblemImageArea = ({
     status: uploadImageStatus,
     mutateAsync: uploadImageMutation,
     progress,
+    error,
   } = useUploadImageProblem();
 
   const handleFileChange = useCallback(
@@ -121,6 +123,11 @@ const ProblemImageArea = ({
           >
             Dodaj fotografiju
           </label>
+          {error?.message && (
+            <p className="text-rose-400 mt-0 whitespace-pre-wrap">
+              {getErrorMessage(error?.message)}
+            </p>
+          )}
         </>
       )}
     </>

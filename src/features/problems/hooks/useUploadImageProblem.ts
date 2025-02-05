@@ -23,7 +23,7 @@ const useUploadImageProblem = (): UseUploadImageResult => {
 
   const mutation = useMutation<uploadImageType, Error, File>({
     mutationFn: (file: File) => uploadProblemImageApi(file, setProgress),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     onSuccess: () => {
       toast.success("Slika uspešno uploadovana!");
       setProgress(0);

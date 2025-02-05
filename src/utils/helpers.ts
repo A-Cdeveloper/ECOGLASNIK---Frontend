@@ -40,7 +40,7 @@ export const throwError = async (error: any) => {
   const errorMessage =
     axios.isAxiosError(error) && error.response?.data?.message
       ? error.response.data.message
-      : "Privremena greška na serveru ⚠";
+      : error || "Privremena greška na serveru ⚠";
   throw new Error(errorMessage);
 };
 

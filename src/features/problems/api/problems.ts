@@ -1,3 +1,4 @@
+import { MAX_UPLOAD_FILE_SIZE } from "../../../constants";
 import { ExtendedProblem, Problem } from "../../../types";
 import apiClient from "../../../utils/axios";
 import { throwError } from "../../../utils/helpers";
@@ -105,6 +106,16 @@ export const uploadProblemImageApi = async (
   try {
     const formData = new FormData();
     formData.append("file", file);
+
+    console.log(file);
+
+    if (file.size > MAX_UPLOAD_FILE_SIZE) {
+      throw new Error("Dozvoljena veličina fotografije je maksimalno 5MB");
+    }
+
+    if (file.type !== "image/jpeg" && file.type !== "image/png") {
+      throw new Error("Fotografija mora biti u JPG ili PNG formatu");
+    }
 
     const response = await apiClient.post("/problems/upload", formData, {
       headers: {
