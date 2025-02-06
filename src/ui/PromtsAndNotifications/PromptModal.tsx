@@ -4,11 +4,17 @@ import ReactRouterPrompt from "react-router-prompt";
 import Button from "../Buttons/Button";
 import PromptLayout from "./PromptLayout";
 
+type PromptProps = {
+  isActive: boolean;
+  onConfirm: () => void;
+  onCancel: () => void;
+};
+
 const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
   if (!formStatus) return null;
   return createPortal(
     <ReactRouterPrompt when={formStatus}>
-      {({ isActive, onConfirm, onCancel }) =>
+      {({ isActive, onConfirm, onCancel }: PromptProps) =>
         isActive && (
           <PromptLayout>
             <PromptLayout.Header title="Da li zaista želite da odustanete?" />

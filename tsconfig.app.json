@@ -8,6 +8,7 @@
     "skipLibCheck": true,
     "incremental": true, // or use "composite": true if applicable
     "types": ["vite/client", "vitest"],
+    "typeRoots": ["node_modules/@types", "src/types"],
 
     /* Bundler mode */
     "moduleResolution": "Bundler",
@@ -24,5 +25,5 @@
     "noFallthroughCasesInSwitch": true,
  
   },
-  "include": ["src","**/*.ts", "**/*.tsx", "vite.config.ts"]
+  "include": ["src","**/*.ts", "**/*.tsx", "vite.config.ts", "src/types"]
 }
