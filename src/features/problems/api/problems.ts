@@ -133,6 +133,7 @@ export const uploadProblemImageApi = async (
 
     return response.data;
   } catch (error) {
+    console.error(error);
     return await throwError(error);
   }
 };
