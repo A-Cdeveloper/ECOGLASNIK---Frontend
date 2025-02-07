@@ -104,9 +104,6 @@ export const uploadProblemImageApi = async (
   onProgress: (progress: number) => void
 ) => {
   try {
-    const formData = new FormData();
-    formData.append("file", file);
-
     if (file.size > MAX_UPLOAD_FILE_SIZE) {
       throw new Error("Dozvoljena veličina fotografije je maksimalno 10MB");
     }
@@ -117,6 +114,7 @@ export const uploadProblemImageApi = async (
 
     const resizedFile = await resizeImage(file, 1920);
 
+    const formData = new FormData();
     formData.append("file", resizedFile, file.name);
 
     const response = await apiClient.post("/problems/upload", formData, {
