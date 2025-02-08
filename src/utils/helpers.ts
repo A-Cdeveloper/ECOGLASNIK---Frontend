@@ -2,7 +2,7 @@
 import { differenceInSeconds, format } from "date-fns";
 import L from "leaflet";
 import { Position } from "../types";
-import axios from "axios";
+// import axios from "axios";
 // Define the bounds
 
 export const wait = (ms: number) =>
@@ -36,11 +36,12 @@ export const getErrorMessage = (errorMsg: string) => {
   return errorMsg.replace(/^Error:\s*/, "");
 };
 
-export const throwError = async (error: any) => {
-  const errorMessage =
-    axios.isAxiosError(error) && error.response?.data?.message
-      ? error.response.data.message
-      : error || "Privremena greška na serveru ⚠";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const throwError = async (_error: any) => {
+  const errorMessage = "Greška na serveru ⚠";
+  // axios.isAxiosError(error) && error.response?.data?.message
+  //   ? error.response.data.message
+  //   : "Privremena greška na serveru ⚠";
   throw new Error(errorMessage);
 };
 
