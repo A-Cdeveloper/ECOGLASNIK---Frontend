@@ -208,11 +208,14 @@ const FormAddEditProblem = ({
           setCurrentImagePinataId={setCurrentImagePinataId}
         />
         {!editMode && (
-          <Checkbox
-            id={1}
-            name="officialEmail"
-            label="Pošalji email nadležnim službama"
-          />
+          <>
+            <Checkbox
+              id={1}
+              name="officialEmail"
+              label="Pošalji email nadležnim službama.(Molimo Vas da dobro proverite detalje prilikom prijave. Naknadne
+            izmene nisu moguće.)"
+            />
+          </>
         )}
         <div className="flex justify-between border-t border-secondary-500/30 pt-3">
           <Button
