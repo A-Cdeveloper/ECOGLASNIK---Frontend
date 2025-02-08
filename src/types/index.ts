@@ -53,13 +53,15 @@ export type ExtendedProblem = Problem & {
 
 export type Problems = Problem[];
 
+type UserRole = "USER" | "SUPERADMIN";
+
 export type User = {
   uid: number;
   firstname: string;
   lastname: string;
   phone: string;
   email: string;
-  role: string;
+  role: UserRole;
   createdAt: Date;
   updatedAt?: Date | null;
 };

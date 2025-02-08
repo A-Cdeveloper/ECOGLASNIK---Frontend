@@ -54,7 +54,7 @@ const Profile = () => {
         <div>Broj prijavljenih problema:</div>
         <div>{numberOfProblems}</div>
       </div>
-      {user && user?.role !== "superadmin" && (
+      {user && user?.role !== "SUPERADMIN" && (
         <div className="flex justify-end">
           <Button
             variation="danger"
