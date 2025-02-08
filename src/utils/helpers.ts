@@ -2,6 +2,7 @@
 import { differenceInSeconds, format } from "date-fns";
 import L from "leaflet";
 import { Position } from "../types";
+import axios from "axios";
 // import axios from "axios";
 // Define the bounds
 
@@ -37,11 +38,11 @@ export const getErrorMessage = (errorMsg: string) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const throwError = async (_error: any) => {
-  const errorMessage = "Greška na serveru ⚠";
-  // axios.isAxiosError(error) && error.response?.data?.message
-  //   ? error.response.data.message
-  //   : "Privremena greška na serveru ⚠";
+export const throwError = async (error: any) => {
+  const errorMessage =
+    axios.isAxiosError(error) && error.response?.data?.message
+      ? error.response.data.message
+      : "Privremena greška na serveru ⚠";
   throw new Error(errorMessage);
 };
 
