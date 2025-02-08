@@ -32,6 +32,8 @@ export type ProblemCategory = {
   organisations: Organisation[];
 };
 
+export type ProblemStatus = "active" | "done";
+
 export type Problem = {
   id: string;
   title: string;
@@ -39,7 +41,7 @@ export type Problem = {
   position: Position;
   createdAt: Date;
   updatedAt?: Date | null;
-  status: "active" | "done";
+  status: ProblemStatus;
   cat_id: number;
   uid: number;
   image: string | null;

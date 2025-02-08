@@ -1,11 +1,12 @@
 import { useUrlParams } from "../../hooks/useUrlParams";
+import { ProblemStatus } from "../../types";
 
 const FilterStatusButton = ({
   children,
   value,
 }: {
   children: React.ReactNode;
-  value?: "active" | "done" | "all";
+  value?: ProblemStatus | "all";
 }) => {
   const { status, currentParams, setCurrentParams } = useUrlParams();
   const initialClass =
