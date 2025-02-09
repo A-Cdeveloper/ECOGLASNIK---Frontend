@@ -16,7 +16,11 @@ const useAddEditProblem = (
     mutationFn: mode === "add" ? addNewProblemApi : updateProblemApi,
     onSuccess: () => {
       toast.success(
-        `Problem uspešno ${mode === "add" ? "dodat" : "promenjen"}!`
+        `${
+          mode === "add"
+            ? "Problem je uspešno kreiran i čeka na odobrenje administratora"
+            : "Problem je uspešno izmenjen."
+        }!`
       );
       queryClient.invalidateQueries({ queryKey: ["problem"] });
       queryClient.invalidateQueries({ queryKey: ["problems"] }); // Optional: to refresh the problems query

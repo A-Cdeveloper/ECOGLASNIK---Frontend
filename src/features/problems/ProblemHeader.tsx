@@ -43,7 +43,7 @@ const ProblemHeader = ({
         {officialEmail === "1" && (
           <div className="mt-1 col-span-2 text-winter-100/60">
             Prijava je poslata nadležnim službama putem emaila i ne može biti
-            izmenjena!
+            naknadno izmenjena!
           </div>
         )}
       </ProblemHeaderLayout>

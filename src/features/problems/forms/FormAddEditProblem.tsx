@@ -145,7 +145,7 @@ const FormAddEditProblem = ({
       };
       addNewProblemMutation(newProblem, {
         onSuccess: () => {
-          return navigate(`/problems/user/${user?.uid}`);
+          return navigate(`/`);
         },
       });
       // console.log(newProblem);
