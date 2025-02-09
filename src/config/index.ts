@@ -18,9 +18,9 @@ const getApiBaseUrl = () => {
     return "http://localhost:3000/api"; // Local API
   }
   if (hostname.includes("demo")) {
-    return "https://demo-clean-me.vercel.app/api";
+    return "https://www.demo-api.ecoglasnik.org/api";
   }
-  return "https://clean-me-backend.vercel.app/api"; // Production API
+  return "https://www.demo-api.ecoglasnik.org/api"; // Production API
 };
 
 export const API_URL = getApiBaseUrl();
