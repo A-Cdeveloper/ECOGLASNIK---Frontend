@@ -1,4 +1,4 @@
-import { MAX_UPLOAD_FILE_SIZE } from "../../../constants";
+import { MAX_UPLOAD_FILE_SIZE } from "../../../config";
 import { ExtendedProblem, Problem } from "../../../types";
 import apiClient from "../../../utils/axios";
 import { resizeImage, throwError } from "../../../utils/helpers";

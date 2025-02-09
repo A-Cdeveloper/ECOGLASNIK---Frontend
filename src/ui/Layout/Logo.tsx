@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/ecoglasnik.png";
-import { APP_NAME } from "../../constants";
+import { APP_NAME } from "../../config";
 
 const Logo = () => {
   return (

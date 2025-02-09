@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { TEXTAREA_MAX_CHARACTERS } from "../../constants";
+import { TEXTAREA_MAX_CHARACTERS } from "../../config";
 
 type TextAreaType = {
   placeholder?: string;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL, WEATHER_API_KEY, WEATHER_BASE_URL } from "../constants";
+import { API_URL, WEATHER_API_KEY, WEATHER_BASE_URL } from "../config";
 
 const apiClient = axios.create({
   baseURL: API_URL, // Base URL for all requests
