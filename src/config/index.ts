@@ -20,6 +20,11 @@ const getApiBaseUrl = () => {
   if (hostname.includes("demo")) {
     return "https://www.demo-api.ecoglasnik.org/api";
   }
+
+  if (hostname.includes("vlasotince")) {
+    return "https://www.vlasotince-api.ecoglasnik.org/api";
+  }
+
   return "https://www.demo-api.ecoglasnik.org/api"; // Production API
 };
 
