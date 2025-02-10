@@ -24,10 +24,12 @@ const ListProblems = ({ userId }: { userId?: number }) => {
     return <Error message={error.message} />;
   }
 
+  const unit = userId ? "prijava" : "problema";
+
   return (
     <>
       <div className="my-2 text-[13px] text-end text-winter-100/80">
-        {numberOfProblems === 1 ? "1 problem" : `${numberOfProblems} problema`}
+        {numberOfProblems === 1 ? `1 ${unit}` : `${numberOfProblems} ${unit}`}
       </div>
 
       <Virtuoso

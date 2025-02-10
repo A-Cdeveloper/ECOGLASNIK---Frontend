@@ -140,7 +140,7 @@ const FormAddEditProblem = ({
         updatedAt: null,
         image: currentImageUrl,
         pinata_id: currentImagePinataId,
-        status: "active",
+        status: "ACTIVE",
         officialEmail: officialEmail || "0",
       };
       addNewProblemMutation(newProblem, {

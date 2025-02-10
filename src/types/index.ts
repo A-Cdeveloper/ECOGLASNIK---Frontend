@@ -32,7 +32,7 @@ export type ProblemCategory = {
   organisations: Organisation[];
 };
 
-export type ProblemStatus = "active" | "done";
+export type ProblemStatus = "ACTIVE" | "DONE";
 
 export type Problem = {
   id: string;

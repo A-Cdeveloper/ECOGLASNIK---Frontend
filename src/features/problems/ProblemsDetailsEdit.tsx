@@ -64,7 +64,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
               updateProblemMutation({
                 ...problem!,
                 updatedAt: new Date(),
-                status: "done",
+                status: "DONE",
               });
             }}
           >

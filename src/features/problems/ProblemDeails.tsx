@@ -36,7 +36,7 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
         />
       )}
 
-      {status === "active" &&
+      {status === "ACTIVE" &&
         logedUser?.uid === uid &&
         officialEmail === "0" && <ProblemsDetailsEdit problem={problem!} />}
     </>

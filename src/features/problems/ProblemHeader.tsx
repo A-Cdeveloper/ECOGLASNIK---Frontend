@@ -30,7 +30,7 @@ const ProblemHeader = ({
       <ProblemHeaderLayout className="bg-secondary-500/20">
         <div className="tablecaption">Datum prijave:</div>
         <div>{formattedDate(createdAt)}</div>
-        {status === "done" && (
+        {status === "DONE" && (
           <>
             <div>Datum rešavanja:</div>
             <div>{formattedDate(updatedAt as Date)}</div>

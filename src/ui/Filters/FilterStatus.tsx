@@ -6,8 +6,8 @@ const FilterStatus = () => {
       <div className="flex justify-start items-center  w-full sm:w-1/2">
         <>
           <FilterStatusButton value="all">SVE</FilterStatusButton>
-          <FilterStatusButton value="active">AKTIVNO</FilterStatusButton>
-          <FilterStatusButton value="done">REŠENO</FilterStatusButton>
+          <FilterStatusButton value="ACTIVE">AKTIVNO</FilterStatusButton>
+          <FilterStatusButton value="DONE">REŠENO</FilterStatusButton>
         </>
       </div>
     </>

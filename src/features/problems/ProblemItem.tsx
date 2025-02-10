@@ -43,7 +43,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             <span className="text-[12px] block mt-1 text-white/75">
               Prijavljeno: {formattedDate(problem?.createdAt)}
               <br />
-              {status === "done" &&
+              {status === "DONE" &&
                 `Rešeno: ${formattedDate(problem?.createdAt)}`}
             </span>
           </div>
