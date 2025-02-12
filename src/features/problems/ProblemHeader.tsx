@@ -38,7 +38,11 @@ const ProblemHeader = ({
         )}
         <div className="tablecaption mt-1">Status:</div>
         <div className="mt-1">
-          <StatusBadge status={status} className="inline-block" />
+          <StatusBadge
+            status={status}
+            officialEmail={officialEmail}
+            className="inline-block w-[85px]"
+          />
         </div>
         {officialEmail === "SENT" && (
           <div className="mt-1 col-span-2 text-winter-100/60">

@@ -32,6 +32,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
       >
         <StatusBadge
           status={problem.status}
+          officialEmail={problem.officialEmail}
           className="ms-2 absolute end-[-3px] top-[3px] block"
         />
         <div className="flex justify-between gap-5">
