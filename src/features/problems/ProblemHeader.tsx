@@ -41,10 +41,10 @@ const ProblemHeader = ({
           <StatusBadge
             status={status}
             officialEmail={officialEmail}
-            className="inline-block w-[85px]"
+            className="inline-block w-[80px] pt-[4px]"
           />
         </div>
-        {officialEmail === "SENT" && (
+        {officialEmail === "SENT" && status === "ACTIVE" && (
           <div className="mt-1 col-span-2 text-winter-100/60">
             Prijava je poslata nadležnim službama putem emaila i ne može biti
             naknadno izmenjena!
