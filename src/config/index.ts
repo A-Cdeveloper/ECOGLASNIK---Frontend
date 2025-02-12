@@ -1,3 +1,5 @@
+import { apiUrls } from "./apiUrls";
+
 export const APP_NAME = "ECOGLASNIK";
 
 // Forms
@@ -17,13 +19,12 @@ const getApiBaseUrl = () => {
   if (hostname.includes("localhost")) {
     return "http://localhost:3000/api"; // Local API
   }
-  if (hostname.includes("demo")) {
-    return "https://www.demo-api.ecoglasnik.org/api";
-  }
 
-  if (hostname.includes("vlasotince")) {
-    return "https://www.vlasotince-api.ecoglasnik.org/api";
-  }
+  apiUrls.map((url) => {
+    if (hostname.includes(url)) {
+      return `https://www.${url}-api.ecoglasnik.org/api`;
+    }
+  });
 
   return "https://www.demo-api.ecoglasnik.org/api"; // Production API
 };
