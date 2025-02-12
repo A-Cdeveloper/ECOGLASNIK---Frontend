@@ -6,7 +6,7 @@ import { useUrlParams } from "../../../hooks/useUrlParams";
 
 import { v4 as uuidv4 } from "uuid";
 import { getErrorMessage } from "../../../utils/helpers";
-import { Problem, User } from "../../../types";
+import { Problem, ProblemOfficialEmail, User } from "../../../types";
 
 import PromptModal from "../../../ui/PromtsAndNotifications/PromptModal";
 import RestrictAccess from "../../../ui/RestrictAccess";
@@ -107,7 +107,7 @@ const FormAddEditProblem = ({
     const title = formData.get("title") as string;
     const description = formData.get("description") as string;
     const cat_id = Number(formData.get("cat_id")) as number;
-    const officialEmail = formData.get("officialEmail") as string;
+    const officialEmail = formData.get("officialEmail") as ProblemOfficialEmail;
 
     if (editMode) {
       editProblemMutation(
@@ -141,14 +141,13 @@ const FormAddEditProblem = ({
         image: currentImageUrl,
         pinata_id: currentImagePinataId,
         status: "ACTIVE",
-        officialEmail: officialEmail || "0",
+        officialEmail: officialEmail || "NONE",
       };
       addNewProblemMutation(newProblem, {
         onSuccess: () => {
           return navigate(`/`);
         },
       });
-      // console.log(newProblem);
     }
   };
 

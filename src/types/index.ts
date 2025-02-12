@@ -33,6 +33,7 @@ export type ProblemCategory = {
 };
 
 export type ProblemStatus = "ACTIVE" | "DONE";
+export type ProblemOfficialEmail = "REQUESTED" | "SENT" | "NONE";
 
 export type Problem = {
   id: string;
@@ -46,7 +47,7 @@ export type Problem = {
   uid: number;
   image: string | null;
   pinata_id: string | null;
-  officialEmail: string | null;
+  officialEmail: ProblemOfficialEmail;
 };
 
 export type ExtendedProblem = Problem & {

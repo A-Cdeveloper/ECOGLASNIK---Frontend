@@ -29,6 +29,7 @@ const Checkbox = ({ id, label, name, checked }: CheckBoxType) => {
         } focus:outline-none focus:border-1 focus:border-transparent`}
         checked={isChecked}
         onChange={handleChange}
+        value={isChecked ? "REQUESTED" : "NONE"}
       />
       <span>{label}</span>
     </label>

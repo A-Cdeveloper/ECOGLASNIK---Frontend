@@ -40,7 +40,7 @@ const ProblemHeader = ({
         <div className="mt-1">
           <StatusBadge status={status} className="inline-block" />
         </div>
-        {officialEmail === "1" && (
+        {officialEmail === "SENT" && (
           <div className="mt-1 col-span-2 text-winter-100/60">
             Prijava je poslata nadležnim službama putem emaila i ne može biti
             naknadno izmenjena!
