@@ -1,1 +1,1 @@
-export const apiUrls = ["demo", "vlasotince", "leskovac"];
+export const apiUrls = ["demo", "blank", "vlasotince", "leskovac"];
