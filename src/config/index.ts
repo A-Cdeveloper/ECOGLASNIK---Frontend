@@ -13,20 +13,19 @@ export const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 // API
 
 const getApiBaseUrl = () => {
-  const hostname =
-    typeof window !== "undefined" ? window.location.hostname : "";
+  if (typeof window === "undefined")
+    return "https://www.demo-api.ecoglasnik.org/api";
+
+  const hostname = window.location.hostname;
 
   if (hostname.includes("localhost")) {
     return "http://localhost:3000/api"; // Local API
   }
 
-  apiUrls.map((url) => {
-    if (hostname.includes(url)) {
-      return `https://www.${url}-api.ecoglasnik.org/api`;
-    }
-  });
-
-  return "https://www.demo-api.ecoglasnik.org/api"; // Production API
+  const matchedUrl = apiUrls.find((url) => hostname.includes(url));
+  return matchedUrl
+    ? `https://www.${matchedUrl}-api.ecoglasnik.org/api`
+    : "https://www.demo-api.ecoglasnik.org/api"; // Default to demo API
 };
 
 export const API_URL = getApiBaseUrl();
