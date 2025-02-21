@@ -24,11 +24,11 @@ const MapMyPosition = ({
   return (
     <Button
       variation="info"
-      size="large"
+      size="small"
       style={{
         position: "absolute",
-        top: "25px",
-        left: "70px",
+        top: "10px",
+        left: "55px",
         zIndex: 1000000000,
       }}
       onClick={() => {

@@ -7,7 +7,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "incremental": true, // or use "composite": true if applicable
-    "types": ["vite/client", "vitest"],
+    "types": ["vite/client"],
     "typeRoots": ["node_modules/@types", "src/types"],
 
     /* Bundler mode */

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapClick from "./MapClick";
 import ProblemsMarkers from "./ProblemsMarkers";
@@ -27,13 +27,11 @@ const Map = ({
 }) => {
   const { mapLat, mapLng } = useUrlParams();
   const { problems, isLoading } = useProblems();
-
   const navigate = useNavigate();
-
   const { mapPosition, zoomLevel, setMapInstance } = useCtxMap();
-
   const [isOutOfRange, setIsOutOfRange] = useState(false);
   const location = useLocation();
+  const mapRef = useRef<HTMLDivElement | null>(null);
 
   const filteredProblems = useMemo(() => {
     if (userId) {
@@ -50,6 +48,15 @@ const Map = ({
     return <Loader />;
   }
 
+  // ✅ Fullscreen toggle function
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      mapRef.current?.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  };
+
   return (
     <>
       {isOutOfRange && (
@@ -59,7 +66,6 @@ const Map = ({
         />
       )}
       {location.pathname !== "/problems/add" && (
-        // Add problem button only if the user is on mobile version
         <Button
           variation="warning"
           size="extrasmall"
@@ -70,38 +76,49 @@ const Map = ({
           Dodaj problem
         </Button>
       )}
-      <MapContainer
-        center={[mapPosition.lat, mapPosition.lng]}
-        zoom={zoomLevel} // specify initial zoom level
-        minZoom={zoomLevel}
-        className="h-[400px] lg:h-full w-full"
-        dragging={true} // disable dragging
-        zoomControl={true} // disable zoom control UI
-        scrollWheelZoom={true} // disable scroll zoom
-        doubleClickZoom={true} // disable double-click zoom
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        whenReady={(event) => {
-          const map = event.target;
-          setMapInstance(map);
-        }}
-      >
-        <MapMyPosition onClickOutRange={setIsOutOfRange} />
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; OpenStreetMap contributors"
-          className="grayscale-tile"
-        />
-        <ProblemsMarkers
-          problems={filteredProblems ?? []}
-          problemId={problemId}
-          problemStatus={problem?.status}
-          mapLat={mapLat as number}
-          mapLng={mapLng as number}
-        />
-        <MapClick onClickOutRange={setIsOutOfRange} />
-        {!mapLat && !mapLng && <StabilizeMap />}
-      </MapContainer>
+      {/* ✅ Wrap the MapContainer inside a div with a ref */}
+      <div ref={mapRef} className="relative h-[400px] lg:h-full w-full">
+        {/* ✅ Fullscreen Button */}
+        <button
+          onClick={toggleFullscreen}
+          className="absolute top-2 right-2 bg-white text-primary-900 py-1 px-2 text-[16px] rounded-md shadow-md z-[1000]"
+        >
+          ⛶
+        </button>
+
+        <MapContainer
+          center={[mapPosition.lat, mapPosition.lng]}
+          zoom={zoomLevel}
+          minZoom={zoomLevel}
+          className="h-full w-full"
+          dragging={true}
+          zoomControl={true}
+          scrollWheelZoom={true}
+          doubleClickZoom={true}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          whenReady={(event) => {
+            const map = event.target;
+            setMapInstance(map);
+          }}
+        >
+          <MapMyPosition onClickOutRange={setIsOutOfRange} />
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="&copy; OpenStreetMap contributors"
+            className="grayscale-tile"
+          />
+          <ProblemsMarkers
+            problems={filteredProblems ?? []}
+            problemId={problemId}
+            problemStatus={problem?.status}
+            mapLat={mapLat as number}
+            mapLng={mapLng as number}
+          />
+          <MapClick onClickOutRange={setIsOutOfRange} />
+          {!mapLat && !mapLng && <StabilizeMap />}
+        </MapContainer>
+      </div>
     </>
   );
 };
