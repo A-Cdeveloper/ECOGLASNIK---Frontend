@@ -43,7 +43,7 @@ export type Problem = {
   createdAt: Date;
   updatedAt?: Date | null;
   status: ProblemStatus;
-  answer: string | null;
+  answer?: string | null;
   cat_id: number;
   uid: number;
   image: string | null;
