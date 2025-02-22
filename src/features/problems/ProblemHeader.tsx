@@ -9,6 +9,7 @@ type ProblemHeaderType = Pick<
   | "createdAt"
   | "updatedAt"
   | "status"
+  | "answer"
   | "uid"
   | "user"
   | "officialEmail"
@@ -19,6 +20,7 @@ const ProblemHeader = ({
   createdAt,
   updatedAt,
   status,
+  answer,
   officialEmail,
 }: ProblemHeaderType) => {
   return (
@@ -32,7 +34,7 @@ const ProblemHeader = ({
         <div>{formattedDate(createdAt)}</div>
         {status === "DONE" && (
           <>
-            <div>Datum rešavanja:</div>
+            <div className="tablecaption">Datum rešavanja:</div>
             <div>{formattedDate(updatedAt as Date)}</div>
           </>
         )}
@@ -51,6 +53,14 @@ const ProblemHeader = ({
           </div>
         )}
       </ProblemHeaderLayout>
+      {answer && (
+        <ProblemHeaderLayout className="bg-turquoise-500/80">
+          <div className="mt-1 col-span-2 text-winter-100/60">
+            Odgovor nadležne službe:
+            <p className="text-winter-100">{answer}</p>
+          </div>
+        </ProblemHeaderLayout>
+      )}
     </>
   );
 };

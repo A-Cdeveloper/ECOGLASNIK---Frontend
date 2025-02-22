@@ -24,9 +24,9 @@ const ProblemDeails = ({ problemId }: { problemId: string }) => {
   return (
     <>
       <Headline level={2}>{title}</Headline>
+      <p className="py-3">{description}</p>
 
       {problem && <ProblemHeader {...problem} />}
-      <p className="px-3">{description}</p>
 
       {problem && problem.image && (
         <ProblemImage
