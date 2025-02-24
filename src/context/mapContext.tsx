@@ -1,5 +1,5 @@
 import type { Map } from "leaflet";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Position } from "../types";
 
 type MapState = {
