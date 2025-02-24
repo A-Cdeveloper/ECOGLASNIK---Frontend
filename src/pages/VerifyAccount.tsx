@@ -1,10 +1,11 @@
+import { use } from "react";
 import { Navigate } from "react-router-dom";
-import useAuth from "../context/useAuth";
+import { AuthContext } from "../context/authContext";
 import UserConformation from "../features/auth/UserConformation";
 import BackButton from "../ui/Buttons/BackButton";
 
 const VerifyAccount = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = use(AuthContext);
 
   if (isAuthenticated) {
     return <Navigate to="/" replace />;

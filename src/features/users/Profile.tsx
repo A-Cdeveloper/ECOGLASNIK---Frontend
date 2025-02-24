@@ -1,13 +1,13 @@
-import { useState } from "react";
-import useAuth from "../../context/useAuth";
+import { use, useState } from "react";
+import { AuthContext } from "../../context/authContext";
 import Button from "../../ui/Buttons/Button";
-import { formattedDate } from "../../utils/helpers";
-import useDeleteUser from "./hooks/useDeleteUser";
 import PromptDeleteUser from "../../ui/PromtsAndNotifications/PromptDeleteUser";
+import { formattedDate } from "../../utils/helpers";
 import useUserProblems from "../problems/hooks/useUserProblems";
+import useDeleteUser from "./hooks/useDeleteUser";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user } = use(AuthContext);
 
   const { numberOfProblems } = useUserProblems({
     userId: user?.uid,

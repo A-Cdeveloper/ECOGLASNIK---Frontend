@@ -1,11 +1,12 @@
+import { use } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 import ListProblems from "../features/problems/ListProblems";
 import FilterCategory from "../ui/Filters/FilterCategory";
 import FilterStatus from "../ui/Filters/FilterStatus";
-import useAuth from "../context/useAuth";
 
 const UserProblems = () => {
-  const { user } = useAuth();
+  const { user } = use(AuthContext);
   const params = useParams();
   const id = params.id as string;
 

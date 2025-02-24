@@ -3,11 +3,13 @@ import toast from "react-hot-toast";
 
 import { LoginRegisterResponse } from "../../../types";
 import { logoutApi } from "../api/authentication";
-import useAuth from "../../../context/useAuth";
+
 import { useNavigate } from "react-router-dom";
+import { use } from "react";
+import { AuthContext } from "../../../context/authContext";
 
 const useLogout = (): UseMutationResult<LoginRegisterResponse, Error, void> => {
-  const { removeSessionStorageData, user } = useAuth();
+  const { removeSessionStorageData, user } = use(AuthContext);
   const navigation = useNavigate();
   const userId = user?.uid;
 

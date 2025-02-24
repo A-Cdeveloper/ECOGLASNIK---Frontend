@@ -1,16 +1,17 @@
 import { useSingleProblem } from "./hooks/useSingleProblem";
 
-import useAuth from "../../context/useAuth";
+import { use } from "react";
+import { AuthContext } from "../../context/authContext";
 import Error from "../../ui/Error";
 import Headline from "../../ui/Headline";
 import Loader from "../../ui/Loader";
 import ProblemHeader from "./ProblemHeader";
-import ProblemsDetailsEdit from "./ProblemsDetailsEdit";
 import ProblemImage from "./ProblemImage";
+import ProblemsDetailsEdit from "./ProblemsDetailsEdit";
 
 const ProblemDeails = ({ problemId }: { problemId: string }) => {
   const { isLoading, problem, error } = useSingleProblem(problemId);
-  const { user: logedUser } = useAuth();
+  const { user: logedUser } = use(AuthContext);
   const { uid, title, description, image, status, officialEmail } =
     problem || {};
 

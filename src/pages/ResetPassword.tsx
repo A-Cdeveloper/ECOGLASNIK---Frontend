@@ -1,11 +1,11 @@
+import { use } from "react";
 import { Navigate } from "react-router-dom";
-import useAuth from "../context/useAuth";
-import BackButton from "../ui/Buttons/BackButton";
+import { AuthContext } from "../context/authContext";
 import ResetPasswordForm from "../features/auth/ResetPasswordForm";
+import BackButton from "../ui/Buttons/BackButton";
 
 const ForgotPassword = () => {
-  const { isAuthenticated } = useAuth();
-  //   const { mode } = useUrlParams();
+  const { isAuthenticated } = use(AuthContext);
 
   if (isAuthenticated) {
     return <Navigate to="/" replace />;

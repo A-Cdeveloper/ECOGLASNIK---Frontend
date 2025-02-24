@@ -1,14 +1,15 @@
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
+import { use } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/authContext";
 import { User } from "../../../types";
 import { deleteUserApi } from "../api/users";
-import useAuth from "../../../context/useAuth";
 
 const useDeleteUser = (): UseMutationResult<User, Error, number> => {
   const navigate = useNavigate();
-  const { removeSessionStorageData } = useAuth();
+  const { removeSessionStorageData } = use(AuthContext);
 
   const mutation = useMutation<User, Error, number>({
     mutationFn: deleteUserApi, // This is the function to delete the problem

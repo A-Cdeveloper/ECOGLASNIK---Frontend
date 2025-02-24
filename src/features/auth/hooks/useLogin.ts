@@ -1,10 +1,11 @@
+import { use } from "react";
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-import useAuth from "../../../context/useAuth";
 import { LoginRegisterResponse } from "../../../types";
 
 import { getUserFromCookies, loginApi } from "../api/authentication";
+import { AuthContext } from "../../../context/authContext";
 
 type LoginVariables = {
   email: string;
@@ -16,7 +17,7 @@ const useLogin = (): UseMutationResult<
   Error,
   LoginVariables
 > => {
-  const { setUser, setTokenExpiry } = useAuth();
+  const { setUser, setTokenExpiry } = use(AuthContext);
   const mutation = useMutation<LoginRegisterResponse, Error, LoginVariables>({
     mutationFn: loginApi,
     onSuccess: async (data: LoginRegisterResponse) => {

@@ -1,10 +1,11 @@
+import { use } from "react";
 import { Navigate } from "react-router-dom";
-import useAuth from "../context/useAuth";
+import { AuthContext } from "../context/authContext";
 import LoginRegisterForm from "../features/auth/LoginRegisterForm";
 import { useUrlParams } from "../hooks/useUrlParams";
 
 const LoginPage = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = use(AuthContext);
   const { mode } = useUrlParams();
 
   if (isAuthenticated || !mode) {
