@@ -1,10 +1,11 @@
+import { use } from "react";
 import { useNavigate } from "react-router-dom";
+import { MapContext } from "../../context/mapContext";
 import { Problem } from "../../types";
-import StatusBadge from "../../ui/StatusBadge";
 import Headline from "../../ui/Headline";
+import StatusBadge from "../../ui/StatusBadge";
 import { formattedDate } from "../../utils/helpers";
 import ProblemImage from "./ProblemImage";
-import { useCtxMap } from "../../context/mapContext";
 
 const ProblemItem = ({ problem }: { problem: Problem }) => {
   const {
@@ -15,7 +16,7 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
     image,
   } = problem || {};
 
-  const { setZoomLevel, updateMapView } = useCtxMap();
+  const { setZoomLevel, updateMapView } = use(MapContext);
 
   const navigate = useNavigate();
 

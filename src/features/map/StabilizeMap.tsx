@@ -1,12 +1,12 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import { useMap } from "react-leaflet";
-import { useCtxMap } from "../../context/mapContext";
+import { MapContext } from "../../context/mapContext";
 import { SettingsType } from "../../types";
 
 const StabilizeMap = () => {
   const map = useMap();
-  const { setZoomLevel, setMapPosition } = useCtxMap();
+  const { setZoomLevel, setMapPosition } = use(MapContext);
   const queryClient = useQueryClient();
 
   const cachedSettings = queryClient.getQueryData<SettingsType>(["settings"]);

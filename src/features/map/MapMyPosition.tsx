@@ -1,9 +1,10 @@
+import { use } from "react";
+import { useMap } from "react-leaflet";
 import { useLocation, useNavigate } from "react-router-dom";
+import { MapContext } from "../../context/mapContext";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import Button from "../../ui/Buttons/Button";
 import { outOfMapRange } from "../../utils/helpers";
-import { useMap } from "react-leaflet";
-import { useCtxMap } from "../../context/mapContext";
 
 const MapMyPosition = ({
   onClickOutRange,
@@ -15,7 +16,7 @@ const MapMyPosition = ({
   const location = useLocation();
   const navigate = useNavigate();
   const map = useMap();
-  const { setMapPosition, defaultBounds, zoomLevel } = useCtxMap();
+  const { setMapPosition, defaultBounds, zoomLevel } = use(MapContext);
 
   if (location.pathname !== "/problems/add" || error) {
     return null;

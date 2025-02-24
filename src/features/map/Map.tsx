@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef } from "react";
+import { useMemo, useState, useRef, use } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import MapClick from "./MapClick";
 import ProblemsMarkers from "./ProblemsMarkers";
@@ -12,12 +12,11 @@ import Loader from "../../ui/Loader";
 
 import "leaflet/dist/leaflet.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCtxMap } from "../../context/mapContext";
+import { MapContext } from "../../context/mapContext";
 import Button from "../../ui/Buttons/Button";
 import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
 import "../../utils.css";
 import MapMyPosition from "./MapMyPosition";
-
 const Map = ({
   problemId,
   userId,
@@ -28,7 +27,7 @@ const Map = ({
   const { mapLat, mapLng } = useUrlParams();
   const { problems, isLoading } = useProblems();
   const navigate = useNavigate();
-  const { mapPosition, zoomLevel, setMapInstance } = useCtxMap();
+  const { mapPosition, zoomLevel, setMapInstance } = use(MapContext);
   const [isOutOfRange, setIsOutOfRange] = useState(false);
   const location = useLocation();
   const mapRef = useRef<HTMLDivElement | null>(null);

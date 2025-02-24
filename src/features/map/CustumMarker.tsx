@@ -1,8 +1,9 @@
 import { Marker, Tooltip, useMap } from "react-leaflet";
 import { useNavigate } from "react-router-dom";
 
+import { use } from "react";
+import { MapContext } from "../../context/mapContext";
 import CustumMarkerIcon from "./CustumMarkerIcon";
-import { useCtxMap } from "../../context/mapContext";
 
 type MarkerType = {
   problemId?: string;
@@ -26,7 +27,7 @@ const CustumMarker = ({
   setHoveredMarker = () => {},
 }: MarkerType) => {
   const navigate = useNavigate();
-  const { setZoomLevel, zoomLevel } = useCtxMap();
+  const { setZoomLevel, zoomLevel } = use(MapContext);
   const map = useMap();
 
   return (

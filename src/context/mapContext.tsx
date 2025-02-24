@@ -17,7 +17,7 @@ type MapState = {
   updateMapView: (position: { lat: number; lng: number }, zoom: number) => void;
 };
 
-const MapContext = createContext<MapState | undefined>(undefined);
+export const MapContext = createContext({} as MapState);
 
 export const MapContextProvider = ({
   children,
@@ -63,13 +63,4 @@ export const MapContextProvider = ({
       {children}
     </MapContext.Provider>
   );
-};
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useCtxMap = () => {
-  const context = useContext(MapContext);
-  if (!context) {
-    throw new Error("useMap must be used within a MapProvider");
-  }
-  return context;
 };

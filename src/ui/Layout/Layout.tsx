@@ -1,6 +1,6 @@
-import { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, use, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useCtxMap } from "../../context/mapContext";
+import { MapContext } from "../../context/mapContext";
 
 import { useSettings } from "../../features/settings/hooks/useSettings";
 import Error from "../Error";
@@ -14,7 +14,7 @@ const MapComponent = lazy(() => import("../../features/map/Map"));
 const Layout = () => {
   const params = useParams();
   const { settings, isLoading, error } = useSettings();
-  const { setMapPosition, setZoomLevel, setDefaultBounds } = useCtxMap();
+  const { setMapPosition, setZoomLevel, setDefaultBounds } = use(MapContext);
 
   useEffect(() => {
     if (!settings) return;

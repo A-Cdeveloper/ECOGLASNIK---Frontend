@@ -1,6 +1,7 @@
+import { use } from "react";
 import { useMap, useMapEvent } from "react-leaflet";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCtxMap } from "../../context/mapContext";
+import { MapContext } from "../../context/mapContext";
 import { outOfMapRange } from "../../utils/helpers";
 
 const MapClick = ({
@@ -11,7 +12,8 @@ const MapClick = ({
   const navigate = useNavigate();
   const location = useLocation();
   const map = useMap();
-  const { setZoomLevel, mapPosition, zoomLevel, defaultBounds } = useCtxMap();
+  const { setZoomLevel, mapPosition, zoomLevel, defaultBounds } =
+    use(MapContext);
 
   useMapEvent("zoomend", () => {
     const currentZoom = map.getZoom();
