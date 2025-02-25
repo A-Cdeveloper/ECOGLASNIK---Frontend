@@ -23,15 +23,13 @@ const ContactPage = () => {
       </TextBlock>
 
       <TextBlock>
-        <p>
-          E-SEO TEAM
-          <br />
-          <strong>PIB: </strong> 107319556
-          <br />
-          <strong>Matični broj: </strong> 62659459
-          <br />
-          <strong>16210 Vlasotince, Srbija</strong>
-        </p>
+        E-SEO TEAM
+        <br />
+        <strong>PIB: </strong> 107319556
+        <br />
+        <strong>Matični broj: </strong> 62659459
+        <br />
+        <strong>16210 Vlasotince, Srbija</strong>
       </TextBlock>
     </>
   );
