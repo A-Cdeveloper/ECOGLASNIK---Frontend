@@ -10,6 +10,8 @@ const Logo = () => {
           src={logo}
           alt={APP_NAME}
           className="max-w-[200px] md:max-w-[265px] mx-0"
+          loading="lazy"
+          fetchPriority="low"
         />
       </Link>
     </div>
