@@ -1,0 +1,57 @@
+{
+    "login": {
+        "title": "Ulogujte se",
+        "button_text": "Prijavi se",
+        "button_loading": "Prijava...",
+        "lost_password_text": "Zaboravljena lozinka?",
+        "noaccount_text": "Nemate nalog? Registrujte se",
+        "switch_link_text": " OVDE"
+    },
+    "register": {
+        "title": "Kreirajte nalog",
+        "button_text": "Registuj nalog",
+        "button_loading": "Registracija...",
+        "haveaccount_text": "Imate nalog? Ulogujte se",
+        "user_notice": "Vaši lični podaciće biti zaštičeni, neće se ni u kom slučaju prikazivati javno na platformi, nitiće biti uključeni u Vaše zvanične prijave nadležnim službama.",
+        "password_mismatch": "Lozinke se ne podudaraju"
+    },
+    "loginFields": {
+        "email": "Email*",
+        "password": "Lozinka*"
+    },
+    "registerFields": {
+        "first_name": "Ime*",
+        "last_name": "Prezime*",
+        "phone": "Telefon",
+        "email": "Email*",
+        "password": "Lozinka*",
+        "password_again": "Ponovite lozinku*"
+    },
+    "forgotPassword": {
+        "email": "Email*",
+        "button_text": "Pošalji zahtev za novu lozinku",
+        "button_loading": "Slanje zahteva...",
+        "user_notice": "Unestite email adresu Vašeg naloga."
+    },
+    "resetPassword": {
+        "password": "Nova lozinka*",
+        "password_again": "Potvrdi novu lozinku*",
+        "button_text": "Sačuvaj novu lozinku",
+        "button_loading": "Slanje zahteva...",
+        "password_mismatch": "Lozinke se ne podudaraju",
+        "user_notice": "Postavi novu lozinku"
+    },
+    "problems": {
+        "status": {
+            "ALL": "SVE",
+            "DONE": "REŠENO",
+            "ACTIVE": "AKTIVNO"
+        }
+    },
+    "restrictAccess": "Nemate pravo pristupa ovoj stranici!",
+    "not_found": "Nema pronađenih!",
+    "add_new_resource": "Prijavi novi",
+    "try_again": "Pokušajte ponovo",
+    "back_button_label": "Nazad",
+    "filter_categories_default": "Sve kategorije"
+}

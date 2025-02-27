@@ -1,3 +1,4 @@
+import { TranslationProvider } from "../context/translationContext";
 import AuthContext from "./auth";
 import MapContext from "./map";
 import QueryRoute from "./query";
@@ -8,7 +9,9 @@ const MainRouter = () => {
     <QueryRoute>
       <AuthContext>
         <MapContext>
-          <AppRouter />
+          <TranslationProvider>
+            <AppRouter />
+          </TranslationProvider>
         </MapContext>
       </AuthContext>
     </QueryRoute>

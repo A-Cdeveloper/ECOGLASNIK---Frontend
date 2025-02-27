@@ -1,10 +1,12 @@
+import { use } from "react";
+import { TranslationContext } from "../../context/translationContext";
 import { useCategories } from "../../features/problems/hooks/useCategories";
 import { useUrlParams } from "../../hooks/useUrlParams";
 
 const FilterCategory = () => {
   const { categories } = useCategories();
   const { currentParams, setCurrentParams } = useUrlParams();
-
+  const { t } = use(TranslationContext);
   return (
     <>
       <select
@@ -24,7 +26,7 @@ const FilterCategory = () => {
           setCurrentParams();
         }}
       >
-        <option value="">Sve kategorije</option>
+        <option value="">{t("filter_categories_default")}</option>
         {categories?.map((category) => (
           <option key={category.cat_id} value={category.cat_id}>
             {category.cat_name}

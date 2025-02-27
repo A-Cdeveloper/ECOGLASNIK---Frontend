@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import { ChangeEvent, FormEvent, use, useCallback, useState } from "react";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import AuthNotification from "../../ui/AuthNotification";
@@ -8,6 +8,7 @@ import Input from "../../ui/Form/Input";
 import Headline from "../../ui/Headline";
 import useLogin from "./hooks/useLogin";
 import useRegister from "./hooks/useRegister";
+import { TranslationContext } from "../../context/translationContext";
 
 type FormFields = {
   email: string;
@@ -20,6 +21,7 @@ type FormFields = {
 
 function LoginRegisterForm({ mode }: { mode: string }) {
   const navigate = useNavigate();
+  const { t } = use(TranslationContext);
   const {
     status: loginUserStatus,
     mutate: loginUser,
@@ -97,13 +99,11 @@ function LoginRegisterForm({ mode }: { mode: string }) {
   return (
     <>
       <Headline level={2} className="w-[90%] mb-3 uppercase font-semibold">
-        {isLoginMode ? "Login" : "Kreiraj nalog"}
+        {isLoginMode ? t("login.title") : t("register.title")}
       </Headline>
       {!isLoginMode && (
         <p className=" text-[12px] w-[90%] mb-2 block ">
-          Vaši lični podaci će biti zaštičeni, neće se ni u kom slučaju
-          prikazivati javno na platformi, niti će biti uključeni u Vaše zvanične
-          prijave nadležnim službama.
+          {t("register.user_notice")}
         </p>
       )}
       <form onSubmit={handleSubmit} className="space-y-4 w-[90%]">
@@ -112,19 +112,19 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             <Input
               name="firstname"
               value={formFields.firstname}
-              placeholder="Ime*"
+              placeholder={t("registerFields.first_name")}
               onChange={handleInputChange}
             />
             <Input
               name="lastName"
               value={formFields.lastName}
-              placeholder="Prezime*"
+              placeholder={t("registerFields.last_name")}
               onChange={handleInputChange}
             />
             <Input
               name="phone"
               value={formFields.phone}
-              placeholder="Telefon"
+              placeholder={t("registerFields.phone")}
               onChange={handleInputChange}
             />
           </>
@@ -134,7 +134,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
           name="email"
           type="email"
           value={formFields.email}
-          placeholder="Email*"
+          placeholder={t("loginFields.email")}
           onChange={handleInputChange}
           data-testid="email"
         />
@@ -144,7 +144,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             name="password"
             type={showPassword ? "text" : "password"}
             value={formFields.password}
-            placeholder="Lozinka*"
+            placeholder={t("loginFields.password")}
             onChange={handleInputChange}
             data-testid="password"
           />
@@ -165,7 +165,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
               name="passwordAgain"
               type={showPasswordAgain ? "text" : "password"}
               value={formFields.passwordAgain}
-              placeholder="Potvrdi lozinku*"
+              placeholder={t("registerFields.password_again")}
               onChange={handleInputChange}
             />
             <ButtonIcon
@@ -178,7 +178,7 @@ function LoginRegisterForm({ mode }: { mode: string }) {
             />
             {!isPasswordValid && formFields.passwordAgain && (
               <p className="text-rose-400 my-[3px] text-[12px]">
-                Lozinke se ne podudaraju.
+                {t("register.password_mismatch")}
               </p>
             )}
           </div>
@@ -197,11 +197,11 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         >
           {isLoginMode
             ? loginUserStatus === "pending"
-              ? "Prijava..."
-              : "Prijavi se"
+              ? t("login.button_loading")
+              : t("login.button_text")
             : registerUserStatus === "pending"
-            ? "Registracija..."
-            : "Registruj nalog"}
+            ? t("register.button_loading")
+            : t("register.button_text")}
         </Button>
 
         {errorLogin && isLoginMode && (
@@ -215,19 +215,19 @@ function LoginRegisterForm({ mode }: { mode: string }) {
         <div>
           {isLoginMode && (
             <p className="text-secondary text-center">
-              <Link to="forgot-password">Zaboravljena lozinka?</Link>
+              <Link to="forgot-password">{t("login.lost_password_text")}</Link>
             </p>
           )}
 
           <p className="text-secondary text-center">
             {isLoginMode
-              ? "Nemate nalog? Registrujte se "
-              : "Imate nalog? Ulogujte se "}
+              ? t("login.noaccount_text")
+              : t("register.haveaccount_text")}
             <Link
               to={`/login/?mode=${isLoginMode ? "register" : "login"}`}
               className="text-winter"
             >
-              OVDE
+              {t(`login.switch_link_text`)}
             </Link>
             .
           </p>

@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "./Buttons/Button";
+import { use } from "react";
+import { TranslationContext } from "../context/translationContext";
 
 const Error = ({
   message,
@@ -8,6 +10,7 @@ const Error = ({
   message: string;
   className?: string;
 }) => {
+  const { t } = use(TranslationContext);
   const navigate = useNavigate();
   return (
     <div
@@ -17,7 +20,7 @@ const Error = ({
         {message}
       </span>
       <Button variation="info" size="large" onClick={() => navigate(0)}>
-        Probaj ponovo
+        {t("try_again")}
       </Button>
     </div>
   );

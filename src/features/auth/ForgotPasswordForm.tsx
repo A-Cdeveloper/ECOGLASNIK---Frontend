@@ -1,10 +1,12 @@
-import { useRef } from "react";
+import { use, useRef } from "react";
 import AuthNotification from "../../ui/AuthNotification";
 import Button from "../../ui/Buttons/Button";
 import Input from "../../ui/Form/Input";
 import useForgotPassword from "./hooks/useForgotPassword";
+import { TranslationContext } from "../../context/translationContext";
 
 const ForgotPasswordForm = () => {
+  const { t } = use(TranslationContext);
   const {
     status: forgotPasswordStatus,
     mutate: forgotPassword,
@@ -34,17 +36,24 @@ const ForgotPasswordForm = () => {
   return (
     <>
       <p className="text-start w-[90%] mb-2">
-        Unestite email adresu Vašeg naloga:
+        {t("forgotPassword.user_notice")}
       </p>
       <form onSubmit={handleSubmit} className="space-y-4 w-[90%]">
-        <Input type="email" placeholder="Email" name="email" ref={emailRef} />
+        <Input
+          type="email"
+          placeholder={t("forgotPassword.email")}
+          name="email"
+          ref={emailRef}
+        />
         <Button
           size="large"
           style={{ width: "100%" }}
           disabled={isLoading}
           variation="info"
         >
-          {isLoading ? "Slanje zahteva..." : "Pošalji zahtev za novu lozinku"}
+          {isLoading
+            ? t("forgotPassword.button_loading")
+            : t("forgotPassword.button_text")}
         </Button>
       </form>
       {forgotPasswordError && (

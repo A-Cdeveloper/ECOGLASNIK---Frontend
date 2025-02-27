@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { use, useCallback, useState } from "react";
 import { HiEye, HiEyeSlash } from "react-icons/hi2";
 import { useUrlParams } from "../../hooks/useUrlParams";
 import AuthNotification from "../../ui/AuthNotification";
@@ -6,8 +6,10 @@ import Button from "../../ui/Buttons/Button";
 import ButtonIcon from "../../ui/Buttons/ButtonIcon";
 import Input from "../../ui/Form/Input";
 import useResetPassword from "./hooks/useResetPassword";
+import { TranslationContext } from "../../context/translationContext";
 
 const ResetPasswordForm = () => {
+  const { t } = use(TranslationContext);
   const {
     status: resetPasswordStatus,
     mutate: resetPassword,
@@ -50,14 +52,16 @@ const ResetPasswordForm = () => {
 
   return (
     <>
-      <p className="text-start w-[90%] mb-2">Postavi novu lozinku:</p>
+      <p className="text-start w-[90%] mb-2">
+        {t("resetPassword.user_notice")}
+      </p>
       <form onSubmit={handleSubmit} className="space-y-4 w-[90%]">
         <div className="relative">
           <Input
             name="password"
             type={showPassword ? "text" : "password"}
             value={formFields.password}
-            placeholder="Nova lozinka*"
+            placeholder={t("resetPassword.password")}
             onChange={handleInputChange}
           />
           <ButtonIcon
@@ -73,7 +77,7 @@ const ResetPasswordForm = () => {
             name="passwordAgain"
             type={showPasswordAgain ? "text" : "password"}
             value={formFields.passwordAgain}
-            placeholder="Potvrdi novu lozinku*"
+            placeholder={t("resetPassword.password_again")}
             onChange={handleInputChange}
           />
           <ButtonIcon
@@ -84,7 +88,9 @@ const ResetPasswordForm = () => {
             }}
           />
           {!isPasswordValid && formFields.passwordAgain && (
-            <p className="text-rose-400 my-[3px]">Lozinke se ne podudaraju</p>
+            <p className="text-rose-400 my-[3px]">
+              {t("resetPassword.password_mismatch")}
+            </p>
           )}
         </div>
         <Button
@@ -93,7 +99,9 @@ const ResetPasswordForm = () => {
           disabled={!isPasswordValid || resetPasswordStatus === "pending"}
           variation="info"
         >
-          {isLoading ? "Slanje zahteva..." : "Sačuvaj novu lozinku"}
+          {isLoading
+            ? t("resetPassword.button_loading")
+            : t("resetPassword.button_text")}
         </Button>
         {error && <AuthNotification state="error" message={error.message} />}
       </form>
