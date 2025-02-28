@@ -10,4 +10,25 @@ export const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
 // API
 
-export const API_URL = import.meta.env.VITE_API_URL;
+export const FRONTEND_URLS = [
+  "https://www.demo.ecoglasnik.org",
+  "https://www.vlasotince.ecoglasnik.org",
+  "https://www.nis.ecoglasnik.org",
+];
+
+export const BACKEND_URLS: Record<string, string> = {
+  "www.demo.ecoglasnik.org": "https://www.demo-api.ecoglasnik.org/api",
+  "www.vlasotince.ecoglasnik.org":
+    "https://www.vlasotince-api.ecoglasnik.org/api",
+  "www.nis.ecoglasnik.org": "https://www.nis-api.ecoglasnik.org/api",
+  localhost: "http://localhost:3000/api",
+};
+
+export const getBackendUrl = (): string => {
+  const hostname = window.location.hostname; // Extracts "www.demo.ecoglasnik.org"
+  return BACKEND_URLS[hostname] || "https://www.demo-api.ecoglasnik.org/api"; // Fallback URL
+};
+
+export const API_URL = getBackendUrl();
+
+// export const API_URL = import.meta.env.VITE_API_URL;
