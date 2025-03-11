@@ -28,8 +28,8 @@ export const TranslationProvider = ({
   const t = (key: string) => get(translations, key, key); // Use lodash.get for nested keys
 
   return (
-    <TranslationContext.Provider value={{ t, setLanguage }}>
+    <TranslationContext value={{ t, setLanguage }}>
       {children}
-    </TranslationContext.Provider>
+    </TranslationContext>
   );
 };

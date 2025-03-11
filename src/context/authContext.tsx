@@ -46,5 +46,5 @@ export const AuthContextProvider = ({
     setTokenExpiry,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <AuthContext value={value}>{children}</AuthContext>;
 };

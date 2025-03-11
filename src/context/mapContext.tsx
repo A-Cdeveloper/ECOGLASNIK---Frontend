@@ -47,7 +47,7 @@ export const MapContextProvider = ({
   };
 
   return (
-    <MapContext.Provider
+    <MapContext
       value={{
         mapPosition,
         zoomLevel,
@@ -61,6 +61,6 @@ export const MapContextProvider = ({
       }}
     >
       {children}
-    </MapContext.Provider>
+    </MapContext>
   );
 };
