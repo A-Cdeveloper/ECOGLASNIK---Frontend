@@ -30,6 +30,5 @@ export const getBackendUrl = (): string => {
 };
 
 export const API_URL = getBackendUrl();
-console.log(API_URL);
 
 // export const API_URL = import.meta.env.VITE_API_URL;
