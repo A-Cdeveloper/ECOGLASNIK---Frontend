@@ -1,19 +1,19 @@
 import { lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ContactPage from "../pages/ContactPage";
+import ForgotPassword from "../pages/ForgotPassword";
 import Homepage from "../pages/Homepage";
 import ImpressumPage from "../pages/ImpressumPage";
 import LoginPage from "../pages/LoginPage";
-import Notifications from "../ui/PromtsAndNotifications/Notifications";
-import ProtectedRoute from "../ui/Layout/ProtectedRoute";
 import PageNotFound from "../pages/PageNotFound";
-import ForgotPassword from "../pages/ForgotPassword";
-import VerifyAccount from "../pages/VerifyAccount";
-import Layout from "../ui/Layout/Layout";
+import ResetPassword from "../pages/ResetPassword";
 import SingleProblem from "../pages/SingleProblem";
 import UserProblems from "../pages/UserProblems";
-import ResetPassword from "../pages/ResetPassword";
 import { UserProfile } from "../pages/UserProfile";
-import ContactPage from "../pages/ContactPage";
+import VerifyAccount from "../pages/VerifyAccount";
+import Layout from "../ui/Layout/Layout";
+import ProtectedRoute from "../ui/Layout/ProtectedRoute";
+import Notifications from "../ui/PromtsAndNotifications/Notifications";
 
 const AddProblem = lazy(() => import("../pages/AddProblem"));
 const EditProblem = lazy(() => import("../pages/EditProblem"));
