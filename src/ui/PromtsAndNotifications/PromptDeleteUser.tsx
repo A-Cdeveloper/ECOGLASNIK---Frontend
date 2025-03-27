@@ -1,6 +1,8 @@
 import { createPortal } from "react-dom";
 import Button from "../Buttons/Button";
 import PromptLayout from "./PromptLayout";
+import { use } from "react";
+import { TranslationContext } from "../../context/translationContext";
 
 const PromptDeleteUser = ({
   status,
@@ -13,6 +15,8 @@ const PromptDeleteUser = ({
   onCancel: () => void;
   onConfirm: () => void;
 }) => {
+  const { t } = use(TranslationContext);
+
   if (!status) return null; // Do not render if status is false
 
   return createPortal(
@@ -26,10 +30,10 @@ const PromptDeleteUser = ({
       <PromptLayout.IntroText intro="Da li želite da nastavite?" />
       <PromptLayout.Buttons>
         <Button variation="success" size="small" onClick={onCancel}>
-          Odustani
+          {t("prompt.cancel")}
         </Button>
         <Button variation="danger" size="small" onClick={onConfirm}>
-          Potvrdi
+          {t("prompt.confirm")}
         </Button>
       </PromptLayout.Buttons>
     </PromptLayout>,

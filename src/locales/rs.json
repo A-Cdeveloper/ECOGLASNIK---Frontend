@@ -48,10 +48,19 @@
             "ACTIVE": "AKTIVNO"
         }
     },
+    "prompt": {
+        "continue": "Nastavi",
+        "cancel": "Odustani",
+        "confirm": "Potvrdi",
+        "delete": "Obriši",
+        "select_other_location": "Odaberi drugu lokaciju",
+        "location_outof_range": "Lokacija je izvan opsega opštine {appArea} (~{distance}km)!"
+    },
     "restrictAccess": "Nemate pravo pristupa ovoj stranici!",
     "not_found": "Nema pronađenih!",
     "add_new_resource": "Prijavi novi",
     "try_again": "Pokušajte ponovo",
     "back_button_label": "Nazad",
-    "filter_categories_default": "Sve kategorije"
+    "filter_categories_default": "Sve kategorije",
+    "logout": "Odjava"
 }

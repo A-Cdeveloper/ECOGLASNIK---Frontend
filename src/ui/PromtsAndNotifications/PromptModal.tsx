@@ -3,6 +3,8 @@ import { createPortal } from "react-dom";
 import ReactRouterPrompt from "react-router-prompt";
 import Button from "../Buttons/Button";
 import PromptLayout from "./PromptLayout";
+import { TranslationContext } from "../../context/translationContext";
+import { use } from "react";
 
 type PromptProps = {
   isActive: boolean;
@@ -11,6 +13,7 @@ type PromptProps = {
 };
 
 const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
+  const { t } = use(TranslationContext);
   if (!formStatus) return null;
   return createPortal(
     <ReactRouterPrompt when={formStatus}>
@@ -21,10 +24,10 @@ const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
             <PromptLayout.IntroText intro="Promene neće biti sačuvane!!!" />
             <PromptLayout.Buttons>
               <Button variation="success" size="small" onClick={onCancel}>
-                Nastavi
+                {t("prompt.continue")}
               </Button>
               <Button variation="danger" size="small" onClick={onConfirm}>
-                Odustani
+                {t("prompt.cancel")}
               </Button>
             </PromptLayout.Buttons>
           </PromptLayout>

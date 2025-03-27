@@ -4,7 +4,8 @@ import PromptLayout from "./PromptLayout";
 import { useSettings } from "../../features/settings/hooks/useSettings";
 import { calculateDistanceFromBounds } from "../../utils/helpers";
 import { Position } from "../../types";
-import { useMemo } from "react";
+import { use, useMemo } from "react";
+import { TranslationContext } from "../../context/translationContext";
 
 const PromptModalOutRange = ({
   status,
@@ -13,6 +14,7 @@ const PromptModalOutRange = ({
   status: boolean;
   onClose: () => void;
 }) => {
+  const { t } = use(TranslationContext);
   const { settings } = useSettings();
   const distance = useMemo(() => {
     return calculateDistanceFromBounds(
@@ -29,12 +31,14 @@ const PromptModalOutRange = ({
   return createPortal(
     <PromptLayout>
       <PromptLayout.Header
-        title={`Lokacija je izvan opsega opštine ${settings?.data.appArea} (+~${distance}km)!`}
+        title={t("prompt.location_outof_range")
+          .replace("{appArea}", settings?.data.appArea ?? "")
+          .replace("{distance}", distance?.toString() ?? "0")}
       />
 
       <PromptLayout.Buttons>
         <Button variation="danger" size="small" onClick={onClose}>
-          Odaberi drugu lokaciju
+          {t("prompt.select_other_location")}
         </Button>
       </PromptLayout.Buttons>
     </PromptLayout>,
