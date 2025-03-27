@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { TranslationContext } from "../../context/translationContext";
+import { use } from "react";
 
 const MenuItems = ({
   isAuthenticated,
@@ -9,6 +11,7 @@ const MenuItems = ({
   userId?: number;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const { t } = use(TranslationContext);
   return (
     <>
       <li>
@@ -21,7 +24,7 @@ const MenuItems = ({
               : "text-winter-100/80 bg-yellow-500/80 py-1 px-2 hover:text-white hover:bg-yellow-500"
           }
         >
-          Dodaj Problem
+          {t("menu.add_problem")}
         </NavLink>
       </li>
 
@@ -35,7 +38,7 @@ const MenuItems = ({
               : "ms-0  text-secondary-100 hover:text-white"
           }
         >
-          Svi problemi
+          {t("menu.all_problems")}
         </NavLink>
       </li>
 
@@ -50,7 +53,7 @@ const MenuItems = ({
                 : "ms-0  text-secondary-100 hover:text-white"
             }
           >
-            Vaše prijave
+            {t("menu.your_problems")}
           </NavLink>
         </li>
       )}
@@ -66,7 +69,7 @@ const MenuItems = ({
                 : "ms-0  text-secondary-100 hover:text-white"
             }
           >
-            Uloguj se
+            {t("menu.login")}
           </NavLink>
         </li>
       )}

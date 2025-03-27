@@ -1,4 +1,13 @@
 {
+    "menu": {
+        "contact": "Kontakt",
+        "impressum": "Impresum",
+        "add_problem": "Dodaj problem",
+        "all_problems": "Svi problemi",
+        "your_problems": "Vaše prijave",
+        "logout": "Odjavi se",
+        "login": "Uloguj se"
+    },
     "login": {
         "title": "Ulogujte se",
         "button_text": "Prijavi se",

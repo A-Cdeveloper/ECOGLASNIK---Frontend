@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
+import { TranslationContext } from "../../context/translationContext";
+import { use } from "react";
 
 const MetaMenu = () => {
+  const { t } = use(TranslationContext);
   return (
     <ul className="flex justify-center lg:justify-end uppercase gap-3 font-bold text-[13px]">
       <li>
@@ -12,7 +15,7 @@ const MetaMenu = () => {
               : "ms-0  text-secondary-100 hover:text-white"
           }
         >
-          Kontakt
+          {t("menu.contact")}
         </NavLink>
       </li>
 
@@ -25,7 +28,7 @@ const MetaMenu = () => {
               : "ms-0  text-secondary-100 hover:text-white"
           }
         >
-          Impressum
+          {t("menu.impressum")}
         </NavLink>
       </li>
     </ul>
