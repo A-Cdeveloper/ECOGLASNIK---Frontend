@@ -1,35 +1,38 @@
+import { use } from "react";
 import BackButton from "../ui/Buttons/BackButton";
 import Headline from "../ui/Headline";
 import TextBlock from "../ui/TextBlock";
+import { TranslationContext } from "../context/translationContext";
 
 const ContactPage = () => {
+  const { t } = use(TranslationContext);
   return (
     <>
       <BackButton />
 
       <Headline level={2} className="font-[600]">
-        ECOGLASNIK
+        {t("app.title")}
       </Headline>
 
       <TextBlock>
-        Kontakt:
+        {t("kontakt.title")}
         <br />
         <a href="mailto:kontakt@ecoglasnik.org">kontakt@ecoglasnik.org</a>
       </TextBlock>
 
       <TextBlock>
-        Pitanja: <br />
+        {t("kontakt.questions")} <br />
         <a href="mailto:support@ecoglasnik.org">support@ecoglasnik.org</a>
       </TextBlock>
 
       <TextBlock>
         E-SEO TEAM
         <br />
-        <strong>PIB: </strong> 107319556
+        <strong>{t("kontakt.tax_number")} </strong> 107319556
         <br />
-        <strong>Matični broj: </strong> 62659459
+        <strong>{t("kontakt.reg_number")} </strong> 62659459
         <br />
-        <strong>16210 Vlasotince, Srbija</strong>
+        <strong>{t("kontakt.address")}</strong>
       </TextBlock>
     </>
   );

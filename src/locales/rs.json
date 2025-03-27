@@ -1,4 +1,7 @@
 {
+    "app": {
+        "title": "ECOGLASNIK"
+    },
     "menu": {
         "contact": "Kontakt",
         "impressum": "Impresum",
@@ -7,6 +10,25 @@
         "your_problems": "Vaše prijave",
         "logout": "Odjavi se",
         "login": "Uloguj se"
+    },
+    "impressum": {
+        "title": "Impresum",
+        "intro_text": "je lokalizovana online platforma koja omogućava građanima da prijave probleme u komunalnoj infrastrukturi putem interaktivne mape. Korisnici mogu lako i brzo prijaviti komunalne probleme poput oštećenih puteva, prepunih kontejnera, kvarova na uličnom osvetljenju i slično. Cilj sajta je da unapredi komunikaciju između građana lokalne zajednice i komunalnih službi, olakšavajući brzorešavanje prijavljenih problema.",
+        "disclaimer_headline": "Odricanje od odgovornosti:",
+        "disclaimer_text": "omogućava korisnicima prijavu problema u javnom interesu, ali ne snosi odgovornost za tačnost prijavljenih informacija. Sve prijave su podložne proveri od strane nadležnih komunalnih službi. E-SEO TEAM nije odgovoran za kašnjenja ili neizvršavanje prijava od strane komunalnih službi.",
+        "copyright_headline": "Autorska prava:",
+        "copyright_text": "Sadržaj, dizajn i koncept sajta zaštićeni su autorskim pravima i vlasništvo su E-SEO TEAM-a Svako kopiranje, preuzimanje ili reprodukovanje sadržaja bez dozvole je zabranjeno.",
+        "privacy_headline": "Zaštita podataka:",
+        "privacy_text": "obrađuje podatke u skladu sa Zakonom o zaštiti podataka o ličnosti. Lični podaci koji se prikupljaju kroz prijave koriste se isključivo za potrebe obrade prijave i neće biti deljeni sa trećim licima, osim u slučajevima predviđenim zakonom.",
+        "legal_headline": "Ažuriranje i održavanje sajta:",
+        "legal_text": "E-SEO TEAM redovno ažurira sadržaj sajta i zadržava pravo izmene informacija na ovoj stranici u bilo kom trenutku bez prethodnog obaveštenja."
+    },
+    "kontakt": {
+        "title": "Kontakt",
+        "questions": "Pitanja:",
+        "tax_number": "PIB:",
+        "reg_number": "Matični broj:",
+        "address": "16210 Vlasotince, Srbija"
     },
     "login": {
         "title": "Ulogujte se",
@@ -67,6 +89,7 @@
     },
     "restrictAccess": "Nemate pravo pristupa ovoj stranici!",
     "not_found": "Nema pronađenih!",
+    "page_not_found": "Stranica nije pronađena",
     "add_new_resource": "Prijavi novi",
     "try_again": "Pokušajte ponovo",
     "back_button_label": "Nazad",
