@@ -4,8 +4,9 @@ import Button from "../../ui/Buttons/Button";
 import useDeleteProblem from "./hooks/useDeleteProblem";
 import useAddEditProblem from "./hooks/useAddEditProblem";
 import { getErrorMessage } from "../../utils/helpers";
-import { useState } from "react";
+import { use, useState } from "react";
 import PromptDeleteProblem from "../../ui/PromtsAndNotifications/PromptDeleteProblem";
+import { TranslationContext } from "../../context/translationContext";
 
 const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
   const navigate = useNavigate();
@@ -21,6 +22,8 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
 
   const isLoadingChangeStatus = updateProblemStatus === "pending";
   const isLoadingDeleteProblem = deleteProblemLaoding === "pending";
+
+  const { t } = use(TranslationContext);
 
   return (
     <>
@@ -55,7 +58,7 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
               );
             }}
           >
-            Izmeni
+            {t("problems.edit.edit")}
           </Button>
           <Button
             variation="info"
@@ -68,14 +71,18 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
               });
             }}
           >
-            {isLoadingChangeStatus ? "Promena statusa..." : "Problem je rešen"}
+            {isLoadingChangeStatus
+              ? t("problems.edit_loading.edit")
+              : t("problems.edit_success")}
           </Button>
           <Button
             variation="danger"
             size="small"
             onClick={() => setIsShowWarrning(true)}
           >
-            {isLoadingDeleteProblem ? "Brisanje..." : "Obriši problem"}
+            {isLoadingDeleteProblem
+              ? t("problems.delete_loading")
+              : t("problems.delete_success")}
           </Button>{" "}
         </div>
       </div>

@@ -5,9 +5,11 @@ import PromptDeleteUser from "../../ui/PromtsAndNotifications/PromptDeleteUser";
 import { formattedDate } from "../../utils/helpers";
 import useUserProblems from "../problems/hooks/useUserProblems";
 import useDeleteUser from "./hooks/useDeleteUser";
+import { TranslationContext } from "../../context/translationContext";
 
 const Profile = () => {
   const { user } = use(AuthContext);
+  const { t } = use(TranslationContext);
 
   const { numberOfProblems } = useUserProblems({
     userId: user?.uid,
@@ -31,27 +33,27 @@ const Profile = () => {
       )}
 
       <div className=" bg-secondary-500/30 my-4 py-2 px-3 grid grid-cols-1 md:grid-cols-[max-content_1fr] gap-y-[7px] gap-x-8 text-[14px] rounded-md overflow-hidden break-all">
-        <div>Ime i prezime:</div>
+        <div>{t("users.first_last_name")}</div>
         <div className="font-bold">
           {user?.firstname + " " + user?.lastname}
         </div>
 
-        <div>Telefon:</div>
+        <div>{t("users.phone")}</div>
         <div>{user?.phone ? user?.phone : "/"}</div>
 
-        <div>Email:</div>
+        <div>{t("users.email")}</div>
         <div>{user?.email}</div>
 
-        <div>Role:</div>
+        <div>{t("users.role")}</div>
         <div>{user?.role}</div>
 
-        <div>Nalog kreiran:</div>
+        <div>{t("users.creation_date")}</div>
         <div>{user?.createdAt && formattedDate(user?.createdAt)}</div>
 
-        <div>Posednja aktivnost:</div>
+        <div>{t("users.updated_date")}</div>
         <div>{user?.updatedAt && formattedDate(user?.updatedAt)}</div>
 
-        <div>Broj prijavljenih problema:</div>
+        <div>{t("users.number_of_user_problems")}</div>
         <div>{numberOfProblems}</div>
       </div>
       {user && user?.role !== "SUPERADMIN" && (
@@ -61,7 +63,9 @@ const Profile = () => {
             size="small"
             onClick={() => setIsShowWarrning(true)}
           >
-            {isLoadingDeleteUser ? "Brisanje..." : "Obriši nalog"}
+            {isLoadingDeleteUser
+              ? t("users.delete_user_loading")
+              : t("users.delete_user")}
           </Button>
         </div>
       )}

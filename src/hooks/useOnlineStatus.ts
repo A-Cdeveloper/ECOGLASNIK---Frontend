@@ -1,18 +1,20 @@
-import { useEffect, useSyncExternalStore } from "react";
+import { use, useEffect, useSyncExternalStore } from "react";
 import toast from "react-hot-toast";
+import { TranslationContext } from "../context/translationContext";
 
 export function useOnlineStatus() {
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+  const { t } = use(TranslationContext);
 
   useEffect(() => {
     if (isOnline) {
       toast.dismiss();
     } else {
-      toast.error(`You're offline.Please check yout Internet connection`, {
+      toast.error(t("offline_mode"), {
         duration: Infinity,
       });
     }
-  }, [isOnline]);
+  }, [isOnline, t]);
 
   return;
 }

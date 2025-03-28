@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, use } from "react";
+import { TranslationContext } from "../context/translationContext";
 
 type Position = {
   lat: number;
@@ -9,6 +10,7 @@ export function useGeolocation() {
   const [position, setPosition] = useState<Position | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { t } = use(TranslationContext);
 
   const requestLocation = useCallback(() => {
     if (!navigator.geolocation) {
@@ -30,18 +32,16 @@ export function useGeolocation() {
       (err) => {
         switch (err.code) {
           case err.PERMISSION_DENIED:
-            setError(
-              "Omogućite lokaciju u podešavanjima i ponovo učitajte stranicu da biste bili u mogućnosti da odaberete Vašu trenutnu lokaciju."
-            );
+            setError(t("enable_location"));
             break;
           case err.POSITION_UNAVAILABLE:
-            setError("Lokacija nije dostupna. Molimo pokusajte ponovo.");
+            setError(t("location_not_available"));
             break;
           case err.TIMEOUT:
-            setError("Zahtev za lokaciju je istekao. Molimo pokusajte ponovo.");
+            setError(t("location_request_timed_out"));
             break;
           default:
-            setError("Neka greška je pojavila. Molimo pokusajte ponovo.");
+            setError(t("location_error"));
         }
         setIsLoading(false);
       }

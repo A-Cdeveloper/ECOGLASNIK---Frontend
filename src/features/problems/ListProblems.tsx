@@ -5,6 +5,8 @@ import NoResourceFound from "../../ui/NoResourceFound";
 import ProblemItem from "./ProblemItem";
 import { useProblems } from "./hooks/useProblems";
 import useUserProblems from "./hooks/useUserProblems";
+import { use, useCallback } from "react";
+import { TranslationContext } from "../../context/translationContext";
 
 const ListProblems = ({ userId }: { userId?: number }) => {
   const { isLoading, error } = useProblems();
@@ -12,6 +14,15 @@ const ListProblems = ({ userId }: { userId?: number }) => {
   const { userProblems, numberOfProblems } = useUserProblems({
     userId,
   });
+  const { t } = use(TranslationContext);
+
+  const getUnitLabel = useCallback(
+    (count: number) => {
+      if (count >= 2 && count <= 4) return t("problems.items");
+      return t("problems.item");
+    },
+    [t]
+  );
 
   if (isLoading) {
     return <Loader />;
@@ -24,12 +35,15 @@ const ListProblems = ({ userId }: { userId?: number }) => {
     return <Error message={error.message} />;
   }
 
-  const unit = userId ? "prijava" : "problema";
-
   return (
     <>
       <div className="my-2 text-[13px] text-end text-winter-100/80">
-        {numberOfProblems === 1 ? `1 ${unit}` : `${numberOfProblems} ${unit}`}
+        {numberOfProblems && (
+          <span className="flex items-center justify-end text-end gap-1">
+            <strong>{numberOfProblems}</strong>
+            {getUnitLabel(numberOfProblems).toUpperCase()}
+          </span>
+        )}
       </div>
 
       <Virtuoso

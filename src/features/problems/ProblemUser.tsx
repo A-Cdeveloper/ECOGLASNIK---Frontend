@@ -1,3 +1,5 @@
+import { use } from "react";
+import { TranslationContext } from "../../context/translationContext";
 import { type User } from "../../types";
 
 const ProblemUser = ({
@@ -5,9 +7,10 @@ const ProblemUser = ({
 }: {
   user: Pick<User, "firstname" | "lastname" | "email">;
 }) => {
+  const { t } = use(TranslationContext);
   return (
     <>
-      <div className="tablecaption">Prijavio:</div>
+      <div className="tablecaption">{t("problems.report_by")}:</div>
       <div>{user.firstname + " " + user.lastname}</div>
     </>
   );

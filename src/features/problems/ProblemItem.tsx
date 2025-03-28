@@ -6,6 +6,7 @@ import Headline from "../../ui/Headline";
 import StatusBadge from "../../ui/StatusBadge";
 import { formattedDate } from "../../utils/helpers";
 import ProblemImage from "./ProblemImage";
+import { TranslationContext } from "../../context/translationContext";
 
 const ProblemItem = ({ problem }: { problem: Problem }) => {
   const {
@@ -19,6 +20,8 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
   const { setZoomLevel, updateMapView } = use(MapContext);
 
   const navigate = useNavigate();
+
+  const { t } = use(TranslationContext);
 
   return (
     <div className="px-2 py-[10px] my-[3px] bg-secondary-500/20 hover:bg-secondary-500/75 relative w-[98%]">
@@ -43,10 +46,10 @@ const ProblemItem = ({ problem }: { problem: Problem }) => {
             </Headline>
 
             <span className="text-[12px] block mt-1 text-white/75">
-              Prijavljeno: {formattedDate(problem?.createdAt)}
+              {t("problems.report")} {formattedDate(problem?.createdAt)}
               <br />
               {status === "DONE" &&
-                `Rešeno: ${formattedDate(problem?.createdAt)}`}
+                `t("problems.solved") ${formattedDate(problem?.createdAt)}`}
             </span>
           </div>
 

@@ -73,11 +73,47 @@
         "user_notice": "Postavi novu lozinku"
     },
     "problems": {
+        "add_problem_notification_1": "Kliknite na mapu kako biste odabrali lokaciju problema koji prijavljujete ili odaberite Vašu trenutnu lokaciju.",
+        "add_problem_notification_2": "Molimo Vas da pre prijave komunalnog problema proverite da li je problem već prijavljen. Hvala.",
+        "item": "Prijava",
+        "items": "Prijave",
+        "organisation": "Nadležnost:",
+        "category": "Kategorija:",
+        "report": "Prijavljeno:",
+        "report_by": "Prijavio:",
+        "solved": "Rešeno:",
+        "details": {
+            "date_start": "Datum prijave:",
+            "date_end": "Datum rešavanja:",
+            "status": "Status:",
+            "status_official": "Prijava je poslata nadležnim službama putem emaila i ne može biti naknadno izmenjena!",
+            "official_answer": "Odgovor nadležne službe:"
+        },
+        "edit": {
+            "edit": "Izmeni:",
+            "edit_loading": "Promena statusa...",
+            "edit_success": "Problem je rešen.",
+            "delete_loading": "Brisanje...",
+            "delete_success": "Obriši problem"
+        },
         "status": {
             "ALL": "SVE",
             "DONE": "REŠENO",
             "ACTIVE": "AKTIVNO"
         }
+    },
+    "users": {
+        "first_last_name": "Ime i prezime:",
+        "phone": "Telefon:",
+        "email": "Email:",
+        "role": "Uloga:",
+        "creation_date": "Datum kreiranja:",
+        "updated_date": "Poslednja aktivnost:",
+        "number_of_user_problems": "Broj prijava:",
+        "delete_user": "Obriši nalog",
+        "delete_user_loading": "Brisanje naloga...",
+        "account_is_deleted": "Vaš nalog je uklonjen!",
+        "account_delete_error": "Došlo je do greške pri uklanjanju naloga."
     },
     "prompt": {
         "continue": "Nastavi",
@@ -87,7 +123,17 @@
         "select_other_location": "Odaberi drugu lokaciju",
         "location_outof_range": "Lokacija je izvan opsega opštine {appArea} (~{distance}km)!"
     },
+    "weather": {
+        "title": "Vremenska prognoza",
+        "humidity": "Oblačnost",
+        "wind": "Vetar"
+    },
     "restrictAccess": "Nemate pravo pristupa ovoj stranici!",
+    "enable_location": "Omogućite lokaciju u podešavanjima i ponovo učitajte stranicu da biste bili u mogućnosti da odaberete Vašu trenutnu lokaciju.",
+    "location_not_available": "Lokacija nije dostupna. Molimo pokušajte ponovo.",
+    "location_request_timed_out": "Zahtev za lokaciju je istekao. Molimo pokušajte ponovo.",
+    "location_error": "Došlo je do greške. Molimo pokušajte ponovo.",
+    "offline_mode": "Vi ste u offline režimu. Molimo proverite internet konekciju.",
     "not_found": "Nema pronađenih!",
     "page_not_found": "Stranica nije pronađena",
     "add_new_resource": "Prijavi novi",
