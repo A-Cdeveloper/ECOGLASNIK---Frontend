@@ -1,4 +1,189 @@
 {
-    "login": "Login",
-    "register": "Register"
+    "app": {
+        "title": "ECOGLASNIK"
+    },
+    "menu": {
+        "contact": "Contact",
+        "impressum": "Impressum",
+        "add_problem": "Add Problem",
+        "all_problems": "All Problems",
+        "your_problems": "Your Reports",
+        "logout": "Log Out",
+        "login": "Log In"
+    },
+    "impressum": {
+        "title": "Impressum",
+        "intro_text": "is a localized online platform that allows citizens to report issues in municipal infrastructure via an interactive map. Users can easily and quickly report municipal issues such as damaged roads, overflowing containers, streetlight malfunctions, and similar problems. The goal of the website is to improve communication between local community residents and municipal services, facilitating the quick resolution of reported issues.",
+        "disclaimer_headline": "Disclaimer:",
+        "disclaimer_text": "allows users to report issues in the public interest but is not responsible for the accuracy of reported information. All reports are subject to verification by the competent municipal services. E-SEO TEAM is not responsible for delays or failure to address reports by municipal services.",
+        "copyright_headline": "Copyright:",
+        "copyright_text": "The content, design, and concept of the website are protected by copyright and are the property of E-SEO TEAM. Any copying, downloading, or reproduction of content without permission is prohibited.",
+        "privacy_headline": "Data Protection:",
+        "privacy_text": "processes data in accordance with the Personal Data Protection Act. Personal data collected through reports is used exclusively for processing the report and will not be shared with third parties, except in cases prescribed by law.",
+        "legal_headline": "Website Updates and Maintenance:",
+        "legal_text": "E-SEO TEAM regularly updates the website content and reserves the right to change information on this page at any time without prior notice."
+    },
+    "kontakt": {
+        "title": "Contact",
+        "questions": "Questions:",
+        "tax_number": "Tax ID:",
+        "reg_number": "Registration Number:",
+        "address": "16210 Vlasotince, Serbia"
+    },
+    "login": {
+        "title": "Log In",
+        "button_text": "Sign In",
+        "button_loading": "Signing In...",
+        "lost_password_text": "Forgot Password?",
+        "noaccount_text": "Don't have an account? Register",
+        "switch_link_text": " HERE"
+    },
+    "register": {
+        "title": "Create an Account",
+        "button_text": "Register Account",
+        "button_loading": "Registering...",
+        "haveaccount_text": "Already have an account? Log In",
+        "user_notice": "Your personal data will be protected and will not be publicly displayed on the platform or included in your official reports to the authorities.",
+        "password_mismatch": "Passwords do not match"
+    },
+    "loginFields": {
+        "email": "Email*",
+        "password": "Password*"
+    },
+    "registerFields": {
+        "first_name": "First Name*",
+        "last_name": "Last Name*",
+        "phone": "Phone",
+        "email": "Email*",
+        "password": "Password*",
+        "password_again": "Confirm Password*"
+    },
+    "forgotPassword": {
+        "email": "Email*",
+        "button_text": "Send Password Reset Request",
+        "button_loading": "Sending Request...",
+        "user_notice": "Enter your account email address."
+    },
+    "resetPassword": {
+        "password": "New Password*",
+        "password_again": "Confirm New Password*",
+        "button_text": "Save New Password",
+        "button_loading": "Submitting Request...",
+        "password_mismatch": "Passwords do not match",
+        "user_notice": "Set a new password"
+    },
+    "problems": {
+        "add_problem_notification_1": "Click on the map to select the location of the issue you are reporting or choose your current location.",
+        "add_problem_notification_2": "Please check if the issue has already been reported before submitting a new report. Thank you.",
+        "item": "Report",
+        "items": "Reports",
+        "organisation": "Jurisdiction:",
+        "category": "Category:",
+        "report": "Reported:",
+        "report_by": "Reported by:",
+        "solved": "Resolved:",
+        "details": {
+            "date_start": "Report Date:",
+            "date_end": "Resolution Date:",
+            "status": "Status:",
+            "status_official": "The report has been sent to the relevant authorities via email and cannot be modified afterwards!",
+            "official_answer": "Official Response:"
+        },
+        "add": {
+            "headline": "Report an Issue",
+            "add_success": "The issue has been successfully created and is awaiting administrator approval.",
+            "add_error": "An error occurred while creating the issue."
+        },
+        "edit": {
+            "headline": "Edit Issue Details",
+            "edit": "Edit",
+            "edit_loading": "Updating status...",
+            "edit_success": "Issue resolved",
+            "edit_succes_2": "The issue has been successfully updated.",
+            "edit_error": "An error occurred while updating the issue.",
+            "delete_loading": "Deleting...",
+            "delete_success": "Delete Issue"
+        },
+        "delete": {
+            "delete_error": "An error occurred while removing the issue.",
+            "delete_success": "Issue {title} has been removed!"
+        },
+        "formular": {
+            "title": "Enter Issue Title",
+            "category-aria": "Select Issue Category",
+            "description": "Issue Description",
+            "description-aria": "Enter issue description",
+            "official_email": "Send an email to the relevant authorities. (Please double-check the details before submitting. Changes are not possible later.)",
+            "cancel": "Cancel",
+            "send_add_loading": "Submitting...",
+            "send_add": "Report Issue",
+            "send_edit_loading": "Updating...",
+            "send_edit": "Update Issue",
+            "add_image_loading": "Uploading image...",
+            "add_image_pending": "Preparing image...",
+            "add_image_required": "Photo is not mandatory.",
+            "add_image_explination": "However, adding a photo along with the issue description will greatly assist the authorities in resolving the reported issue more efficiently.",
+            "add_image": "Add Photo"
+        },
+        "status": {
+            "ALL": "ALL",
+            "DONE": "RESOLVED",
+            "ACTIVE": "ACTIVE"
+        }
+    },
+    "images": {
+        "max_upload_file_size": "The maximum allowed image size is 10MB.",
+        "file_type_alowed": "The image must be in JPG or PNG format."
+    },
+    "map": {
+        "my_position": "My Location"
+    },
+    "users": {
+        "first_last_name": "Full Name:",
+        "phone": "Phone:",
+        "email": "Email:",
+        "role": "Role:",
+        "creation_date": "Creation Date:",
+        "updated_date": "Last Activity:",
+        "number_of_user_problems": "Number of Reports:",
+        "delete_user": "Delete Account",
+        "delete_user_loading": "Deleting Account...",
+        "account_is_deleted": "Your account has been deleted!",
+        "account_delete_error": "An error occurred while deleting the account."
+    },
+    "prompt": {
+        "continue": "Continue",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "delete": "Delete",
+        "select_other_location": "Select Another Location",
+        "location_outof_range": "Location is out of {appArea} range (~{distance}km)!"
+    },
+    "weather": {
+        "title": "Weather Forecast",
+        "humidity": "Humidity",
+        "wind": "Wind"
+    },
+    "restrictAccess": "You do not have permission to access this page!",
+    "enable_location": "Enable location settings and reload the page to select your current location.",
+    "location_not_available": "Location is not available. Please try again.",
+    "location_request_timed_out": "Location request timed out. Please try again.",
+    "location_error": "An error occurred. Please try again.",
+    "offline_mode": "You are in offline mode. Please check your internet connection.",
+    "not_found": "No results found!",
+    "page_not_found": "Page Not Found",
+    "add_new_resource": "Report New Issue",
+    "try_again": "Try Again",
+    "back_button_label": "Back",
+    "filter_categories_default": "All Categories",
+    "logout": "Logout",
+    "session_expired": "Your session has expired! Please log in again!",
+    "wrong_password_forgot": "An error occurred while resetting the password. Please try again.",
+    "wrong_password_reset": "An error occurred while requesting a password reset.",
+    "welcome_message_login": "Welcome",
+    "wrong_login": "An error occurred while logging in. Please try again.",
+    "welcome_message_logout": "You have successfully logged out!",
+    "wrong_logout": "An error occurred while logging out. Please try again.",
+    "welcome_message_register": "Account successfully created!",
+    "wrong_register": "An error occurred while creating the account."
 }

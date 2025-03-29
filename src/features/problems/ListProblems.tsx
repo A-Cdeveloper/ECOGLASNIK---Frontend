@@ -18,8 +18,9 @@ const ListProblems = ({ userId }: { userId?: number }) => {
 
   const getUnitLabel = useCallback(
     (count: number) => {
+      if (count === 1) return t("problems.item");
       if (count >= 2 && count <= 4) return t("problems.items");
-      return t("problems.item");
+      return t("problems.items");
     },
     [t]
   );
