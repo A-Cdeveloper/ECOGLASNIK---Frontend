@@ -5,6 +5,7 @@ import { MapContext } from "../../context/mapContext";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import Button from "../../ui/Buttons/Button";
 import { outOfMapRange } from "../../utils/helpers";
+import { TranslationContext } from "../../context/translationContext";
 
 const MapMyPosition = ({
   onClickOutRange,
@@ -17,6 +18,8 @@ const MapMyPosition = ({
   const navigate = useNavigate();
   const map = useMap();
   const { setMapPosition, defaultBounds, zoomLevel } = use(MapContext);
+
+  const { t } = use(TranslationContext);
 
   if (location.pathname !== "/problems/add" || error) {
     return null;
@@ -49,7 +52,7 @@ const MapMyPosition = ({
         navigate(`?lat=${geoLocation?.lat}&lng=${geoLocation?.lng}`);
       }}
     >
-      Moja lokacija
+      {t("map.my_position")}
     </Button>
   );
 };

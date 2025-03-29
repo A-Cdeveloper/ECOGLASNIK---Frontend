@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { use, useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCategories } from "../hooks/useCategories";
 import { useSingleProblem } from "../hooks/useSingleProblem";
@@ -20,6 +20,7 @@ import Headline from "../../../ui/Headline";
 import useAddEditProblem from "../hooks/useAddEditProblem";
 import Organisations from "../Organisations";
 import Checkbox from "../../../ui/Form/Checkbox";
+import { TranslationContext } from "../../../context/translationContext";
 
 export type FormStateType = {
   category: number;
@@ -59,6 +60,8 @@ const FormAddEditProblem = ({
 
   const [currentImageUrl, setCurrentImageUrl] = useState<string>("");
   const [currentImagePinataId, setCurrentImagePinataId] = useState<string>("");
+
+  const { t } = use(TranslationContext);
 
   const uploadImageLoading = !!currentImageUrl;
 
@@ -154,7 +157,7 @@ const FormAddEditProblem = ({
   return (
     <>
       <Headline>
-        {editMode ? "izmeni detalje problema" : "Prijavi problem"}
+        {editMode ? t("problems.edit.headline") : t("problems.add.headline")}
       </Headline>
 
       <PromptModal
@@ -175,15 +178,15 @@ const FormAddEditProblem = ({
 
       <form onSubmit={handleSubmit} className="space-y-2 my-4">
         <Input
-          placeholder="Naslov problema"
+          placeholder={t("problems.formular.title")}
           name="title"
-          aria-description="Unesi naslov problema"
+          aria-description={t("problems.formular.title")}
           defaultValue={problem?.title}
           onChange={handleInputChange}
         />
         <Select
           name="cat_id"
-          aria-description="Izaberi kategoriju problema"
+          aria-description={t("problems.formular.category-aria")}
           value={formState.category}
           onChange={handleCategoryChange}
           options={categories!}
@@ -192,9 +195,9 @@ const FormAddEditProblem = ({
 
         {categories && <Organisations organisations={catOrganisations || []} />}
         <TextArea
-          placeholder="Opis problema"
+          placeholder={t("problems.formular.description")}
           name="description"
-          aria-description="Unesi opis problema"
+          aria-description={t("problems.formular.description-aria")}
           defaultValue={problem?.description}
           onChange={handleInputChange}
           className="h-[80px] lg:h-[200px]"
@@ -211,14 +214,13 @@ const FormAddEditProblem = ({
             <Checkbox
               id={1}
               name="officialEmail"
-              label="Pošalji email nadležnim službama.(Molimo Vas da dobro proverite detalje prilikom prijave. Naknadne
-            izmene nisu moguće.)"
+              label={t("problems.formular.official_email ")}
             />
           </>
         )}
         <div className="flex justify-between border-t border-secondary-500/30 pt-3">
           <Button
-            aria-label="Odustani"
+            aria-label={t("problems.formular.cancel")}
             variation="danger"
             size="small"
             onClick={(e) => {
@@ -229,13 +231,19 @@ const FormAddEditProblem = ({
             Odustani
           </Button>
           <Button
-            aria-label="Pošalji problem"
+            aria-label={t("problems.formular.send_add")}
             variation="info"
             size="small"
             disabled={isLoadingAddNew || isLoadingEdit || !formState.touchForm}
           >
-            {!editMode && (isLoadingAddNew ? "Slanje..." : "Prijavi problem")}
-            {editMode && (isLoadingEdit ? "Izmena..." : "Izmeni problem")}
+            {!editMode &&
+              (isLoadingAddNew
+                ? t("problems.formular.send_add_loading")
+                : t("problems.formular.send_add"))}
+            {editMode &&
+              (isLoadingEdit
+                ? t("problems.formular.send_edit_loading")
+                : t("problems.formular.send_edit"))}
           </Button>
         </div>
       </form>

@@ -6,11 +6,14 @@ import {
 import toast from "react-hot-toast";
 import { Problem } from "../../../types";
 import { addNewProblemApi, updateProblemApi } from "../api/problems";
+import { TranslationContext } from "../../../context/translationContext";
+import { use } from "react";
 
 const useAddEditProblem = (
   mode: string
 ): UseMutationResult<Problem, Error, Problem> => {
   const queryClient = useQueryClient();
+  const { t } = use(TranslationContext);
 
   const mutation = useMutation<Problem, Error, Problem>({
     mutationFn: mode === "add" ? addNewProblemApi : updateProblemApi,
@@ -18,8 +21,8 @@ const useAddEditProblem = (
       toast.success(
         `${
           mode === "add"
-            ? "Problem je uspešno kreiran i čeka na odobrenje administratora"
-            : "Problem je uspešno izmenjen."
+            ? t("problems.add.add_success")
+            : t("problems.edit.edit_success_2")
         }!`
       );
       queryClient.invalidateQueries({ queryKey: ["problem"] });
@@ -27,9 +30,11 @@ const useAddEditProblem = (
     },
     onError: () => {
       toast.error(
-        `Došlo je do greške pri ${
-          mode === "add" ? "dodavanju" : "izmeni"
-        } problema.`
+        `${
+          mode === "add"
+            ? t("problems.add.add_error")
+            : t("problems.edit.edit_error")
+        }!`
       );
     },
   });

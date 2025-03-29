@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { LoginRegisterResponse } from "../../../types";
 import apiClient from "../../../utils/axios";
 import { throwError } from "../../../utils/helpers";
+import { t } from "../../../context/translationService";
 
 export const loginApi = async ({
   email,
@@ -158,5 +159,5 @@ export const autoLogout = (
 const handleLogout = async (onLogout: () => void, uid: number) => {
   onLogout();
   await logoutApi(uid);
-  toast.success("Vaša sesija je istekla! Prijavite se ponovo!");
+  toast.success(t("session_expired"));
 };

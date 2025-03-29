@@ -7,7 +7,7 @@ import { logoutApi } from "../api/authentication";
 import { useNavigate } from "react-router-dom";
 import { use } from "react";
 import { AuthContext } from "../../../context/authContext";
-
+import { t } from "../../../context/translationService";
 const useLogout = (): UseMutationResult<LoginRegisterResponse, Error, void> => {
   const { removeSessionStorageData, user } = use(AuthContext);
   const navigation = useNavigate();
@@ -17,11 +17,11 @@ const useLogout = (): UseMutationResult<LoginRegisterResponse, Error, void> => {
     mutationFn: () => logoutApi(userId!),
     onSuccess: () => {
       removeSessionStorageData();
-      toast.success(`Uspešno ste se odjavili!`);
+      toast.success(t("welcome_message_logout"));
       navigation("/");
     },
     onError: () => {
-      toast.error("Došlo je do greške prilikom odjave.");
+      toast.error(t("wrong_logout"));
     },
   });
 

@@ -99,17 +99,19 @@ export const deleteProblemApi = async (id: string): Promise<Problem> => {
   }
 };
 
+import { t } from "../../../context/translationService";
+
 export const uploadProblemImageApi = async (
   file: File,
   onProgress: (progress: number) => void
 ) => {
   try {
     if (file.size > MAX_UPLOAD_FILE_SIZE) {
-      throw new Error("Dozvoljena veličina fotografije je maksimalno 10MB");
+      throw new Error(t("images.max_upload_file_size"));
     }
 
     if (file.type !== "image/jpeg" && file.type !== "image/png") {
-      throw new Error("Fotografija mora biti u JPG ili PNG formatu");
+      throw new Error(t("images.file_type_alowed"));
     }
 
     const resizedFile = await resizeImage(file, 1920);

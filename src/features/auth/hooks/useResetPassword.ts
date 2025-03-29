@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { resetPasswordApi } from "../api/authentication";
-
+import { t } from "../../../context/translationService";
 const useResetPassword = (): UseMutationResult<
   { message: string },
   Error,
@@ -13,8 +13,7 @@ const useResetPassword = (): UseMutationResult<
     { password: string; verificationCode: string }
   >({
     mutationFn: resetPasswordApi,
-    onError: () =>
-      toast.error("Došlo je do greške prilikom zahteva za reset lozinke."),
+    onError: () => toast.error(t("wrong_password_reset")),
   });
 
   return mutation;

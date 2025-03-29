@@ -6,6 +6,7 @@ import { LoginRegisterResponse } from "../../../types";
 
 import { getUserFromCookies, loginApi } from "../api/authentication";
 import { AuthContext } from "../../../context/authContext";
+import { t } from "../../../context/translationService";
 
 type LoginVariables = {
   email: string;
@@ -25,12 +26,14 @@ const useLogin = (): UseMutationResult<
       setUser(user);
       setTokenExpiry(data.tokenExpiry);
       toast.success(
-        `${data.message}\n Dobrodosli ${user.firstname} ${user.lastname}!`
+        `${data.message}\n ${t("welcome_message_login")} ${user.firstname} ${
+          user.lastname
+        }!`
       );
     },
     onError: (error) => {
       console.log(error);
-      toast.error("Došlo je do greške prilikom prijave.");
+      toast.error(t("wrong_login"));
     },
   });
 

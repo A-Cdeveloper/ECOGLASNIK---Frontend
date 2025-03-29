@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { use, useCallback } from "react";
 import { Problem } from "../../../types";
 import CloseButton from "../../../ui/Buttons/CloseButton";
 import { FormStateType } from "./FormAddEditProblem";
@@ -7,6 +7,7 @@ import useUploadImageProblem from "../hooks/useUploadImageProblem";
 import MiniSpinner from "../../../ui/MiniSpinner";
 import ProblemImage from "../ProblemImage";
 import { getErrorMessage } from "../../../utils/helpers";
+import { TranslationContext } from "../../../context/translationContext";
 
 const ProblemImageArea = ({
   problem,
@@ -27,6 +28,8 @@ const ProblemImageArea = ({
     progress,
     error,
   } = useUploadImageProblem();
+
+  const { t } = use(TranslationContext);
 
   const handleFileChange = useCallback(
     async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,7 +73,7 @@ const ProblemImageArea = ({
         <MiniSpinner />
         {progress !== 100 ? (
           <>
-            Slika se uploaduje...
+            {t("problems.formular.add_image_loading")}
             <div className="relative h-2 bg-gray-200 rounded-md w-3/4 md:w-1/3">
               <div
                 className="absolute top-0 left-0 h-2 bg-warrning-500 rounded-md"
@@ -80,7 +83,7 @@ const ProblemImageArea = ({
             <span className="text-[12px] ms-1 block">{progress}%</span>
           </>
         ) : (
-          <span>Priprema slike...</span>
+          <span>{t("problems.formular.add_image_pending")}</span>
         )}
       </div>
     );
@@ -102,17 +105,16 @@ const ProblemImageArea = ({
       {!currentImageUrl && (
         <>
           <p className="text-[12px] text-secondary-100 leading-[15px]">
-            Fotografija nije obavezna.
+            {t("problems.formular.add_image_required")}
             <br />
-            Ipak, dodavanje fotografije uz opis problema će umnogome ubrzati rad
-            nadležnih službi u procesu rešavanja prijavljenog problema.
+            {t("problems.formular.add_image_explination")}
           </p>
           <input
             type="file"
             accept="image/*"
             id="image"
             name="imageProblem"
-            aria-description="Problem slika"
+            aria-description={t("problems.formular.add_image")}
             onChange={handleFileChange}
             className="hidden"
           />
@@ -121,7 +123,7 @@ const ProblemImageArea = ({
             htmlFor="image"
             className="w-full relative h-9 cursor-pointer border-dashed border-1 border-secondary flex justify-center items-center  text-secondary hover:text-winter"
           >
-            Dodaj fotografiju
+            {t("problems.formular.add_image")}
           </label>
           {error?.message && (
             <p className="text-rose-400 mt-0 whitespace-pre-wrap">

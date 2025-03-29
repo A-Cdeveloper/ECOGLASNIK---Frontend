@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 import { LoginRegisterResponse } from "../../../types";
 import { registerApi } from "../api/authentication";
-
+import { t } from "../../../context/translationService";
 type RegisterVariables = {
   firstname: string;
   lastname: string;
@@ -21,10 +21,10 @@ const useRegister = (): UseMutationResult<
     {
       mutationFn: registerApi,
       onSuccess: () => {
-        toast.success("Nalog uspešno kreiran!");
+        toast.success(t("welcome_message_register"));
       },
       onError: () => {
-        toast.error("Došlo je do greške prilikom kreiranja naloga.");
+        toast.error(t("wrong_register"));
       },
     }
   );

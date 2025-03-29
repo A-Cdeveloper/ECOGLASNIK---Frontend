@@ -17,6 +17,7 @@ import Button from "../../ui/Buttons/Button";
 import PromptModalOutRange from "../../ui/PromtsAndNotifications/PromptModalOutRange";
 import "../../utils.css";
 import MapMyPosition from "./MapMyPosition";
+import { TranslationContext } from "../../context/translationContext";
 const Map = ({
   problemId,
   userId,
@@ -31,6 +32,7 @@ const Map = ({
   const [isOutOfRange, setIsOutOfRange] = useState(false);
   const location = useLocation();
   const mapRef = useRef<HTMLDivElement | null>(null);
+  const { t } = use(TranslationContext);
 
   const filteredProblems = useMemo(() => {
     if (userId) {
@@ -72,7 +74,7 @@ const Map = ({
             navigate("/problems/add");
           }}
         >
-          Dodaj problem
+          {t("problems.add.headline")}
         </Button>
       )}
       {/* ✅ Wrap the MapContainer inside a div with a ref */}

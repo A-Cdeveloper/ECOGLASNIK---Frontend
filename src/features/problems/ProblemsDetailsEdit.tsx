@@ -72,8 +72,8 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
             }}
           >
             {isLoadingChangeStatus
-              ? t("problems.edit_loading.edit")
-              : t("problems.edit_success")}
+              ? t("problems.edit.edit_loading")
+              : t("problems.edit.edit_success")}
           </Button>
           <Button
             variation="danger"
@@ -81,8 +81,8 @@ const ProblemsDetailsEdit = ({ problem }: { problem: Problem }) => {
             onClick={() => setIsShowWarrning(true)}
           >
             {isLoadingDeleteProblem
-              ? t("problems.delete_loading")
-              : t("problems.delete_success")}
+              ? t("problems.edit.delete_loading")
+              : t("problems.edit.delete_success")}
           </Button>{" "}
         </div>
       </div>

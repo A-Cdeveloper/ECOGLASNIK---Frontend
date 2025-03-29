@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from "react";
-import get from "lodash.get"; // Import lodash.get
+import { createContext, useState, useEffect, useCallback } from "react";
+import get from "lodash.get";
+import { setTranslationFunction } from "./translationService";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const TranslationContext = createContext<{
@@ -25,11 +26,18 @@ export const TranslationProvider = ({
     );
   }, [language]);
 
-  const t = (key: string) => get(translations, key, key); // Use lodash.get for nested keys
+  const t = useCallback(
+    (key: string) => get(translations, key, key),
+    [translations]
+  );
+
+  useEffect(() => {
+    setTranslationFunction(t); // Store globally
+  }, [t]);
 
   return (
-    <TranslationContext value={{ t, setLanguage }}>
+    <TranslationContext.Provider value={{ t, setLanguage }}>
       {children}
-    </TranslationContext>
+    </TranslationContext.Provider>
   );
 };

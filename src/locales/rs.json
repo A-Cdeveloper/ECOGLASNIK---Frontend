@@ -89,18 +89,54 @@
             "status_official": "Prijava je poslata nadležnim službama putem emaila i ne može biti naknadno izmenjena!",
             "official_answer": "Odgovor nadležne službe:"
         },
+        "add": {
+            "headline": "Prijavi problem",
+            "add_success": "Problem je uspešno kreiran i čeka na odobrenje administratora",
+            "add_error": "Došlo je do greške pri kreiranju problema."
+        },
         "edit": {
-            "edit": "Izmeni:",
+            "headline": "izmeni detalje problema",
+            "edit": "Izmeni",
             "edit_loading": "Promena statusa...",
-            "edit_success": "Problem je rešen.",
+            "edit_success": "Problem je rešen",
+            "edit_succes_2": "Problem je uspešno izmenjen.",
+            "edit_error": "Došlo je do greške pri izmeni problema.",
             "delete_loading": "Brisanje...",
             "delete_success": "Obriši problem"
+        },
+        "delete": {
+            "delete_error": "Došlo je do greške pri uklanjanju problema.",
+            "delete_success": "Problem {title} je uklonjen!"
+        },
+        "formular": {
+            "title": "Unesi naslov problema",
+            "category-aria": "Izaberi kategoriju problema",
+            "description": "Opis problema",
+            "description-aria": "Unesite opis problema",
+            "official_email": "Pošalji email nadležnim službama.(Molimo Vas da dobro proverite detalje prilikom prijave. Naknadne izmene nisu moguće.)",
+            "cancel": "Odustani",
+            "send_add_loading": "Slanje...",
+            "send_add": "Prijavi problem",
+            "send_edit_loading": "Izmena...",
+            "send_edit": "Izmeni problem",
+            "add_image_loading": "Slika se uploaduje...",
+            "add_image_pending": "Priprema slike...",
+            "add_image_required": "Fotografija nije obavezna.",
+            "add_image_explination": "Ipak, dodavanje fotografije uz opis problema će umnogome ubrzati rad nadležnih službi u procesu rešavanja prijavljenog problema.",
+            "add_image": "Dodaj fotografiju"
         },
         "status": {
             "ALL": "SVE",
             "DONE": "REŠENO",
             "ACTIVE": "AKTIVNO"
         }
+    },
+    "images": {
+        "max_upload_file_size": "Maksimalna dozvoljena velicina fotografije je 10MB.",
+        "file_type_alowed": "Fotografija mora biti u JPG ili PNG formatu"
+    },
+    "map": {
+        "my_position": "Moja lokacija"
     },
     "users": {
         "first_last_name": "Ime i prezime:",
@@ -140,5 +176,14 @@
     "try_again": "Pokušajte ponovo",
     "back_button_label": "Nazad",
     "filter_categories_default": "Sve kategorije",
-    "logout": "Odjava"
+    "logout": "Odjava",
+    "session_expired": "Vaša sesija je istekla! Prijavite se ponovo!",
+    "wrong_password_forgot": "Došlo je do greške pri resetovanju lozinke. Molimo pokušajte ponovo.",
+    "wrong_password_reset": "Došlo je do greške prilikom zahteva za reset lozinke.",
+    "welcome_message_login": "Dobrodošli",
+    "wrong_login": "Došlo je do greške prilikom prijave. Molimo pokušajte ponovo.",
+    "welcome_message_logout": "Uspešno ste se odjavili!",
+    "wrong_logout": "Došlo je do greške prilikom odjave. Molimo pokušajte ponovo.",
+    "welcome_message_register": "Nalog uspešno kreiran!",
+    "wrong_register": "Došlo je do greške prilikom kreiranja naloga."
 }
