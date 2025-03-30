@@ -152,6 +152,15 @@
         "account_delete_error": "An error occurred while deleting the account."
     },
     "prompt": {
+        "prompt_session_title": "Vaša sesija će uskoro isteći.",
+        "prompt_session_question": "Da li želite da nastavite?",
+        "prompt_problem_delete_title": "Problem će biti obrisan",
+        "prompt_problem_delete_question": "Da li želite da nastavite?",
+        "prompt_user_delete_title": "Broj aktivnih prijava: {numberOfProblems}",
+        "prompt_user_delete_intro": "Brisanjem naloga obrisaćete TRAJNO i sve Vaše prijave!",
+        "prompt_user_delete_question": "Da li želite da nastavite?",
+        "prompt_leave_question": "Da li zaista želite da odustanete?",
+        "prompt_leave_intro": "Promene neće biti sačuvane!!!",
         "continue": "Continue",
         "cancel": "Cancel",
         "confirm": "Confirm",

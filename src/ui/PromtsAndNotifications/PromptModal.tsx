@@ -20,8 +20,8 @@ const PromptModal = ({ formStatus }: { formStatus: boolean }) => {
       {({ isActive, onConfirm, onCancel }: PromptProps) =>
         isActive && (
           <PromptLayout>
-            <PromptLayout.Header title="Da li zaista želite da odustanete?" />
-            <PromptLayout.IntroText intro="Promene neće biti sačuvane!!!" />
+            <PromptLayout.Header title={t("prompt.prompt_leave_question")} />
+            <PromptLayout.IntroText intro={t("prompt.prompt_leave_intro")} />
             <PromptLayout.Buttons>
               <Button variation="success" size="small" onClick={onCancel}>
                 {t("prompt.continue")}

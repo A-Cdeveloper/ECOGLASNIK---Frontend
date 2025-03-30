@@ -18,9 +18,9 @@ const PromptAutoLogout = ({
 
   return createPortal(
     <PromptLayout>
-      <PromptLayout.Header title="Vaša sesija će uskoro isteći." />
+      <PromptLayout.Header title={t("prompt.prompt_session_title")} />
 
-      <PromptLayout.IntroText intro="Da li želite da nastavite?" />
+      <PromptLayout.IntroText intro={t("prompt.prompt_session_question")} />
       <PromptLayout.Buttons>
         <Button variation="success" size="small" onClick={onCancel}>
           {t("logout")}

@@ -18,9 +18,11 @@ const PromptDeleteProblem = ({
 
   return createPortal(
     <PromptLayout>
-      <PromptLayout.Header title="Problem će biti obrisan" />
+      <PromptLayout.Header title={t("prompt.prompt_problem_delete_title")} />
 
-      <PromptLayout.IntroText intro="Da li želite da nastavite?" />
+      <PromptLayout.IntroText
+        intro={t("prompt.prompt_problem_delete_question")}
+      />
       <PromptLayout.Buttons>
         <Button variation="success" size="small" onClick={onCancel}>
           {t("prompt.cancel")}

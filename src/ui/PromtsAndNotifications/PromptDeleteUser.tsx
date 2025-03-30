@@ -22,12 +22,15 @@ const PromptDeleteUser = ({
   return createPortal(
     <PromptLayout>
       <PromptLayout.Header
-        title={`Broj aktivnih prijava: ${numberOfProblems}`}
+        title={t("prompt.prompt_user_delete_title").replace(
+          "{numberOfProblems}",
+          numberOfProblems.toString()
+        )}
       />
       {numberOfProblems !== 0 && (
-        <PromptLayout.IntroText intro="Brisanjem naloga obrisaćete TRAJNO i sve Vaše prijave!" />
+        <PromptLayout.IntroText intro={t("prompt.prompt_user_delete_intro")} />
       )}
-      <PromptLayout.IntroText intro="Da li želite da nastavite?" />
+      <PromptLayout.IntroText intro={t("prompt.prompt_user_delete_question")} />
       <PromptLayout.Buttons>
         <Button variation="success" size="small" onClick={onCancel}>
           {t("prompt.cancel")}
